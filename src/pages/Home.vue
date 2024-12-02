@@ -187,7 +187,7 @@
 <script>
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 import { useI18n } from 'vue-i18n';
-import BerkeleyLogo from '@/assets/Berkeley.png';
+import BerkeleyLogo from '../assets/Berkeley-Cxc8_vr_.png'
 
 export default {
   name: 'Home',
@@ -442,7 +442,7 @@ nav {
 .hero-section {
   width: 100%;
   padding: 8rem 2rem;
-  background-image: url('@/assets/sanfran1.jpg');
+  background-image: url('../assets/sanfran1.jpg');
   background-size: cover;
   background-position: center;
   min-height: 500px;
