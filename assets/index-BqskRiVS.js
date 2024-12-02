@@ -106,4 +106,4 @@ Given the complexities of U.S. tax law, especially for those with international 
 •	특정 문제에 대한 적절한 IRS 핫라인 전화
 •	지역 IRS 사무소에서 대면 약속 예약
 IRS는 업무 과중으로 처리가 지연되어 납세자들이 어려움을 겪을 수 있으나, 저희의 전문성을 활용하시면 세금 문제를 보다 효율적으로 해결하실 수 있습니다. 저희는 IRS 절차에 익숙하여 복잡한 세금 문제도 전문적으로 처리하며, 개인별 맞춤형 상담을 통해 귀하의 상황에 가장 적합한 해결책을 제시해 드립니다. 까다로운 세법에 대한 전문 지식을 바탕으로 법규 준수는 물론, 최적의 세금 절감 방안을 찾아 불필요한 세금 부담을 줄이고 효과적인 세무 전략을 수립해 드립니다.
-`}]},contact:{title:"문의하기",officeTitle:"사무실 정보",address:{title:"주소"},phone:{title:"전화"},fax:{title:"팩스"},email:{title:"이메일"},hours:{title:"영업시간",weekday:"월요일 - 금요일: 오전 9:00 - 오후 6:00",weekend:"토요일 - 일요일: 휴무, 토요일 미리 예약시 상담 가능"}}}},Mm=Wh({legacy:!1,locale:"ko",fallbackLocale:"en",messages:Fm}),ro=Qu(nf);ro.use(xm);ro.use(Mm);ro.mount("#app");
+`}]},contact:{title:"문의하기",officeTitle:"사무실 정보",address:{title:"주소"},phone:{title:"전화"},fax:{title:"팩스"},email:{title:"이메일"},hours:{title:"영업시간",weekday:"월요일 - 금요일: 오전 9:00 - 오후 6:00",weekend:"토요일 - 일요일: 휴무, 토요일 미리 예약시 상담 가능"}}}},Mm=Wh({legacy:!1,locale:"ko",fallbackLocale:"en",messages:Fm}),ro=Qu(nf);ro.use(Mm);ro.use(xm);ro.mount("#app");
