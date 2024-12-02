@@ -4,7 +4,7 @@ import Home from '../pages/Home.vue';
 import ContactUs from '../pages/ContactUs.vue';
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory('/youtaxpro/'), // GitHub Pages base URL 추가
   routes: [
     {
       path: '/',
@@ -24,13 +24,11 @@ const router = createRouter({
   ],
   scrollBehavior(to, from, savedPosition) {
     if (to.hash) {
-      // 해시가 있는 경우 (예: /#aboutus)
       return {
         el: to.hash,
         behavior: 'smooth',
       };
     } else {
-      // 해시가 없는 경우 페이지 최상단으로
       return { top: 0 };
     }
   },
