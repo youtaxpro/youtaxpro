@@ -187,7 +187,7 @@
 <script>
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 import { useI18n } from 'vue-i18n';
-import BerkeleyLogo from '../assets/Berkeley-Cxc8_vr_.png'
+import BerkeleyLogo from '../assets/Berkeley.png'
 
 export default {
   name: 'Home',
