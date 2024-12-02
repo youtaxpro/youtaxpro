@@ -1,4 +1,5 @@
 <template>
+  <p>{{ $t('hello') }}</p>
   <router-view></router-view>
 </template>
 
