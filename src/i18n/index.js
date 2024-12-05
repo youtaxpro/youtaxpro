@@ -436,8 +436,10 @@ IRS는 업무 과중으로 처리가 지연되어 납세자들이 어려움을 �
 };
 
 export const i18n = createI18n({
-  legacy: false, // Vue 3 Composition API 사용
-  locale: 'ko', // 기본 언어
-  fallbackLocale: 'en', // 번역 누락시 폴백
+  legacy: false,
+  locale: 'ko',
+  fallbackLocale: 'ko',  // 'en'에서 'ko'로 변경
   messages,
+  silentFallbackWarn: true,  // 폴백 경고 메시지 숨기기
+  silentTranslationWarn: true,  // 번역 누락 경고 숨기기
 });
