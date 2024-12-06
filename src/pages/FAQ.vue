@@ -194,7 +194,7 @@ function easeInOutQuad(t, b, c, d) {
   color: white;
   min-height: 100vh;
   width: 100%;
-  background-image: url('src/assets/sanfran1.jpg');
+  background-image: url('../assets/sanfran1.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
