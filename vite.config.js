@@ -10,7 +10,7 @@ export default defineConfig({
       include: path.resolve(__dirname, "./path/to/locales/**"),
     }),
   ],
-  base: "/youtaxpro/", // 이미 설정되어 있네요. 이걸 그대로 사용하시면 됩니다
+  base: "/youtaxpro/",
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
