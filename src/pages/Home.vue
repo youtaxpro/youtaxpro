@@ -348,6 +348,7 @@ function easeInOutQuad(t, b, c, d) {
 
 .tax-website h3{
   font-size: 2rem;
+  font: bold;
   color: #002676;
 }
 
