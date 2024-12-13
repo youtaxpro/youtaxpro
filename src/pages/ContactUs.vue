@@ -273,7 +273,7 @@ nav {
 }
 
 .nav-scrolled {
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(11, 39, 99, 0.8);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
