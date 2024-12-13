@@ -147,10 +147,10 @@
            class="relative bg-white rounded-xl p-6 shadow-md hover:shadow-xl
                   transition-all duration-300 ease-in-out transform hover:-translate-y-1">
         <!-- 숫자 배지 -->
-        <div class="absolute -top-4 left-6 w-10 h-10 bg-gradient-to-r from-blue-600 to-blue-700
+        <h5 class="absolute -top-4 left-6 w-10 h-10 bg-gradient-to-r from-blue-600 to-blue-700
                     rounded-full flex items-center justify-center text-white font-bold shadow-lg">
           {{ n }}
-        </div>
+    </h5>
         
         <!-- 내용 -->
         <div class="pt-6">
@@ -454,7 +454,7 @@ nav {
   background-image: url('../assets/sanfran1.jpg');
   background-size: cover;
   background-position: center;
-  min-height: 1000px;
+  min-height: 900px;
   display: flex;
   align-items: center;
   justify-content: left;
@@ -611,6 +611,11 @@ section {
 
 .service-icon-wrapper {
   margin-bottom: 0.75rem;
+}
+
+.tax-website h5 {
+  color: #002676;
+  font-size: large;
 }
 
 /* Footer */
