@@ -325,6 +325,28 @@ nav {
   padding: 2rem;
 }
 
+h2 {
+  text-align: center;
+  color: white;
+  margin-bottom: 4rem;
+  font-size: 2.5rem;
+  font-weight: bold;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background-color: #ffec9a;
+  border-radius: 2px;
+}
+
 .faq-list {
   margin-top: 2rem;
   text-align: left;

@@ -374,7 +374,7 @@ h2::after {
   transform: translateX(-50%);
   width: 100px;
   height: 3px;
-  background-color: #0071e3;
+  background-color: #ffec9a;
   border-radius: 2px;
 }
 
