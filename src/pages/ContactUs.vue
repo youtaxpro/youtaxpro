@@ -87,7 +87,7 @@
   
       <!-- Footer -->
       <footer class="footer">
-        <p>&copy; 2024 Berkeley US Tax Advisors All rights reserved.</p>
+        <h4>&copy; 2024 Berkeley US Tax Advisors All rights reserved.</h4>
         <div class="social-links">
           <a>{{ $t('footer.companyName') }}</a>
           <a>{{ $t('footer.representative') }}</a>
@@ -434,6 +434,10 @@ h2::after {
   margin-top: 0.5rem;
   justify-content: center;  /* flex 아이템들 가운데 정렬 */
   align-items: center;     /* 세로축에서도 가운데 정렬 */
+}
+
+.footer h4 {
+  color: #00599c;
 }
 
 .social-links a {

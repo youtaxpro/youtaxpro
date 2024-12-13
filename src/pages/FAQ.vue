@@ -55,7 +55,7 @@
 
     <!-- Footer -->
     <footer class="footer">
-      <p>&copy; 2024 Berkeley US Tax Advisors All rights reserved.</p>
+      <h4>&copy; 2024 Berkeley US Tax Advisors All rights reserved.</h4>
       <div class="social-links">
         <a>{{ $t('footer.companyName') }}</a>
         <a>{{ $t('footer.representative') }}</a>
@@ -376,6 +376,10 @@ h2::after {
 .faq-question h3 {
   margin: 0;
   font-size: 1.2rem;
+}
+
+.footer h4 {
+  color: #00599c;
 }
 
 .toggle-icon {
