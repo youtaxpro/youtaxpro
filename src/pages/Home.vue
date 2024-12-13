@@ -453,7 +453,7 @@ nav {
 }
 
 .hero-content {
-  text-align: center;
+  text-align: left;
   color: white;
 }
 
@@ -467,7 +467,6 @@ nav {
 .hero-subtitle {
   font-size: 2.5rem;
   opacity: 0.9;
-  font-weight: 600;
 }
 
 .aboutus-section {
