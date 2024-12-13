@@ -592,7 +592,7 @@ section {
 .service-card p {
   color: black;
   font-weight: 800;
-  font-size: 1rem;
+  font-size: 1.5rem;
   line-height: 1.5;
   justify-content: center;
   display: flex;
