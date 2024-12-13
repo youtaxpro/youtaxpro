@@ -347,7 +347,7 @@ function easeInOutQuad(t, b, c, d) {
 }
 
 .tax-website h3{
-  font-size: 2rem;
+  font-size: 3rem;
   font: bold;
   color: #002676;
 }
@@ -446,7 +446,7 @@ nav {
   background-image: url('../assets/sanfran1.jpg');
   background-size: cover;
   background-position: center;
-  min-height: 500px;
+  min-height: 1000px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -458,14 +458,14 @@ nav {
 }
 
 .hero-title {
-  font-size: 3.5rem;
+  font-size: 4rem;
   margin-bottom: 1.5rem;
   font-weight: bold;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .hero-subtitle {
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   opacity: 0.9;
 }
 
@@ -487,6 +487,7 @@ nav {
   color: #4a5568;
   line-height: 1.6;
   margin-bottom: 1rem;
+  font-size: 2.0rem;
 }
 
 
@@ -503,14 +504,18 @@ nav {
 
 .team-member h3 {
   color: #002676;
-  font-size: 2rem;
+  font-size: 3rem;
   margin-bottom: 1.5rem;
 }
 
 .team-member h4 {
   color: #00599c;
-  font-size: 1.25rem;
+  font-size: 2.5rem;
   margin: 1.5rem 0 0.75rem;
+}
+
+.team-member p {
+  font-size: 2.0rem;
 }
 
 .description, .credentials, .career {
@@ -674,23 +679,23 @@ section {
   }
 
   .hero-title {
-    font-size: 2.5rem;
+    font-size: 3.5rem;
   }
 
   .hero-subtitle {
-    font-size: 1.2rem;
+    font-size: 2.5rem;
   }
 
   .aboutus-card {
-    padding: 1.5rem;
+    padding: 2.5rem;
   }
 
   .tax-website h3 {
-    font-size: 1.5rem;
+    font-size: 2.5rem;
   }
 
   .team-member h3 {
-    font-size: 1.5rem;
+    font-size: 2.5rem;
   }
 
   .team-member h4 {
