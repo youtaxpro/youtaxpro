@@ -570,7 +570,7 @@ section {
 }
 
 .service-card {
-  background: linear-gradient(135deg, #7cbbee 0%, #5ba4e0 80%);
+  border-left: 15px solid #002676;
   padding: 1.5rem;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -589,7 +589,7 @@ section {
 }
 
 .service-card p {
-  color: white;
+  color: black;
   font-weight: 800;
   font-size: 1rem;
   line-height: 1.5;
