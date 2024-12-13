@@ -69,7 +69,8 @@
       
       <!-- 프로필 섹션 -->
       <div class="aboutus team-member">
-        <h3>{{ $t('profile.name') }}, {{ $t('profile.title') }}</h3>
+        <h3>{{ $t('profile.name') }}</h3>
+        <h3>{{ $t('profile.title') }}</h3>
         
         <!-- 소개 섹션 -->
         <div class="description">

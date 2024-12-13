@@ -228,7 +228,7 @@ Given the complexities of U.S. tax law, especially for those with international 
     },
     hero: {
       title: '신뢰할 수 있는 미국 세금 전문 기업',
-      subtitle: '글로벌 스탠다드를 선도하는 프리미엄 세무 서비스, 당신의 성공 파트너',
+      subtitle: '글로벌 스탠다드를 선도하는 프리미엄 세무 서비스',
     },
     aboutus: {
       title: 'About Berkeley U.S. Tax Advisors',
