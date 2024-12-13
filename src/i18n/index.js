@@ -260,7 +260,7 @@ Given the complexities of U.S. tax law, especially for those with international 
       },
       certification: {
         title: '자격증',
-        content: '미국공인회계사'
+        content: '미국공인회계사 (캘리포니아주)'
       },
       career: {
         title: '약력',
