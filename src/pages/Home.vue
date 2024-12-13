@@ -349,7 +349,7 @@ function easeInOutQuad(t, b, c, d) {
 .tax-website h3{
   font-size: 3rem;
   font-weight: 800;
-  color: #002676;
+  color: black;
 }
 
 /* Navigation */
@@ -487,7 +487,7 @@ nav {
   color: #4a5568;
   line-height: 1.6;
   margin-bottom: 1rem;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
 }
 
 
@@ -503,7 +503,7 @@ nav {
 }
 
 .team-member h3 {
-  color: #002676;
+  color: black;
   font-size: 3rem;
   margin-bottom: 1.5rem;
 }
@@ -515,7 +515,7 @@ nav {
 }
 
 .team-member p {
-  font-size: 2.0rem;
+  font-size: 1.5rem;
 }
 
 .description, .credentials, .career {
@@ -523,7 +523,7 @@ nav {
 }
 
 .description p, .credentials p {
-  color: #4a5568;
+  color: black;
   line-height: 1.6;
   margin-bottom: 1rem;
 }
