@@ -154,9 +154,9 @@
         
         <!-- 내용 -->
         <div class="pt-6">
-          <h3 class="text-xl font-semibold mb-3 text-gray-800">
+          <h4 class="text-xl font-semibold mb-3 text-gray-800">
             {{ $t(`checklists.steps.step${n}.title`) }}
-          </h3>
+          </h4>
           <p class="text-gray-600 leading-relaxed">
             {{ $t(`checklists.steps.step${n}.description`) }}
           </p>
@@ -351,6 +351,14 @@ function easeInOutQuad(t, b, c, d) {
   font-weight: 800;
   color: black;
 }
+
+.tax-website h4{
+  font-size: 2rem;
+  font-weight: 800;
+  color: black;
+}
+
+
 
 /* Navigation */
 
