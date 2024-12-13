@@ -348,7 +348,7 @@ function easeInOutQuad(t, b, c, d) {
 
 .tax-website h3{
   font-size: 3rem;
-  font: bold;
+  font-weight: 800;
   color: #002676;
 }
 
@@ -449,7 +449,7 @@ nav {
   min-height: 1000px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
 }
 
 .hero-content {
@@ -460,13 +460,14 @@ nav {
 .hero-title {
   font-size: 4rem;
   margin-bottom: 1.5rem;
-  font-weight: bold;
+  font-weight: 1000;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .hero-subtitle {
   font-size: 2.5rem;
   opacity: 0.9;
+  font-weight: 600;
 }
 
 .aboutus-section {
@@ -487,7 +488,7 @@ nav {
   color: #4a5568;
   line-height: 1.6;
   margin-bottom: 1rem;
-  font-size: 2.0rem;
+  font-size: 1.8rem;
 }
 
 
@@ -590,7 +591,7 @@ section {
 
 .service-card p {
   color: white;
-  font-weight: bold;
+  font-weight: 800;
   font-size: 1rem;
   line-height: 1.5;
   justify-content: center;
