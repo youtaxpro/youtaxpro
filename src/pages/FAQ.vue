@@ -305,7 +305,7 @@ nav {
 }
 
 .lang-btn:hover, .lang-btn.active {
-  color: #4caf50;
+  color: #ffec9a;
 }
 
 .lang-btn.active {
