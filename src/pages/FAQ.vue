@@ -482,22 +482,35 @@ h2::after {
 /* 반응형 디자인 */
 @media screen and (max-width: 768px) {
   nav {
-    padding: 1px;
+    padding: 0.5rem 0;
+    width: 100%;
   }
 
   .nav-links {
     display: none;
     position: fixed;
-    top: 60px;
+    top: 106px; /* 네비게이션 바 높이에 맞춰 조정 */
     left: 0;
     width: 100%;
-    background-color: #002676;
+    background-color: rgba(11, 39, 99, 0.8);
     padding: 1rem;
     flex-direction: column;
+    z-index: 1000;
+    gap: 1rem;
   }
 
   .nav-links.active {
     display: flex;
+    animation: slideDown 0.3s ease-in-out;
+  }
+
+
+  .logo {
+    padding: 1rem 1rem; /* 상하 0.5rem, 좌우 1rem의 패딩 */
+  }
+  
+  .logo img {
+    height: 40px; /* 모바일에서는 로고 크기를 약간 줄임 */
   }
 
   .mobile-menu-btn {
