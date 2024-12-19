@@ -743,9 +743,11 @@ section {
   }
 
   .service-card p {
-    line-height: 1.6;
-    margin-bottom: 1rem;
+    line-height: 1.4;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
     align-items: center;
+    word-break: keep-all;
   }
 
   .service-card h3 {
