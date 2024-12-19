@@ -118,17 +118,18 @@
     </div>
     
     <div class="service-cards grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-  <div v-for="i in 8" :key="i" 
-       class="service-card transition-all duration-300 ease-in-out
-              bg-gradient-to-br from-blue-50 to-white border border-blue-100 rounded-xl
-              overflow-hidden">
-    <div class="p-6 h-full flex flex-col">
-      <p class="text-gray-800 leading-relaxed
-                transition-colors duration-300">
-        {{ $t(`services.service${i}.items[0]`) }}
-      </p>
-    </div>
+      <div v-for="i in 8" :key="i" 
+     class="service-card transition-all duration-300 ease-in-out
+            bg-gradient-to-br from-blue-50 to-white border border-blue-100 rounded-xl
+            overflow-hidden min-h-[120px]"> <!-- min-height 추가 -->
+  <div class="p-6 h-full flex flex-col">
+    <p class="text-gray-800 leading-relaxed
+              transition-colors duration-300
+              break-words overflow-hidden"> <!-- 이 부분 추가 -->
+      {{ $t(`services.service${i}.items[0]`) }}
+    </p>
   </div>
+</div>
     </div>
   </div>
 </section>
@@ -577,6 +578,7 @@ section {
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
   justify-content: center;
+  padding: 1rem; /* 방금추가 */ 
 }
 
 .service-card {
@@ -588,7 +590,8 @@ section {
   position: relative;
   overflow: hidden;
   height: 120px;
-  display: flex;           /* 추가 */
+  display: flex;           
+  flex-direction: column; /* 방금추가 */ 
   justify-content: center; /* 추가 */
   align-items: center;     /* 추가 */
 }
@@ -601,13 +604,13 @@ section {
 .service-card p {
   color: black;
   font-weight: 800;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   line-height: 1.5;
   justify-content: center;
   display: flex;
   margin: 0;
   padding: 0;
-  width: 100%;
+  
 }
 
 .service-icon-wrapper {
@@ -722,8 +725,7 @@ section {
   }
 
   .service-row {
-    display: flex;
-    flex-direction: column;
+    
     grid-template-columns: 1fr;
     gap: 1.5rem;
     padding: 1rem;
@@ -732,22 +734,19 @@ section {
   }
 
   .service-card {
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
     height: auto;
     min-height: 120px;
     padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
+    
     align-items: center; 
   }
 
   .service-card p {
-    line-height: 1.4;
-    margin-bottom: 0.5rem;
     font-size: 1.1rem;
-    align-items: center;
-    word-break: keep-all;
+    padding: 0.5rem;
+    
   }
 
   .service-card h3 {
