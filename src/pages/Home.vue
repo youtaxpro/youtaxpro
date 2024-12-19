@@ -688,6 +688,14 @@ section {
     display: flex;
   }
 
+  .logo {
+    padding: 1rem 1rem; /* 상하 0.5rem, 좌우 1rem의 패딩 */
+  }
+  
+  .logo img {
+    height: 40px; /* 모바일에서는 로고 크기를 약간 줄임 */
+  }
+
   .mobile-menu-btn {
     display: flex;
   }
