@@ -74,15 +74,8 @@
   
         <!-- Google Map -->
         <div class="map-container">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.7340392391656!2d127.05169491183!3d37.51419832798!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca41fd3c87ef3%3A0x834d1f6840e4aee1!2s573%20Samseong-ro%2C%20Gangnam-gu%2C%20Seoul!5e0!3m2!1sen!2skr!4v1647841234567!5m2!1sen!2skr"
-            width="100%"
-            height="450"
-            style="border:0;"
-            allowfullscreen=""
-            loading="lazy"
-          ></iframe>
-        </div>
+    <div id="map" style="width:100%;height:450px;"></div>
+</div>
       </div>
   
       <!-- Footer -->
@@ -117,6 +110,49 @@
     const openStates = ref({});
     const isMenuOpen = ref(false);
     const mobileNav = ref(null);
+
+    const initializeMap = () => {
+  if (typeof kakao === 'undefined') {
+    const script = document.createElement('script');
+    script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=eb9ad8d4f3633d8843c39f6bae02acc0`;
+    script.async = true;
+    
+    script.onload = () => {
+      kakao.maps.load(() => {
+        const container = document.getElementById('map');
+        const options = {
+          center: new kakao.maps.LatLng(37.5142023, 127.0516701), // 삼성로 573 좌표
+          level: 3
+        };
+
+        const map = new kakao.maps.Map(container, options);
+        
+        // 마커 생성
+        const marker = new kakao.maps.Marker({
+          position: map.getCenter()
+        });
+        marker.setMap(map);
+
+        // 커스텀 오버레이
+        const content = `
+          <div class="customoverlay">
+            <span class="title">Berkeley U.S. TAX ADVISORS</span>
+            <span class="address">삼성로 573</span>
+          </div>
+        `;
+
+        new kakao.maps.CustomOverlay({
+          map: map,
+          position: marker.getPosition(),
+          content: content,
+          yAnchor: 1
+        });
+      });
+    };
+
+    document.head.appendChild(script);
+  }
+};
 
     const toggleMenu = () => {
       isMenuOpen.value = !isMenuOpen.value;
