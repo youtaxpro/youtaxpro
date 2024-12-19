@@ -123,7 +123,7 @@
               bg-gradient-to-br from-blue-50 to-white border border-blue-100 rounded-xl
               overflow-hidden">
     <div class="p-6 h-full flex flex-col">
-      <p class="text-gray-800 text-lg font-large leading-relaxed
+      <p class="text-gray-800 leading-relaxed
                 transition-colors duration-300">
         {{ $t(`services.service${i}.items[0]`) }}
       </p>
