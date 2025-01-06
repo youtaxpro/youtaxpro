@@ -119,7 +119,8 @@ const messages = {
       businessNumber: 'Business Registration: 318-81-11334',
       phone: 'Tel: 010-5909-4868',
       fax: 'Fax: 02-6280-1040',
-      email: 'Email: amy@youtaxpro.com'
+      email: 'Email: amy@youtaxpro.com',
+      blog: 'Blog: blog.naver.com/berkeleytax'
     },
     faq: {
         title: 'Frequently Asked Questions',
@@ -214,7 +215,10 @@ Given the complexities of U.S. tax law, especially for those with international 
           weekday: 'Monday - Friday: 9:00 AM - 6:00 PM',
           weekend: 'Saturday - Sunday: Closed, Saturday consultations available with prior appointment'
           
-        }
+        },
+        blog: {
+          title: 'blog'
+        },
       }
 
   },
@@ -339,6 +343,7 @@ Given the complexities of U.S. tax law, especially for those with international 
       phone: '대표전화: 010-5909-4868',
       fax: '팩스번호: 02-6280-1040',
       email: '이메일: amy@youtaxpro.com',
+      blog: '블로그: blog.naver.com/berkeleytax'
     },
     faq: {
         title: '자주 묻는 질문',
@@ -430,6 +435,9 @@ IRS는 업무 과중으로 처리가 지연되어 납세자들이 어려움을 �
           title: '영업시간',
           weekday: '월요일 - 금요일: 오전 9:00 - 오후 6:00',
           weekend: '토요일 - 일요일: 휴무, 사전 예약시 토요일 상담 가능'
+        },
+        blog: {
+          title: '블로그'
         }
       }
   }

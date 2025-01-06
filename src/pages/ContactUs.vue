@@ -69,6 +69,12 @@
               <p>{{ $t('contact.hours.weekday') }}</p>
               <p>{{ $t('contact.hours.weekend') }}</p>
             </div>
+
+            <div class="contact-card">
+              <i class="fas fa-blog"></i>
+              <h4>{{ $t('contact.blog.title') }}</h4>
+              <p>{{ $t('footer.blog') }}</p>
+            </div>
           </div>
         </div>
   
@@ -98,6 +104,7 @@
           <a>{{ $t('footer.phone') }}</a>
           <a>{{ $t('footer.fax') }}</a>
           <a>{{ $t('footer.email') }}</a>
+          <a>{{ $t('footer.blog') }}</a>
         </div>
       </footer>
     </div>

@@ -181,6 +181,7 @@
         <a>{{ $t('footer.phone') }}</a>
         <a>{{ $t('footer.fax') }}</a>
         <a>{{ $t('footer.email') }}</a>
+        <a>{{ $t('footer.blog') }}</a>
       </div>
     </footer>
   </div>
