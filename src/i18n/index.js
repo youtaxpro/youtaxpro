@@ -119,8 +119,8 @@ const messages = {
       businessNumber: 'Business Registration: 318-81-11334',
       phone: 'Tel: 010-5909-4868',
       fax: 'Fax: 02-6280-1040',
-      email: 'Email: amy@youtaxpro.com',
-      blog: 'Blog: blog.naver.com/berkeleytax'
+      email: 'amy@youtaxpro.com',
+      blog: 'blog.naver.com/berkeleytax'
     },
     faq: {
         title: 'Frequently Asked Questions',
@@ -342,8 +342,8 @@ Given the complexities of U.S. tax law, especially for those with international 
       businessNumber: '사업자등록번호: 318-81-11334',
       phone: '대표전화: 010-5909-4868',
       fax: '팩스번호: 02-6280-1040',
-      email: '이메일: amy@youtaxpro.com',
-      blog: '블로그: blog.naver.com/berkeleytax'
+      email: 'amy@youtaxpro.com',
+      blog: 'blog.naver.com/berkeleytax'
     },
     faq: {
         title: '자주 묻는 질문',
