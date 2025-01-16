@@ -46,7 +46,6 @@
   <div class="aboutus-card">
     <div class="aboutus">
       <p>{{ $t('aboutus.content1') }}</p>
-      <p>{{ $t('aboutus.content2') }}</p>
       <p>{{ $t('aboutus.content3') }}</p>
     </div>
     <br>
@@ -56,7 +55,6 @@
     </div>
     <br>
     <div class="aboutus">
-      <p>{{ $t('aboutus.content6') }}</p>
       <p>{{ $t('aboutus.content7') }}</p>
       <p>{{ $t('aboutus.content8') }}</p>
     </div>
