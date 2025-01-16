@@ -11,9 +11,9 @@
 
       <div class="nav-content" :class="{ 'show': isMenuOpen }">
   <ul class="nav-links" :class="{ 'active': isMenuOpen }">
-    <li><router-link to="/#aboutus">{{ $t('nav.aboutUs') }}</router-link></li>
-    <li><router-link to="/#services">{{ $t('nav.services') }}</router-link></li>
-    <li><router-link to="/#checklists">{{ $t('nav.checklists') }}</router-link></li>
+    <li><router-link to="/aboutus">{{ $t('nav.aboutUs') }}</router-link></li>
+    <li><router-link to="/services">{{ $t('nav.services') }}</router-link></li>
+    <li><router-link to="/checklists">{{ $t('nav.checklists') }}</router-link></li>
     <li><router-link to="/faq">{{ $t('nav.faq') }}</router-link></li>
     <li><router-link to="/contactus">{{ $t('nav.contactUs') }}</router-link></li>
         </ul>
