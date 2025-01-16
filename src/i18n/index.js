@@ -16,11 +16,9 @@ const messages = {
     aboutus: {
       title: 'About Berkeley U.S. Tax Advisors',
       content1: 'Berkeley U.S. Tax Advisors specializes in handling complex tax matters, allowing you to focus on your core business.',
-      content2: 'We are not just a tax firm, but your strategic partner for financial success.',
       content3: 'Our team of tax experts provides comprehensive tax planning and consulting services tailored to individuals, businesses, and international clients.',
       content4: 'Berkeley U.S. Tax Advisors has deep understanding and experience in U.S. tax regulations and strategic tax consulting.',
       content5: 'We prioritize client information protection and business ethics while providing efficient and accurate solutions.',
-      content6: 'Our goal is not just to file taxes, but to protect and grow your valuable assets through proactive tax planning.',
       content7: 'We preemptively identify tax law changes and seek optimal tax-saving measures.',
       content8: 'With Berkeley U.S. Tax Advisors, your assets will shine more brilliantly. We will be the best tax partner that rewards your trust.'
     },
@@ -237,11 +235,9 @@ Given the complexities of U.S. tax law, especially for those with international 
     aboutus: {
       title: 'About Berkeley U.S. Tax Advisors',
       content1: 'Berkeley U.S. Tax Advisors는 복잡한 세무 업무를 전문적으로 다루며, 고객님께서 본업에 집중하실 수 있도록 돕겠습니다.',
-      content2: '',
       content3: '세무 전문가로 구성된 저희 팀은 개인, 사업자, 해외 고객님 각각의 특성에 맞춘 포괄적인 세무 계획과 컨설팅 서비스를 제공합니다.',
-      content4: 'Berkeley U.S. Tax Advisors는 미국 세무 규정, 전략적 세무 컨설팅에 대한 깊은 이해와 경험을 보유하고 있습니다.',
+      content4: '저희는 미국 세무 규정, 전략적 세무 컨설팅에 대한 깊은 이해와 경험을 보유하고 있습니다.',
       content5: '효율적이고 정확한 솔루션을 제공하는 동시에 고객 정보 보호와 기업 윤리를 최우선으로 여깁니다.',
-      content6: '',
       content7: '세법 변화를 선제적으로 파악하고 최적의 절세 방안을 모색하여, 고객님의 재무적 성공을 든든히 뒷받침하겠습니다.',
       content8: 'Berkeley U.S. Tax Advisors는 고객님의 신뢰에 보답하는 최고의 세무 파트너가 되겠습니다.'
     },
