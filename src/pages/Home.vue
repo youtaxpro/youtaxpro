@@ -49,7 +49,7 @@
       <input type="text" name="_honey" style="display:none">
       
       <!-- 현재 페이지로 돌아오기 -->
-      <input type="hidden" name="_next" :value="window.location.href">
+      <input type="hidden" name="_next" value="https://youtaxpro.com">
       
       <div class="form-group">
         <input 
