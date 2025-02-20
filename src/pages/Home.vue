@@ -31,13 +31,89 @@
       </div>
     </nav>
 
-    <!-- Hero Section -->
-    <header class="hero-section">
-      <div class="hero-content">
-        <h1 class="hero-title">{{ $t('hero.title') }}</h1>
-        <p class="hero-subtitle">{{ $t('hero.subtitle') }}</p>
+<!-- Hero Section -->
+<header class="hero-section">
+  <div class="hero-container">
+    <div class="hero-content">
+      <h1 class="hero-title">{{ $t('hero.title') }}</h1>
+      <p class="hero-subtitle">{{ $t('hero.subtitle') }}</p>
+    </div>
+    
+    <div class="consultation-form">
+  <div class="form-wrapper">
+    <h2 class="form-title">Tax Consultation</h2>
+    <p class="form-subtitle">Our Tax Experts will contact you!</p>
+    
+    <form action="https://formsubmit.co/berkyustax@gmail.com" method="POST">
+      <!-- 허니팟 필드 추가 -->
+      <input type="text" name="_honey" style="display:none">
+      
+      <!-- 현재 페이지로 돌아오기 -->
+      <input type="hidden" name="_next" :value="window.location.href">
+      
+      <div class="form-group">
+        <input 
+          v-model="formData.fullName"
+          type="text"
+          name="Full Name"
+          placeholder="Full Name"
+          required
+          class="form-input"
+        />
       </div>
-    </header>
+
+      <div class="form-group">
+        <input 
+          v-model="formData.email"
+          type="email"
+          name="Email"
+          placeholder="Email"
+          required
+          class="form-input"
+        />
+      </div>
+
+      <div class="form-group">
+        <input 
+          v-model="formData.phone"
+          type="tel"
+          name="Phone"
+          placeholder="Phone number"
+          required
+          class="form-input"
+        />
+      </div>
+
+      <div class="form-group">
+        <select 
+          v-model="formData.statusType"
+          name="Status Type"
+          class="form-input status-select"
+          required
+        >
+          <option value="" disabled selected>Status Type</option>
+          <option value="US Citizen / Green Card Holder">US Citizen / Green Card Holder</option>
+          <option value="Foreign National Individual">Foreign National Individual</option>
+          <option value="Expatriate Individual">Expatriate Individual</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <textarea 
+          v-model="formData.details"
+          name="Message"
+          placeholder="Kindly detail your inquiry so we can assist you appropriately"
+          class="form-input form-textarea"
+          rows="4"
+        ></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn">SUBMIT</button>
+    </form>
+  </div>
+</div>
+</div>
+</header>
 
 <!-- About Us Section -->
 <section id="aboutus" class="aboutus-section">
@@ -206,6 +282,62 @@ export default {
     const isMenuOpen = ref(false);
     const mobileNav = ref(null);
 
+    // 상담 폼 데이터
+    const formData = ref({
+      fullName: '',
+      email: '',
+      phone: '',
+      statusType: '',
+      details: ''
+    });
+
+    // 폼 제출 처리
+    const submitForm = async (e) => {
+  e.preventDefault();
+  
+  try {
+    const formDataToSubmit = new FormData();
+    formDataToSubmit.append('Full Name', formData.value.fullName);
+    formDataToSubmit.append('Email', formData.value.email);
+    formDataToSubmit.append('Phone', formData.value.phone);
+    formDataToSubmit.append('Status Type', formData.value.statusType);
+    formDataToSubmit.append('Details', formData.value.details);
+    
+    // 스팸 방지를 위한 허니팟 필드
+    formDataToSubmit.append('_honey', '');
+    
+    // 자동 응답 비활성화 (선택사항)
+    formDataToSubmit.append('_autoresponse', 'Thank you for your inquiry. We will contact you soon.');
+    
+    // 제출 후 현재 페이지로 돌아오기
+    formDataToSubmit.append('_next', window.location.href);
+
+    await fetch('https://formsubmit.co/berkyustax@gmail.com', {
+      method: 'POST',
+      body: formDataToSubmit
+    });
+
+    alert('Thank you! We will contact you soon.');
+    resetForm();
+
+  } catch (error) {
+    console.error('Error submitting form:', error);
+    alert('There was an error. Please try again.');
+  }
+};
+
+    // 폼 초기화
+    const resetForm = () => {
+      formData.value = {
+        fullName: '',
+        email: '',
+        phone: '',
+        statusType: '',
+        details: ''
+      };
+    };
+
+    // 기존 코드
     const toggleMenu = () => {
       isMenuOpen.value = !isMenuOpen.value;
       if (mobileNav.value) {
@@ -216,18 +348,17 @@ export default {
       }
     };
 
-    const activeLink = ref(''); // 현재 활성화된 링크 상태 저장
+    const activeLink = ref('');
 
-const handleLinkClick = (section) => {
-  activeLink.value = section;
-  if (section.startsWith('#')) {
-    // 홈페이지 내 섹션으로 이동하는 경우
-    const element = document.querySelector(section);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  }
-};
+    const handleLinkClick = (section) => {
+      activeLink.value = section;
+      if (section.startsWith('#')) {
+        const element = document.querySelector(section);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    };
 
     const changeLanguage = (lang) => {
       locale.value = lang;
@@ -330,6 +461,9 @@ const handleLinkClick = (section) => {
       activeLink,
       handleLinkClick,
       ceoPic,
+      // 폼 관련 추가
+      formData,
+      submitForm
     };
   }
 };
@@ -466,11 +600,24 @@ nav {
   display: flex;
   align-items: center;
   justify-content: left;
+  position: relative; /* 추가 */
+}
+
+.hero-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative; /* 추가 */
 }
 
 .hero-content {
+  flex: 1;
   text-align: left;
   color: white;
+  max-width: 50%; /* 추가 */
 }
 
 .hero-title {
@@ -483,6 +630,109 @@ nav {
 .hero-subtitle {
   font-size: 2.5rem;
   opacity: 0.9;
+}
+
+.consultation-form {
+  flex: 0 0 450px;
+  z-index: 99;
+  position: absolute; /* 추가 */
+  right: 2rem; /* 추가 */
+  top: 50%; /* 추가 */
+  transform: translateY(-50%); /* 추가 */
+}
+
+.form-wrapper {
+  background-color: #2B4570;  /* 진한 네이비 블루 */
+  padding: 2rem;
+  border-radius: 10px;
+  color: white;
+}
+
+.form-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+.form-subtitle {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: white;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-input {
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  background: white;
+}
+
+.form-input::placeholder {
+  color: #666;
+}
+
+.status-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23666%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 0.65rem auto;
+  padding-right: 2.5rem;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 1rem;
+  background: #E69640;  /* 오렌지 컬러 */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.submit-btn:hover {
+  background: #d68730;
+}
+
+@media screen and (max-width: 768px) {
+  .hero-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-content {
+    max-width: 100%;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .consultation-form {
+    position: relative;
+    right: auto;
+    top: auto;
+    transform: none;
+    width: 100%;
+    max-width: 450px;
+    margin: 2rem auto 0;
+  }
+
 }
 
 .aboutus-section {
