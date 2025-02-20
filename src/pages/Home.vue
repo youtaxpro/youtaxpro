@@ -59,14 +59,15 @@
       <p>{{ $t('aboutus.content8') }}</p>
     </div>
   </div>
-    <br>
-    <div class="aboutus team-member">
+  <br>
   
   <!-- 구분선 추가 -->
   <hr class="section-divider">
       
-      <!-- 프로필 섹션 -->
-      <div class="aboutus team-member">
+  <!-- 프로필 섹션 -->
+  <div class="aboutus team-member">
+    <div class="profile-container">
+      <div class="profile-content">
         <h3>{{ $t('profile.name') }}</h3>
         <h3>{{ $t('profile.title') }}</h3>
         
@@ -95,17 +96,21 @@
         </div>
 
         <!-- 약력 -->
-        <!-- 약력 - v-for 제거하고 직접 렌더링 -->
-    <div class="career">
-      <h4>{{ $t('profile.sections.career.title') }}</h4>
-      <ul class="career-list">
-        <p>{{ $t('profile.sections.career.list[0]') }}</p>
-        <p>{{ $t('profile.sections.career.list[1]') }}</p>
-      </ul>
-    </div>
+        <div class="career">
+          <h4>{{ $t('profile.sections.career.title') }}</h4>
+          <ul class="career-list">
+            <p>{{ $t('profile.sections.career.list[0]') }}</p>
+            <p>{{ $t('profile.sections.career.list[1]') }}</p>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="profile-image">
+        <img :src="ceoPic" alt="CEO Profile" />
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
     <section id="services" class="py-16 bg-gray-50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -189,6 +194,7 @@
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 import { useI18n } from 'vue-i18n';
 import BerkeleyLogo from '../assets/Berkeley.png'
+import ceoPic from '../assets/250220_ceo_pic.jpg'
 
 export default {
   name: 'Home',
@@ -323,6 +329,7 @@ const handleLinkClick = (section) => {
       steps,
       activeLink,
       handleLinkClick,
+      ceoPic,
     };
   }
 };
@@ -499,7 +506,32 @@ nav {
   font-size: 1.5rem;
 }
 
+.profile-container {
+  display: flex;
+  gap: 3rem;
+  align-items: stretch;
+  min-height: 900px;  /* 전체 컨테이너 최소 높이 설정 */
+}
 
+.profile-content {
+  flex: 1;  /* 전체 공간의 1을 차지 */
+  max-width: 50%;  /* 최대 너비를 50%로 제한 */
+}
+
+.profile-image {
+  flex: 1;  /* 전체 공간의 1을 차지 */
+  max-width: 50%;  /* 최대 너비를 50%로 제한 */
+  position: relative;
+  margin-top: 3rem;
+}
+
+.profile-image img {
+  width: 80%;
+  height: 90%;
+  object-fit: cover;  /* 비율 유지하면서 영역 채우기 */
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
 
 .section-divider {
   margin: 3rem 0;
@@ -732,6 +764,21 @@ section {
     font-size: 1.125rem;
   }
   
+  .profile-container {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .profile-content,
+  .profile-image {
+    max-width: 100%;  /* 모바일에서는 전체 너비 사용 */
+  }
+
+  .profile-image {
+    height: 400px;  /* 모바일에서 이미지 높이 고정 */
+    margin: 2rem 0;
+  }
+
   .section-divider {
     margin: 2rem 0;
   }
