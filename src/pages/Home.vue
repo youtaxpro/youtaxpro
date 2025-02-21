@@ -746,7 +746,6 @@ nav {
 
 @media screen and (max-width: 768px) {
   .hero-container {
-    display: none;
     flex-direction: column;
     align-items: center;
   }
