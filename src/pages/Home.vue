@@ -44,12 +44,9 @@
     <h2 class="form-title">Tax Consultation</h2>
     <p class="form-subtitle">Our Tax Experts will contact you!</p>
     
-    <form action="https://formsubmit.co/berkyustax@gmail.com" method="POST">
-      <!-- 허니팟 필드 추가 -->
-      <input type="text" name="_honey" style="display:none">
-      
-      <!-- 현재 페이지로 돌아오기 -->
-      <input type="hidden" name="_next" value="https://youtaxpro.com">
+    <form @submit.prevent="submitForm">
+      <!-- Web3Forms Access Key -->
+      <input type="hidden" name="access_key" value="10f32bb4-f34d-4088-af76-7ffd7a7557d0">
       
       <div class="form-group">
         <input 
@@ -117,7 +114,11 @@
 
 <!-- About Us Section -->
 <section id="aboutus" class="aboutus-section">
-  <h3>{{ $t('aboutus.title') }}</h3>
+  <div class="title-wrapper">
+    <div class="line"></div>
+    <h3>{{ $t('aboutus.title') }}</h3>
+    <div class="line"></div>
+  </div>
   <br>
   <div class="aboutus-card">
     <div class="aboutus">
@@ -188,41 +189,48 @@
   </div>
 </section>
 
-    <section id="services" class="py-16 bg-gray-50">
+<!-- Services Section -->
+<section id="services" class="services-section py-16 bg-gray-50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-3xl mx-auto mb-12">
-      <h3 class="text-3xl font-bold mb-4">{{ $t('services.title') }}</h3>
-      <br>
+      <div class="title-wrapper">
+        <div class="line"></div>
+        <h3 class="text-3xl font-bold mb-4">{{ $t('services.title') }}</h3>
+        <div class="line"></div>
+      </div>
       <p class="text-gray-600">{{ $t('services.description') }}</p>
     </div>
     
     <div class="service-cards grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       <div v-for="i in 8" :key="i" 
-     class="service-card transition-all duration-300 ease-in-out
-            bg-gradient-to-br from-blue-50 to-white border border-blue-100 rounded-xl
-            overflow-hidden min-h-[120px]"> <!-- min-height 추가 -->
-  <div class="p-6 h-full flex flex-col">
-    <p class="text-gray-800 leading-relaxed
-              transition-colors duration-300
-              break-words overflow-hidden"> <!-- 이 부분 추가 -->
-      {{ $t(`services.service${i}.items[0]`) }}
-    </p>
-  </div>
-</div>
+           class="service-card transition-all duration-300 ease-in-out transform hover:-translate-y-1">
+        <div class="service-image">
+          <img :src="getServiceImage(i)" :alt="'Service ' + i" class="w-full h-48 object-cover rounded-t-xl">
+        </div>
+        <div class="service-content p-6">
+          <p class="text-gray-800 font-semibold text-lg">
+            {{ $t(`services.service${i}.items[0]`) }}
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- 신고절차 섹션 -->
-<section id="checklists" class="py-16 bg-gray-50">
+<section id="checklists" class="checklist-section py-16 bg-gray-50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- 타이틀 영역 -->
     <div class="text-center max-w-3xl mx-auto mb-12">
-      <h3 class="text-3xl font-bold mb-4">{{ $t('checklists.title') }}</h3>
-      <br>
+      <div class="title-wrapper">
+        <div class="line"></div>
+        <h3 class="text-3xl font-bold mb-4">{{ $t('checklists.title') }}</h3>
+        <div class="line"></div>
+      </div>
       <p class="text-gray-600">{{ $t('checklists.description') }}</p>
-      <br>
     </div>
     
+    <!-- 체크리스트 그리드 -->
     <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
       <div v-for="n in 6" :key="n" 
            class="relative bg-white rounded-xl p-6 shadow-md hover:shadow-xl
@@ -231,7 +239,7 @@
         <h5 class="absolute -top-4 left-6 w-10 h-10 bg-gradient-to-r from-blue-600 to-blue-700
                     rounded-full flex items-center justify-center text-white font-bold shadow-lg">
           {{ n }}
-    </h5>
+        </h5>
         
         <!-- 내용 -->
         <div class="pt-6">
@@ -271,6 +279,14 @@ import { ref, onMounted, onBeforeUnmount } from 'vue';
 import { useI18n } from 'vue-i18n';
 import BerkeleyLogo from '../assets/Berkeley.png'
 import ceoPic from '../assets/250220_ceo_pic.jpg'
+import service1 from '../assets/service1.jpg'
+import service2 from '../assets/service2.jpg'
+import service3 from '../assets/service3.jpg'
+import service4 from '../assets/service4.jpg'
+import service5 from '../assets/service5.jpg'
+import service6 from '../assets/service6.jpg'
+import service7 from '../assets/service7.jpg'
+import service8 from '../assets/service8.jpg'
 
 export default {
   name: 'Home',
@@ -293,38 +309,35 @@ export default {
 
     // 폼 제출 처리
     const submitForm = async (e) => {
-  e.preventDefault();
-  
-  try {
-    const formDataToSubmit = new FormData();
-    formDataToSubmit.append('Full Name', formData.value.fullName);
-    formDataToSubmit.append('Email', formData.value.email);
-    formDataToSubmit.append('Phone', formData.value.phone);
-    formDataToSubmit.append('Status Type', formData.value.statusType);
-    formDataToSubmit.append('Details', formData.value.details);
-    
-    // 스팸 방지를 위한 허니팟 필드
-    formDataToSubmit.append('_honey', '');
-    
-    // 자동 응답 비활성화 (선택사항)
-    formDataToSubmit.append('_autoresponse', 'Thank you for your inquiry. We will contact you soon.');
-    
-    // 제출 후 현재 페이지로 돌아오기
-    formDataToSubmit.append('_next', window.location.href);
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            access_key: '10f32bb4-f34d-4088-af76-7ffd7a7557d0',
+            full_name: formData.value.fullName,
+            email: formData.value.email,
+            phone: formData.value.phone,
+            status_type: formData.value.statusType,
+            message: formData.value.details
+          })
+        });
 
-    await fetch('https://formsubmit.co/berkyustax@gmail.com', {
-      method: 'POST',
-      body: formDataToSubmit
-    });
-
-    alert('Thank you! We will contact you soon.');
-    resetForm();
-
-  } catch (error) {
-    console.error('Error submitting form:', error);
-    alert('There was an error. Please try again.');
-  }
-};
+        const result = await response.json();
+        
+        if (result.success) {
+          alert('Thank you! We will contact you soon.');
+          resetForm();
+        } else {
+          throw new Error('Form submission failed');
+        }
+      } catch (error) {
+        console.error('Error submitting form:', error);
+        alert('There was an error. Please try again.');
+      }
+    };
 
     // 폼 초기화
     const resetForm = () => {
@@ -336,6 +349,25 @@ export default {
         details: ''
       };
     };
+
+        // 서비스 이미지 매핑
+        const getServiceImage = (index) => {
+      // 서비스별 이미지 매핑
+      const images = {
+        1: service1,
+        2: service2,
+        3: service3,
+        4: service4,
+        5: service5,
+        6: service6,
+        7: service7,
+        8: service8
+      };
+      
+      return images[index] || '/images/default-service.jpg';
+    };
+
+
 
     // 기존 코드
     const toggleMenu = () => {
@@ -463,7 +495,8 @@ export default {
       ceoPic,
       // 폼 관련 추가
       formData,
-      submitForm
+      submitForm,
+      getServiceImage
     };
   }
 };
@@ -708,11 +741,12 @@ nav {
 }
 
 .submit-btn:hover {
-  background: #d68730;
+  background: #FDB515;
 }
 
 @media screen and (max-width: 768px) {
   .hero-container {
+    display: none;
     flex-direction: column;
     align-items: center;
   }
@@ -721,6 +755,7 @@ nav {
     max-width: 100%;
     text-align: center;
     margin-bottom: 2rem;
+    display: none;
   }
 
   .consultation-form {
@@ -845,57 +880,71 @@ section {
   width: 100%;
 }
 
-/* Service Cards */
-
-.service-cards {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+/* Title Wrapper Styles */
+.title-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem 0;
+  width: 100%;
   gap: 2rem;
-  margin-top: 2rem;
 }
 
-.service-row {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-  justify-content: center;
-  padding: 1rem; /* 방금추가 */ 
+.line {
+  height: 2px;
+  background-color: #002676;
+  flex: 1;
+  max-width: 200px;
+}
+
+/* Service Card New Styles */
+.services-section {
+  padding: 4rem 2rem;
+  background-color: #f8f9fa;
 }
 
 .service-card {
-  border-left: 15px solid #002676;
-  padding: 1.5rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-  position: relative;
+  background: white;
+  border-radius: 12px;
   overflow: hidden;
-  height: 120px;
-  display: flex;           
-  flex-direction: column; /* 방금추가 */ 
-  justify-content: center; /* 추가 */
-  align-items: center;     /* 추가 */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #e5e7eb;
 }
 
 .service-card:hover {
-  transform: translateY(-0px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
 
-.service-card p {
-  color: black;
-  font-weight: 800;
-  font-size: 1.2rem;
-  line-height: 1.5;
-  justify-content: center;
-  display: flex;
+.service-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.service-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover .service-image img {
+  transform: scale(1.05);
+}
+
+.service-content {
+  padding: 1.5rem;
+  background: white;
+}
+
+.service-content p {
+  color: #1a1a1a;
+  font-weight: 600;
+  font-size: 1.1rem;
   margin: 0;
-  padding: 0;
-  
-}
-
-.service-icon-wrapper {
-  margin-bottom: 0.75rem;
+  line-height: 1.5;
 }
 
 .tax-website h5 {
@@ -1040,6 +1089,18 @@ section {
     padding: 1rem;
     align-items: center;  /* 카드들을 가운데로 정렬 */
     text-align: center; 
+  }
+
+  .title-wrapper {
+    gap: 1rem;
+  }
+  
+  .line {
+    max-width: 100px;
+  }
+  
+  .service-card {
+    margin-bottom: 1.5rem;
   }
 
   .service-card {
