@@ -320,11 +320,11 @@ nav {
 
 /* FAQ Content Styles */
 .faq-content {
-  max-width: 1000px;
-  width: 90%;
-  margin: 120px auto 2rem;
-  padding: 2rem;
-}
+    width: 95%;
+    padding: 1rem;
+    margin-top: 120px; /* 네비게이션 바 높이(약 106px)보다 더 큰 여백 설정 */
+    animation: fadeIn 0.5s ease-out;
+  }
 
 h2 {
   text-align: center;
@@ -603,9 +603,10 @@ h2::after {
   }
 
   .faq-content {
-    width: 100%;
-    padding: 0.5rem;
-    margin-top: 70px;
+    width: 95%;
+    padding: 1rem;
+    margin-top: 120px; /* 네비게이션 바 높이(약 106px)보다 더 큰 여백 설정 */
+    animation: fadeIn 0.5s ease-out;
   }
 
   .faq-question,
