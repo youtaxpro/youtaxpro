@@ -198,7 +198,7 @@
         <h3 class="text-3xl font-bold mb-4">{{ $t('services.title') }}</h3>
         <div class="line"></div>
       </div>
-      <p class="text-gray-600">{{ $t('services.description') }}</p>
+      <p class="services-description text-gray-600">{{ $t('services.description') }}</p>
     </div>
     
     <div class="service-cards grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -227,11 +227,10 @@
         <h3 class="text-3xl font-bold mb-4">{{ $t('checklists.title') }}</h3>
         <div class="line"></div>
       </div>
-      <p class="text-gray-600">{{ $t('checklists.description') }}</p>
+      <p class="checklist-description text-gray-600">{{ $t('checklists.description') }}</p>
     </div>
     
     <!-- 체크리스트 그리드 -->
-    <!-- 체크리스트 그리드 부분을 아래와 같이 수정 -->
 <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
   <div v-for="n in 6" :key="n" 
        class="relative bg-white rounded-xl p-6 shadow-md hover:shadow-xl
@@ -936,6 +935,15 @@ section {
   background-color: #f8f9fa;
 }
 
+.services-description {
+  color: #4a5568;
+  line-height: 1.6;
+  text-align: center;
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 0 auto 3rem;
+}
+
 .service-card {
   background: white;
   border-radius: 12px;
@@ -1296,6 +1304,7 @@ section {
   margin: 0;
 }
 
+
 /* 아이콘 스타일 */
 .checklist-section .grid > div svg {
   width: 3rem;
@@ -1313,8 +1322,17 @@ section {
   text-align: center;
 }
 
+.checklist-section .checklist-description {
+  color: #4a5568;
+  line-height: 1.6;
+  text-align: center;
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 0 auto 3rem;
+}
+
 .checklist-section p {
-  color: #666;
+  color: #002676;
   line-height: 1.6;
   text-align: center;
   font-size: 1rem;
