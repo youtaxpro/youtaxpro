@@ -917,9 +917,11 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 2rem;
-  width: 100%;
+  margin: 2rem auto;
+  max-width: 1200px;
   gap: 2rem;
+  padding: 0 2rem;
+  box-sizing: border-box;
 }
 
 .line {
