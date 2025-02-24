@@ -11,6 +11,7 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "lucide-vue-next": "^0.475.0",
     "vue": "^3.4.19",
     "vue-i18n": "^9.9.1",
     "vue-router": "^4.3.0"

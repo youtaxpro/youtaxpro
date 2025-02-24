@@ -231,27 +231,33 @@
     </div>
     
     <!-- 체크리스트 그리드 -->
-    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-      <div v-for="n in 6" :key="n" 
-           class="relative bg-white rounded-xl p-6 shadow-md hover:shadow-xl
-                  transition-all duration-300 ease-in-out transform hover:-translate-y-1">
-        <!-- 숫자 배지 -->
-        <h5 class="absolute -top-4 left-6 w-10 h-10 bg-gradient-to-r from-blue-600 to-blue-700
-                    rounded-full flex items-center justify-center text-white font-bold shadow-lg">
-          {{ n }}
-        </h5>
-        
-        <!-- 내용 -->
-        <div class="pt-6">
-          <h4 class="text-xl font-semibold mb-3 text-gray-800">
-            {{ $t(`checklists.steps.step${n}.title`) }}
-          </h4>
-          <p class="text-gray-600 leading-relaxed">
-            {{ $t(`checklists.steps.step${n}.description`) }}
-          </p>
-        </div>
-      </div>
+    <!-- 체크리스트 그리드 부분을 아래와 같이 수정 -->
+<div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+  <div v-for="n in 6" :key="n" 
+       class="relative bg-white rounded-xl p-6 shadow-md hover:shadow-xl
+              transition-all duration-300 ease-in-out transform hover:-translate-y-1">
+    <!-- 숫자 배지 -->
+    <h5 class="absolute -top-4 left-6 w-10 h-10 bg-gradient-to-r from-blue-600 to-blue-700
+                rounded-full flex items-center justify-center text-white font-bold shadow-lg">
+      {{ n }}
+    </h5>
+    
+    <!-- 아이콘 추가 -->
+    <div class="flex justify-center mb-6 mt-4">
+      <component :is="getProcessIcon(n)" class="w-16 h-16 text-blue-600" />
     </div>
+    
+    <!-- 내용 -->
+    <div class="pt-2">
+      <h4 class="text-xl font-semibold mb-3 text-gray-800">
+        {{ $t(`checklists.steps.step${n}.title`) }}
+      </h4>
+      <p class="text-gray-600 leading-relaxed">
+        {{ $t(`checklists.steps.step${n}.description`) }}
+      </p>
+    </div>
+  </div>
+</div>
   </div>
 </section>
 
@@ -287,6 +293,14 @@ import service5 from '../assets/service5.jpg'
 import service6 from '../assets/service6.jpg'
 import service7 from '../assets/service7.jpg'
 import service8 from '../assets/service8.jpg'
+import { 
+  UserPlus,  // or ClipboardSignature
+  ClipboardList,  // or FileQuestion
+  FileCheck,  // or HandshakeIcon
+  Calculator,  // or FileSpreadsheet
+  FileSearch,  // or MagnifyingGlass
+  Send  // or Upload
+} from 'lucide-vue-next';
 
 export default {
   name: 'Home',
@@ -297,6 +311,19 @@ export default {
     const currentLanguage = ref(locale.value);
     const isMenuOpen = ref(false);
     const mobileNav = ref(null);
+    
+    // 아이콘 매핑 함수
+    const getProcessIcon = (step) => {
+      const icons = {
+        1: UserPlus,
+        2: ClipboardList,
+        3: FileCheck,
+        4: Calculator,
+        5: FileSearch,
+        6: Send
+      };
+      return icons[step];
+    };
 
     // 상담 폼 데이터
     const formData = ref({
@@ -493,10 +520,17 @@ export default {
       activeLink,
       handleLinkClick,
       ceoPic,
-      // 폼 관련 추가
       formData,
       submitForm,
-      getServiceImage
+      getServiceImage,
+      // 아이콘 관련 추가
+      getProcessIcon,
+      UserPlus,  // or ClipboardSignature
+      ClipboardList,  // or FileQuestion
+      FileCheck,  // or HandshakeIcon
+      Calculator,  // or FileSpreadsheet
+      FileSearch,  // or MagnifyingGlass
+      Send 
     };
   }
 };
@@ -884,7 +918,7 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 2rem 0;
+  margin: 2rem;
   width: 100%;
   gap: 2rem;
 }
@@ -1188,9 +1222,102 @@ section {
 
 /* Checklist Section Specific Styles */
 
+/* Checklist Section Specific Styles */
 .checklist-section {
-  background-color: linear-gradient(to bottom, #f8fafc, #ffffff);
+  background-color: #f8f9fa;
   padding: 4rem 2rem;
+  width: 100%;
+}
+
+.title-wrapper {
+  text-align: center;
+  margin-bottom: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 2rem;
+}
+
+.line {
+  height: 2px;
+  background-color: #002676;
+  flex: 1;
+  max-width: 200px;
+}
+
+.checklist-section h3 {
+  color: #1a1a1a;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 1rem 0;
+}
+
+.checklist-section .grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;  /* 중앙 정렬 */
+  padding: 0 1rem; /* 좌우 여백 추가 */
+}
+
+.checklist-section .grid > div {
+  background: white;
+  border-radius: 0.75rem;
+  padding: 2rem;
+  position: relative;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.checklist-section .grid > div:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* 번호 배지 스타일 */
+.checklist-section h5 {
+  position: absolute;
+  top: -1.25rem;
+  left: 1.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: #002676;
+  color: white;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* 아이콘 스타일 */
+.checklist-section .grid > div svg {
+  width: 3rem;
+  height: 3rem;
+  color: #002676;
+  margin: 1.5rem auto;
+}
+
+/* 텍스트 스타일 */
+.checklist-section h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 0.75rem;
+  text-align: center;
+}
+
+.checklist-section p {
+  color: #666;
+  line-height: 1.6;
+  text-align: center;
+  font-size: 1rem;
 }
 
 .grid {
@@ -1212,10 +1339,43 @@ section {
   .grid {
     grid-template-columns: repeat(4, 1fr);
   }
+
+  .checklist-section .grid > div:nth-child(4)::after {
+    display: none;
+  }
+}
+
+/* 반응형 스타일 */
+@media (max-width: 1024px) {
+  .checklist-section .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .checklist-section .grid > div:nth-child(2)::after {
+    display: none;
+  }
 }
 
 .shadow-lg {
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+@media (max-width: 640px) {
+  .checklist-section .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .checklist-section .grid > div {
+    padding: 1.5rem;
+  }
+
+  .checklist-section h3 {
+    font-size: 2rem;
+  }
+  
+  .checklist-section .grid > div::after {
+    display: none;
+  }
 }
 
 /* Additional Mobile Responsive Adjustments */
