@@ -201,8 +201,10 @@
       
       <div class="profile-image">
         <img :src="ceoPic" alt="CEO Profile" />          
-    <h3>{{ $t('profile.name') }}</h3>
-        <h3>{{ $t('profile.title') }}</h3>
+        <div class="profile-name-title-container" style="margin-left: auto; margin-right: auto;">
+    <h3 class="profile-name">{{ $t('profile.name') }}</h3>
+    <h3 class="profile-title">{{ $t('profile.title') }}</h3>
+  </div>
   </div>
     </div>
     </div>
@@ -749,7 +751,7 @@ nav {
 }
 
 .form-wrapper {
-  background: linear-gradient(135deg, #002676 0%, #004ea8 100%);
+  background: linear-gradient(135deg, #002676 0%, #004ea8 80%);
   padding: 2rem;
   border-radius: 10px;
   color: white;
@@ -804,7 +806,7 @@ nav {
 .submit-btn {
   width: 100%;
   padding: 1rem;
-  background: linear-gradient(to right, #E69640, #F1C40F);
+  background: linear-gradient(to right, #D4AF37, #FFD700);
   color: white;
   border: none;
   border-radius: 4px;
@@ -854,7 +856,7 @@ nav {
   margin: 5rem auto 2rem;
   max-width: 1000px;
   padding: 3rem;
-  background: linear-gradient(135deg, #002676 0%, #004ea8 100%);
+  background: linear-gradient(135deg, #002676 0%, #004ea8 80%);
   border-radius: 15px;
   box-shadow: 0 20px 40px rgba(0, 38, 118, 0.2);
   text-align: center;
@@ -878,7 +880,7 @@ nav {
 .cta-button {
   display: inline-block;
   padding: 1rem 2.5rem;
-  background: linear-gradient(to right, #E69640, #F1C40F);
+  background: linear-gradient(to right, #D4AF37, #FFD700);
   color: white;
   font-weight: bold;
   font-size: 1.1rem;
@@ -982,6 +984,33 @@ nav {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+.profile-name-title-container {
+  background: linear-gradient(135deg, #002676 0%, #004ea8 60%);
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+  width: 70%;
+  box-shadow: 0 10px 25px rgba(0, 38, 118, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.profile-name {
+  color: white;
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.profile-title {
+  color: #FFD700;
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-top: 0;
+  text-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
+}
+
 .section-divider {
   margin: 3rem 0;
   border: 0;
@@ -993,7 +1022,7 @@ nav {
 }
 
 .team-member h3 {
-  color: black;
+
   font-size: 3rem;
   margin-bottom: 1.5rem;
 }
@@ -1005,14 +1034,14 @@ nav {
 }
 
 .team-member h3:nth-of-type(1) {
-  color: #002676; /* 메인 네이비 색상 */
+  color: white;
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 0.25rem; /* 이름과 직함 사이 간격 줄이기 */
 }
 
 .team-member h3:nth-of-type(2) {
-  color: #00599c; /* 보조 파란색 */
+  color: #FFD700;
   font-size: 2rem;
   font-weight: 600;
   margin-top: 0;
@@ -1027,9 +1056,10 @@ nav {
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
-  border-left: 4px solid #002676;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
   position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  /* 기존 왼쪽 테두리 제거 */
+  border-left: none;
 }
 
 /* 섹션 제목 스타일링 */
@@ -1052,9 +1082,30 @@ nav {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+/* 그라데이션 테두리 효과 추가 */
+.description::before, .credentials::before, .career::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(to bottom, #001a5c 0%, #0066cc 50%, #003b7e 100%);
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  box-shadow: 0 0 8px rgba(0, 38, 118, 0.3);
+}
+
+.description:hover::before, .credentials:hover::before, .career:hover::before {
+  width: 6px; /* 호버 시 테두리 넓어짐 */
+  box-shadow: 0 0 12px rgba(0, 38, 118, 0.5);
+  transition: all 0.3s ease;
+}
+
+/* 섹션 호버 효과 강화 */
 .description:hover, .credentials:hover, .career:hover {
   transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
 }
 
 /* 섹션 제목 스타일링 */
@@ -1119,7 +1170,7 @@ section {
 
 /* Title Wrapper Styles */
 .title-wrapper {
-  background: linear-gradient(135deg, #002676 0%, #004ea8 100%);
+  background: linear-gradient(135deg, #002676 0%, #004ea8 80%);
   padding: 2rem;
   border-radius: 10px;
   box-shadow: 0 10px 25px rgba(0, 38, 118, 0.15);
@@ -1228,6 +1279,20 @@ section {
   .aboutus-content-item p {
     font-size: 1rem;
   }
+
+  .profile-name-title-container {
+    width: 100%;
+    padding: 1.25rem;
+  }
+  
+  .profile-name {
+    font-size: 1.75rem;
+  }
+  
+  .profile-title {
+    font-size: 1.5rem;
+  }
+
 }
 
 /* Service Card New Styles */
@@ -1408,11 +1473,13 @@ section {
   .profile-container {
     flex-direction: column;
     min-height: auto;
+    align-items: center;
   }
 
   .profile-content,
   .profile-image {
     max-width: 100%;  /* 모바일에서는 전체 너비 사용 */
+    
   }
 
   .profile-image {
@@ -1592,7 +1659,7 @@ section {
   left: 1.5rem;
   width: 2.5rem;
   height: 2.5rem;
-  background: #002676;
+  background: linear-gradient(135deg, #7cbbee 0%, #002676 80%);
   color: white;
   border-radius: 9999px;
   display: flex;
@@ -1644,7 +1711,7 @@ section {
 }
 
 .grid > div .w-8 {
-  background: linear-gradient(135deg, #7cbbee 0%, #5ba4e0 100%);
+  background: linear-gradient(135deg, #7cbbee 0%, #5ba4e0 80%);
 }
 
 @media (min-width: 768px) {
