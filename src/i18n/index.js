@@ -20,7 +20,12 @@ const messages = {
       content4: 'Berkeley U.S. Tax Advisors has deep understanding and experience in U.S. tax regulations and strategic tax consulting.',
       content5: 'We prioritize client information protection and business ethics while providing efficient and accurate solutions.',
       content7: 'We preemptively identify tax law changes and seek optimal tax-saving measures.',
-      content8: 'With Berkeley U.S. Tax Advisors, your assets will shine more brilliantly. We will be the best tax partner that rewards your trust.'
+      content8: 'With Berkeley U.S. Tax Advisors, your assets will shine more brilliantly. We will be the best tax partner that rewards your trust.',
+      cta: {
+        title: 'Reserve right now',
+        description: 'Contact us today for professional tax advice tailored to your needs', // 추가됨
+        button: 'Contact Us' // 추가됨
+      }
     },
     profile: {
       name: 'Ahreum Im',
@@ -239,7 +244,12 @@ Given the complexities of U.S. tax law, especially for those with international 
       content4: '저희는 미국 세무 규정, 전략적 세무 컨설팅에 대한 깊은 이해와 경험을 보유하고 있습니다.',
       content5: '효율적이고 정확한 솔루션을 제공하는 동시에 고객 정보 보호와 기업 윤리를 최우선으로 여깁니다.',
       content7: '세법 변화를 선제적으로 파악하고 최적의 절세 방안을 모색하여, 고객님의 재무적 성공을 든든히 뒷받침하겠습니다.',
-      content8: 'Berkeley U.S. Tax Advisors는 고객님의 신뢰에 보답하는 최고의 세무 파트너가 되겠습니다.'
+      content8: 'Berkeley U.S. Tax Advisors는 고객님의 신뢰에 보답하는 최고의 세무 파트너가 되겠습니다.',
+      cta: {
+        title: 'Reserve right now',
+        description: 'Contact us today for professional tax advice tailored to your needs', // 추가됨
+        button: 'Contact Us' // 추가됨
+      }
     },
 
   profile: {

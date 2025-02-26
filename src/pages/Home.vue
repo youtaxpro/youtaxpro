@@ -112,36 +112,54 @@
 </div>
 </header>
 
-<!-- About Us Section -->
+<!-- About Us Section with Simplified Design -->
 <section id="aboutus" class="aboutus-section">
   <div class="title-wrapper">
     <div class="line"></div>
     <h3>{{ $t('aboutus.title') }}</h3>
     <div class="line"></div>
   </div>
-  <br>
+  
+  <!-- Feature Grid Layout -->
   <div class="aboutus-card">
-    <div class="aboutus">
-      <p>{{ $t('aboutus.content1') }}</p>
-      <p>{{ $t('aboutus.content3') }}</p>
+    <!-- Top Image Section -->
+    <div class="aboutus-image-container">
+      <img :src="taxExpertiseIcon" alt="Tax Expertise" class="aboutus-hero-image">
     </div>
-    <br>
-    <div class="aboutus">
-      <p>{{ $t('aboutus.content4') }}</p>
-      <p>{{ $t('aboutus.content5') }}</p>
-    </div>
-    <br>
-    <div class="aboutus">
-      <p>{{ $t('aboutus.content7') }}</p>
-      <p>{{ $t('aboutus.content8') }}</p>
+    
+    <!-- Content Sections -->
+    <div class="aboutus-content-grid">
+      <div class="aboutus-content-item">
+        <p>{{ $t('aboutus.content1') }}</p>
+        <p>{{ $t('aboutus.content3') }}</p>
+      </div>
+      
+      <div class="aboutus-content-item">
+        <p>{{ $t('aboutus.content4') }}</p>
+        <p>{{ $t('aboutus.content5') }}</p>
+      </div>
+      
+      <div class="aboutus-content-item">
+        <p>{{ $t('aboutus.content7') }}</p>
+        <p>{{ $t('aboutus.content8') }}</p>
+      </div>
     </div>
   </div>
-  <br>
   
-  <!-- 구분선 추가 -->
+  <!-- Call to Action -->
+  <div class="aboutus-cta">
+    <div class="cta-content">
+      <h3>{{ $t('aboutus.cta.title') }}</h3>
+      <p>{{ $t('aboutus.cta.description') }}</p>
+      <router-link to="/contactus" class="cta-button">{{ $t('aboutus.cta.button') }}</router-link>
+    </div>
+  </div>
+  
   <hr class="section-divider">
+</section>
       
   <!-- 프로필 섹션 -->
+   <section>
   <div class="aboutus team-member">
     <div class="profile-container">
       <div class="profile-content">
@@ -293,6 +311,7 @@ import service5 from '../assets/service5.jpg'
 import service6 from '../assets/service6.jpg'
 import service7 from '../assets/service7.jpg'
 import service8 from '../assets/service8.jpg'
+import taxExpertiseIcon from '../assets/tax-expertise.jpg'
 import { 
   UserPlus,  // or ClipboardSignature
   ClipboardList,  // or FileQuestion
@@ -533,8 +552,7 @@ export default {
       Calculator,  // or FileSpreadsheet
       FileSearch,  // or MagnifyingGlass
       Send,
-      Briefcase,  // 추가
-      Award       // 추가
+      taxExpertiseIcon
     };
   }
 };
@@ -731,7 +749,7 @@ nav {
 }
 
 .form-wrapper {
-  background-color: #2B4570;  /* 진한 네이비 블루 */
+  background: linear-gradient(135deg, #002676 0%, #004ea8 100%);
   padding: 2rem;
   border-radius: 10px;
   color: white;
@@ -786,7 +804,7 @@ nav {
 .submit-btn {
   width: 100%;
   padding: 1rem;
-  background: #E69640;  /* 오렌지 컬러 */
+  background: linear-gradient(to right, #E69640, #F1C40F);
   color: white;
   border: none;
   border-radius: 4px;
@@ -825,25 +843,109 @@ nav {
 
 }
 
+/* Enhanced About Us Section Styles */
 .aboutus-section {
   padding: 4rem 2rem;
   background-color: white;
 }
 
-.aboutus-card {
-  max-width: 1200px;
-  margin: 0 auto;
-  background: #f8f9fa;
-  border-radius: 8px;
-  padding: 2rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+/* Call to Action Section */
+.aboutus-cta {
+  margin: 5rem auto 2rem;
+  max-width: 1000px;
+  padding: 3rem;
+  background: linear-gradient(135deg, #002676 0%, #004ea8 100%);
+  border-radius: 15px;
+  box-shadow: 0 20px 40px rgba(0, 38, 118, 0.2);
+  text-align: center;
+  color: white;
 }
 
-.aboutus p {
-  color: #4a5568;
-  line-height: 1.6;
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
+.cta-content h3 {
+  color: white;
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.cta-content p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background: linear-gradient(to right, #E69640, #F1C40F);
+  color: white;
+  font-weight: bold;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.cta-button:hover {
+  background-color: #FDB515;
+  transform: translateY(-3px);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 992px) {
+  .feature-item, .feature-item.reversed {
+    flex-direction: column;
+    gap: 2rem;
+    text-align: center;
+  }
+  
+  .feature-icon {
+    flex: 0 0 100%;
+  }
+  
+  .feature-content {
+    flex: 0 0 100%;
+  }
+  
+  .feature-content h4::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .aboutus-cta {
+    padding: 2.5rem 1.5rem;
+  }
+  
+  .cta-content h3 {
+    font-size: 1.8rem;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .aboutus-section {
+    padding: 3rem 1rem;
+  }
+  
+  .feature-content h4 {
+    font-size: 1.5rem;
+  }
+  
+  .feature-content p {
+    font-size: 1rem;
+  }
+  
+  .cta-content h3 {
+    font-size: 1.5rem;
+  }
+  
+  .cta-content p {
+    font-size: 1rem;
+  }
+  
+  .cta-button {
+    padding: 0.8rem 1.8rem;
+  }
 }
 
 .profile-container {
@@ -1017,21 +1119,115 @@ section {
 
 /* Title Wrapper Styles */
 .title-wrapper {
+  background: linear-gradient(135deg, #002676 0%, #004ea8 100%);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 38, 118, 0.15);
+  margin: 2rem auto;
+  max-width: 1200px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 2rem auto;
-  max-width: 1200px;
   gap: 2rem;
-  padding: 0 2rem;
-  box-sizing: border-box;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.line {
-  height: 2px;
-  background-color: #002676;
+.title-wrapper h3 {
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.title-wrapper .line {
+  height: 3px;
+  background-color: rgba(255, 255, 255, 0.7);
   flex: 1;
-  max-width: 200px;
+  max-width: 150px;
+}
+
+/* Card Styling */
+.aboutus-card {
+  max-width: 1200px;
+  margin: 2rem auto;
+  background: #f8f9fa;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.aboutus-hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.aboutus-image-container:hover .aboutus-hero-image {
+  transform: scale(1.03);
+}
+
+/* Content Grid */
+.aboutus-content-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  padding: 2.5rem;
+}
+
+.aboutus-content-item {
+  padding: 1rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.aboutus-content-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.aboutus-content-item p {
+  color: #4a5568;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.aboutus-content-item p:last-child {
+  margin-bottom: 0;
+}
+
+/* Section Divider */
+.section-divider {
+  margin: 3rem 0;
+  border: 0;
+  border-top: 1px solid #e2e8f0;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 992px) {
+  .aboutus-content-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .aboutus-content-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+  
+  .aboutus-image-container {
+    height: 250px;
+  }
+  
+  .aboutus-content-item p {
+    font-size: 1rem;
+  }
 }
 
 /* Service Card New Styles */
@@ -1360,7 +1556,6 @@ section {
 }
 
 .checklist-section h3 {
-  color: #1a1a1a;
   font-size: 2.5rem;
   font-weight: bold;
   margin: 1rem 0;
