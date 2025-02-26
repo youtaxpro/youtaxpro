@@ -7,8 +7,7 @@ export default defineConfig({
   plugins: [
     vue(),
     VueI18nPlugin({
-      include: path.resolve(__dirname, "./path/to/locales/**"),
-      runtimeOnly: false
+      include: path.resolve(__dirname, "./path/to/locales/**")
     }),
   ],
   base: "/", // 여기를 수정! 커스텀 도메인을 사용할 때는 그냥 "/"로 설정
