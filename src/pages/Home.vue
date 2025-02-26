@@ -843,8 +843,8 @@ nav {
 }
 
 .profile-image img {
-  width: 80%;
-  height: 90%;
+  width: 70%;
+  height: 70%;
   object-fit: cover;  /* 비율 유지하면서 영역 채우기 */
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -861,15 +861,21 @@ nav {
 }
 
 .team-member h3 {
-  color: black;
+  color: #1A5276;  /* A deep blue that's professional and elegant */
   font-size: 3rem;
   margin-bottom: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -1px;
+  border-bottom: 3px solid #2980B9;  /* A subtle underline */
+  padding-bottom: 0.5rem;
 }
 
 .team-member h4 {
-  color: #00599c;
+  color: #2C3E50;  /* A sophisticated dark gray */
   font-size: 2.5rem;
   margin: 1.5rem 0 0.75rem;
+  font-weight: 600;
+  font-style: italic;
 }
 
 .team-member p {
