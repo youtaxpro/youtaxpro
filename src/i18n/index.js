@@ -229,7 +229,7 @@ Given the complexities of U.S. tax law, especially for those with international 
       contactUs: '문의하기'
     },
     hero: {
-      title: '미국 세금 전문 기업',
+      title: '미국 세금 신고 전문',
       subtitle: '신뢰할 수 있는 프리미엄 세무 서비스',
     },
     aboutus: {

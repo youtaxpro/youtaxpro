@@ -665,6 +665,7 @@ nav {
   width: 100%;
   padding: 8rem 2rem;
   background-image: url('../assets/sanfran1.jpg');
+  
   background-size: cover;
   background-position: center;
   min-height: 900px;
@@ -672,6 +673,23 @@ nav {
   align-items: center;
   justify-content: left;
   position: relative; /* 추가 */
+}
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2); /* 검은색 오버레이, 투명도 50% */
+  z-index: 1; /* 배경 이미지 위에 오버레이가 위치하도록 함 */
+}
+
+/* hero-section 내부 요소들이 오버레이 위에 보이도록 함 */
+.hero-section > * {
+  position: relative;
+  z-index: 2;
 }
 
 .hero-container {
@@ -832,7 +850,7 @@ nav {
   min-height: auto; /* 기존 min-height: 900px에서 변경 */
   height: auto; /* 컨텐츠에 맞게 자동 높이 조정 */
   display: flex;
-  gap: 3rem;
+  gap: 0.25rem;
   align-items: flex-start; /* flex-start로 변경하여 위에서부터 아이템 배치 */
 }
 
@@ -840,7 +858,7 @@ nav {
   flex: 1;  /* 전체 공간의 1을 차지 */
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.0rem;
   max-width: 50%;  /* 최대 너비를 50%로 제한 */
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
