@@ -145,8 +145,7 @@
   <div class="aboutus team-member">
     <div class="profile-container">
       <div class="profile-content">
-        <h3>{{ $t('profile.name') }}</h3>
-        <h3>{{ $t('profile.title') }}</h3>
+        
         
         <!-- 소개 섹션 -->
         <div class="description">
@@ -156,37 +155,39 @@
 
         <!-- 경력 사항 -->
         <div class="description">
-          <h4>{{ $t('profile.sections.experience.title') }}</h4>
-          <p>{{ $t('profile.sections.experience.content') }}</p>
-        </div>
+      <h4>{{ $t('profile.sections.experience.title') }}</h4>
+      <p>{{ $t('profile.sections.experience.content') }}</p>
+    </div>
 
         <!-- 전문성 -->
         <div class="description">
-          <h4>{{ $t('profile.sections.expertise.title') }}</h4>
-          <p>{{ $t('profile.sections.expertise.content') }}</p>
-        </div>
+      <h4>{{ $t('profile.sections.expertise.title') }}</h4>
+      <p>{{ $t('profile.sections.expertise.content') }}</p>
+    </div>
 
         <!-- 자격증 -->
         <div class="credentials">
-          <h4>{{ $t('profile.sections.certification.title') }}</h4>
-          <p>{{ $t('profile.sections.certification.content') }}</p>
-        </div>
+      <h4>{{ $t('profile.sections.certification.title') }}</h4>
+      <p>{{ $t('profile.sections.certification.content') }}</p>
+    </div>
 
         <!-- 약력 -->
         <div class="career">
-          <h4>{{ $t('profile.sections.career.title') }}</h4>
-          <ul class="career-list">
-            <p>{{ $t('profile.sections.career.list[0]') }}</p>
-            <p>{{ $t('profile.sections.career.list[1]') }}</p>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="profile-image">
-        <img :src="ceoPic" alt="CEO Profile" />
-      </div>
+      <h4>{{ $t('profile.sections.career.title') }}</h4>
+      <ul class="career-list">
+        <p>{{ $t('profile.sections.career.list[0]') }}</p>
+        <p>{{ $t('profile.sections.career.list[1]') }}</p>
+      </ul>
     </div>
   </div>
+      
+      <div class="profile-image">
+        <img :src="ceoPic" alt="CEO Profile" />          
+    <h3>{{ $t('profile.name') }}</h3>
+        <h3>{{ $t('profile.title') }}</h3>
+  </div>
+    </div>
+    </div>
 </section>
 
 <!-- Services Section -->
@@ -298,7 +299,9 @@ import {
   FileCheck,  // or HandshakeIcon
   Calculator,  // or FileSpreadsheet
   FileSearch,  // or MagnifyingGlass
-  Send  // or Upload
+  Send,  // or Upload
+  Briefcase,  // 추가
+  Award       // 추가
 } from 'lucide-vue-next';
 
 export default {
@@ -529,7 +532,9 @@ export default {
       FileCheck,  // or HandshakeIcon
       Calculator,  // or FileSpreadsheet
       FileSearch,  // or MagnifyingGlass
-      Send 
+      Send,
+      Briefcase,  // 추가
+      Award       // 추가
     };
   }
 };
@@ -824,15 +829,22 @@ nav {
 }
 
 .profile-container {
+  min-height: auto; /* 기존 min-height: 900px에서 변경 */
+  height: auto; /* 컨텐츠에 맞게 자동 높이 조정 */
   display: flex;
   gap: 3rem;
-  align-items: stretch;
-  min-height: 900px;  /* 전체 컨테이너 최소 높이 설정 */
+  align-items: flex-start; /* flex-start로 변경하여 위에서부터 아이템 배치 */
 }
 
 .profile-content {
   flex: 1;  /* 전체 공간의 1을 차지 */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
   max-width: 50%;  /* 최대 너비를 50%로 제한 */
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  background-color: #f8f9fa;
 }
 
 .profile-image {
@@ -861,21 +873,29 @@ nav {
 }
 
 .team-member h3 {
-  color: #1A5276;  /* A deep blue that's professional and elegant */
+  color: black;
   font-size: 3rem;
   margin-bottom: 1.5rem;
-  font-weight: 700;
-  letter-spacing: -1px;
-  border-bottom: 3px solid #2980B9;  /* A subtle underline */
-  padding-bottom: 0.5rem;
 }
 
 .team-member h4 {
-  color: #2C3E50;  /* A sophisticated dark gray */
+  color: #00599c;
   font-size: 2.5rem;
   margin: 1.5rem 0 0.75rem;
+}
+
+.team-member h3:nth-of-type(1) {
+  color: #002676; /* 메인 네이비 색상 */
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem; /* 이름과 직함 사이 간격 줄이기 */
+}
+
+.team-member h3:nth-of-type(2) {
+  color: #00599c; /* 보조 파란색 */
+  font-size: 2rem;
   font-weight: 600;
-  font-style: italic;
+  margin-top: 0;
 }
 
 .team-member p {
@@ -883,15 +903,74 @@ nav {
 }
 
 .description, .credentials, .career {
-  margin-bottom: 1.5rem;
+  padding: 1.25rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  border-left: 4px solid #002676;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
 }
 
-.description p, .credentials p {
-  color: black;
-  line-height: 1.6;
+/* 섹션 제목 스타일링 */
+.description h4, .credentials h4, .career h4 {
+  color: #002676;
+  font-size: 1.5rem;
   margin-bottom: 1rem;
-  font-weight: 600;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid #e2e8f0;
 }
+
+
+/* 각 설명 섹션 (소개, 경력, 전문성 등) 스타일링 */
+.description, .credentials, .career {
+  padding: 1.0rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  border-left: 4px solid #002676;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.description:hover, .credentials:hover, .career:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* 섹션 제목 스타일링 */
+.description h4, .credentials h4, .career h4 {
+  color: #002676;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+/* 텍스트 스타일링 */
+.description p, .credentials p, .career p {
+  line-height: 1.7;
+  font-size: 1.1rem;
+  color: black;
+  
+}
+
+/* 경력 리스트 스타일링 */
+.career-list p {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.career-list p::before {
+  content: "•";
+  color: #00599c;
+  font-size: 1.4rem;
+  position: absolute;
+  left: 0;
+  top: -0.2rem;
+}
+
+
 
 .career ul {
   list-style-type: none;

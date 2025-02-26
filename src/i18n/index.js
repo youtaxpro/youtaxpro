@@ -43,9 +43,9 @@ const messages = {
           content: 'CPA, California'
         },
         career: {
-          title: '',
-          list: [ '',
-            ''
+          title: 'Professional Experience',
+          list: [ 'Former employee at H&R Block (American tax firm), 10 years of service',
+            'Former intern at GlaxoSmithKline (British pharmaceutical company), Compliance Team'
             
           ]
         }
