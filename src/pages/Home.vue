@@ -1215,10 +1215,6 @@ section {
   transition: transform 0.5s ease;
 }
 
-.aboutus-image-container:hover .aboutus-hero-image {
-  transform: scale(1.03);
-}
-
 /* Content Grid */
 .aboutus-content-grid {
   display: grid;
@@ -1344,6 +1340,7 @@ section {
 .service-content {
   padding: 1.5rem;
   background: white;
+  text-align: center;
 }
 
 .service-content p {
@@ -1352,6 +1349,7 @@ section {
   font-size: 1.1rem;
   margin: 0;
   line-height: 1.5;
+  
 }
 
 .tax-website h5 {

@@ -23,8 +23,8 @@ const messages = {
       content8: 'With Berkeley U.S. Tax Advisors, your assets will shine more brilliantly. We will be the best tax partner that rewards your trust.',
       cta: {
         title: 'Reserve right now',
-        description: 'Contact us today for professional tax advice tailored to your needs', // 추가됨
-        button: 'Contact Us' // 추가됨
+        description: 'Contact us today for professional tax advice tailored to your needs',
+        button: 'Contact Us'
       }
     },
     profile: {
@@ -246,15 +246,15 @@ Given the complexities of U.S. tax law, especially for those with international 
       content7: '세법 변화를 선제적으로 파악하고 최적의 절세 방안을 모색하여, 고객님의 재무적 성공을 든든히 뒷받침하겠습니다.',
       content8: 'Berkeley U.S. Tax Advisors는 고객님의 신뢰에 보답하는 최고의 세무 파트너가 되겠습니다.',
       cta: {
-        title: 'Reserve right now',
-        description: 'Contact us today for professional tax advice tailored to your needs', // 추가됨
-        button: 'Contact Us' // 추가됨
+        title: '지금 바로 예약하세요',
+        description: '개인 맞춤형 세금 상담은 저희에게 문의주세요',
+        button: '문의하기'
       }
     },
 
   profile: {
-    name: '미국공인회계사',
-    title: '임아름',
+    name: '임아름',
+    title: '미국공인회계사',
     sections: {
       intro: {
         title: '소개',
