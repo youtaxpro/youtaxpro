@@ -234,7 +234,14 @@ nav {
   align-items: center;
   width: 100vw;
   padding: 1rem 3rem;
-  background-color: #002676;
+  background-image: linear-gradient(
+    to right, 
+    #00008B,  /* 다크 블루 */
+    #0047AB,  /* 코발트 블루 */
+    #1E90FF,  /* 도저 블루 */
+    #4169E1,  /* 로얄 블루 */
+    #6495ED   /* 콘플라워 블루 */
+  );
   position: fixed;
   top: 0;
   left: 0;
@@ -243,7 +250,14 @@ nav {
 }
 
 .nav-scrolled {
-  background-color: rgba(11, 39, 99, 0.8);
+  background-image: linear-gradient(
+    to right, 
+    rgba(0, 0, 139, 0.8),  /* 다크 블루 (80% 투명도) */
+    rgba(0, 71, 171, 0.8),  /* 코발트 블루 (80% 투명도) */
+    rgba(30, 144, 255, 0.8),  /* 도저 블루 (80% 투명도) */
+    rgba(65, 105, 225, 0.8),  /* 로얄 블루 (80% 투명도) */
+    rgba(100, 149, 237, 0.8)   /* 콘플라워 블루 (80% 투명도) */
+  );
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -306,11 +320,21 @@ nav {
 }
 
 .lang-btn:hover, .lang-btn.active {
-  color: #ffec9a;
+  /* 노란색 계열 그라데이션 효과 */
+  background-image: linear-gradient(to right, #FFD700, #FFc700, #ffb700, #FFA500);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  /* 텍스트가 더 잘 보이도록 그림자 추가 */
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  /* 부드러운 전환 효과 */
+  transition: all 0.3s ease;
 }
 
 .lang-btn.active {
   font-weight: bold;
+  /* 활성화된 버튼은 살짝 큰 그라데이션 적용 */
+  background-size: 200% auto;
 }
 
 .lang-separator {
@@ -344,7 +368,7 @@ h2::after {
   transform: translateX(-50%);
   width: 100px;
   height: 3px;
-  background-color: #ffec9a;
+  background: linear-gradient(90deg, #ffec9a, #ffc857);
   border-radius: 2px;
 }
 
@@ -380,7 +404,17 @@ h2::after {
 }
 
 .footer h4 {
-  color: #00599c;
+  color: transparent;
+background-image: linear-gradient(
+  to right, 
+  #00008B 0%,    /* 다크 블루 시작 */
+  #0047AB 25%,   /* 코발트 블루 25% 지점 */
+  #1E90FF 50%,   /* 도저 블루 50% 지점 */
+  #4169E1 75%,   /* 로얄 블루 75% 지점 */
+  #6495ED 100%   /* 콘플라워 블루 끝 */
+);
+background-clip: text;
+-webkit-background-clip: text;
 }
 
 .toggle-icon {
@@ -406,6 +440,7 @@ h2::after {
   background-color: gainsboro;
   width: 100%;
   text-align: center;
+  
 }
 
 .social-links {
@@ -417,7 +452,7 @@ h2::after {
 }
 
 .social-links a {
-  color: black;
+  color: #333;
   margin: 0 1rem;
   font-size: 0.7rem;
 }
@@ -587,7 +622,7 @@ h2::after {
   /* copyright 텍스트 스타일 */
   .footer p {
     padding-bottom: 1rem;
-    color: #00599c;
+    
   }
 }
 

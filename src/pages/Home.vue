@@ -570,7 +570,10 @@ function easeInOutQuad(t, b, c, d) {
 <style scoped>
 .tax-website {
   position: relative;
-  color: #00599c;
+  
+  background-image: linear-gradient(to right, #0047AB, #4169E1);
+  background-clip: text;
+  -webkit-background-clip: text;
   min-height: 100vh;
   width: 100%;
   display: flex;
@@ -601,7 +604,14 @@ nav {
   align-items: center;
   width: 100vw;
   padding: 1rem 3rem;
-  background-color: #002676;
+  background-image: linear-gradient(
+    to right, 
+    #00008B,  /* 다크 블루 */
+    #0047AB,  /* 코발트 블루 */
+    #1E90FF,  /* 도저 블루 */
+    #4169E1,  /* 로얄 블루 */
+    #6495ED   /* 콘플라워 블루 */
+  );
   position: fixed;
   top: 0;
   left: 0;
@@ -610,7 +620,14 @@ nav {
 }
 
 .nav-scrolled {
-  background-color: rgba(11, 39, 99, 0.8);
+  background-image: linear-gradient(
+    to right, 
+    rgba(0, 0, 139, 0.8),  /* 다크 블루 (80% 투명도) */
+    rgba(0, 71, 171, 0.8),  /* 코발트 블루 (80% 투명도) */
+    rgba(30, 144, 255, 0.8),  /* 도저 블루 (80% 투명도) */
+    rgba(65, 105, 225, 0.8),  /* 로얄 블루 (80% 투명도) */
+    rgba(100, 149, 237, 0.8)   /* 콘플라워 블루 (80% 투명도) */
+  );
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -634,6 +651,7 @@ nav {
 .nav-content {
   display: flex;
   align-items: center;
+  color: white;
 }
 
 .nav-links {
@@ -674,14 +692,7 @@ nav {
 
 .lang-btn:hover, .lang-btn.active {
   /* 노란색 계열 그라데이션 효과 */
-  background: linear-gradient(
-    to right,
-    #ffffcc, /* 매우 연한 노랑 */
-    #ffff00, /* 밝은 노랑 */
-    #ffec9a, /* 원래 색상 */
-    #ffe766, /* 중간 노랑 */
-    #ffee33  /* 선명한 노랑 */
-  );
+  background-image: linear-gradient(to right, #FFD700, #FFc700, #ffb700, #FFA500);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -1059,7 +1070,11 @@ nav {
 }
 
 .team-member h3:nth-of-type(2) {
-  color: #FFD700;
+  background-image: linear-gradient(to right, #FFD700,#FFc700, #ffb700, #FFA500);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
   font-size: 2rem;
   font-weight: 600;
   margin-top: 0;
@@ -1140,7 +1155,7 @@ nav {
 
 /* 섹션 제목 스타일링 */
 .description h4, .credentials h4, .career h4 {
-  color: #002676;
+  margin-top: auto;
   font-size: 1.5rem;
   margin-bottom: 1rem;
   padding-bottom: 0.75rem;
@@ -1334,7 +1349,6 @@ section {
   line-height: 1.6;
   text-align: center;
   font-size: 1.2rem;
-  max-width: 800px;
   margin: 0 auto 3rem;
 }
 
@@ -1344,7 +1358,30 @@ section {
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid #e5e7eb;
+  position: relative;
+  z-index: 1;
+}
+
+.service-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 4px;
+  background-image: linear-gradient(
+    to right, 
+    #00008B,  /* 다크 블루 */
+    #0047AB,  /* 코발트 블루 */
+    #1E90FF,  /* 도저 블루 */
+    #4169E1,  /* 로얄 블루 */
+    #6495ED   /* 콘플라워 블루 */
+  );
+  border-radius: 12px;
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  z-index: -1;
 }
 
 .service-card:hover {
@@ -1376,8 +1413,17 @@ section {
 }
 
 .service-content p {
-  color: #1a1a1a;
-  font-weight: 600;
+  background: linear-gradient(
+    to right,
+    #002676, /* 원래 색상인 짙은 파랑 */
+    #1a56db, /* 중간 파랑 */
+    #3182ce, /* 밝은 파랑 */
+    #1a56db, /* 중간 파랑 */
+    #002676  /* 원래 색상으로 돌아옴 */
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;  font-weight: 600;
   font-size: 1.1rem;
   margin: 0;
   line-height: 1.5;
@@ -1395,6 +1441,10 @@ section {
   background-color: gainsboro;
   width: 100%;
   text-align: center;
+   color: transparent;
+  background-image: linear-gradient(to right, #0047AB, #4169E1);
+  background-clip: text;
+  -webkit-background-clip: text;
 }
 
 .social-links {
@@ -1406,7 +1456,7 @@ section {
 }
 
 .social-links a {
-  color: black;
+  color: #333;
   margin: 0 1rem;
   font-size: 0.7rem;
 }
@@ -1691,7 +1741,12 @@ section {
   left: 1.5rem;
   width: 2.5rem;
   height: 2.5rem;
-  background: linear-gradient(135deg, #7cbbee 0%, #002676 80%);
+  background-image: linear-gradient(
+    to right, 
+    #00008B,  /* 다크 블루 */
+    #0047AB,  /* 코발트 블루 */
+    #6495ED   /* 콘플라워 블루 */
+  );
   color: white;
   border-radius: 9999px;
   display: flex;
@@ -1708,8 +1763,8 @@ section {
 .checklist-section .grid > div svg {
   width: 3rem;
   height: 3rem;
-  color: #002676;
   margin: 1.5rem auto;
+  filter: brightness(0) saturate(100%) invert(32%) sepia(72%) saturate(1217%) hue-rotate(195deg) brightness(91%) contrast(101%); /* 파란색 필터 */
 }
 
 /* 텍스트 스타일 */
