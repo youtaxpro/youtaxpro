@@ -673,12 +673,30 @@ nav {
 }
 
 .lang-btn:hover, .lang-btn.active {
-  color: #ffec9a;
+  /* 노란색 계열 그라데이션 효과 */
+  background: linear-gradient(
+    to right,
+    #ffffcc, /* 매우 연한 노랑 */
+    #ffff00, /* 밝은 노랑 */
+    #ffec9a, /* 원래 색상 */
+    #ffe766, /* 중간 노랑 */
+    #ffee33  /* 선명한 노랑 */
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  /* 텍스트가 더 잘 보이도록 그림자 추가 */
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  /* 부드러운 전환 효과 */
+  transition: all 0.3s ease;
 }
 
 .lang-btn.active {
   font-weight: bold;
+  /* 활성화된 버튼은 살짝 큰 그라데이션 적용 */
+  background-size: 200% auto;
 }
+
 
 /* Hero Section */
 .hero-section {
@@ -806,7 +824,7 @@ nav {
 .submit-btn {
   width: 100%;
   padding: 1rem;
-  background: linear-gradient(to right, #D4AF37, #FFD700);
+  background: linear-gradient(to right, #e3780e, #FFb87e, #ffeb8c);
   color: white;
   border: none;
   border-radius: 4px;
@@ -1064,17 +1082,29 @@ nav {
 
 /* 섹션 제목 스타일링 */
 .description h4, .credentials h4, .career h4 {
-  color: #002676;
   font-size: 1.5rem;
   margin-bottom: 1rem;
   padding-bottom: 0.75rem;
   border-bottom: 2px solid #e2e8f0;
+  
+  /* 그라데이션 효과 추가 */
+  background: linear-gradient(
+    to right,
+    #002676, /* 원래 색상인 짙은 파랑 */
+    #1a56db, /* 중간 파랑 */
+    #3182ce, /* 밝은 파랑 */
+    #1a56db, /* 중간 파랑 */
+    #002676  /* 원래 색상으로 돌아옴 */
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 
 /* 각 설명 섹션 (소개, 경력, 전문성 등) 스타일링 */
 .description, .credentials, .career {
-  padding: 1.0rem;
+  padding: 0.8rem;
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
@@ -1183,9 +1213,10 @@ section {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+
 .title-wrapper h3 {
   color: white;
-  font-size: 2.5rem;
+  font-size: 2.0rem;
   font-weight: 800;
   margin: 0;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -1196,6 +1227,7 @@ section {
   background-color: rgba(255, 255, 255, 0.7);
   flex: 1;
   max-width: 150px;
+  
 }
 
 /* Card Styling */
@@ -1457,7 +1489,7 @@ section {
   }
 
   .tax-website h3 {
-    font-size: 2.5rem;
+    font-size: 1.5rem;
   }
 
   .team-member h3 {
@@ -1473,6 +1505,8 @@ section {
     min-height: auto;
     align-items: center;
   }
+
+
 
   .profile-content,
   .profile-image {
