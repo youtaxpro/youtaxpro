@@ -1367,20 +1367,6 @@ section {
   position: absolute;
   inset: 0;
   padding: 4px;
-  background-image: linear-gradient(
-    to right, 
-    #00008B,  /* 다크 블루 */
-    #0047AB,  /* 코발트 블루 */
-    #1E90FF,  /* 도저 블루 */
-    #4169E1,  /* 로얄 블루 */
-    #6495ED   /* 콘플라워 블루 */
-  );
-  border-radius: 12px;
-  -webkit-mask: 
-    linear-gradient(#fff 0 0) content-box, 
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
   z-index: -1;
 }
 
