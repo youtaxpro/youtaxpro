@@ -528,7 +528,15 @@ background-clip: text;
     top: 106px; /* 네비게이션 바 높이에 맞춰 조정 */
     left: 0;
     width: 100%;
-    background-color: rgba(11, 39, 99, 0.8);
+    background-image: linear-gradient(
+    to right, 
+    rgba(0, 0, 139, 0.8),  /* 다크 블루 (80% 투명도) */
+    rgba(0, 71, 171, 0.8),  /* 코발트 블루 (80% 투명도) */
+    rgba(30, 144, 255, 0.8),  /* 도저 블루 (80% 투명도) */
+    rgba(65, 105, 225, 0.8),  /* 로얄 블루 (80% 투명도) */
+    rgba(100, 149, 237, 0.8)   /* 콘플라워 블루 (80% 투명도) */
+  );
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding: 1rem;
     flex-direction: column;
     z-index: 1000;
