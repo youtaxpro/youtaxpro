@@ -283,7 +283,7 @@
 
     <!-- Footer -->
     <footer class="footer">
-      <p>&copy; 2024 Berkeley U.S. Tax Advisors All rights reserved.</p>
+      <h4>&copy; 2024 Berkeley U.S. Tax Advisors All rights reserved.</h4>
       <div class="social-links">
         <a>{{ $t('footer.companyName') }}</a>
         <a>{{ $t('footer.representative') }}</a>
@@ -1336,6 +1336,12 @@ section {
     font-size: 1.5rem;
   }
 
+  .aboutus-hero-image {
+    height: auto; /* 높이를 자동으로 조정 */
+    max-height: none; /* 모바일에서는 최대 높이 제한 해제 */
+    aspect-ratio: 16/9; /* 이미지 비율 유지 (필요에 따라 조정) */
+  }
+
 }
 
 /* Service Card New Styles */
@@ -1422,15 +1428,27 @@ section {
 }
 
 /* Footer */
+
+.footer h4 {
+  color: transparent;
+background-image: linear-gradient(
+  to right, 
+  #00008B 0%,    /* 다크 블루 시작 */
+  #0047AB 25%,   /* 코발트 블루 25% 지점 */
+  #1E90FF 50%,   /* 도저 블루 50% 지점 */
+  #4169E1 75%,   /* 로얄 블루 75% 지점 */
+  #6495ED 100%   /* 콘플라워 블루 끝 */
+);
+background-clip: text;
+-webkit-background-clip: text;
+font-size: medium;
+}
+
 .footer {
   padding: 2rem;
   background-color: gainsboro;
   width: 100%;
   text-align: center;
-   color: transparent;
-  background-image: linear-gradient(to right, #0047AB, #4169E1);
-  background-clip: text;
-  -webkit-background-clip: text;
 }
 
 .social-links {
@@ -1629,7 +1647,7 @@ section {
   }
 
   /* copyright 텍스트 스타일 */
-  .footer p {
+  .footer h4 {
     padding-bottom: 1rem;
     
   }

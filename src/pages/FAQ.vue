@@ -628,9 +628,8 @@ background-clip: text;
   }
 
   /* copyright 텍스트 스타일 */
-  .footer p {
+  .footer h4 {
     padding-bottom: 1rem;
-    
   }
 }
 
