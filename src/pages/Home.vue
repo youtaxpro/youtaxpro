@@ -805,6 +805,7 @@ nav {
   margin-bottom: 1rem;
 }
 
+/* 폼 입력 요소 스타일 수정 */
 .form-input {
   width: 100%;
   padding: 1rem;
@@ -812,6 +813,67 @@ nav {
   border-radius: 4px;
   font-size: 1rem;
   background: white;
+  color: #333; /* 텍스트 색상 명시적 설정 */
+  -webkit-text-fill-color: #333; /* 웹킷 기반 브라우저용 */
+  opacity: 1; /* 투명도 설정 */
+}
+
+/* 플레이스홀더 스타일 명시적 설정 */
+.form-input::placeholder {
+  color: #666;
+  opacity: 1; /* 플레이스홀더 투명도 설정 */
+}
+
+/* 포커스 상태 스타일 */
+.form-input:focus {
+  outline: 2px solid #4169E1; /* 포커스 시 테두리 추가 */
+  color: #333;
+  -webkit-text-fill-color: #333;
+  background-color: white;
+}
+
+/* 특히 Samsung Internet 브라우저를 위한 수정 */
+@supports (-webkit-touch-callout: none) {
+  .form-input {
+    color-scheme: light; /* 라이트 모드 강제 적용 */
+    color: #333 !important;
+    -webkit-text-fill-color: #333 !important;
+    background-color: white !important;
+  }
+}
+
+/* 입력 시 자동완성 스타일 */
+.form-input:-webkit-autofill,
+.form-input:-webkit-autofill:hover, 
+.form-input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #333;
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* 드롭다운 셀렉트 박스 화살표 스타일 유지 */
+.status-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23666%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 0.65rem auto;
+  padding-right: 2.5rem;
+  color: #333;
+  -webkit-text-fill-color: #333;
+  background-color: white;
+}
+
+/* 폼 전체 스타일 조정 */
+.consultation-form {
+  color-scheme: light;
+}
+
+/* 텍스트 영역 스타일 */
+.form-textarea {
+  color: #333;
+  -webkit-text-fill-color: #333;
+  background-color: white;
 }
 
 .form-input::placeholder {
