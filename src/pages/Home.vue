@@ -99,7 +99,7 @@
         <textarea 
           v-model="formData.details"
           name="Message"
-          placeholder="Kindly detail your inquiry so we can assist you appropriately"
+          placeholder="Kindly detail your inquiry so we can assist you appropriately 한국어문의가능"
           class="form-input form-textarea"
           rows="4"
         ></textarea>
