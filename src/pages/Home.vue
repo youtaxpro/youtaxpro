@@ -319,11 +319,11 @@
           <p style="color: rgba(255,255,255,0.6); font-size: 0.875rem;">&copy; 2024-2025 {{ $t('footer.companyName') }}</p>
           
           <div style="display: flex; gap: 1rem; margin-top: 1rem;">
-            <a href="/#aboutus" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem;">{{ $t('nav.aboutUs') }}</a>
-            <a href="/#services" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem;">{{ $t('nav.services') }}</a>
-            <a href="/#checklists" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem;">{{ $t('nav.checklists') }}</a>
-            <a href="/faq" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem;">{{ $t('nav.faq') }}</a>
-            <a href="/contactus" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem;">{{ $t('nav.contactUs') }}</a>
+            <router-link to="/#aboutus" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem;">{{ $t('nav.aboutUs') }}</router-link>
+            <router-link to="/#services" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem;">{{ $t('nav.services') }}</router-link>
+            <router-link to="/#checklists" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem;">{{ $t('nav.checklists') }}</router-link>
+            <router-link to="/faq" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem;">{{ $t('nav.faq') }}</router-link>
+            <router-link to="/contactus" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem;">{{ $t('nav.contactUs') }}</router-link>
           </div>
         </div>
       </div>
