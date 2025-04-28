@@ -42,7 +42,7 @@
           <div class="contact-card">
             <i class="fas fa-blog"></i>
             <h4>{{ $t('contact.blog.title') }}</h4>
-            <p>{{ $t('footer.blog') }}</p>
+            <p><a href="https://blog.naver.com/berkeleytax" target="_blank" class="blog-link">{{ $t('footer.blog') }}</a></p>
           </div>
         </div>
       </div>
@@ -155,6 +155,17 @@ h3 {
   width: 100%;
   height: 600px;
   border-radius: 8px;
+}
+
+.blog-link {
+  color: #ffc857;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.blog-link:hover {
+  color: #ffffff;
+  text-decoration: underline;
 }
 
 /* Media Queries */
