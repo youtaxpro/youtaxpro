@@ -1,0 +1,136 @@
+/* 공통 스타일 */
+.tax-website {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f8f9fa;
+}
+
+/* 페이지 배경 이미지가 있는 경우 */
+.tax-website.with-bg-image {
+  position: absolute;
+  color: white;
+  background-image: url('../../assets/sanfran1.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.tax-website.with-bg-image::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+.tax-website.with-bg-image > *:not(nav) {
+  z-index: 2;
+}
+
+/* 타이틀 스타일 */
+.tax-website h3 {
+  font-size: 3rem;
+  font-weight: 800;
+  color: black;
+}
+
+.tax-website h4 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: black;
+}
+
+.tax-website h5 {
+  color: #002676;
+  font-size: large;
+}
+
+/* 타이틀 래퍼 스타일 */
+.title-wrapper {
+  background: linear-gradient(135deg, #002676 0%, #004ea8 80%);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 38, 118, 0.15);
+  margin: 2rem auto;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.title-wrapper h3 {
+  color: white;
+  font-size: 2.0rem;
+  font-weight: 800;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.title-wrapper .line {
+  height: 3px;
+  background-color: rgba(255, 255, 255, 0.7);
+  flex: 1;
+  max-width: 150px;
+}
+
+/* 섹션 구분선 */
+.section-divider {
+  margin: 3rem 0;
+  border: 0;
+  border-top: 1px solid #e2e8f0;
+}
+
+/* 애니메이션 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 섹션 스타일 */
+section {
+  padding: 4rem 2rem;
+  width: 100%;
+}
+
+/* 반응형 디자인 - 모바일 */
+@media screen and (max-width: 768px) {
+  .tax-website h3 {
+    font-size: 1.5rem;
+  }
+
+  .tax-website h4 {
+    font-size: 1.125rem;
+  }
+
+  .title-wrapper {
+    padding: 1.5rem;
+    gap: 1rem;
+  }
+
+  .title-wrapper h3 {
+    font-size: 1.5rem;
+  }
+
+  .section-divider {
+    margin: 2rem 0;
+  }
+
+  section {
+    padding: 3rem 1rem;
+  }
+}

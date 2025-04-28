@@ -1469,6 +1469,145 @@ section {
 .service-content p {
   background: linear-gradient(
     to right,
+    #002676,
+    #1a56db,
+    #3182ce,
+    #1a56db,
+    #002676
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Checklist Section */
+.checklist-section {
+  background-color: #f8f9fa;
+  padding: 4rem 2rem;
+  width: 100%;
+}
+
+.checklist-description {
+  color: #4a5568;
+  line-height: 1.6;
+  text-align: center;
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 0 auto 3rem;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .hero-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-content {
+    max-width: 100%;
+    text-align: center;
+    margin-bottom: 2rem;
+    display: none;
+  }
+
+  .consultation-form {
+    position: relative;
+    right: auto;
+    top: auto;
+    transform: none;
+    width: 100%;
+    max-width: 450px;
+    margin: 2rem auto 0;
+  }
+
+  .hero-title {
+    font-size: 3.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 2.5rem;
+  }
+
+  .aboutus-content-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+
+  .profile-container {
+    flex-direction: column;
+    min-height: auto;
+    align-items: center;
+  }
+
+  .profile-content,
+  .profile-image {
+    max-width: 100%;
+  }
+
+  .profile-image {
+    height: 400px;
+    margin: 2rem 0;
+  }
+
+  .profile-name-title-container {
+    width: 100%;
+    padding: 1.25rem;
+  }
+  
+  .profile-name {
+    font-size: 1.75rem;
+  }
+  
+  .profile-title {
+    font-size: 1.5rem;
+  }
+
+  .aboutus-hero-image {
+    height: auto;
+    max-height: none;
+    aspect-ratio: 16/9;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+}image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.service-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover .service-image img {
+  transform: scale(1.05);
+}
+
+.service-content {
+  padding: 1.5rem;
+  background: white;
+  text-align: center;
+}
+
+.service-content p {
+  background: linear-gradient(
+    to right,
     #002676, /* 원래 색상인 짙은 파랑 */
     #1a56db, /* 중간 파랑 */
     #3182ce, /* 밝은 파랑 */
