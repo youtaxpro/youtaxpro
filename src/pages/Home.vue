@@ -1722,6 +1722,25 @@ font-size: medium;
 
 /* Responsive Design */
 @media screen and (max-width: 768px) {
+  /* Footer mobile styling */
+  footer div[style*="flex-wrap: wrap; justify-content: space-between"] {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  footer div[style*="display: flex; gap: 1rem"] {
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 1.5rem;
+  }
+  
+  footer p[style*="color: rgba(255,255,255,0.6)"] {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  
   nav {
     padding: 0.5rem 0;
     width: 100%;
