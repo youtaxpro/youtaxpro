@@ -314,12 +314,12 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: #FFD700;
   font-weight: 700;
   font-size: 1.25rem;
   box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
   transition: var(--transition);
-  border: 2px solid white;
+  border: 3px solid #FFD700;
 }
 
 .service-card:hover .icon-circle {

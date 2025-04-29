@@ -353,7 +353,7 @@ export default {
   }
 
   .profile-content, .profile-image {
-    max-width: 50%;
+    max-width: 100%;
   }
 
   .profile-name {

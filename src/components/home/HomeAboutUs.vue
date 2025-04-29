@@ -145,41 +145,109 @@ export default {
   }
 }
 
+:root {
+  --primary-color: #2563eb; /* 현대적인 블루 */
+  --secondary-color: #4f46e5; /* 인디고 */
+  --accent-color: #8b5cf6; /* 보라색 */
+  --highlight-color: #f59e0b; /* 골드/옐로우 계열 */
+  --text-dark: #1e293b; /* 짙은 슬레이트 */
+  --text-light: #f8fafc; /* 밝은 회색 */
+  --bg-light: #f1f5f9; /* 밝은 배경 */
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(79, 70, 229, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0); }
+}
+
+@keyframes shine {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
 /* Title Wrapper Styles */
 .title-wrapper {
   background-image: linear-gradient(
-    to right, 
-    rgba(30, 77, 146, 0.8),  /* 진한 블루 (80% 투명도) */
-    rgba(46, 94, 170, 0.8),  /* 아이덴티티 블루 (80% 투명도) */
-    rgba(74, 116, 185, 0.8),  /* 중간 블루 (80% 투명도) */
-    rgba(94, 138, 208, 0.8),  /* 밝은 블루 (80% 투명도) */
-    rgba(117, 194, 246, 0.8)   /* 하늘색 (80% 투명도) */
+    
   );
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 10px 25px rgba(0, 38, 118, 0.15);
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 15px 30px rgba(37, 99, 235, 0.2),
+              0 5px 15px rgba(0, 0, 0, 0.08);
   margin: 2rem auto;
   max-width: 1200px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 2rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  animation: fadeIn 0.8s ease-out;
+}
+
+.title-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-25deg);
+  z-index: 2;
+  animation: shine 6s infinite;
+}
+
+.title-wrapper:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(37, 99, 235, 0.25),
+              0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
 .title-wrapper h3 {
   color: white;
-  font-size: 2.0rem;
+  font-size: 2.2rem;
   font-weight: 800;
   margin: 0;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  letter-spacing: 0.5px;
+  position: relative;
+  z-index: 3;
 }
 
 .title-wrapper .line {
   height: 3px;
-  background-color: rgba(255, 255, 255, 0.7);
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 255, 255, 0.3)
+  );
   flex: 1;
   max-width: 150px;
+  border-radius: 3px;
+  position: relative;
+  z-index: 3;
 }
 
 /* Card Styling */
