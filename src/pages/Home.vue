@@ -739,6 +739,11 @@ nav {
   background-size: 200% auto;
 }
 
+.lang-separator {
+  color: white;
+  opacity: 0.5;
+}
+
 
 /* Hero Section */
 .hero-section {
@@ -1783,6 +1788,15 @@ font-size: medium;
 
   .mobile-menu-btn {
     display: flex;
+  }
+
+  .nav-content {
+    justify-content: flex-end;
+  }
+
+  .language-switcher {
+    margin-left: auto;
+    margin-right: 1rem;
   }
 
   .hero-section {
