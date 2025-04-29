@@ -44,6 +44,13 @@
         <span class="lang-separator">|</span>
         <button @click="changeLanguage('en')" class="lang-btn" :class="{ 'active': currentLanguage === 'en' }">ENG</button>
       </div>
+      
+      <!-- Copyright Info -->
+      <div class="sidebar-footer">
+        <p>&copy; 2024-2025 {{ $t('footer.companyName') }}</p>
+        <p>{{ $t('footer.address') }}</p>
+        <p>{{ $t('footer.phone') }}</p>
+      </div>
     </div>
   </nav>
 </template>
@@ -310,8 +317,7 @@ nav {
   color: white;
   font-size: 1.5rem;
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  right: 1.1rem;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -379,7 +385,6 @@ body.sidebar-open::before {
   }
 
   .logo {
-    padding: 1rem 1rem;
     display: flex;
     align-items: center;
     min-height: 60px; /* Maintain height even with smaller logo */
@@ -407,6 +412,29 @@ body.sidebar-open::before {
 /* For accessibility - hide scrollbar when sidebar is open */
 body.sidebar-open {
   overflow: hidden;
+}
+
+/* Sidebar Footer */
+.sidebar-footer {
+  margin-top: auto;
+  width: 100%;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  position: relative;
+  bottom: 0;
+}
+
+.sidebar-footer p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.sidebar-footer p:first-child {
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 @keyframes slideDown {

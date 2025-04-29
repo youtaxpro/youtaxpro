@@ -46,6 +46,13 @@
           <span class="lang-separator">|</span>
           <button @click="changeLanguage('en')" class="lang-btn" :class="{ 'active': currentLanguage === 'en' }">ENG</button>
         </div>
+        
+        <!-- Copyright Info -->
+        <div class="sidebar-footer">
+          <p>&copy; 2024-2025 {{ $t('footer.companyName') }}</p>
+          <p>{{ $t('footer.address') }}</p>
+          <p>{{ $t('footer.phone') }}</p>
+        </div>
       </div>
     </nav>
 
@@ -1841,6 +1848,29 @@ body.sidebar-open::before {
   z-index: 1999;
 }
 
+/* Sidebar Footer */
+.sidebar-footer {
+  margin-top: auto;
+  width: 100%;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  position: relative;
+  bottom: 0;
+}
+
+.sidebar-footer p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.sidebar-footer p:first-child {
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+}
+
 /* For accessibility - hide scrollbar when sidebar is open */
 body.sidebar-open {
   overflow: hidden;
@@ -1874,10 +1904,6 @@ body.sidebar-open {
 
   .nav-content .nav-links {
     display: none;
-  }
-
-  .logo {
-    padding: 1rem 1rem; /* 상하 0.5rem, 좌우 1rem의 패딩 */
   }
   
   .logo img {
