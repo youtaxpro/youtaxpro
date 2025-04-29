@@ -30,16 +30,16 @@
           <!-- 약력 -->
           <div class="career">
             <h4>{{ $t('profile.sections.career.title') }}</h4>
-            <ul class="career-list">
+            <div class="career-list">
               <p>{{ $t('profile.sections.career.list[0]') }}</p>
               <p>{{ $t('profile.sections.career.list[1]') }}</p>
-            </ul>
+            </div>
           </div>
         </div>
         
         <div class="profile-image">
           <img :src="ceoPic" alt="CEO Profile" />          
-          <div class="profile-name-title-container" style="margin-left: auto; margin-right: auto;">
+          <div class="profile-name-title-container">
             <h3 class="profile-name">{{ $t('profile.name') }}</h3>
             <h3 class="profile-title">{{ $t('profile.title') }}</h3>
           </div>
@@ -63,38 +63,95 @@ export default {
 </script>
 
 <style scoped>
+:root {
+  --primary-color: #2563eb; /* 현대적인 블루 */
+  --secondary-color: #4f46e5; /* 인디고 */
+  --accent-color: #8b5cf6; /* 보라색 */
+  --highlight-color: #f59e0b; /* 골드/옐로우 계열 */
+  --text-dark: #1e293b; /* 짙은 슬레이트 */
+  --text-light: #f8fafc; /* 밝은 회색 */
+  --bg-light: #f1f5f9; /* 밝은 배경 */
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);  /* 부드러운 애니메이션 */
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(37, 99, 235, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+}
+
+.aboutus {
+  padding: 2rem;
+  background-color: var(--bg-light);
+  animation: fadeIn 0.8s ease forwards;
+}
+
 .profile-container {
-  min-height: auto; /* 기존 min-height: 900px에서 변경 */
-  height: auto; /* 컨텐츠에 맞게 자동 높이 조정 */
+  min-height: auto;
+  height: auto;
   display: flex;
-  gap: 0.25rem;
-  align-items: flex-start; /* flex-start로 변경하여 위에서부터 아이템 배치 */
+  gap: 2.5rem; /* 간격 증가 */
+  align-items: flex-start;
+  max-width: 1400px; /* 최대 너비 제한 */
+  margin: 0 auto; /* 중앙 정렬 */
+  padding: 2rem 1rem;
 }
 
 .profile-content {
-  flex: 1;  /* 전체 공간의 1을 차지 */
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 1.0rem;
-  max-width: 50%;  /* 최대 너비를 50%로 제한 */
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  background-color: #f8f9fa;
+  gap: 1.5rem; /* 간격 증가 */
+  max-width: 50%;
+  border-radius: 16px; /* 더 둥근 모서리 */
+  padding: 1.5rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px); /* 모던 블러 효과 */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06), 
+              0 2px 5px rgba(0, 0, 0, 0.04),
+              0 1px 30px rgba(37, 99, 235, 0.05); /* 다층 그림자 */
+  animation: fadeIn 0.8s ease forwards;
 }
 
 .profile-image {
-  flex: 1;  /* 전체 공간의 1을 차지 */
-  max-width: 50%;  /* 최대 너비를 50%로 제한 */
+  flex: 1;
+  max-width: 50%;
   position: relative;
-  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: slideInRight 1s ease forwards;
 }
 
 .profile-image img {
   width: 70%;
   height: 70%;
-  object-fit: cover;  /* 비율 유지하면서 영역 채우기 */
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  object-fit: cover;
+  border-radius: 20px; /* 더 둥근 모서리 */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12), 
+              0 10px 20px rgba(0, 0, 0, 0.08),
+              0 0 0 1px rgba(255, 255, 255, 0.1) inset; /* 깊이감 있는 그림자 */
+  filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04)) 
+         drop-shadow(0 4px 3px rgb(0 0 0 / 0.1)); /* 부드러운 드롭 쉐도우 */
+  transition: var(--transition);
+  transform: perspective(1000px) rotateY(2deg); /* 약간의 3D 효과 */
+}
+
+.profile-image img:hover {
+  transform: perspective(1000px) rotateY(0deg);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15),
+              0 15px 25px rgba(0, 0, 0, 0.1), 
+              0 0 0 1px rgba(255, 255, 255, 0.2) inset;
 }
 
 .profile-name-title-container {
@@ -106,13 +163,47 @@ export default {
     rgba(94, 138, 208, 0.8),  /* 밝은 블루 (80% 투명도) */
     rgba(117, 194, 246, 0.8)   /* 하늘색 (80% 투명도) */
   );
-  border-radius: 10px;
-  padding: 1.5rem;
-  margin-top: 1.5rem;
-  width: 70%;
-  box-shadow: 0 10px 25px rgba(0, 38, 118, 0.15);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 16px;
+  padding: 1.8rem;
+  margin-top: 2rem;
+  width: 80%;
+  box-shadow: 0 15px 30px rgba(37, 99, 235, 0.2),
+              0 5px 15px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(5px);
+  transition: var(--transition);
   text-align: center;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.profile-name-title-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 150%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-20deg);
+  z-index: -1;
+  animation: shine 3s infinite;
+}
+
+@keyframes shine {
+  0% { left: -150%; }
+  100% { left: 150%; }
+}
+
+.profile-name-title-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(37, 99, 235, 0.25),
+              0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
 .profile-name {
@@ -120,159 +211,128 @@ export default {
   font-size: 2.25rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  letter-spacing: 0.5px;
 }
 
 .profile-title {
   color: #FFD700;
   font-size: 1.75rem;
   font-weight: 600;
-  margin-top: 0;
-  text-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
-}
-
-.section-divider {
-  margin: 3rem 0;
-  border: 0;
-  border-top: 1px solid #e2e8f0;
+  margin-top: 0.25rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  letter-spacing: 0.5px;
 }
 
 .team-member {
-  margin-top: 2rem;
-}
-
-.team-member h3 {
-  font-size: 3rem;
-  margin-bottom: 1.5rem;
+  margin-top: 0rem;
 }
 
 .team-member h4 {
-  color: #00599c;
-  font-size: 2.5rem;
-  margin: 1.5rem 0 0.75rem;
-}
-
-.team-member h3:nth-of-type(1) {
-  color: white;
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 0.25rem; /* 이름과 직함 사이 간격 줄이기 */
-}
-
-.team-member h3:nth-of-type(2) {
-  background-image: linear-gradient(to right, #FFD700,#FFc700, #ffb700, #FFA500);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  text-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
-  font-size: 2rem;
+  color: var(--secondary-color);
+  font-size: 1.5rem;
+  margin: 0 0 0.75rem;
   font-weight: 600;
-  margin-top: 0;
 }
 
-.team-member p {
-  font-size: 1.5rem;
-}
-
+/* 섹션 컨테이너 스타일링 */
 .description, .credentials, .career {
-  padding: 1.25rem;
+  padding: 1.5rem;
   background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03),
+              0 1px 3px rgba(0, 0, 0, 0.02);
   position: relative;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  /* 기존 왼쪽 테두리 제거 */
+  transition: var(--transition);
   border-left: none;
+  overflow: hidden;
+  border-top: 4px solid transparent;
+  background-clip: padding-box;
 }
 
-/* 섹션 제목 스타일링 */
-.description h4, .credentials h4, .career h4 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 2px solid #e2e8f0;
-  
-  /* 그라데이션 효과 추가 */
-  background: linear-gradient(
-    to right,
-    #002676, /* 원래 색상인 짙은 파랑 */
-    #1a56db, /* 중간 파랑 */
-    #3182ce, /* 밝은 파랑 */
-    #1a56db, /* 중간 파랑 */
-    #002676  /* 원래 색상으로 돌아옴 */
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-
-/* 각 설명 섹션 (소개, 경력, 전문성 등) 스타일링 */
-.description, .credentials, .career {
-  padding: 0.8rem;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
-  border-left: 4px solid #002676;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-/* 그라데이션 테두리 효과 추가 */
 .description::before, .credentials::before, .career::before {
   content: "";
   position: absolute;
-  top: 0;
+  top: -4px; /* border-top의 두께와 일치 */
   left: 0;
-  width: 4px;
-  height: 100%;
-  background: linear-gradient(to bottom, #001a5c 0%, #0066cc 50%, #003b7e 100%);
-  border-top-left-radius: 8px;
-  border-bottom-left-radius: 8px;
-  box-shadow: 0 0 8px rgba(0, 38, 118, 0.3);
-}
-
-.description:hover::before, .credentials:hover::before, .career:hover::before {
-  width: 6px; /* 호버 시 테두리 넓어짐 */
-  box-shadow: 0 0 12px rgba(0, 38, 118, 0.5);
-  transition: all 0.3s ease;
-}
-
-/* 섹션 호버 효과 강화 */
-.description:hover, .credentials:hover, .career:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+  right: 0;
+  height: 4px; /* border-top의 두께와 일치 */
+  background: linear-gradient(
+    to right, 
+    var(--secondary-color), 
+    var(--accent-color), 
+    var(--primary-color)
+  );
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
 }
 
 /* 섹션 제목 스타일링 */
 .description h4, .credentials h4, .career h4 {
-  margin-top: auto;
-  font-size: 1.5rem;
+  font-size: 1.35rem;
   margin-bottom: 1rem;
   padding-bottom: 0.75rem;
-  border-bottom: 2px solid #e2e8f0;
+  position: relative;
+  font-weight: 600;
+  color: var(--secondary-color);
+  display: inline-block;
+}
+
+.description h4::after, .credentials h4::after, .career h4::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 100%;
+  background: linear-gradient(
+    to right, 
+    var(--secondary-color), 
+    var(--accent-color),
+    var(--primary-color)
+  );
+  border-radius: 2px;
+}
+
+/* 섹션 호버 효과 */
+.description:hover, .credentials:hover, .career:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.12),
+              0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
 /* 텍스트 스타일링 */
 .description p, .credentials p, .career p {
-  line-height: 1.7;
-  font-size: 1.1rem;
-  color: black;
+  line-height: 1.8;
+  font-size: 1.05rem;
+  color: var(--text-dark);
+  margin-bottom: 0.5rem;
 }
 
 /* 경력 리스트 스타일링 */
 .career-list p {
   position: relative;
-  padding-left: 1.5rem;
-  margin-bottom: 0.75rem;
+  padding-left: 1.8rem;
+  margin-bottom: 0.85rem;
 }
 
 .career-list p::before {
-  content: "•";
-  color: #00599c;
-  font-size: 1.4rem;
+  content: "";
   position: absolute;
   left: 0;
-  top: -0.2rem;
+  top: 0.5rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: var(--accent-color);
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.2);
+  transition: var(--transition);
+}
+
+.career-list p:hover::before {
+  background-color: var(--primary-color);
+  transform: scale(1.2);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.25);
 }
 
 .career ul {
@@ -280,25 +340,29 @@ export default {
   padding-left: 0;
 }
 
-.career ul li {
-  color: #4a5568;
-  margin-bottom: 0.5rem;
-  padding-left: 1.5rem;
-  position: relative;
-}
+/* 모바일 반응형 */
+@media screen and (max-width: 1024px) {
 
-.career ul li::before {
-  content: "•";
-  color: #00599c;
-  position: absolute;
-  left: 0;
+
+  .profile-content, .profile-image {
+    max-width: 50%;
+  }
+
+  .profile-name {
+    font-size: 2rem;
+  }
+
+  .profile-title {
+    font-size: 1.5rem;
+  }
 }
 
 @media screen and (max-width: 768px) {
   .profile-container {
-    flex-direction: column;
+    flex-direction: column-reverse;
     min-height: auto;
     align-items: center;
+    gap: 1.5rem;
   }
 
   .profile-content,
@@ -307,13 +371,22 @@ export default {
   }
 
   .profile-image {
-    height: 400px;
     margin: 2rem 0;
   }
 
+  .profile-image img {
+    width: 70%;
+    height: 70%;
+    margin: 0 auto;
+    display: block;
+  }
+
   .profile-name-title-container {
-    width: 100%;
-    padding: 1.25rem;
+    width: 90%;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    margin-left: auto;
+    margin-right: auto;
   }
   
   .profile-name {
@@ -322,6 +395,28 @@ export default {
   
   .profile-title {
     font-size: 1.5rem;
+  }
+
+  .description, .credentials, .career {
+    padding: 1.25rem;
+    border-radius: 10px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .description h4, .credentials h4, .career h4 {
+    font-size: 1.25rem;
+    display: block;
+    width: 100%;
+    margin-bottom: 0.75rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .description p, .credentials p, .career p {
+    font-size: 1rem;
+    width: 100%;
+    word-wrap: break-word;
   }
 }
 </style>
