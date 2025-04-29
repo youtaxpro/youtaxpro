@@ -65,6 +65,40 @@ export default {
   background-color: white;
 }
 
+/* 전역 변수 및 애니메이션 - 중복 제거 */
+:root {
+  --primary-color: #2563eb; /* 현대적인 블루 */
+  --secondary-color: #4f46e5; /* 인디고 */
+  --accent-color: #8b5cf6; /* 보라색 */
+  --highlight-color: #f59e0b; /* 골드/옐로우 계열 */
+  --text-dark: #1e293b; /* 짙은 슬레이트 */
+  --text-light: #f8fafc; /* 밝은 회색 */
+  --bg-light: #f1f5f9; /* 밝은 배경 */
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(79, 70, 229, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0); }
+}
+
+@keyframes shine {
+  0% { left: -150%; }
+  100% { left: 150%; }
+}
+
 /* Call to Action Section */
 .aboutus-cta {
   margin: 5rem auto 2rem;
@@ -82,6 +116,31 @@ export default {
   box-shadow: 0 20px 40px rgba(0, 38, 118, 0.2);
   text-align: center;
   color: white;
+  position: relative; /* position 속성 추가 */
+  overflow: hidden; /* overflow 속성 추가 */
+}
+
+.aboutus-cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 150%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 50%, /* 투명도 증가 */
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-20deg);
+  z-index: 1; /* z-index를 1로 변경하여 콘텐츠 위에 표시 */
+  animation: shine 3s infinite;
+}
+
+.cta-content {
+  position: relative; /* 상대적 위치 지정 */
+  z-index: 2; /* z-index를 2로 설정하여 텍스트가 앞으로 오게 함 */
 }
 
 .cta-content h3 {
@@ -115,74 +174,13 @@ export default {
   transform: translateY(-3px);
 }
 
-/* Responsive Design */
-@media screen and (max-width: 992px) {
-  .feature-item, .feature-item.reversed {
-    flex-direction: column;
-    gap: 2rem;
-    text-align: center;
-  }
-  
-  .feature-icon {
-    flex: 0 0 100%;
-  }
-  
-  .feature-content {
-    flex: 0 0 100%;
-  }
-  
-  .feature-content h4::after {
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  
-  .aboutus-cta {
-    padding: 2.5rem 1.5rem;
-  }
-  
-  .cta-content h3 {
-    font-size: 1.8rem;
-  }
-}
-
-:root {
-  --primary-color: #2563eb; /* 현대적인 블루 */
-  --secondary-color: #4f46e5; /* 인디고 */
-  --accent-color: #8b5cf6; /* 보라색 */
-  --highlight-color: #f59e0b; /* 골드/옐로우 계열 */
-  --text-dark: #1e293b; /* 짙은 슬레이트 */
-  --text-light: #f8fafc; /* 밝은 회색 */
-  --bg-light: #f1f5f9; /* 밝은 배경 */
-  --card-bg: rgba(255, 255, 255, 0.9);
-  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-@keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.4); }
-  70% { box-shadow: 0 0 0 10px rgba(79, 70, 229, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0); }
-}
-
-@keyframes shine {
-  0% { left: -100%; }
-  100% { left: 100%; }
-}
-
 /* Title Wrapper Styles */
 .title-wrapper {
   background-image: linear-gradient(
-    
-  );
+    to right,
+    var(--primary-color),
+    var(--secondary-color)
+  ); /* 그라데이션 추가 */
   padding: 2.5rem;
   border-radius: 16px;
   box-shadow: 0 15px 30px rgba(37, 99, 235, 0.2),
@@ -310,6 +308,33 @@ export default {
 @media screen and (max-width: 992px) {
   .aboutus-content-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .feature-item, .feature-item.reversed {
+    flex-direction: column;
+    gap: 2rem;
+    text-align: center;
+  }
+  
+  .feature-icon {
+    flex: 0 0 100%;
+  }
+  
+  .feature-content {
+    flex: 0 0 100%;
+  }
+  
+  .feature-content h4::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .aboutus-cta {
+    padding: 2.5rem 1.5rem;
+  }
+  
+  .cta-content h3 {
+    font-size: 1.8rem;
   }
 }
 
