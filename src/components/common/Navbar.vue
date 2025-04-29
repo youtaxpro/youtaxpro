@@ -136,14 +136,7 @@ nav {
   align-items: center;
   width: 100vw;
   padding: 1rem 3rem;
-  background-image: linear-gradient(
-    to right, 
-    #1E4D92,  /* 진한 블루 */
-    #2E5EAA,  /* 아이덴티티 블루 */
-    #4A74B9,  /* 중간 블루 */
-    #5E8AD0,  /* 밝은 블루 */
-    #75C2F6   /* 하늘색 */
-  );
+  background: transparent;
   position: fixed;
   top: 0;
   left: 0;
