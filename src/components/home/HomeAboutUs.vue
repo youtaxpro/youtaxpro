@@ -176,11 +176,6 @@ export default {
 
 /* Title Wrapper Styles */
 .title-wrapper {
-  background-image: linear-gradient(
-    to right,
-    var(--primary-color),
-    var(--secondary-color)
-  ); /* 그라데이션 추가 */
   padding: 2.5rem;
   border-radius: 16px;
   box-shadow: 0 15px 30px rgba(37, 99, 235, 0.2),
