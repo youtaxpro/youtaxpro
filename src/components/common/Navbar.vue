@@ -26,6 +26,25 @@
         <span></span>
       </button>
     </div>
+    
+    <!-- Mobile Sidebar Menu -->
+    <div class="sidebar-menu" :class="{ 'open': isMenuOpen }">
+      <button class="sidebar-close-btn" @click="toggleMenu">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+      <ul class="nav-links">
+        <li><router-link to="/#aboutus" @click="toggleMenu">{{ $t('nav.aboutUs') }}</router-link></li>
+        <li><router-link to="/#services" @click="toggleMenu">{{ $t('nav.services') }}</router-link></li>
+        <li><router-link to="/#checklists" @click="toggleMenu">{{ $t('nav.checklists') }}</router-link></li>
+        <li><router-link to="/faq" @click="toggleMenu">{{ $t('nav.faq') }}</router-link></li>
+        <li><router-link to="/contactus" @click="toggleMenu">{{ $t('nav.contactUs') }}</router-link></li>
+      </ul>
+      <div class="language-switcher">
+        <button @click="changeLanguage('ko')" class="lang-btn" :class="{ 'active': currentLanguage === 'ko' }">KOR</button>
+        <span class="lang-separator">|</span>
+        <button @click="changeLanguage('en')" class="lang-btn" :class="{ 'active': currentLanguage === 'en' }">ENG</button>
+      </div>
+    </div>
   </nav>
 </template>
 
@@ -49,10 +68,16 @@ export default {
     const toggleMenu = () => {
       isMenuOpen.value = !isMenuOpen.value;
       emit('toggle-menu', isMenuOpen.value);
+      
+      // Add class to prevent body scrolling when sidebar is open
+      if (isMenuOpen.value) {
+        document.body.classList.add('sidebar-open');
+      } else {
+        document.body.classList.remove('sidebar-open');
+      }
+      
       if (mobileNav.value) {
-        const navLinks = mobileNav.value.querySelector('.nav-links');
         const menuBtn = mobileNav.value.querySelector('.mobile-menu-btn');
-        navLinks?.classList.toggle('active');
         menuBtn?.classList.toggle('active');
       }
     };
@@ -252,45 +277,117 @@ nav {
   font-weight: bold;
 }
 
+/* Mobile Sidebar */
+.sidebar-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 80%;
+  max-width: 300px;
+  height: 100vh;
+  background-image: linear-gradient(
+    to right, 
+    rgba(0, 0, 139, 0.95),
+    rgba(0, 71, 171, 0.95),
+    rgba(30, 144, 255, 0.95)
+  );
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+  z-index: 2000;
+  transition: right 0.3s ease-in-out;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.sidebar-menu.open {
+  right: 0;
+}
+
+.sidebar-close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+}
+
+.sidebar-menu .nav-links {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  padding: 0;
+}
+
+.sidebar-menu .nav-links li {
+  width: 100%;
+}
+
+.sidebar-menu .nav-links a {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 0;
+  color: white;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.sidebar-menu .nav-links a:hover,
+.sidebar-menu .nav-links a.router-link-active {
+  color: #FFD700;
+}
+
+.sidebar-menu .language-switcher {
+  margin-top: 2rem;
+  justify-content: center;
+  margin-left: 0;
+}
+
+/* Add a background overlay when sidebar is open */
+body.sidebar-open::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(3px);
+  z-index: 1999;
+}
+
 /* Responsive Design */
 @media screen and (max-width: 768px) {
   nav {
     padding: 0.5rem 0;
     width: 100%;
+    min-height: 70px; /* Ensure consistent height */
   }
 
-  .nav-links {
+  .nav-content .nav-links {
     display: none;
-    position: fixed;
-    top: 106px;
-    left: 0;
-    width: 100%;
-    background-image: linear-gradient(
-      to right, 
-      rgba(0, 0, 139, 0.8),
-      rgba(0, 71, 171, 0.8),
-      rgba(30, 144, 255, 0.8),
-      rgba(65, 105, 225, 0.8),
-      rgba(100, 149, 237, 0.8)
-    );
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
-    flex-direction: column;
-    z-index: 1000;
-    gap: 1rem;
-  }
-
-  .nav-links.active {
-    display: flex;
-    animation: slideDown 0.3s ease-in-out;
   }
 
   .logo {
     padding: 1rem 1rem;
+    display: flex;
+    align-items: center;
+    min-height: 60px; /* Maintain height even with smaller logo */
   }
   
   .logo img {
     height: 40px;
+    transform: scale(0.7);
   }
 
   .mobile-menu-btn {
@@ -305,6 +402,11 @@ nav {
     margin-left: auto;
     margin-right: 1rem;
   }
+}
+
+/* For accessibility - hide scrollbar when sidebar is open */
+body.sidebar-open {
+  overflow: hidden;
 }
 
 @keyframes slideDown {
