@@ -91,9 +91,11 @@ export default {
 }
 
 .aboutus {
-  padding: 2rem;
+  padding: 4rem 2rem;
   background-color: var(--bg-light);
   animation: fadeIn 0.8s ease forwards;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .profile-container {
@@ -102,9 +104,9 @@ export default {
   display: flex;
   gap: 2.5rem; /* 간격 증가 */
   align-items: flex-start;
-  max-width: 1400px; /* 최대 너비 제한 */
+  max-width: 1200px; /* 최대 너비 제한 - HomeAboutUs와 일치 */
   margin: 0 auto; /* 중앙 정렬 */
-  padding: 2rem 1rem;
+  padding: 2rem 0;
 }
 
 .profile-content {
@@ -342,7 +344,13 @@ export default {
 
 /* 모바일 반응형 */
 @media screen and (max-width: 1024px) {
-
+  .aboutus {
+    padding: 3rem 1.5rem;
+  }
+  
+  .profile-container {
+    padding: 1.5rem 0;
+  }
 
   .profile-content, .profile-image {
     max-width: 50%;
@@ -357,12 +365,43 @@ export default {
   }
 }
 
+@media screen and (max-width: 576px) {
+  .aboutus {
+    padding: 2rem 1rem;
+  }
+  
+  .profile-container {
+    padding: 0.5rem 0;
+  }
+  
+  .profile-name {
+    font-size: 1.5rem;
+  }
+  
+  .profile-title {
+    font-size: 1.3rem;
+  }
+  
+  .description h4, .credentials h4, .career h4 {
+    font-size: 1.2rem;
+  }
+  
+  .description p, .credentials p, .career p {
+    font-size: 0.95rem;
+  }
+}
+
 @media screen and (max-width: 768px) {
+  .aboutus {
+    padding: 3rem 1rem;
+  }
+  
   .profile-container {
     flex-direction: column-reverse;
     min-height: auto;
     align-items: center;
     gap: 1.5rem;
+    padding: 1rem 0;
   }
 
   .profile-content,
@@ -382,7 +421,7 @@ export default {
   }
 
   .profile-name-title-container {
-    width: 90%;
+    width: 100%;
     padding: 1.5rem;
     margin-top: 1.5rem;
     margin-left: auto;
@@ -398,7 +437,7 @@ export default {
   }
 
   .description, .credentials, .career {
-    padding: 1.25rem;
+    padding: 0.5rem;
     border-radius: 10px;
     width: 100%;
     box-sizing: border-box;
