@@ -1,5 +1,5 @@
 <template>
-  <footer style="background: linear-gradient(135deg, #002676 0%, #004ea8 100%); color: white; padding: 2rem 0; width: 100vw;">
+  <footer style="background: linear-gradient(135deg, #1E4D92 0%, #2E5EAA 50%, #75C2F6 100%); color: white; padding: 2rem 0; width: 100vw;">
     <div style="width: 100%; padding: 0 3rem;">
       <!-- Top Section with Sections -->
       <div style="display: flex; flex-wrap: wrap; gap: 2rem; margin-bottom: 2rem;">

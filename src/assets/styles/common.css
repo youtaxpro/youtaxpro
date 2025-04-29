@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #f8f9fa;
+  background-color: #F5F7FA; /* 배경색 변경 - 연한 회색 */
 }
 
 /* 페이지 배경 이미지가 있는 경우 */
@@ -48,16 +48,16 @@
 }
 
 .tax-website h5 {
-  color: #002676;
+  color: #2E5EAA; /* 색상 변경 - 아이덴티티 블루 */
   font-size: large;
 }
 
 /* 타이틀 래퍼 스타일 */
 .title-wrapper {
-  background: linear-gradient(135deg, #002676 0%, #004ea8 80%);
+  background: linear-gradient(135deg, #2E5EAA 0%, #75C2F6 80%); /* 배경 그라데이션 변경 - 아이덴티티 블루에서 하늘색으로 */
   padding: 2rem;
   border-radius: 10px;
-  box-shadow: 0 10px 25px rgba(0, 38, 118, 0.15);
+  box-shadow: 0 10px 25px rgba(46, 94, 170, 0.15); /* 그림자 색상 변경 */
   margin: 2rem auto;
   max-width: 1200px;
   display: flex;

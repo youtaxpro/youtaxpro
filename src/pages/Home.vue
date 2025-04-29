@@ -307,52 +307,52 @@
 </section>
 
     <!-- Footer -->
-    <footer style="background: linear-gradient(135deg, #002676 0%, #004ea8 100%); color: white; padding: 2rem 0; width: 100vw;">
-      <div style="width: 100%; padding: 0 3rem;">
-        <!-- Top Section with Sections -->
-        <div style="display: flex; flex-wrap: wrap; gap: 2rem; margin-bottom: 2rem;">
-          <!-- Column 1 - About & Company Info -->
-          <div style="flex: 1; min-width: 250px;">
-            <h3 style="font-size: 1.4rem; margin-bottom: 1.5rem; color: white;">{{ $t('footer.companyName') }}</h3>
-            <p style="margin-bottom: 0.5rem; color: rgba(255,255,255,0.8);">{{ $t('footer.representative') }}</p>
-            <p style="margin-bottom: 0.5rem; color: rgba(255,255,255,0.8);">{{ $t('footer.address') }}</p>
-            <p style="margin-bottom: 0.5rem; color: rgba(255,255,255,0.8);">{{ $t('footer.businessNumber') }}</p>
-          </div>
-
-          <!-- Column 2 - Contact -->
-          <div style="flex: 1; min-width: 250px;">
-            <h3 style="font-size: 1.4rem; margin-bottom: 1.5rem; color: white;">{{ $t('contact.title') }}</h3>
-            <p style="margin-bottom: 0.5rem; color: rgba(255,255,255,0.8);">{{ $t('footer.phone') }}</p>
-            <p style="margin-bottom: 0.5rem; color: rgba(255,255,255,0.8);">{{ $t('footer.fax') }}</p>
-            <p style="margin-bottom: 0.5rem; color: rgba(255,255,255,0.8);">{{ $t('footer.email') }}</p>
-            <p style="margin-bottom: 0.5rem; color: rgba(255,255,255,0.8);">{{ $t('footer.blog') }}</p>
-          </div>
-
-          <!-- Column 3 - Hours -->
-          <div style="flex: 1; min-width: 250px;">
-            <h3 style="font-size: 1.4rem; margin-bottom: 1.5rem; color: white;">{{ $t('contact.hours.title') }}</h3>
-            <p style="margin-bottom: 0.5rem; color: rgba(255,255,255,0.8);">{{ $t('contact.hours.weekday') }}</p>
-            <p style="margin-bottom: 0.5rem; color: rgba(255,255,255,0.8);">{{ $t('contact.hours.weekend') }}</p>
-          </div>
+    <footer style="background: linear-gradient(135deg, #1E4D92 0%, #2E5EAA 50%, #75C2F6 100%); color: white; padding: 2rem 0; width: 100vw;">
+    <div style="width: 100%; padding: 0 3rem;">
+      <!-- Top Section with Sections -->
+      <div style="display: flex; flex-wrap: wrap; gap: 2rem; margin-bottom: 2rem;">
+        <!-- Column 1 - About & Company Info -->
+        <div style="flex: 1; min-width: 250px;">
+          <h3 style="font-size: 1.4rem; margin-bottom: 1.5rem; color: white;">{{ $t('footer.companyName') }}</h3>
+          <p style="margin-bottom: 0.5rem; color: rgba(255,255,255,0.8);">{{ $t('footer.representative') }}</p>
+          <p style="margin-bottom: 0.5rem; color: rgba(255,255,255,0.8);">{{ $t('footer.address') }}</p>
+          <p style="margin-bottom: 0.5rem; color: rgba(255,255,255,0.8);">{{ $t('footer.businessNumber') }}</p>
         </div>
 
-        <!-- Divider -->
-        <div style="height: 1px; background-color: rgba(255,255,255,0.2); margin: 1.5rem 0;"></div>
+        <!-- Column 2 - Contact -->
+        <div style="flex: 1; min-width: 250px;">
+          <h3 style="font-size: 1.4rem; margin-bottom: 1.5rem; color: white;">{{ $t('contact.title') }}</h3>
+          <p style="margin-bottom: 0.5rem; color: rgba(255,255,255,0.8);">{{ $t('footer.phone') }}</p>
+          <p style="margin-bottom: 0.5rem; color: rgba(255,255,255,0.8);">{{ $t('footer.fax') }}</p>
+          <p style="margin-bottom: 0.5rem; color: rgba(255,255,255,0.8);">{{ $t('footer.email') }}</p>
+          <p style="margin-bottom: 0.5rem; color: rgba(255,255,255,0.8);">{{ $t('footer.blog') }}</p>
+        </div>
 
-        <!-- Copyright and Bottom Links -->
-        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; width: 100%;">
-          <p style="color: rgba(255,255,255,0.6); font-size: 0.875rem;">&copy; 2024-2025 {{ $t('footer.companyName') }}</p>
-          
-          <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+        <!-- Column 3 - Hours -->
+        <div style="flex: 1; min-width: 250px;">
+          <h3 style="font-size: 1.4rem; margin-bottom: 1.5rem; color: white;">{{ $t('contact.hours.title') }}</h3>
+          <p style="margin-bottom: 0.5rem; color: rgba(255,255,255,0.8);">{{ $t('contact.hours.weekday') }}</p>
+          <p style="margin-bottom: 0.5rem; color: rgba(255,255,255,0.8);">{{ $t('contact.hours.weekend') }}</p>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div style="height: 1px; background-color: rgba(255,255,255,0.2); margin: 1.5rem 0;"></div>
+
+      <!-- Copyright and Bottom Links -->
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; width: 100%;">
+        <p style="color: rgba(255,255,255,0.6); font-size: 0.875rem;">&copy; 2024-2025 {{ $t('footer.companyName') }}</p>
+        
+        <div style="display: flex; gap: 1rem; margin-top: 1rem;">
             <router-link to="/#aboutus" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem;">{{ $t('nav.aboutUs') }}</router-link>
             <router-link to="/#services" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem;">{{ $t('nav.services') }}</router-link>
             <router-link to="/#checklists" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem;">{{ $t('nav.checklists') }}</router-link>
             <router-link to="/faq" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem;">{{ $t('nav.faq') }}</router-link>
             <router-link to="/contactus" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem;">{{ $t('nav.contactUs') }}</router-link>
           </div>
-        </div>
       </div>
-    </footer>
+    </div>
+  </footer>
   </div>
 </template>
 
@@ -668,11 +668,11 @@ nav {
   padding: 1rem 3rem;
   background-image: linear-gradient(
     to right, 
-    #00008B,  /* 다크 블루 */
-    #0047AB,  /* 코발트 블루 */
-    #1E90FF,  /* 도저 블루 */
-    #4169E1,  /* 로얄 블루 */
-    #6495ED   /* 콘플라워 블루 */
+    #1E4D92,  /* 진한 블루 */
+    #2E5EAA,  /* 아이덴티티 블루 */
+    #4A74B9,  /* 중간 블루 */
+    #5E8AD0,  /* 밝은 블루 */
+    #75C2F6   /* 하늘색 */
   );
   position: fixed;
   top: 0;
@@ -684,13 +684,13 @@ nav {
 .nav-scrolled {
   background-image: linear-gradient(
     to right, 
-    rgba(0, 0, 139, 0.8),  /* 다크 블루 (80% 투명도) */
-    rgba(0, 71, 171, 0.8),  /* 코발트 블루 (80% 투명도) */
-    rgba(30, 144, 255, 0.8),  /* 도저 블루 (80% 투명도) */
-    rgba(65, 105, 225, 0.8),  /* 로얄 블루 (80% 투명도) */
-    rgba(100, 149, 237, 0.8)   /* 콘플라워 블루 (80% 투명도) */
+    rgba(30, 77, 146, 0.8),  /* 진한 블루 (80% 투명도) */
+    rgba(46, 94, 170, 0.8),  /* 아이덴티티 블루 (80% 투명도) */
+    rgba(74, 116, 185, 0.8),  /* 중간 블루 (80% 투명도) */
+    rgba(94, 138, 208, 0.8),  /* 밝은 블루 (80% 투명도) */
+    rgba(117, 194, 246, 0.8)   /* 하늘색 (80% 투명도) */
   );
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgba(46, 94, 170, 0.2);
 }
 
 .nav-container {
@@ -703,13 +703,11 @@ nav {
 display: flex;
 align-items: center;
 height: 100%;
-  min-height: 60px; /* Maintain height even with smaller logo */
   }
 
 .logo img {
 height: 50px;
 margin: auto 0;
-  transform: scale(0.7); /* Logo at 70% size on mobile */
   }
 
 .nav-content {
@@ -849,7 +847,14 @@ margin: auto 0;
 }
 
 .form-wrapper {
-  background: linear-gradient(135deg, #002676 0%, #004ea8 80%);
+  background-image: linear-gradient(
+    to right, 
+    rgba(30, 77, 146, 0.8),  /* 진한 블루 (80% 투명도) */
+    rgba(46, 94, 170, 0.8),  /* 아이덴티티 블루 (80% 투명도) */
+    rgba(74, 116, 185, 0.8),  /* 중간 블루 (80% 투명도) */
+    rgba(94, 138, 208, 0.8),  /* 밝은 블루 (80% 투명도) */
+    rgba(117, 194, 246, 0.8)   /* 하늘색 (80% 투명도) */
+  );
   padding: 2rem;
   border-radius: 10px;
   color: white;
@@ -1016,7 +1021,14 @@ margin: auto 0;
   margin: 5rem auto 2rem;
   max-width: 1000px;
   padding: 3rem;
-  background: linear-gradient(135deg, #002676 0%, #004ea8 80%);
+  background-image: linear-gradient(
+    to right, 
+    rgba(30, 77, 146, 0.8),  /* 진한 블루 (80% 투명도) */
+    rgba(46, 94, 170, 0.8),  /* 아이덴티티 블루 (80% 투명도) */
+    rgba(74, 116, 185, 0.8),  /* 중간 블루 (80% 투명도) */
+    rgba(94, 138, 208, 0.8),  /* 밝은 블루 (80% 투명도) */
+    rgba(117, 194, 246, 0.8)   /* 하늘색 (80% 투명도) */
+  );
   border-radius: 15px;
   box-shadow: 0 20px 40px rgba(0, 38, 118, 0.2);
   text-align: center;
@@ -1145,7 +1157,14 @@ margin: auto 0;
 }
 
 .profile-name-title-container {
-  background: linear-gradient(135deg, #002676 0%, #004ea8 60%);
+  background-image: linear-gradient(
+    to right, 
+    rgba(30, 77, 146, 0.8),  /* 진한 블루 (80% 투명도) */
+    rgba(46, 94, 170, 0.8),  /* 아이덴티티 블루 (80% 투명도) */
+    rgba(74, 116, 185, 0.8),  /* 중간 블루 (80% 투명도) */
+    rgba(94, 138, 208, 0.8),  /* 밝은 블루 (80% 투명도) */
+    rgba(117, 194, 246, 0.8)   /* 하늘색 (80% 투명도) */
+  );
   border-radius: 10px;
   padding: 1.5rem;
   margin-top: 1.5rem;
@@ -1346,7 +1365,14 @@ section {
 
 /* Title Wrapper Styles */
 .title-wrapper {
-  background: linear-gradient(135deg, #002676 0%, #004ea8 80%);
+  background-image: linear-gradient(
+    to right, 
+    rgba(30, 77, 146, 0.8),  /* 진한 블루 (80% 투명도) */
+    rgba(46, 94, 170, 0.8),  /* 아이덴티티 블루 (80% 투명도) */
+    rgba(74, 116, 185, 0.8),  /* 중간 블루 (80% 투명도) */
+    rgba(94, 138, 208, 0.8),  /* 밝은 블루 (80% 투명도) */
+    rgba(117, 194, 246, 0.8)   /* 하늘색 (80% 투명도) */
+  );
   padding: 2rem;
   border-radius: 10px;
   box-shadow: 0 10px 25px rgba(0, 38, 118, 0.15);
@@ -1769,11 +1795,11 @@ font-size: medium;
   height: 100vh;
   background-image: linear-gradient(
     to right, 
-    rgba(0, 0, 139, 0.95),
-    rgba(0, 71, 171, 0.95),
-    rgba(30, 144, 255, 0.95)
+    rgba(30, 77, 146, 0.95),
+    rgba(46, 94, 170, 0.95),
+    rgba(117, 194, 246, 0.95)
   );
-  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+  box-shadow: -5px 0 15px rgba(46, 94, 170, 0.2);
   z-index: 2000;
   transition: right 0.3s ease-in-out;
   padding: 2rem 1rem;
@@ -1792,8 +1818,7 @@ font-size: medium;
   color: white;
   font-size: 1.5rem;
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  right: 1.1rem;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -1826,7 +1851,7 @@ font-size: medium;
 
 .sidebar-menu .nav-links a:hover,
 .sidebar-menu .nav-links a.router-link-active {
-  color: #FFD700;
+  color: #FFA41B; /* 오렌지색으로 변경 */
 }
 
 .sidebar-menu .language-switcher {
@@ -1905,9 +1930,16 @@ body.sidebar-open {
   .nav-content .nav-links {
     display: none;
   }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    min-height: 60px; /* Maintain height even with smaller logo */
+  }
   
   .logo img {
     height: 40px; /* 모바일에서는 로고 크기를 약간 줄임 */
+    transform: scale(0.7);
   }
 
   .mobile-menu-btn {

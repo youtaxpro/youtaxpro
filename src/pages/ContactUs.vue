@@ -100,7 +100,7 @@ h2::after {
   transform: translateX(-50%);
   width: 100px;
   height: 3px;
-  background: linear-gradient(90deg, #ffec9a, #ffc857);
+  background: linear-gradient(90deg, #FFA41B, #FFB443, #FFC56A, #FFD892);
   border-radius: 2px;
 }
 
@@ -158,7 +158,7 @@ h3 {
 }
 
 .blog-link {
-  color: #ffc857;
+  color: #FFA41B;
   text-decoration: none;
   transition: color 0.3s ease;
 }

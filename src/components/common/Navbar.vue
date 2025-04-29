@@ -138,11 +138,11 @@ nav {
   padding: 1rem 3rem;
   background-image: linear-gradient(
     to right, 
-    #00008B,  /* 다크 블루 */
-    #0047AB,  /* 코발트 블루 */
-    #1E90FF,  /* 도저 블루 */
-    #4169E1,  /* 로얄 블루 */
-    #6495ED   /* 콘플라워 블루 */
+    #1E4D92,  /* 진한 블루 */
+    #2E5EAA,  /* 아이덴티티 블루 */
+    #4A74B9,  /* 중간 블루 */
+    #5E8AD0,  /* 밝은 블루 */
+    #75C2F6   /* 하늘색 */
   );
   position: fixed;
   top: 0;
@@ -154,13 +154,13 @@ nav {
 .nav-scrolled {
   background-image: linear-gradient(
     to right, 
-    rgba(0, 0, 139, 0.8),  /* 다크 블루 (80% 투명도) */
-    rgba(0, 71, 171, 0.8),  /* 코발트 블루 (80% 투명도) */
-    rgba(30, 144, 255, 0.8),  /* 도저 블루 (80% 투명도) */
-    rgba(65, 105, 225, 0.8),  /* 로얄 블루 (80% 투명도) */
-    rgba(100, 149, 237, 0.8)   /* 콘플라워 블루 (80% 투명도) */
+    rgba(30, 77, 146, 0.8),  /* 진한 블루 (80% 투명도) */
+    rgba(46, 94, 170, 0.8),  /* 아이덴티티 블루 (80% 투명도) */
+    rgba(74, 116, 185, 0.8),  /* 중간 블루 (80% 투명도) */
+    rgba(94, 138, 208, 0.8),  /* 밝은 블루 (80% 투명도) */
+    rgba(117, 194, 246, 0.8)   /* 하늘색 (80% 투명도) */
   );
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgba(46, 94, 170, 0.2);
 }
 
 .nav-container {
@@ -223,7 +223,7 @@ nav {
 }
 
 .lang-btn:hover, .lang-btn.active {
-  background-image: linear-gradient(to right, #FFD700, #FFc700, #ffb700, #FFA500);
+  background-image: linear-gradient(to right, #FFA41B, #FFB443, #FFC56A, #FFD892);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -280,7 +280,7 @@ nav {
 /* Router Link Active State */
 .nav-links a.active,
 .router-link-active {
-  color: #3b82f6;
+  color: #FFA41B; /* 오렌지색으로 변경 */
   font-weight: bold;
 }
 
@@ -294,11 +294,11 @@ nav {
   height: 100vh;
   background-image: linear-gradient(
     to right, 
-    rgba(0, 0, 139, 0.95),
-    rgba(0, 71, 171, 0.95),
-    rgba(30, 144, 255, 0.95)
+    rgba(30, 77, 146, 0.95),
+    rgba(46, 94, 170, 0.95),
+    rgba(117, 194, 246, 0.95)
   );
-  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+  box-shadow: -5px 0 15px rgba(46, 94, 170, 0.2);
   z-index: 2000;
   transition: right 0.3s ease-in-out;
   padding: 2rem 1rem;
@@ -350,7 +350,7 @@ nav {
 
 .sidebar-menu .nav-links a:hover,
 .sidebar-menu .nav-links a.router-link-active {
-  color: #FFD700;
+  color: #FFA41B; /* 오렌지색으로 변경 */
 }
 
 .sidebar-menu .language-switcher {

@@ -8,7 +8,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #F5F7FA; /* 배경 색상 - 연한 회색 */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -18,11 +18,11 @@
 
 a {
   font-weight: 500;
-  color: #213547;
+  color: #2D3748; /* 텍스트 색상 - 짙은 회색 */
   text-decoration: inherit;
 }
 a:hover {
-  color: #45a049; /* 링크 호버 색상 변경 */
+  color: #FFA41B; /* 링크 호버 색상 변경 - 오렌지 */
 }
 
 body {
@@ -46,12 +46,12 @@ button {
   font-weight: 500;
   font-family: inherit;
   color: white;
-  background-color: #0071e3; /* 버튼 색상 변경 */
+  background-color: #2E5EAA; /* 버튼 색상 변경 - 아이덴티티 블루 */
   cursor: pointer;
   transition: transform 0.3s ease, background-color 0.3s;
 }
 button:hover {
-  background-color: #0071e3; /* 버튼 호버 색상 변경 */
+  background-color: #FFA41B; /* 버튼 호버 색상 변경 - 오렌지 */
 }
 button:focus,
 button:focus-visible {
@@ -89,9 +89,9 @@ html, body {
     background-color: #ffffff;
   }
   a:hover {
-    color: #0071e3; /* 라이트 모드 링크 호버 색상 변경 */
+    color: #FFA41B; /* 라이트 모드 링크 호버 색상 변경 - 오렌지 */
   }
   button {
-    background-color: #0071e3; /* 라이트 모드 버튼 색상 변경 */
+    background-color: #2E5EAA; /* 라이트 모드 버튼 색상 변경 - 아이덴티티 블루 */
   }
 }
