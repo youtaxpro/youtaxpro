@@ -292,6 +292,11 @@ export default {
   position: relative;
   border-bottom-left-radius: 16px;
   border-bottom-right-radius: 16px;
+  height: 120px; /* Fixed height for all cards */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .service-icon {
@@ -336,6 +341,7 @@ export default {
   margin-top: 1rem;
   padding: 0 0.5rem;
   transition: var(--transition);
+  width: 100%;
 }
 
 .service-card:hover .service-content p {
@@ -389,6 +395,7 @@ export default {
   
   .service-content {
     padding: 1.5rem 1.2rem;
+    height: 100px; /* Adjusted height for mobile */
   }
   
   .service-content p {
