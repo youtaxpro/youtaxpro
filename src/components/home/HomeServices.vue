@@ -14,7 +14,17 @@
         <div v-for="i in 8" :key="i" class="service-card">
           <div class="service-image">
             <div class="service-overlay"></div>
-            <img :src="getServiceImage(i)" :alt="'Service ' + i">
+            <!-- 최적화된 이미지 로딩 방식 사용 -->
+            <picture>
+              <source v-if="webpSupport" :srcset="getServiceImageWebP(i)" type="image/webp">
+              <source v-if="avifSupport" :srcset="getServiceImageAVIF(i)" type="image/avif">
+              <img 
+                :src="getServiceImage(i)" 
+                :alt="'Service ' + i"
+                class="lazy-image"
+                loading="lazy"
+              >
+            </picture>
           </div>
           <div class="service-content">
             <div class="service-icon">
@@ -29,6 +39,7 @@
 </template>
 
 <script>
+import { ref, onMounted } from 'vue';
 import service1 from '../../assets/service1.jpg';
 import service2 from '../../assets/service2.jpg';
 import service3 from '../../assets/service3.jpg';
@@ -37,13 +48,41 @@ import service5 from '../../assets/service5.jpg';
 import service6 from '../../assets/service6.jpg';
 import service7 from '../../assets/service7.jpg';
 import service8 from '../../assets/service8.jpg';
+// 최적화된 이미지 로더 임포트
+import { setupLazyLoading } from '../../utils/imageLoader';
+
+// 최적화된 WebP 이미지 임포트
+const webpImages = import.meta.glob('../../assets/optimized/*.webp', { eager: true });
+// 최적화된 AVIF 이미지 임포트
+const avifImages = import.meta.glob('../../assets/optimized/*.avif', { eager: true });
 
 export default {
   name: 'HomeServices',
   setup() {
-    // 서비스 이미지 매핑
+    // 브라우저 이미지 형식 지원 여부 확인
+    const webpSupport = ref(false);
+    const avifSupport = ref(false);
+
+    onMounted(() => {
+      // WebP 지원 확인
+      const webpTest = new Image();
+      webpTest.onload = () => { webpSupport.value = true; };
+      webpTest.onerror = () => { webpSupport.value = false; };
+      webpTest.src = 'data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoBAAEAAwA0JaQAA3AA/vuUAAA=';
+
+      // AVIF 지원 확인
+      const avifTest = new Image();
+      avifTest.onload = () => { avifSupport.value = true; };
+      avifTest.onerror = () => { avifSupport.value = false; };
+      avifTest.src = 'data:image/avif;base64,AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUIAAADybWV0YQAAAAAAAAAoaGRscgAAAAAAAAAAcGljdAAAAAAAAAAAAAAAAGxpYmF2aWYAAAAADnBpdG0AAAAAAAEAAAAeaWxvYwAAAABEAAABAAEAAAABAAABGgAAAB0AAAAoaWluZgAAAAAAAQAAABppbmZlAgAAAAABAABhdjAxQ29sb3IAAAAAamlwcnAAAABLaXBjbwAAABRpc3BlAAAAAAAAAAIAAAACAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQ0MAAAAABNjb2xybmNseAACAAIAAYAAAAAXaXBtYQAAAAAAAAABAAEEAQKDBAAAACVtZGF0EgAKCBgANogQEAwgMg8f8D///8WfhwB8+ErK';
+
+      // 이미지 지연 로딩 설정
+      setupLazyLoading('.lazy-image');
+    });
+
+    // 기본 이미지 매핑 함수
     const getServiceImage = (index) => {
-      // 서비스별 이미지 매핑
+      // 서비스별 기본 이미지 매핑
       const images = {
         1: service1,
         2: service2,
@@ -58,8 +97,24 @@ export default {
       return images[index] || '/images/default-service.jpg';
     };
 
+    // WebP 이미지 매핑 함수
+    const getServiceImageWebP = (index) => {
+      const webpPath = `../../assets/optimized/service${index}.webp`;
+      return webpImages[webpPath]?.default || getServiceImage(index);
+    };
+
+    // AVIF 이미지 매핑 함수
+    const getServiceImageAVIF = (index) => {
+      const avifPath = `../../assets/optimized/service${index}.avif`;
+      return avifImages[avifPath]?.default || getServiceImageWebP(index);
+    };
+
     return {
-      getServiceImage
+      getServiceImage,
+      getServiceImageWebP,
+      getServiceImageAVIF,
+      webpSupport,
+      avifSupport
     };
   }
 };
@@ -76,6 +131,12 @@ export default {
   --bg-light: #f1f5f9; /* 밝은 배경 */
   --card-bg: rgba(255, 255, 255, 0.9);
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 이미지 로딩 관련 애니메이션 */
+@keyframes lazyLoad {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
 @keyframes fadeIn {
@@ -272,12 +333,22 @@ export default {
   );
 }
 
-.service-image img {
+.service-image img, .service-image picture {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: transform 0.5s ease, opacity 0.3s ease;
   filter: brightness(0.95);
+}
+
+/* 지연 로딩 이미지 효과 */
+.lazy-image {
+  opacity: 0;
+}
+
+.lazy-image.loaded {
+  opacity: 1;
+  animation: lazyLoad 0.3s ease forwards;
 }
 
 .service-card:hover .service-image img {
