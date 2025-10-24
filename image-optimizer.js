@@ -34,14 +34,14 @@ async function optimizeImage(inputPath, fileName) {
     const jpgOutputPath = path.join(outputDir, `${baseName}.jpg`);
     await sharp(inputPath)
       .resize(resizeOptions)
-      .jpeg({ quality: 80, mozjpeg: true })
+      .jpeg({ quality: 70, mozjpeg: true })
       .toFile(jpgOutputPath);
     
     // WebP로 변환
     const webpOutputPath = path.join(outputDir, `${baseName}.webp`);
     await sharp(inputPath)
       .resize(resizeOptions)
-      .webp({ quality: 75 })
+      .webp({ quality: 65 })
       .toFile(webpOutputPath);
     
     // 최적화된 이미지 정보 출력
