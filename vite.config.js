@@ -43,7 +43,7 @@ export default defineConfig({
       },
     }),
   ],
-  base: "/youtaxpro/", // 여기를 수정! 커스텀 도메인을 사용할 때는 그냥 "/"로 설정
+  base: "/youtaxpro/", // GitHub Pages 배포용 설정
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
