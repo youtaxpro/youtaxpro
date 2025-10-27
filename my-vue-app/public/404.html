@@ -1,0 +1,14 @@
+<!-- public/404.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="refresh" content="0; url=/?redirected=true" />
+    <script>
+      // URL 정보를 index.html로 넘기는 단순 리디렉션 스크립트
+      if (window.location.pathname !== "/") {
+        window.location.replace("/?redirected=true#" + window.location.pathname);
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
