@@ -129,8 +129,8 @@ const messages = {
         title: 'Frequently Asked Questions',
         items: [
           {
-            question: 'How is a "U.S. person" defined for tax purposes, and what are the filing requirements for the 2025 tax year?',
-            answer: `"U.S. person" for tax purposes includes U.S. citizens, permanent residents (green card holders), and individuals who meet the Substantial Presence Test. For the 2025 tax year, U.S. persons must file if their gross income exceeds certain thresholds, which vary based on filing status and age. It's crucial to consult with a tax professional to determine your specific filing requirements, as individual circumstances can greatly impact your obligations.`
+            question: 'How is a "U.S. person" defined for tax purposes, and what are the filing requirements for the 2026 tax year?',
+            answer: `"U.S. person" for tax purposes includes U.S. citizens, permanent residents (green card holders), and individuals who meet the Substantial Presence Test. For the 2026 tax year, U.S. persons must file if their gross income exceeds certain thresholds, which vary based on filing status and age. It's crucial to consult with a tax professional to determine your specific filing requirements, as individual circumstances can greatly impact your obligations.`
           },
           {
             question: 'What essential tax documents should I gather and provide to my tax professional to ensure accurate filing?',
@@ -355,8 +355,8 @@ Given the complexities of U.S. tax law, especially for those with international 
         title: '자주 묻는 질문',
         items: [
           {
-            question: '세금 목적상 "미국인"은 어떻게 정의되며, 2025년 세금 연도의 신고 요건은 무엇인가요?',
-            answer: '세금 목적상 "미국인"은 미국 시민, 영주권자(그린카드 소지자), 그리고 실질체류테스트를 충족하는 개인을 포함합니다. 2025년 세금 연도에는 총소득이 특정 기준을 초과하는 미국인은 신고해야 하며, 이 기준은 신고 상태와 나이에 따라 다릅니다. 개인의 상황에 따라 신고 의무가 크게 달라질 수 있으므로 당사의 세무 전문가와 상담하는 것이 중요합니다.'
+            question: '세금 목적상 "미국인"은 어떻게 정의되며, 2026년 세금 연도의 신고 요건은 무엇인가요?',
+            answer: '세금 목적상 "미국인"은 미국 시민, 영주권자(그린카드 소지자), 그리고 실질체류테스트를 충족하는 개인을 포함합니다. 2026년 세금 연도에는 총소득이 특정 기준을 초과하는 미국인은 신고해야 하며, 이 기준은 신고 상태와 나이에 따라 다릅니다. 개인의 상황에 따라 신고 의무가 크게 달라질 수 있으므로 당사의 세무 전문가와 상담하는 것이 중요합니다.'
           },
           {
             question: '정확한 세금 신고를 위해 세무 전문가에게 제공해야 할 필수 서류는 무엇인가요?',
