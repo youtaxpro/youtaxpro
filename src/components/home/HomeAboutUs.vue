@@ -10,7 +10,7 @@
     <div class="aboutus-card">
       <!-- Top Image Section -->
       <div class="aboutus-image-container">
-        <img :src="taxExpertiseIcon" alt="Tax Expertise" class="aboutus-hero-image">
+        <img :src="taxExpertiseIcon" alt="Tax Expertise" class="aboutus-hero-image" fetchpriority="high">
       </div>
       
       <!-- Content Sections -->
@@ -95,8 +95,8 @@ export default {
 }
 
 @keyframes shine {
-  0% { left: -150%; }
-  100% { left: 150%; }
+  0%   { transform: translateX(-150%); }
+  100% { transform: translateX(150%); }
 }
 
 /* Call to Action Section */
@@ -133,8 +133,8 @@ export default {
     rgba(255, 255, 255, 0.3) 50%, /* 투명도 증가 */
     rgba(255, 255, 255, 0) 100%
   );
-  transform: skewX(-20deg);
   z-index: 1; /* z-index를 1로 변경하여 콘텐츠 위에 표시 */
+  transform: skewX(-20deg) translateX(-150%);
   animation: shine 3s infinite;
 }
 
@@ -206,8 +206,7 @@ export default {
     rgba(255, 255, 255, 0.2) 50%,
     rgba(255, 255, 255, 0) 100%
   );
-  transform: skewX(-25deg);
-  z-index: 2;
+  transform: skewX(-25deg) translateX(-150%);  z-index: 2;
   animation: shine 6s infinite;
 }
 

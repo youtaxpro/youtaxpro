@@ -192,7 +192,7 @@ export default {
     rgba(255, 255, 255, 0.1) 50%,
     rgba(255, 255, 255, 0) 100%
   );
-  transform: skewX(-20deg);
+    transform: skewX(-20deg) translateX(-150%);
   z-index: -1;
   animation: shine 3s infinite;
 }
