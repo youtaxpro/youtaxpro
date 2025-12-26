@@ -20,10 +20,10 @@ export default defineConfig({
         optimizationLevel: 7,
       },
       mozjpeg: {
-        quality: 80,
+        quality: 70,
       },
       pngquant: {
-        quality: [0.8, 0.9],
+        quality: [0.6, 0.8],
         speed: 4,
       },
       svgo: {
@@ -38,7 +38,7 @@ export default defineConfig({
         ],
       },
       webp: {
-        quality: 80,
+        quality: 75,
         lossless: false,
       },
     }),
