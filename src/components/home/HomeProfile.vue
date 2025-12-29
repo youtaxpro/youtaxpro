@@ -149,13 +149,6 @@ export default {
   transform: perspective(1000px) rotateY(2deg); /* 약간의 3D 효과 */
 }
 
-.profile-image img:hover {
-  transform: perspective(1000px) rotateY(0deg);
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15),
-              0 15px 25px rgba(0, 0, 0, 0.1), 
-              0 0 0 1px rgba(255, 255, 255, 0.2) inset;
-}
-
 .profile-name-title-container {
   background-image: linear-gradient(
     to right, 
@@ -200,12 +193,6 @@ export default {
 @keyframes shine {
   0% { left: -150%; }
   100% { left: 150%; }
-}
-
-.profile-name-title-container:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(37, 99, 235, 0.25),
-              0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
 .profile-name {
@@ -297,11 +284,6 @@ export default {
 }
 
 /* 섹션 호버 효과 */
-.description:hover, .credentials:hover, .career:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.12),
-              0 4px 10px rgba(0, 0, 0, 0.05);
-}
 
 /* 텍스트 스타일링 */
 .description p, .credentials p, .career p {

@@ -210,12 +210,6 @@ export default {
   animation: shine 6s infinite;
 }
 
-.title-wrapper:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(37, 99, 235, 0.25),
-              0 8px 20px rgba(0, 0, 0, 0.1);
-}
-
 .title-wrapper h3 {
   color: white;
   font-size: 2.2rem;
@@ -273,11 +267,6 @@ export default {
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.aboutus-content-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
 .aboutus-content-item p {

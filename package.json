@@ -8,7 +8,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
+    "deploy": "cp dist/index.html dist/404.html && gh-pages -d dist",
     "optimize-images": "node convert-images.js",
     "build:optimized": "npm run optimize-images && npm run build"
   },
@@ -32,5 +32,5 @@
     "vite-plugin-vue-devtools": "^7.6.7",
     "vue-tsc": "^1.8.5"
   },
-  "homepage": "https://youtaxpro.github.io/youtaxpro"
+  "homepage": "https://youtaxpro.com"
 }
