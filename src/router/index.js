@@ -1,10 +1,10 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHashHistory } from 'vue-router';  // History 변경
 import FAQ from '../pages/FAQ.vue';
 import Home from '../pages/Home.vue';
 import ContactUs from '../pages/ContactUs.vue';
 
 const router = createRouter({
-  history: createWebHistory('/youtaxpro/'), // GitHub Pages base URL 추가
+  history: createWebHashHistory('/youtaxpro/'), // Hash 모드로 변경
   routes: [
     {
       path: '/',
