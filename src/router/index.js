@@ -26,7 +26,7 @@ const router = createRouter({
     {
       path: '/fbar',
       name: 'Fbar',
-      component: () => import('../pages/Fbar.vue'),  // 👈 lazy loading 확인
+      component: Fbar,  // 👈 lazy loading 확인
       meta: {
         // 다국어 title 자동 설정
         title: () => i18n.global.locale.value === 'ko' 

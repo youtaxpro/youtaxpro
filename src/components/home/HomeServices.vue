@@ -47,6 +47,7 @@
 
 <script>
 import { ref, onMounted } from 'vue';
+import { useRouter } from 'vue-router'; // 👈 추가!
 import service1 from '../../assets/service1.jpg';
 import service2 from '../../assets/service2.jpg';
 import service3 from '../../assets/service3.jpg';
@@ -69,6 +70,7 @@ export default {
     // 브라우저 이미지 형식 지원 여부 확인
     const webpSupport = ref(false);
     const avifSupport = ref(false);
+    const router = useRouter(); // 👈 라우터 인스턴스
 
     onMounted(() => {
       // WebP 지원 확인
@@ -117,12 +119,10 @@ export default {
     };
 
 const handleServiceClick = (index) => {
-  if (index === 2) {
-    // Hash 라우터 정확 경로
-    this.$router.push({ path: '/fbar' });
-    // 또는
-    // window.location.hash = '#/fbar';
-  }
+      console.log('FBAR 클릭!', index); // 디버깅
+      if (index === 2) {
+        router.push('/fbar'); // 👈 this 없이 직접 사용!
+      }
 };
 
     return {
