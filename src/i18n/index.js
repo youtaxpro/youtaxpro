@@ -477,7 +477,7 @@ IRS는 업무 과중으로 처리가 지연되어 납세자들이 어려움을 �
         },
         blog: {
           title: '블로그'
-        }
+        },
       },
     // 🔥 FBAR 페이지 추가 (한글)
     fbar: {
@@ -485,6 +485,9 @@ IRS는 업무 과중으로 처리가 지연되어 납세자들이 어려움을 �
       subtitle: "캘리포니아 CPA | 2026 마감 4월 15일",
       description: "한국 은행계좌 $10,000 초과 미국인 필수 신고. 벌금 $16,735 사례 포함. 한글 정확 대행",
       whatIsFbar: "FBAR란? (FinCEN Form 114)",
+      ctaTitle: "Berkeley U.S. Tax Advisors에서 안전하게",
+      ctaDescription: "캘리포니아 CPA가 한국계좌들을 정확하게 계산 + 전자신고",
+      ctaButton: "FBAR 신고 문의",
       whoMustFile: {
         title: "신고 대상",
         bank: "한국 은행/증권/보험 계좌",
@@ -505,10 +508,7 @@ IRS는 업무 과중으로 처리가 지연되어 납세자들이 어려움을 �
     cases: "사례",
     case1: "계좌별이 아니라 리포트당, 연도당",
     case2: "둘 중 큰 금액으로, 계좌별, 연도당 부과"
-      },
-      ctaTitle: "Berkeley U.S. Tax Advisors에서 안전하게",
-      ctaDescription: "캘리포니아 CPA가 한국계좌들을 정확하게 계산 + 전자신고",
-      ctaButton: "FBAR 신고 문의"
+      }
     }
       }
 };
