@@ -1,4 +1,5 @@
 <template>
+     <MainLayout>
   <div id="fbar" 
          class="tax-website fbar-page"
          :class="{ 
@@ -67,6 +68,7 @@
       </div>
     </div>
   </div>
+  
 </section>
 
 
@@ -81,6 +83,7 @@
       </div>
     </section>
   </div>
+  </MainLayout>
 </template>
 
 <script>

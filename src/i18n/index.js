@@ -478,8 +478,7 @@ IRS는 업무 과중으로 처리가 지연되어 납세자들이 어려움을 �
         blog: {
           title: '블로그'
         }
-      }
-  },
+      },
     // 🔥 FBAR 페이지 추가 (한글)
     fbar: {
       title: "FBAR 신고 한국 전문 | 캘리포니아 CPA | 2026 마감 4월 15일",
@@ -511,6 +510,7 @@ IRS는 업무 과중으로 처리가 지연되어 납세자들이 어려움을 �
       ctaDescription: "캘리포니아 CPA가 한국계좌들을 정확하게 계산 + 전자신고",
       ctaButton: "FBAR 신고 문의"
     }
+      }
 };
 
 export const i18n = createI18n({
