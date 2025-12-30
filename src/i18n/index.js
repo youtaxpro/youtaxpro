@@ -204,6 +204,8 @@ Given the complexities of U.S. tax law, especially for those with international 
         address: {
           title: 'Address'
         },
+
+        
         phone: {
           title: 'Phone'
         },
@@ -222,7 +224,38 @@ Given the complexities of U.S. tax law, especially for those with international 
         blog: {
           title: 'blog'
         },
-      }
+      },
+      // 🔥 FBAR 페이지 추가 (영어)
+    fbar: {
+      title: "FBAR Filing Expert in Korea | California CPA | 2026 Deadline Apr 15",
+      subtitle: "California CPA | 2026 Deadline Apr 15", 
+      description: "US persons with $10K+ in Korean bank accounts. $16,735 penalty cases included. Accurate filing in Korean",
+      whatIsFbar: "What is FBAR? (FinCEN Form 114)",
+      whoMustFile: {
+        title: "Who Must File",
+        bank: "Korean bank/securities/insurance accounts", 
+        threshold: "Foreign accounts total over $10,000",
+        citizen: "US citizens/green card holders"
+      },
+      deadline: {
+        title: "Deadline",
+        date: "April 15 (auto extension Oct 15)",
+        method: "E-Filing electronic submission",
+        free: "We help you file."
+      },
+      penalties: {
+         title: "Real Penalty Cases",
+         nonWillful: "Non-Willful Violation",
+          willful: "Willful Violation", 
+          penaltyAmount: "Penalty Amount",
+          cases: "Cases",
+          case1: "Per form (not per account), per year.",
+          case2: "Whichever is greater, assessed per account per year"
+      },
+      ctaTitle: "Safe Filing with Berkeley U.S. Tax Advisors",
+      ctaDescription: "California CPA handles Korean accounts accurately + e-filing", 
+      ctaButton: "Start FBAR Filing"
+    }
 
   },
   ko: {
@@ -446,7 +479,38 @@ IRS는 업무 과중으로 처리가 지연되어 납세자들이 어려움을 �
           title: '블로그'
         }
       }
-  }
+  },
+    // 🔥 FBAR 페이지 추가 (한글)
+    fbar: {
+      title: "FBAR 신고 한국 전문 | 캘리포니아 CPA | 2026 마감 4월 15일",
+      subtitle: "캘리포니아 CPA | 2026 마감 4월 15일",
+      description: "한국 은행계좌 $10,000 초과 미국인 필수 신고. 벌금 $16,735 사례 포함. 한글 정확 대행",
+      whatIsFbar: "FBAR란? (FinCEN Form 114)",
+      whoMustFile: {
+        title: "신고 대상",
+        bank: "한국 은행/증권/보험 계좌",
+        threshold: "해외 계좌 총액 $10,000 초과", 
+        citizen: "미국 시민권자/영주권자"
+      },
+      deadline: {
+        title: "마감일",
+        date: "4월 15일 (자동 연장 10/15)",
+        method: "E-Filing 전자 제출",
+        free: "신고를 도와드리고 있습니다."
+      },
+      penalties: {
+      title: "실제 벌금 사례",
+    nonWillful: "비고의적 위반",
+    willful: "고의적 위반",
+    penaltyAmount: "벌금액",
+    cases: "사례",
+    case1: "계좌별이 아니라 리포트당, 연도당",
+    case2: "둘 중 큰 금액으로, 계좌별, 연도당 부과"
+      },
+      ctaTitle: "Berkeley U.S. Tax Advisors에서 안전하게",
+      ctaDescription: "캘리포니아 CPA가 한국계좌들을 정확하게 계산 + 전자신고",
+      ctaButton: "FBAR 신고 문의"
+    }
 };
 
 export const i18n = createI18n({

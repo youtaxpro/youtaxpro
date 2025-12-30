@@ -11,7 +11,10 @@
       </div>
       
       <div class="service-cards">
-        <div v-for="i in 8" :key="i" class="service-card">
+                <div v-for="i in 8" :key="i" 
+             class="service-card"
+             :class="{ 'service-clickable fbar-card': i === 2 }"
+             @click="handleServiceClick(i)">
           <div class="service-image">
             <div class="service-overlay"></div>
             <!-- 최적화된 이미지 로딩 방식 사용 -->
@@ -31,6 +34,10 @@
               <div class="icon-circle">{{ i }}</div>
             </div>
             <p>{{ $t(`services.service${i}.items[0]`) }}</p>
+                        <!-- FBAR 카드에만 화살표 표시 -->
+            <div v-if="i === 2" class="service-arrow">
+              → {{ $t('fbar.ctaButton') }}
+            </div>
           </div>
         </div>
       </div>
@@ -109,12 +116,20 @@ export default {
       return avifImages[avifPath]?.default || getServiceImageWebP(index);
     };
 
+        const handleServiceClick = (index) => {
+      // 2번 카드만 FBAR 페이지로 이동
+      if (index === 2) {
+        window.location.href = '/youtaxpro/#/fbar'; // Hash 라우터에 맞춤
+      }
+    };
+
     return {
       getServiceImage,
       getServiceImageWebP,
       getServiceImageAVIF,
       webpSupport,
-      avifSupport
+      avifSupport,
+      handleServiceClick
     };
   }
 };
@@ -159,6 +174,79 @@ export default {
   0% { left: -100%; }
   100% { left: 100%; }
 }
+
+/* 🔥 FBAR 2번 카드 특화 스타일 */
+.fbar-card {
+  border: 2px solid transparent;
+  background: linear-gradient(white, white) padding-box,
+              linear-gradient(135deg, #ff6b6b, #ff8e8e) border-box;
+}
+
+.fbar-card:hover {
+  transform: translateY(-15px) !important;
+  box-shadow: 0 25px 50px rgba(255, 107, 107, 0.3),
+              0 10px 25px rgba(0, 0, 0, 0.15) !important;
+}
+
+.fbar-card .icon-circle {
+  background: linear-gradient(135deg, #ff6b6b, #ff5252) !important;
+  color: white !important;
+  animation: pulse 2s infinite !important;
+  border-color: #ffd700 !important;
+}
+
+.fbar-card .service-overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 107, 107, 0.2),
+    rgba(255, 107, 107, 0.4)
+  ) !important;
+}
+
+/* 클릭 가능한 카드 커서 */
+.service-clickable {
+  cursor: pointer !important;
+}
+
+/* FBAR 화살표 */
+.service-arrow {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ff6b6b;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.4);
+  z-index: 10;
+}
+
+.fbar-card:hover .service-arrow {
+  opacity: 1;
+  bottom: -12px;
+  animation: float 2s ease-in-out infinite;
+}
+
+/* 클릭 피드백 */
+.service-clickable:active {
+  transform: translateY(-8px) scale(0.98) !important;
+}
+
+/* 모바일 반응형 유지 */
+@media (max-width: 768px) {
+  .service-arrow {
+    font-size: 0.8rem;
+    padding: 6px 12px;
+  }
+}
+
+
 
 /* Title Wrapper Styles */
 .title-wrapper {
