@@ -116,12 +116,14 @@ export default {
       return avifImages[avifPath]?.default || getServiceImageWebP(index);
     };
 
-        const handleServiceClick = (index) => {
-      // 2번 카드만 FBAR 페이지로 이동
-      if (index === 2) {
-        window.location.href = '/youtaxpro/#/fbar'; // Hash 라우터에 맞춤
-      }
-    };
+const handleServiceClick = (index) => {
+  if (index === 2) {
+    // Hash 라우터 정확 경로
+    this.$router.push({ path: '/fbar' });
+    // 또는
+    // window.location.hash = '#/fbar';
+  }
+};
 
     return {
       getServiceImage,
