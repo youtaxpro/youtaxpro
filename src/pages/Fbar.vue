@@ -10,7 +10,6 @@
     <section class="hero-section">
       <div class="hero-content">
         <h1>{{ $t('fbar.title') }}</h1>
-        <h2>{{ $t('fbar.subtitle') }}</h2>
         <p class="hero-description">{{ $t('fbar.description') }}</p>
         <router-link to="/contactus" class="cta-button">
           {{ $t('fbar.ctaButton') }}
@@ -193,6 +192,7 @@ section {
   font-weight: 800 !important;
   color: white !important;
   margin-bottom: 1.5rem;
+  margin-top: 5rem;
 }
 
 .hero-content h2 {

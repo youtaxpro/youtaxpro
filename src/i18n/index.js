@@ -227,9 +227,8 @@ Given the complexities of U.S. tax law, especially for those with international 
       },
       // 🔥 FBAR 페이지 추가 (영어)
     fbar: {
-      title: "FBAR Filing Expert in Korea | California CPA | 2026 Deadline Apr 15",
-      subtitle: "California CPA | 2026 Deadline Apr 15", 
-      description: "US persons with $10K+ in Korean bank accounts. $16,735 penalty cases included. Accurate filing in Korean",
+        title: "FBAR Filing Guide",
+        description: "Foreign accounts $10K+ = FBAR required! <strong>Berkeley U.S. Tax Advisors will help you</strong>. Accurate calculation, e-filing for fast compliance",
       whatIsFbar: "What is FBAR? (FinCEN Form 114)",
       whoMustFile: {
         title: "Who Must File",
@@ -481,9 +480,8 @@ IRS는 업무 과중으로 처리가 지연되어 납세자들이 어려움을 �
       },
     // 🔥 FBAR 페이지 추가 (한글)
     fbar: {
-      title: "FBAR 신고 한국 전문 | 캘리포니아 CPA | 2026 마감 4월 15일",
-      subtitle: "캘리포니아 CPA | 2026 마감 4월 15일",
-      description: "한국 은행계좌 $10,000 초과 미국인 필수 신고. 벌금 $16,735 사례 포함. 한글 정확 대행",
+      title: "FBAR 신고 안내",
+      description: "해외 계좌 $10K 초과 = FBAR 필수! 벌금 위험에서 <strong>버클리유에스택스어드바이져가 도와드리겠습니다</strong>. 정확한 계산, 전자제출로 빠르게",
       whatIsFbar: "FBAR란? (FinCEN Form 114)",
       ctaTitle: "Berkeley U.S. Tax Advisors에서 안전하게",
       ctaDescription: "캘리포니아 CPA가 한국계좌들을 정확하게 계산 + 전자신고",
