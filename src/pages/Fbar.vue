@@ -1,5 +1,10 @@
 <template>
-  <div id="fbar" class="tax-website fbar-page">
+  <div id="fbar" 
+         class="tax-website fbar-page"
+         :class="{ 
+           'hero-loaded': isHeroLoaded,
+           'cards-loaded': isCardsLoaded 
+         }">
     <!-- Hero -->
     <section class="hero-section">
       <div class="hero-content">
@@ -79,10 +84,51 @@
 </template>
 
 <script>
-export default {
-  name: 'Fbar'
-}
+import { ref, onMounted } from 'vue';
+import MainLayout from '../layouts/MainLayout.vue';
 
+export default {
+  name: 'Fbar',
+  components: {
+    MainLayout
+  },
+  setup() {
+    // FBAR 전용 ref 상태들
+    const isHeroLoaded = ref(false);
+    const isCardsLoaded = ref(false);
+    const scrollProgress = ref(0);
+
+    // 페이지 로딩 애니메이션 제어
+    const handleScroll = () => {
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      scrollProgress.value = (window.scrollY / docHeight) * 100;
+    };
+
+    onMounted(() => {
+      // Hero 섹션 로딩 완료
+      setTimeout(() => {
+        isHeroLoaded.value = true;
+      }, 300);
+
+      // 카드 섹션 로딩 완료  
+      setTimeout(() => {
+        isCardsLoaded.value = true;
+      }, 600);
+
+      // 스크롤 이벤트 리스너
+      window.addEventListener('scroll', handleScroll);
+      
+      // DOM 로드 후 클래스 추가 (Home.vue 스타일 통일)
+      document.body.classList.add('fbar-page-loaded');
+    });
+
+    return {
+      isHeroLoaded,
+      isCardsLoaded,
+      scrollProgress,
+    };
+  }
+};
 </script>
 
 <style scoped>
