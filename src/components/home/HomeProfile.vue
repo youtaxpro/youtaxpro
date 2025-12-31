@@ -21,18 +21,13 @@
             <p>{{ $t('profile.sections.expertise.content') }}</p>
           </div>
 
-          <!-- 자격증 -->
-          <div class="credentials">
-            <h4>{{ $t('profile.sections.certification.title') }}</h4>
-            <p>{{ $t('profile.sections.certification.content') }}</p>
-          </div>
-
           <!-- 약력 -->
           <div class="career">
             <h4>{{ $t('profile.sections.career.title') }}</h4>
             <div class="career-list">
               <p>{{ $t('profile.sections.career.list[0]') }}</p>
               <p>{{ $t('profile.sections.career.list[1]') }}</p>
+              <p>{{ $t('profile.sections.career.list[2]') }}</p>
             </div>
           </div>
         </div>
@@ -80,15 +75,14 @@ export default {
 }
 
 .profile-content {
-    display: grid !important;
-  grid-template-columns: 1fr !important;
-  grid-template-rows: repeat(5, 1fr) !important;  /* ✅ 5개 섹션 균등 높이 */
-  gap: 2rem !important;
-  height: 800px !important;  /* ✅ 전체 높이 고정 */
-  min-height: 800px !important;
+    display: flex !important;
+  flex-direction: column !important;
+  gap: 1.5rem !important;
+  height: 850px !important;  /* ✅ 높이 증가 */
+  min-height: 850px !important;
 }
 
-.description, .credentials, .career {
+.description, .career {
   display: flex !important;
   flex-direction: column !important;
   justify-content: center !important;  /* ✅ 세로 가운데 정렬 */
@@ -103,12 +97,6 @@ export default {
 .description:nth-child(2),
 .description:nth-child(3) {
   grid-row: span 1 !important;  /* 각 섹션 1행씩 */
-}
-
-.description:hover, .credentials:hover, .career:hover {
-  border-color: #3b82f6;
-  box-shadow: 0 10px 30px rgba(59, 130, 246, 0.1);
-  transform: translateY(-2px);
 }
 
 .description h4 {
@@ -137,7 +125,7 @@ export default {
   background: linear-gradient(135deg, #10b981, #059669);
 }
 
-.description p, .credentials p {
+.description p {
   color: #4b5563;
   line-height: 1.75;
   font-size: 1.1rem;
@@ -233,7 +221,7 @@ export default {
     padding: 3rem 1rem;
   }
   
-  .description, .credentials, .career {
+  .description, .career {
     padding: 2rem 1.5rem;
   }
   

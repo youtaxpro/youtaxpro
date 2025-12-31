@@ -29,7 +29,7 @@ const messages = {
     },
     profile: {
       name: 'Ahreum Im',
-      title: 'U.S. Certified Public Accountant',
+      title: 'CPA, California',
       sections: {
         intro: {
           title: 'Education and Background',
@@ -43,15 +43,11 @@ const messages = {
           title: 'Expertise',
           content: 'Through my experience participating in tax audits, I have resolved various tax issues and excel at applying complex tax laws in ways optimized for clients. I am committed to helping clients reduce their tax-related burden while ensuring compliance and establishing optimal tax strategies.'
         },
-        certification: {
-          title: 'Admission',
-          content: 'CPA, California'
-        },
         career: {
           title: 'Professional Experience',
-          list: [ 'Former employee at H&R Block (American tax firm), 10 years of service',
-            'Former intern at GlaxoSmithKline (British pharmaceutical company), Compliance Team'
-            
+          list: [ 'CEO, Berkeley U.S. Tax Advisors (Current)',
+                  'Tax Preparer at H&R Block (10+ years experience)', 
+                  'Compliance Intern at GlaxoSmithKline (British pharmaceutical company)'
           ]
         }
       }
@@ -59,7 +55,6 @@ const messages = {
         
     services: {
         title: 'Our Services',
-        description: 'Maximizing your benefits with accurate and secure tax services, ensuring complete compliance.',
         service1: {
           items: ['Federal/State Tax Return Preparation']
         },
@@ -311,7 +306,7 @@ Given the complexities of U.S. tax law, especially for those with international 
 
   profile: {
     name: '임아름',
-    title: '미국공인회계사',
+    title: '미국공인회계사 (캘리포니아주)',
     sections: {
       intro: {
         title: '소개',
@@ -325,15 +320,12 @@ Given the complexities of U.S. tax law, especially for those with international 
         title: '전문성',
         content: '세무 조사 참여 경험을 통해 다양한 세무 문제를 해결해왔으며, 복잡한 세법을 고객에게 최적화된 방식으로 적용하는 데 강점이 있습니다. 고객이 세금 문제로 인한 부담을 덜고, 법규를 준수하면서도 최적의 세무 전략을 수립할 수 있도록 돕겠습니다.'
       },
-      certification: {
-        title: '자격증',
-        content: '미국공인회계사 (캘리포니아주)'
-      },
       career: {
         title: '약력',
         list: [
+          '現 버클리유에스택스어드바이저 대표',
           '前 미국계 세무법인 H&R Block 10년 근무',
-          '前 영국계 제약회사 Glaxo Smith Kline 준법경영팀 인턴'
+          '前 영국계 제약회사 Glaxo Smith Kline 컴플라이언스 인턴'
         ]
       }
     }
@@ -342,7 +334,6 @@ Given the complexities of U.S. tax law, especially for those with international 
 
     services: {
         title: 'Our Services',
-        description: '정확하고 안전한 세무 서비스로 고객의 이익을 최대화하며, 언제나 규정 준수를 약속드립니다.',
         service1: {
           items: ['연방/주 세금 신고']
         },

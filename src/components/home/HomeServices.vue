@@ -7,8 +7,7 @@
           <h3>{{ $t('services.title') }}</h3>
           <div class="line"></div>
         </div>
-        <p class="services-description">{{ $t('services.description') }}</p>
-      </div>
+        </div>
       
       <div class="service-cards">
                 <div v-for="i in 8" :key="i" 
