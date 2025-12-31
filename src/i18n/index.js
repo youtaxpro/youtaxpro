@@ -226,10 +226,10 @@ Given the complexities of U.S. tax law, especially for those with international 
         },
       },
 
-      "fatca": {
-  "title": "FATCA (Form 8938) Complete Guide",
-  "intro": "<strong>Separate from FBAR!</strong> IRS Form 8938 attaches to <strong>Form 1040</strong>. Korean banks + securities + insurance + funds <strong>total combined</strong>.",
-  "usResident": {
+    "fatca": {
+    "title": "FATCA (Form 8938) Complete Guide",
+    "intro": "Separate from FBAR! IRS Form 8938 attaches to Form 1040. Korean banks+securities+insurance+funds.",
+    "usResident": {
     "title": "US Residents",
     "yearEnd": "(Year-end $50K / Max $75K, single)",
     "desc": "Foreign assets threshold → Form 8938 required"
@@ -240,24 +240,9 @@ Given the complexities of U.S. tax law, especially for those with international 
     "desc": "Foreign assets threshold → Form 8938 required"
   },
   "table": {
-    "title": "FBAR vs FATCA Key Comparison",
-    "headers": {
-      "item": "Item",
-      "fbar": "FBAR",
-      "fatca": "FATCA"
-    },
-    "rows": {
-      "form": "Form",
-      "agency": "Agency",
-      "thresholdUS": "US Resident Threshold",
-      "thresholdAbroad": "Foreign Resident Threshold",
-      "submission": "Filing Method"
-    }
-  },
-  "fullTable": {
-    "title": "IRS Form 8938 Complete Thresholds (2025)",
+    "fullTitle": "IRS Form 8938 Complete Thresholds (2025)",
     "usSingle": "US Resident Single",
-    "usMarried": "US Resident Married Joint",
+    "usMarried": "US Resident Married Joint", 
     "abroadSingle": "Foreign Resident Single",
     "abroadMarried": "Foreign Resident Married Joint",
     "yearEnd": "Year-end",
@@ -270,18 +255,18 @@ Given the complexities of U.S. tax law, especially for those with international 
         title: "FBAR Filing Guide",
         description: "FBAR filing is mandatory if foreign accounts exceed $10,000 at any point during the year. Berkeley U.S. Tax Advisors provides accurate calculations and fast e-filing to protect you from penalty risks.",
         whatIsFbar: "What is FBAR? (FinCEN Form 114)",
-        whoMustFile: {
-        title: "Who Must File",
-        bank: "Korean bank/securities/insurance accounts", 
-        threshold: "Foreign accounts total over $10,000",
-        citizen: "US citizens/green card holders"
-      },
-      deadline: {
-        title: "Deadline",
-        date: "April 15 (auto extension Oct 15)",
-        method: "E-Filing electronic submission",
-        free: "We help you file."
-      },
+        "whoMustFile": {
+    "title": "Who Must File",
+    "bank": "Korean banks/securities/insurance/pensions all included",
+    "threshold": "Foreign accounts exceed $10,000 at any point during year",
+    "citizen": "US citizens/green card holders/tax residents"
+  },
+  "deadline": {
+    "title": "Filing Deadline",
+    "date": "April 15 (auto-extended to Oct 15)",
+    "method": "E-Filing via bsaefincen.fincen.gov portal",
+    "free": "Paper filing not allowed. CPA filing assistance available."
+  },
       penalties: {
          title: "2025 FBAR Penalty",
          nonWillful: "Non-Willful Violation",
@@ -521,7 +506,7 @@ IRS는 업무 과중으로 처리가 지연되어 납세자들이 어려움을 �
 
 "fatca": {
   "title": "FATCA (Form 8938) 완전 가이드",
-  "intro": "FBAR과 <strong>완전 별개</strong>입니다! IRS Form 8938은 <strong>1040에 첨부</strong>하며 한국 은행+증권+보험+펀드 <strong>전체 합산</strong> 기준입니다.",
+  "intro": "FBAR과 완전 별개입니다! IRS Form 8938은 1040에 첨부하며 한국 은행+증권+보험+펀드 전체 합산 기준입니다.",
   "usResident": {
     "title": "미국 거주자",
     "yearEnd": "(연말 $50K / 최고 $75K, 독신)",
@@ -533,23 +518,8 @@ IRS는 업무 과중으로 처리가 지연되어 납세자들이 어려움을 �
     "desc": "해외자산 기준 → Form 8938 필수"
   },
   "table": {
-    "title": "FBAR vs FATCA 핵심 비교",
-    "headers": {
-      "item": "항목",
-      "fbar": "FBAR",
-      "fatca": "FATCA"
-    },
-    "rows": {
-      "form": "양식",
-      "agency": "기관",
-      "thresholdUS": "미국 거주 기준",
-      "thresholdAbroad": "해외 거주 기준",
-      "submission": "제출 방법"
-    }
-  },
-  "fullTable": {
-    "title": "IRS Form 8938 완전 신고 기준 (2025)",
-    "usSingle": "미국 거주 독신",
+    "fullTitle": "IRS Form 8938 완전 신고 기준 (2025)",  // ✅ 추가
+    "usSingle": "미국 거주 독신",                      // ✅ table 내부로 이동
     "usMarried": "미국 거주 기혼 공동",
     "abroadSingle": "해외 거주 독신",
     "abroadMarried": "해외 거주 기혼 공동",
@@ -557,7 +527,6 @@ IRS는 업무 과중으로 처리가 지연되어 납세자들이 어려움을 �
     "max": "연중 최고점"
   }
 },
-
 
     // 🔥 FBAR 페이지 추가 (한글)
     fbar: {
@@ -569,18 +538,18 @@ IRS는 업무 과중으로 처리가 지연되어 납세자들이 어려움을 �
       ctaButton: "FBAR 신고 문의",
       whoMustFile: {
         title: "신고 대상",
-        bank: "한국 은행/증권/보험 계좌",
-        threshold: "해외 계좌 총액 $10,000 초과", 
-        citizen: "미국 시민권자/영주권자"
+        bank: "한국 은행/증권/보험/연금 모두 포함",
+        threshold: "연중 최고점 해외금융계좌 $10,000 초과", 
+        citizen: "미국 시민권자/영주권자/세금거주자"
       },
       deadline: {
-        title: "마감일",
-        date: "4월 15일 (자동 연장 10/15)",
-        method: "E-Filing 전자 제출",
-        free: "신고를 도와드리고 있습니다."
+        title: "마감 기한",
+        date: "4월 15일까지지만 자동 연장되어 10/15까지",
+        method: "E-Filing 전자 제출 신고",
+        free: "종이 제출 불가, CPA가 신고를 도와드리고 있습니다."
       },
       penalties: {
-      title: "2025 FBAR 패널티",
+      title: "2025 FBAR 페널티",
     nonWillful: "비고의적 위반",
     willful: "고의적 위반",
     penaltyAmount: "벌금액",
