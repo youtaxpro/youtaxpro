@@ -67,7 +67,69 @@
       </div>
     </div>
   </div>
-  
+</section>
+
+<!-- 🔥 FATCA 완전 섹션 -->
+<section class="fatca-section">
+  <div class="section-inner">
+    <h3 class="section-h3 fatca-title">{{ $t('fatca.title') }}</h3>
+    
+    <!-- FATCA 소개 -->
+    <div class="fatca-intro">
+      <p>{{ $t('fatca.intro') }}</p>
+    </div>
+    
+    <!-- 신고 기준 카드 -->
+    <div class="fatca-thresholds">
+      <div class="threshold-card us-resident">
+        <h4>{{ $t('fatca.usResident.title') }}</h4>
+        <div class="threshold-amount">$50,000 <span>{{ $t('fatca.usResident.yearEnd') }}</span></div>
+        <p>{{ $t('fatca.usResident.desc') }}</p>
+      </div>
+      <div class="threshold-card abroad-resident">
+        <h4>{{ $t('fatca.abroadResident.title') }}</h4>
+        <div class="threshold-amount">$200,000 <span>{{ $t('fatca.abroadResident.yearEnd') }}</span></div>
+        <p>{{ $t('fatca.abroadResident.desc') }}</p>
+      </div>
+    </div>
+    
+    <!-- FBAR vs FATCA 비교표 -->
+    <div class="fatca-full-table">
+  <h4 class="table-title">{{ $t('fatca.table.fullTitle') }}</h4>
+  <div class="threshold-grid">
+    <!-- 미국 거주 독신 -->
+    <div class="threshold-group us-single">
+      <h5>{{ $t('fatca.table.usSingle') }}</h5>
+      <div class="threshold-row">
+        <span>{{ $t('fatca.table.yearEnd') }}</span>
+        <strong>$50,000</strong>
+      </div>
+      <div class="threshold-row">
+        <span>{{ $t('fatca.table.max') }}</span>
+        <strong>$75,000</strong>
+      </div>
+    </div>
+    
+    <!-- 미국 거주 기혼 -->
+    <div class="threshold-group us-married">
+      <h5>{{ $t('fatca.table.usMarried') }}</h5>
+      <div class="threshold-row">$100,000 / $150,000</div>
+    </div>
+    
+    <!-- 해외 거주 독신 -->
+    <div class="threshold-group abroad-single">
+      <h5>{{ $t('fatca.table.abroadSingle') }}</h5>
+      <div class="threshold-row">$200,000 / $300,000</div>
+    </div>
+    
+    <!-- 해외 거주 기혼 -->
+    <div class="threshold-group abroad-married">
+      <h5>{{ $t('fatca.table.abroadMarried') }}</h5>
+      <div class="threshold-row">$400,000 / $600,000</div>
+      </div>
+     </div>
+    </div>
+  </div>
 </section>
 
 
@@ -448,11 +510,149 @@ section {
 
 .penalty-card p {
   color: #4b5563;
-  font-size: 1.15rem;
+  font-size: 1.5rem;
   line-height: 1.7;
   margin: 0;
   font-weight: 500;
 }
+
+/* 🔥 FATCA 섹션 */
+.fatca-section {
+  background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+  padding: 6rem 2rem;
+  position: relative;
+}
+
+.fatca-title {
+  background: linear-gradient(135deg, #059669, #047857);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-align: center;
+  font-size: 3.2rem !important;
+  margin-bottom: 4rem;
+}
+
+.fatca-intro {
+  background: rgba(255,255,255,0.9);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 3rem;
+  margin-bottom: 4rem;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+  border-left: 6px solid #10b981;
+}
+
+.fatca-thresholds {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2.5rem;
+  margin-bottom: 4rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.threshold-card {
+  background: white;
+  border-radius: 20px;
+  padding: 3rem 2.5rem;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: all 0.3s ease;
+  border-left: 6px solid #10b981;
+}
+
+.threshold-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 30px 70px rgba(16,185,129,0.25);
+}
+
+.threshold-card h4 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #059669;
+  margin-bottom: 1rem;
+}
+
+.threshold-amount {
+  font-size: 2.5rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, #059669, #047857);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+}
+
+.threshold-amount span {
+  font-size: 1rem;
+  color: #6b7280;
+  display: block;
+  margin-top: 0.5rem;
+}
+
+.table-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1e293b;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.fatca-full-table {
+  background: white;
+  border-radius: 20px;
+  padding: 2.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.threshold-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.threshold-group h5 {
+  font-size: 1.3rem;
+  color: #059669;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.threshold-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.threshold-row:last-child {
+  border-bottom: none;
+}
+
+.threshold-row strong {
+  color: #059669;
+  font-weight: 800;
+}
+
+
+/* 모바일 */
+@media (max-width: 768px) {
+  .fatca-thresholds {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .comparison-table {
+    margin: 0 -1.5rem;
+    border-radius: 0;
+  }
+}
+
 
 /* 모바일 반응형 */
 @media (max-width: 768px) {

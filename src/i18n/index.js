@@ -225,6 +225,46 @@ Given the complexities of U.S. tax law, especially for those with international 
           title: 'blog'
         },
       },
+
+      "fatca": {
+  "title": "FATCA (Form 8938) Complete Guide",
+  "intro": "<strong>Separate from FBAR!</strong> IRS Form 8938 attaches to <strong>Form 1040</strong>. Korean banks + securities + insurance + funds <strong>total combined</strong>.",
+  "usResident": {
+    "title": "US Residents",
+    "yearEnd": "(Year-end $50K / Max $75K, single)",
+    "desc": "Foreign assets threshold → Form 8938 required"
+  },
+  "abroadResident": {
+    "title": "Foreign Residents (Korea incl.)",
+    "yearEnd": "(Year-end $200K / Max $300K, single)",
+    "desc": "Foreign assets threshold → Form 8938 required"
+  },
+  "table": {
+    "title": "FBAR vs FATCA Key Comparison",
+    "headers": {
+      "item": "Item",
+      "fbar": "FBAR",
+      "fatca": "FATCA"
+    },
+    "rows": {
+      "form": "Form",
+      "agency": "Agency",
+      "thresholdUS": "US Resident Threshold",
+      "thresholdAbroad": "Foreign Resident Threshold",
+      "submission": "Filing Method"
+    }
+  },
+  "fullTable": {
+    "title": "IRS Form 8938 Complete Thresholds (2025)",
+    "usSingle": "US Resident Single",
+    "usMarried": "US Resident Married Joint",
+    "abroadSingle": "Foreign Resident Single",
+    "abroadMarried": "Foreign Resident Married Joint",
+    "yearEnd": "Year-end",
+    "max": "Maximum during year"
+  }
+},
+
       // 🔥 FBAR 페이지 추가 (영어)
         fbar: {
         title: "FBAR Filing Guide",
@@ -478,6 +518,47 @@ IRS는 업무 과중으로 처리가 지연되어 납세자들이 어려움을 �
           title: '블로그'
         },
       },
+
+"fatca": {
+  "title": "FATCA (Form 8938) 완전 가이드",
+  "intro": "FBAR과 <strong>완전 별개</strong>입니다! IRS Form 8938은 <strong>1040에 첨부</strong>하며 한국 은행+증권+보험+펀드 <strong>전체 합산</strong> 기준입니다.",
+  "usResident": {
+    "title": "미국 거주자",
+    "yearEnd": "(연말 $50K / 최고 $75K, 독신)",
+    "desc": "해외자산 기준 → Form 8938 필수"
+  },
+  "abroadResident": {
+    "title": "해외 거주자 (한국 포함)",
+    "yearEnd": "(연말 $200K / 최고 $300K, 독신)",
+    "desc": "해외자산 기준 → Form 8938 필수"
+  },
+  "table": {
+    "title": "FBAR vs FATCA 핵심 비교",
+    "headers": {
+      "item": "항목",
+      "fbar": "FBAR",
+      "fatca": "FATCA"
+    },
+    "rows": {
+      "form": "양식",
+      "agency": "기관",
+      "thresholdUS": "미국 거주 기준",
+      "thresholdAbroad": "해외 거주 기준",
+      "submission": "제출 방법"
+    }
+  },
+  "fullTable": {
+    "title": "IRS Form 8938 완전 신고 기준 (2025)",
+    "usSingle": "미국 거주 독신",
+    "usMarried": "미국 거주 기혼 공동",
+    "abroadSingle": "해외 거주 독신",
+    "abroadMarried": "해외 거주 기혼 공동",
+    "yearEnd": "연말 기준",
+    "max": "연중 최고점"
+  }
+},
+
+
     // 🔥 FBAR 페이지 추가 (한글)
     fbar: {
       title: "FBAR 신고 안내",
