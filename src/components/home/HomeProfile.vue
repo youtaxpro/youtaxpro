@@ -182,8 +182,8 @@ export default {
 }
 
 .profile-image img {
-  width: 280px;
-  height: 280px;
+  width: 360px;
+  height: 360px;
   object-fit: cover;
   border-radius: 50%;
   border: 6px solid #f8fafc;
