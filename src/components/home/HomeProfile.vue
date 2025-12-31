@@ -99,10 +99,10 @@ export default {
 }
 
 .profile-content {
-  display: flex !important;
+    display: flex !important;
   flex-direction: column !important;
   gap: 1.5rem !important;
-  height: auto !important;  /* ✅ 높이 증가 */
+  height: 850px !important;  /* ✅ 높이 증가 */
   min-height: 850px !important;
   z-index: 4 !important;  
 }
@@ -116,6 +116,7 @@ export default {
   border: 1px solid #e5e7eb !important;
   border-radius: 16px !important;
   overflow: hidden !important;
+  height: auto;
 }
 
 .description:nth-child(1),
