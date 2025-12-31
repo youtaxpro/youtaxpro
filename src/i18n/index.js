@@ -226,11 +226,11 @@ Given the complexities of U.S. tax law, especially for those with international 
         },
       },
       // 🔥 FBAR 페이지 추가 (영어)
-    fbar: {
+        fbar: {
         title: "FBAR Filing Guide",
-        description: "Foreign accounts $10K+ = FBAR required! <strong>Berkeley U.S. Tax Advisors will help you</strong>. Accurate calculation, e-filing for fast compliance",
-      whatIsFbar: "What is FBAR? (FinCEN Form 114)",
-      whoMustFile: {
+        description: "FBAR filing is mandatory if foreign accounts exceed $10,000 at any point during the year. Berkeley U.S. Tax Advisors provides accurate calculations and fast e-filing to protect you from penalty risks.",
+        whatIsFbar: "What is FBAR? (FinCEN Form 114)",
+        whoMustFile: {
         title: "Who Must File",
         bank: "Korean bank/securities/insurance accounts", 
         threshold: "Foreign accounts total over $10,000",
@@ -243,7 +243,7 @@ Given the complexities of U.S. tax law, especially for those with international 
         free: "We help you file."
       },
       penalties: {
-         title: "Real Penalty Cases",
+         title: "2025 FBAR Penalty",
          nonWillful: "Non-Willful Violation",
           willful: "Willful Violation", 
           penaltyAmount: "Penalty Amount",
@@ -481,7 +481,7 @@ IRS는 업무 과중으로 처리가 지연되어 납세자들이 어려움을 �
     // 🔥 FBAR 페이지 추가 (한글)
     fbar: {
       title: "FBAR 신고 안내",
-      description: "해외 계좌 $10K 초과 = FBAR 필수! 벌금 위험에서 <strong>버클리유에스택스어드바이져가 도와드리겠습니다</strong>. 정확한 계산, 전자제출로 빠르게",
+      description: "해외 계좌 $10,000을 초과할 경우 FBAR는 필수입니다. 벌금 위험에서 정확한 계산, 전자제출로 빠르게 버클리유에스택스어드바이져가 도와드리겠습니다.",
       whatIsFbar: "FBAR란? (FinCEN Form 114)",
       ctaTitle: "Berkeley U.S. Tax Advisors에서 안전하게",
       ctaDescription: "캘리포니아 CPA가 한국계좌들을 정확하게 계산 + 전자신고",
@@ -499,13 +499,13 @@ IRS는 업무 과중으로 처리가 지연되어 납세자들이 어려움을 �
         free: "신고를 도와드리고 있습니다."
       },
       penalties: {
-      title: "실제 벌금 사례",
+      title: "2025 FBAR 패널티",
     nonWillful: "비고의적 위반",
     willful: "고의적 위반",
     penaltyAmount: "벌금액",
     cases: "사례",
-    case1: "계좌별이 아니라 리포트당, 연도당",
-    case2: "둘 중 큰 금액으로, 계좌별, 연도당 부과"
+    case1: "FBAR 신고서 기준",
+    case2: "둘 중 큰 금액, 연도별 계좌 기준"
       }
     }
       }

@@ -54,7 +54,7 @@
       <div class="penalty-card non-willful">
         <div class="penalty-icon">⚠️</div>
         <h4>{{ $t('fbar.penalties.nonWillful') }}</h4>
-        <div class="penalty-amount">$16,536 <span>. <form action=""></form></span></div>
+        <div class="penalty-amount">$16,536 <span><br> <form action=""></form></span></div>
         <p>{{ $t('fbar.penalties.case1') }}</p>
       </div>
       
@@ -220,20 +220,43 @@ section {
 
 .cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-  gap: 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
   width: 100%;
-  margin-top: 4rem;
+  position: relative;
+  z-index: 2;
 }
 
 .info-card {
-  background: white;
-  padding: 3.5rem 2.5rem;
-  border-radius: 20px;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-  border-left: 6px solid #667eea;
-  text-align: center;
-  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.95); /* 동일 */
+  backdrop-filter: blur(20px);
+  border-radius: 24px; /* 동일 */
+  padding: 3rem 2.5rem; /* 동일 */
+  box-shadow: 
+    0 25px 60px rgba(102, 126, 234, 0.25), /* 파랑 테마 */
+    0 10px 30px rgba(0, 0, 0, 0.15);
+  border: 2px solid rgba(102, 126, 234, 0.3); /* 파랑 테마 */
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); /* 동일 */
+  position: relative;
+  overflow: hidden;
+  text-align: center; /* 기존 유지 */
+}
+
+.info-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  transition: left 0.6s;
+}
+
+.info-card:hover::before {
+  left: 100%;
 }
 
 .info-card:hover {
@@ -246,6 +269,8 @@ section {
   font-weight: 800;
   color: #1e293b;
   margin-bottom: 2rem;
+  margin-bottom: 1.2rem 0 2rem 0; /* 조정 */
+  line-height: 1.3;
 }
 
 .info-card ul {
@@ -431,6 +456,14 @@ section {
 
 /* 모바일 반응형 */
 @media (max-width: 768px) {
+  .cards-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 500px;
+    margin: 0 auto;
+        padding: 2.5rem 2rem;
+  }
+
   .penalty-cards {
     grid-template-columns: 1fr;
     gap: 2rem;
