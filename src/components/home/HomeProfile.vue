@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div class="aboutus team-member">
+    <div class="aboutus team-member">    
       <div class="profile-container">
         <div class="profile-content">
           <!-- 소개 섹션 -->
@@ -22,7 +22,7 @@
           </div>
 
           <!-- 약력 -->
-          <div class="career">
+          <div class="description">
             <h4>{{ $t('profile.sections.career.title') }}</h4>
             <div class="career-list">
               <p>{{ $t('profile.sections.career.list[0]') }}</p>
@@ -46,32 +46,56 @@
 
 <script>
 import ceoPic from '../../assets/250220_ceo_pic.jpg';
+import americanFlag from '../../assets/american_flag.jpg';  // ✅ 추가
 
 export default {
   name: 'HomeProfile',
   setup() {
     return {
-      ceoPic
+      ceoPic,
+      americanFlag
     };
   }
 };
 </script>
 
 <style scoped>
-/* 🔥 CPA 전문 미니멀 디자인 - Pilot/Luminary 스타일 */
+/* 🔥 CPA 디자인 - Pilot/Luminary 스타일 */
+
 .team-member {
-  padding: 5rem 2rem;
-  background: #ffffff;
-  position: relative;
+  position: relative !important;
+  background-image: url('../../assets/american_flag.jpg') !important;
+  background-size: cover !important;
+  background-position: center bottom !important;
+  background-attachment: fixed !important;
+  min-height: 100vh !important;
+  padding: 4rem 2rem !important;  /* 내부 패딩만 유지 */
+  overflow: hidden !important;
+}
+
+/* 화이트 오버레이 */
+.team-member::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background: 
+  linear-gradient(135deg, rgba(255,255,255,0.75) 0%, rgba(240,246,253,0.78) 100%) !important;
+  z-index: 1 !important;
 }
 
 .profile-container {
-  max-width: 1100px;
+  position: relative !important;
+  z-index: 3 !important;
+  max-width: 1200px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 5rem;
   align-items: start;
+  z-index: 3 !important;  
 }
 
 .profile-content {
@@ -80,6 +104,7 @@ export default {
   gap: 1.5rem !important;
   height: 850px !important;  /* ✅ 높이 증가 */
   min-height: 850px !important;
+  z-index: 4 !important;  
 }
 
 .description, .career {
@@ -115,10 +140,6 @@ export default {
   height: 24px;
   background: linear-gradient(135deg, #3b82f6, #1d4ed8);
   border-radius: 2px;
-}
-
-.credentials h4::before {
-  background: linear-gradient(135deg, #f59e0b, #d97706);
 }
 
 .career h4::before {
@@ -172,13 +193,6 @@ export default {
   transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.profile-image img:hover {
-  transform: scale(1.05);
-  box-shadow: 
-    0 30px 70px rgba(0,0,0,0.15),
-    0 15px 35px rgba(0,0,0,0.08);
-}
-
 .profile-name-title-container {
   background: white;
   padding: 2rem 1.5rem;
@@ -205,6 +219,27 @@ export default {
   color: #6b7280;
   margin: 0;
   letter-spacing: 0.025em;
+}
+
+
+@keyframes floatGentle {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(1deg); }
+}
+
+/* 모바일에서 축소 */
+@media (max-width: 768px) {
+  .team-member {
+    background-attachment: scroll !important;
+    padding: 3rem 1rem !important;
+  }
+  
+  .flag-decoration {
+    width: 100px !important;
+    height: 65px !important;
+    bottom: 1.5rem !important;
+    right: 1.5rem !important;
+  }
 }
 
 /* 모바일 */

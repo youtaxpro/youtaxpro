@@ -114,7 +114,7 @@ export default {
 
 /* Common Section Styles */
 section {
-  padding: 4rem 2rem;
+  padding: 0;
   width: 100%;
 }
 
