@@ -306,9 +306,84 @@ section {
 }
 
 /* 비교표 - 초록/회색 */
+/* 비교표 - Fbar 스타일 통합 */
 .comparison-section {
-  background: linear-gradient(135deg, #f0fdf4, #ecfdf5);
+  background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%) !important;
+  padding: 6rem 1.5rem !important;  /* ✅ 좌우 패딩 축소 */
+  position: relative !important;
+  overflow: visible !important;     /* ✅ overflow visible */
 }
+
+.comparison-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.comparison-table-wrapper {
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(20px) !important;
+  border-radius: 24px !important;
+  box-shadow: 
+    0 25px 60px rgba(16, 185, 129, 0.25),
+    0 10px 30px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6) !important;
+  border: 2px solid rgba(16, 185, 129, 0.3) !important;
+  overflow: hidden !important;
+  max-width: 1000px !important;
+  margin: 0 auto !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.comparison-table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+}
+
+.comparison-table th {
+  background: linear-gradient(135deg, #10b981, #059669) !important;
+  color: white !important;
+  padding: 1.5rem 1rem !important;
+  text-align: center !important;
+  font-weight: 800 !important;
+  font-size: 1.1rem !important;
+}
+
+.comparison-table td {
+  padding: 1.5rem 1rem !important;
+  text-align: center !important;
+  border-bottom: 1px solid #f1f5f9 !important;
+  font-size: 1.15rem !important;
+  color: #374151 !important;
+  font-weight: 500 !important;
+}
+
+.comparison-table tr.highlight td {
+  background: rgba(16, 185, 129, 0.1) !important;
+  font-weight: 700 !important;
+}
+
+.comparison-table tr:hover td {
+  background: rgba(240, 253, 244, 0.8) !important;
+  transform: scale(1.01) !important;
+  transition: all 0.3s ease !important;
+}
+
+/* 모바일 */
+@media (max-width: 768px) {
+  .comparison-table-wrapper {
+    margin: 0 -1.5rem !important;
+    border-radius: 0 !important;
+  }
+  
+  .comparison-table {
+    font-size: 1rem !important;
+  }
+}
+
 
 .warning-section {
   background: linear-gradient(135deg, #fef2f2, #fee2e2);

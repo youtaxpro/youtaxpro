@@ -276,7 +276,9 @@ Given the complexities of U.S. tax law, especially for those with international 
   "warning": {
     "title": "Important Warnings",
     "audit": "Not automatic audit protection",
-    "auditDesc": "Processed like regular returns - existing audits ineligible"
+    "auditDesc": "Processed like regular returns - existing audits ineligible",
+    "criminal": "Willful violations ineligible",  // ✅ 추가
+    "criminalDesc": "Suspected willful conduct? Use IRS Criminal Investigation Voluntary Disclosure Practice instead"  // ✅ 추가
   },
   "ctaTitle": "Penalty-Free Compliance",
   "ctaDescription": "Last chance for 6-year FBAR/FATCA non-filers - act now!"
@@ -584,7 +586,9 @@ IRS는 업무 과중으로 처리가 지연되어 납세자들이 어려움을 �
   "warning": {
     "title": "주의사항",
     "audit": "자동 감사 대상 아님",
-    "auditDesc": "일반 신고서처럼 처리되나 기존 감사대상자는 불가"
+    "auditDesc": "일반 신고서처럼 처리되나 기존 감사대상자는 불가",
+     "criminal": "고의적 위반 불가",           // ✅ 추가
+    "criminalDesc": "고의적 위반 의심시 IRS 형사자발공개절차 이용"  // ✅ 추가
   },
   "ctaTitle": "벌금 없이 정정신고",
   "ctaDescription": "과거 6년 FBAR/FATCA 미신고자 지금이 마지막 기회!"
