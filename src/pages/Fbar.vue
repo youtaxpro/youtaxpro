@@ -632,7 +632,6 @@ section {
 .threshold-group {
   background: linear-gradient(135deg, #f0fdf4, #dcfce7) !important;
   border-radius: 20px !important;
-  padding: 2rem !important;
   border-left: 6px solid #10b981 !important;
   height: 200px !important;  /* ✅ 높이 완전 통일 */
   display: flex !important;
@@ -651,12 +650,13 @@ section {
   font-size: 1.15rem !important;
   gap: 1rem !important;                     /* 숫자 간격 */
   text-align: center !important;
+  color: #059669 !important;
+
 }
 
 .threshold-row:last-child {
   border-bottom: none !important;
   color: #059669 !important;
-  
 }
 
 .threshold-row strong {

@@ -228,7 +228,7 @@ Given the complexities of U.S. tax law, especially for those with international 
 
     "fatca": {
     "title": "FATCA (Form 8938) Complete Guide",
-    "intro": "Separate from FBAR! IRS Form 8938 attaches to Form 1040. Korean banks+securities+insurance+funds.",
+    "intro": "FBAR is filed separately! IRS Form 8938 attaches to Form 1040. Korean banks + securities + insurance + funds total combined threshold.",
     "usResident": {
     "title": "US Residents",
     "yearEnd": "(Year-end $50K / Max $75K, single)",
@@ -509,20 +509,20 @@ IRS는 업무 과중으로 처리가 지연되어 납세자들이 어려움을 �
   "intro": "FBAR와 별개로 신고하는 항목입니다! IRS Form 8938은 1040에 첨부해서 신고를 해야하며 한국 은행+증권+보험+펀드 전체 합산 기준입니다.",
   "usResident": {
     "title": "미국 거주자",
-    "yearEnd": "(연말 $50K / 최고 $75K, 독신)",
-    "desc": "해외자산 기준 → Form 8938 필수"
+    "yearEnd": "(연말 $50K / 최고 $75K, 싱글)",
+    "desc": "해외자산 기준 → Form 8938 필수 신고"
   },
   "abroadResident": {
     "title": "해외 거주자 (한국 포함)",
-    "yearEnd": "(연말 $200K / 최고 $300K, 독신)",
-    "desc": "해외자산 기준 → Form 8938 필수"
+    "yearEnd": "(연말 $200K / 최고 $300K, 싱글)",
+    "desc": "해외자산 기준 → Form 8938 필수 신고"
   },
   "table": {
     "fullTitle": "IRS Form 8938 신고 기준 (2025)",  // ✅ 추가
-    "usSingle": "미국 거주 독신",                      // ✅ table 내부로 이동
-    "usMarried": "미국 거주 기혼 공동",
-    "abroadSingle": "해외 거주 독신",
-    "abroadMarried": "해외 거주 기혼 공동",
+    "usSingle": "미국 거주 싱글일 경우",                      // ✅ table 내부로 이동
+    "usMarried": "미국 거주 기혼 공동신고일 경우",
+    "abroadSingle": "해외 거주 싱글일 경우",
+    "abroadMarried": "해외 거주 기혼 공동신고일 경우",
     "yearEnd": "연말 기준",
     "max": "연중 최고점"
   }
