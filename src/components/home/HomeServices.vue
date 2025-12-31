@@ -37,6 +37,10 @@
             <div v-if="i === 2" class="service-arrow">
               → {{ $t('fbar.ctaButton') }}
             </div>
+            <!-- service4 카드 (i===4일 때) -->
+<div v-if="i === 4" class="service-arrow">
+  → {{ $t('streamlined.ctaButton') }}
+</div>
           </div>
         </div>
       </div>
@@ -118,10 +122,12 @@ export default {
     };
 
 const handleServiceClick = (index) => {
-      console.log('FBAR 클릭!', index); // 디버깅
-      if (index === 2) {
-        router.push('/fbar'); // 👈 this 없이 직접 사용!
-      }
+    console.log('Service 클릭!', index);
+  if (index === 2) {
+    router.push('/fbar');      // FBAR (기존)
+  } else if (index === 4) {     // ✅ Streamlined 추가
+    router.push('/streamlined');
+  }
 };
 
     return {

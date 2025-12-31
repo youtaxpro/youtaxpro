@@ -244,6 +244,44 @@ Given the complexities of U.S. tax law, especially for those with international 
     "max": "Maximum during year"
   }
 },
+    // 🔥 streamlined 페이지 추가 (영문)
+
+"streamlined": {
+  "title": "Streamlined Procedures (Penalty Relief Program)",
+  "description": "Past FBAR/FATCA non-filers? 0% penalty for non-willful violations - Overseas residents program!",
+  "ctaButton": "Streamlined Consultation Now",
+  "purpose": {
+    "title": "What are Streamlined Procedures?",
+    "nonWillful": "For Non-Willful Violators",
+    "content": "Certify past offshore account non-disclosure was non-willful to file corrected returns penalty-free"
+  },
+  "eligibility": {
+    "title": "Eligibility Requirements",
+    "usResident": "US Residents: 5% penalty",
+    "abroadResident": "Overseas Residents: 0% penalty",
+    "certify": "Non-willful certification required (negligence/mistake proof)"
+  },
+  "comparison": {
+    "title": "Streamlined Program Options",
+    "headers": { 
+      "type": "Type", 
+      "penalty": "Penalty", 
+      "target": "Target" 
+    },
+    "rows": {
+      "foreign": "Overseas Residents",
+      "domestic": "US Residents"
+    }
+  },
+  "warning": {
+    "title": "Important Warnings",
+    "audit": "Not automatic audit protection",
+    "auditDesc": "Processed like regular returns - existing audits ineligible"
+  },
+  "ctaTitle": "Penalty-Free Compliance",
+  "ctaDescription": "Last chance for 6-year FBAR/FATCA non-filers - act now!"
+},
+
 
       // 🔥 FBAR 페이지 추가 (영어)
         fbar: {
@@ -518,6 +556,40 @@ IRS는 업무 과중으로 처리가 지연되어 납세자들이 어려움을 �
     "max": "연중 최고점"
   }
 },
+    // 🔥 streamlined 페이지 추가 (한글)
+
+"streamlined": {
+  "title": "Streamlined 절차 (벌금 면제 프로그램)",
+  "description": "과거 FBAR/FATCA 미신고? 비고의적 위반자에 한해 벌금 0원 해외거주자 프로그램!",
+  "ctaButton": "지금 Streamlined 상담",
+  "purpose": {
+    "title": "Streamlined 절차란?",
+    "nonWillful": "비고의적 위반자 대상",
+    "content": "과거 해외계좌 미신고가 고의적이지 않았다고 서약하면 벌금 없이 정정신고 가능"
+  },
+  "eligibility": {
+    "title": "자격 요건",
+    "usResident": "미국 거주자: 5% 벌금",
+    "abroadResident": "해외 거주자: 0% 벌금",
+    "certify": "비고의적 서약 필수 (과실/실수 증명)"
+  },
+  "comparison": {
+    "title": "Streamlined 두 가지 옵션",
+    "headers": { "type": "유형", "penalty": "벌금", "target": "대상" },
+    "rows": {
+      "foreign": "해외 거주자",
+      "domestic": "미국 거주자"
+    }
+  },
+  "warning": {
+    "title": "주의사항",
+    "audit": "자동 감사 대상 아님",
+    "auditDesc": "일반 신고서처럼 처리되나 기존 감사대상자는 불가"
+  },
+  "ctaTitle": "벌금 없이 정정신고",
+  "ctaDescription": "과거 6년 FBAR/FATCA 미신고자 지금이 마지막 기회!"
+},
+
 
     // 🔥 FBAR 페이지 추가 (한글)
     fbar: {
@@ -531,13 +603,13 @@ IRS는 업무 과중으로 처리가 지연되어 납세자들이 어려움을 �
         title: "신고 대상",
         bank: "한국 은행/증권/보험/연금 모두 포함",
         threshold: "연중 최고점 해외금융계좌 $10,000 초과", 
-        citizen: "미국 시민권자/영주권자/세금거주자"
+        citizen: "미국 시민권자/영주권자/미국 세금 기준 거주자"
       },
       deadline: {
         title: "마감 기한",
         date: "4월 15일까지지만 자동 연장되어 10/15까지",
         method: "E-Filing 전자 제출 신고",
-        free: "종이 제출 불가, CPA가 신고를 도와드리고 있습니다."
+        free: "직접 종이로 제출은 불가하며 세금 신고 전문 CPA가 신고를 도와드리고 있습니다."
       },
       penalties: {
       title: "2025 FBAR 페널티",

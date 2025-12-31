@@ -34,6 +34,11 @@ const router = createRouter({
           : 'FBAR Filing Expert | California CPA | Berkeley'
       }
     },
+    {
+      path: '/streamlined',
+      name: 'Streamlined',
+      component: () => import('../pages/Streamlined.vue')
+    },
   ],
   scrollBehavior(to, from, savedPosition) {
     if (to.hash) {
