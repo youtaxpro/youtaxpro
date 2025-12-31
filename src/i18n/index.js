@@ -277,7 +277,7 @@ Given the complexities of U.S. tax law, especially for those with international 
           case2: "Whichever is greater, assessed per account per year"
       },
       ctaTitle: "Safe Filing with Berkeley U.S. Tax Advisors",
-      ctaDescription: "California CPA handles Korean accounts accurately + e-filing", 
+      ctaDescription: "California CPA accurately calculates Korean accounts and provides fast e-filing assistance.​", 
       ctaButton: "Start FBAR Filing"
     }
 
@@ -534,7 +534,7 @@ IRS는 업무 과중으로 처리가 지연되어 납세자들이 어려움을 �
       description: "해외 계좌 $10,000을 초과할 경우 FBAR는 필수입니다. 벌금 위험에서 정확한 계산, 전자제출로 빠르게 버클리유에스택스어드바이져가 도와드리겠습니다.",
       whatIsFbar: "FBAR란? (FinCEN Form 114)",
       ctaTitle: "Berkeley U.S. Tax Advisors에서 안전하게",
-      ctaDescription: "캘리포니아 CPA가 한국계좌들을 정확하게 계산 + 전자신고",
+      ctaDescription: "캘리포니아주 미국공인회계사가 한국계좌들을 정확하게 계산하고 빠르게 전자신고를 도와드립니다.",
       ctaButton: "FBAR 신고 문의",
       whoMustFile: {
         title: "신고 대상",
