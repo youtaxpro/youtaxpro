@@ -111,9 +111,16 @@
     </div>
     
     <!-- 미국 거주 기혼 -->
-    <div class="threshold-group us-married">
+    <div class="threshold-group">
       <h5>{{ $t('fatca.table.usMarried') }}</h5>
-      <div class="threshold-row">$100,000 / $150,000</div>
+      <div class="threshold-row">
+        <span>{{ $t('fatca.table.yearEnd') }}</span>
+        <strong>$100,000</strong>
+      </div>
+      <div class="threshold-row">
+        <span>{{ $t('fatca.table.max') }}</span>
+        <strong>$150,000</strong>
+      </div>
     </div>
     
     <!-- 해외 거주 독신 -->
@@ -604,41 +611,76 @@ section {
 
 .fatca-full-table {
   background: white;
-  border-radius: 20px;
-  padding: 2.5rem;
-  max-width: 1100px;
+  border-radius: 24px;
+  padding: 3rem;
+  max-width: 1200px;
   margin: 0 auto;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.1);
+  backdrop-filter: blur(20px);
 }
 
 .threshold-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;  /* ✅ 2열 고정 */
+  grid-template-rows: repeat(2, auto) !important;    /* ✅ 2행 고정 */  gap: 2rem !important;
+    gap: 2rem !important;
+  width: 100% !important;
+  max-width: 1000px !important;  /* ✅ 최대 너비 제한 */
+  margin: 0 auto !important;
 }
 
-.threshold-group h5 {
-  font-size: 1.3rem;
-  color: #059669;
-  margin-bottom: 1rem;
-  font-weight: 700;
+.threshold-group {
+  background: linear-gradient(135deg, #f0fdf4, #dcfce7) !important;
+  border-radius: 20px !important;
+  padding: 2rem !important;
+  border-left: 6px solid #10b981 !important;
+  height: 200px !important;  /* ✅ 높이 완전 통일 */
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
 }
 
 .threshold-row {
-  display: flex;
-  justify-content: space-between;
-  padding: 0.8rem 0;
-  border-bottom: 1px solid #f1f5f9;
+  display: flex !important;
+  justify-content: center !important;       /* ✅ 가운데 정렬 */
+  align-items: center !important;           /* ✅ 세로 가운데 */
+  width: 100% !important;
+  padding: 1rem 0 !important;
+  font-size: 1.15rem !important;
+  gap: 1rem !important;                     /* 숫자 간격 */
+  text-align: center !important;
 }
 
 .threshold-row:last-child {
-  border-bottom: none;
+  border-bottom: none !important;
+  color: #059669 !important;
+  
 }
 
 .threshold-row strong {
-  color: #059669;
-  font-weight: 800;
+  font-size: 1.4rem !important;
+  background: linear-gradient(135deg, #059669, #047857) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  font-weight: 900 !important;
 }
 
+
+/* 모바일 완벽 */
+@media (max-width: 768px) {
+  .threshold-grid {
+      grid-template-columns: 1fr !important;  /* 1열 */
+    grid-template-rows: auto !important;    /* 자동 높이 */
+    gap: 1.5rem !important;
+  }
+  
+  .threshold-group {
+    height: auto !important;
+    padding: 2rem 1.5rem !important;
+  }
+}
 
 /* 모바일 */
 @media (max-width: 768px) {

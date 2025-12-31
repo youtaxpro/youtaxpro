@@ -505,8 +505,8 @@ IRS는 업무 과중으로 처리가 지연되어 납세자들이 어려움을 �
       },
 
 "fatca": {
-  "title": "FATCA (Form 8938) 완전 가이드",
-  "intro": "FBAR과 완전 별개입니다! IRS Form 8938은 1040에 첨부하며 한국 은행+증권+보험+펀드 전체 합산 기준입니다.",
+  "title": "FATCA (Form 8938) 가이드",
+  "intro": "FBAR와 별개로 신고하는 항목입니다! IRS Form 8938은 1040에 첨부해서 신고를 해야하며 한국 은행+증권+보험+펀드 전체 합산 기준입니다.",
   "usResident": {
     "title": "미국 거주자",
     "yearEnd": "(연말 $50K / 최고 $75K, 독신)",
@@ -518,7 +518,7 @@ IRS는 업무 과중으로 처리가 지연되어 납세자들이 어려움을 �
     "desc": "해외자산 기준 → Form 8938 필수"
   },
   "table": {
-    "fullTitle": "IRS Form 8938 완전 신고 기준 (2025)",  // ✅ 추가
+    "fullTitle": "IRS Form 8938 신고 기준 (2025)",  // ✅ 추가
     "usSingle": "미국 거주 독신",                      // ✅ table 내부로 이동
     "usMarried": "미국 거주 기혼 공동",
     "abroadSingle": "해외 거주 독신",
