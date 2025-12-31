@@ -99,10 +99,10 @@ export default {
 }
 
 .profile-content {
-    display: flex !important;
+  display: flex !important;
   flex-direction: column !important;
   gap: 1.5rem !important;
-  height: 850px !important;  /* ✅ 높이 증가 */
+  height: auto !important;  /* ✅ 높이 증가 */
   min-height: 850px !important;
   z-index: 4 !important;  
 }
