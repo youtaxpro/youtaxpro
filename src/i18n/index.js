@@ -251,26 +251,27 @@ Given the complexities of U.S. tax law, especially for those with international 
   "description": "Past FBAR/FATCA non-filers? 0% penalty for non-willful violations - Overseas residents program!",
   "ctaButton": "Streamlined Consultation Now",
   "purpose": {
-    "title": "What are Streamlined Procedures?",
-    "nonWillful": "For Non-Willful Violators",
-    "content": "Certify past offshore account non-disclosure was non-willful to file corrected returns penalty-free"
+    "title": "Streamlined Procedures",
+    "nonWillful": "Purpose of the streamlined procedures",
+    "content": "The streamlined filing compliance procedures are for taxpayers certifying non-willful failure to report foreign assets and pay due tax. They offer simplified filing of amended/delinquent returns and terms to resolve tax/penalty obligations. Expanded since Sept. 1, 2012: includes U.S. residents, eliminates the $1,500 tax threshold, and eliminates the risk assessment process."
   },
   "eligibility": {
     "title": "Eligibility Requirements",
-    "usResident": "US Residents: 5% penalty",
-    "abroadResident": "Overseas Residents: 0% penalty",
-    "certify": "Non-willful certification required (negligence/mistake proof)"
+    "usResident": "Designed for individual taxpayers (including estates). Available to U.S. residents outside and inside the U.S. Key criteria include certifying non-willful conduct (negligence, mistake, good faith misunderstanding), no IRS civil/criminal examination, paying prior penalties from quiet disclosures, and having a valid SSN/ITIN (ITIN application allowable)."
   },
   "comparison": {
-    "title": "Streamlined Program Options",
+    "title": "Streamlined Procedures Options",
     "headers": { 
       "type": "Type", 
-      "penalty": "Penalty", 
-      "target": "Target" 
+      "penalty": "Penalty"
     },
     "rows": {
-      "foreign": "Overseas Residents",
-      "domestic": "US Residents"
+      "foreign": "Streamlined Foreign Offshore Procedures(SFOP)",
+      "domestic": "Streamlined Domestic Offshore Procedures(SDOP)"
+    },
+    "rows2" : {
+      "foreign": "미국 외 거주자 (330일 규칙 또는 Substantial Presence Test)",
+      "domestic": "미국 내 거주자"
     }
   },
   "warning": {
@@ -561,26 +562,28 @@ IRS는 업무 과중으로 처리가 지연되어 납세자들이 어려움을 �
     // 🔥 streamlined 페이지 추가 (한글)
 
 "streamlined": {
-  "title": "Streamlined 절차 (벌금 면제 프로그램)",
+  "title": "Streamlined filing compliance procedures",
   "description": "과거 FBAR/FATCA 미신고? 비고의적 위반자에 한해 벌금 0원 해외거주자 프로그램!",
-  "ctaButton": "지금 Streamlined 상담",
+  "ctaButton": "지금 Streamlined 문의",
   "purpose": {
-    "title": "Streamlined 절차란?",
-    "nonWillful": "비고의적 위반자 대상",
-    "content": "과거 해외계좌 미신고가 고의적이지 않았다고 서약하면 벌금 없이 정정신고 가능"
+    "title": "Streamlined Procedures",
+    "nonWillful": "Streamlined Procedures의 목적",
+    "content": "Streamlined procedures는 외국 금융 자산 미보고 및 미납세가 고의적이지 않음을 인증한 납세자를 위한 프로그램입니다. 수정/연체 신고 간소화와 세금·패널티 해결 조건을 제공합니다. 2012년 9월 1일 도입 후 확대: 미국 내 거주자 포함, $1,500 세금 임계값을 제거하며, 2012년 발표된 위험 평가 과정을 제거합니다."
   },
   "eligibility": {
     "title": "자격 요건",
-    "usResident": "미국 거주자: 5% 벌금",
-    "abroadResident": "해외 거주자: 0% 벌금",
-    "certify": "비고의적 서약 필수 (과실/실수 증명)"
+    "usResident": "개인 납세자(개인 유산 포함)를 대상으로 하며 미국 내·외 거주자에게 적용됩니다. 주요 기준은 비고의적 행위(과실, 실수, 선의 오해)를 인증하고, IRS 시민/형사 감사 미진행이며, 패널티를 납부하며, 유효 SSN/ITIN을 보유합니다(ITIN 신청 동시 가능)."
   },
   "comparison": {
-    "title": "Streamlined 두 가지 옵션",
+    "title": "Streamlined filing compliance procedures 종류",
     "headers": { "type": "유형", "penalty": "벌금", "target": "대상" },
     "rows": {
-      "foreign": "해외 거주자",
-      "domestic": "미국 거주자"
+      "foreign": "Streamlined Foreign Offshore Procedures(SFOP)",
+      "domestic": "Streamlined Domestic Offshore Procedures(SDOP)"
+    },
+    "rows2" : {
+      "foreign": "U.S. taxpayers residing outside the United States (under the 330-day rule or Substantial Presence Test)",
+      "domestic": "U.S. taxpayers residing in the United States"
     }
   },
   "warning": {

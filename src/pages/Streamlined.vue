@@ -25,8 +25,6 @@
             <h4>{{ $t('streamlined.eligibility.title') }}</h4>
             <ul>
               <li>{{ $t('streamlined.eligibility.usResident') }}</li>
-              <li>{{ $t('streamlined.eligibility.abroadResident') }}</li>
-              <li>{{ $t('streamlined.eligibility.certify') }}</li>
             </ul>
           </div>
         </div>
@@ -43,19 +41,16 @@
               <tr>
                 <th>{{ $t('streamlined.comparison.headers.type') }}</th>
                 <th>{{ $t('streamlined.comparison.headers.penalty') }}</th>
-                <th>{{ $t('streamlined.comparison.headers.target') }}</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>{{ $t('streamlined.comparison.rows.foreign') }}</td>
-                <td><strong>0%</strong></td>
-                <td>🌍</td>
+                <td>{{ $t('streamlined.comparison.rows2.foreign') }}</td>
               </tr>
               <tr class="highlight">
                 <td>{{ $t('streamlined.comparison.rows.domestic') }}</td>
-                <td>5%</td>
-                <td>🗽</td>
+                <td>{{ $t('streamlined.comparison.rows2.domestic') }}</td>
               </tr>
             </tbody>
           </table>
@@ -304,6 +299,12 @@ section {
 .non-willful {
   border-left-color: #059669;
 }
+
+.eligibility {
+  border-left-color: #059669;
+}
+
+
 
 /* 비교표 - 초록/회색 */
 /* 비교표 - Fbar 스타일 통합 */
