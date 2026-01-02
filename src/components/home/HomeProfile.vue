@@ -257,7 +257,6 @@ export default {
     background-position: center center !important; /* ✅ 중앙 고정 */
     background-size: auto !important;        /* ✅ 세로 비율 확대 */
     min-height: auto !important;                  /* ✅ 약간 축소 */
-    background-repeat: no-repeat !important;  /* ✅ 핵심 추가! */
   }
   
  .profile-content {
