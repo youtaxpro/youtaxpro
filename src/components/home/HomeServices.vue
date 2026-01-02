@@ -12,7 +12,9 @@
       <div class="service-cards">
                 <div v-for="i in 8" :key="i" 
              class="service-card"
-             :class="{ 'service-clickable fbar-card': i === 2 }"
+             :class="{ 'service-clickable fbar-card': i === 2,
+              'service-clickable streamlined-card': i === 4
+              }"
              @click="handleServiceClick(i)">
           <div class="service-image">
             <div class="service-overlay"></div>
