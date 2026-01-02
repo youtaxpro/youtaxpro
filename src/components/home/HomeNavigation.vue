@@ -47,7 +47,7 @@
       
       <!-- Copyright Info -->
       <div class="sidebar-footer">
-        <p>&copy; 2024-2025 {{ $t('footer.companyName') }}</p>
+        <p>&copy; 2024-2026 {{ $t('footer.companyName') }}</p>
         <p>{{ $t('footer.address') }}</p>
         <p>{{ $t('footer.phone') }}</p>
       </div>
