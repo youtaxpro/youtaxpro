@@ -410,6 +410,9 @@ const handleServiceClick = (index) => {
   opacity: 0;
   animation: fadeIn 0.8s ease-out forwards;
   animation-delay: calc(0.1s * var(--i, 1));
+  contain: layout style paint;
+  content-visibility:auto;
+  contain-intrinsic-size: 300px 340px;
 }
 
 .service-card:nth-child(1) { --i: 1; }
@@ -562,6 +565,11 @@ const handleServiceClick = (index) => {
 
 /* 모바일 화면 */
 @media screen and (max-width: 768px) {
+
+  .service-card {
+    contain-intrinsic-size: 100% 400px;
+  }  
+
   .services-section {
     padding: 3rem 1.5rem;
   }
@@ -569,6 +577,7 @@ const handleServiceClick = (index) => {
   .service-cards {
     grid-template-columns: 1fr;
     gap: 2.5rem;
+
   }
   
   .title-wrapper {
