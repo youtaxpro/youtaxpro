@@ -264,15 +264,6 @@ section {
   transition: left 0.6s;
 }
 
-.info-card:hover::before {
-  left: 100%;
-}
-
-.info-card:hover {
-  transform: translateY(-12px);
-  box-shadow: 0 25px 60px rgba(102, 126, 234, 0.25);
-}
-
 .info-card h4 {
   font-size: 2rem;
   font-weight: 800;
@@ -362,16 +353,6 @@ section {
   font-weight: 500 !important;
 }
 
-.comparison-table tr.highlight td {
-  background: rgba(16, 185, 129, 0.1) !important;
-  font-weight: 700 !important;
-}
-
-.comparison-table tr:hover td {
-  background: rgba(240, 253, 244, 0.8) !important;
-  transform: scale(1.01) !important;
-  transition: all 0.3s ease !important;
-}
 
 /* 모바일 */
 @media (max-width: 768px) {
@@ -421,18 +402,6 @@ section {
   height: 100%;
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
   transition: left 0.6s;
-}
-
-.warning-card:hover::before {
-  left: 100%;
-}
-
-.warning-card:hover {
-  transform: translateY(-15px) scale(1.02);
-  box-shadow: 
-    0 40px 100px rgba(220, 38, 38, 0.4),
-    0 20px 50px rgba(0, 0, 0, 0.25);
-  border-color: rgba(220, 38, 38, 0.6);
 }
 
 .warning-icon {

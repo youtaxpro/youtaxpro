@@ -21,7 +21,7 @@
               <source v-if="webpSupport" :srcset="getServiceImageWebP(i)" type="image/webp">
               <source v-if="avifSupport" :srcset="getServiceImageAVIF(i)" type="image/avif">
               <img 
-                :src="getServiceImage(i)" 
+                :src="getServiceImage(i)"
                 :alt="'Service ' + i"
                 class="lazy-image"
                 loading="lazy"
@@ -38,9 +38,9 @@
               → {{ $t('fbar.ctaButton') }}
             </div>
             <!-- service4 카드 (i===4일 때) -->
-<div v-if="i === 4" class="service-arrow">
-  → {{ $t('streamlined.ctaButton') }}
-</div>
+            <div v-if="i === 4" class="service-arrow">
+              → {{ $t('streamlined.ctaButton') }}
+            </div>
           </div>
         </div>
       </div>
@@ -210,6 +210,33 @@ const handleServiceClick = (index) => {
   ) !important;
 }
 
+.streamlined-card {
+  border: 2px solid transparent;
+  background: linear-gradient(white, white) padding-box,
+              linear-gradient(135deg, #ff6b6b, #ff8e8e) border-box;
+}
+
+.streamlined-card:hover {
+  transform: translateY(-15px) !important;
+  box-shadow: 0 25px 50px rgba(255, 107, 107, 0.3),
+              0 10px 25px rgba(0, 0, 0, 0.15) !important;
+}
+
+.streamlined-card .icon-circle {
+  background: linear-gradient(135deg, #ff6b6b, #ff5252) !important;
+  color: white !important;
+  animation: pulse 2s infinite !important;
+  border-color: #ffd700 !important;
+}
+
+.streamlined-card .service-overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 107, 107, 0.2),
+    rgba(255, 107, 107, 0.4)
+  ) !important;
+}
+
 /* 클릭 가능한 카드 커서 */
 .service-clickable {
   cursor: pointer !important;
@@ -235,6 +262,12 @@ const handleServiceClick = (index) => {
 }
 
 .fbar-card:hover .service-arrow {
+  opacity: 1;
+  bottom: -12px;
+  animation: float 2s ease-in-out infinite;
+}
+
+.streamlined-card:hover .service-arrow {
   opacity: 1;
   bottom: -12px;
   animation: float 2s ease-in-out infinite;

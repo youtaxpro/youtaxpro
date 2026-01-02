@@ -269,9 +269,9 @@ Given the complexities of U.S. tax law, especially for those with international 
       "foreign": "Streamlined Foreign Offshore Procedures(SFOP)",
       "domestic": "Streamlined Domestic Offshore Procedures(SDOP)"
     },
-    "rows2" : {
-      "foreign": "미국 외 거주자 (330일 규칙 또는 Substantial Presence Test)",
-      "domestic": "미국 내 거주자"
+        "rows2" : {
+      "foreign": "U.S. taxpayers residing outside the United States (under the 330-day rule or Substantial Presence Test)",
+      "domestic": "U.S. taxpayers residing in the United States"
     }
   },
   "warning": {
@@ -563,12 +563,12 @@ IRS는 업무 과중으로 처리가 지연되어 납세자들이 어려움을 �
 
 "streamlined": {
   "title": "Streamlined filing compliance procedures",
-  "description": "과거 FBAR/FATCA 미신고? 비고의적 위반자에 한해 벌금 0원 해외거주자 프로그램!",
+  "description": "과거 FBAR/FATCA 미신고? 비고의적 위반자에 한해 벌금 0원이며 해외거주자를 위한 구제 프로그램입니다.",
   "ctaButton": "지금 Streamlined 문의",
   "purpose": {
     "title": "Streamlined Procedures",
     "nonWillful": "Streamlined Procedures의 목적",
-    "content": "Streamlined procedures는 외국 금융 자산 미보고 및 미납세가 고의적이지 않음을 인증한 납세자를 위한 프로그램입니다. 수정/연체 신고 간소화와 세금·패널티 해결 조건을 제공합니다. 2012년 9월 1일 도입 후 확대: 미국 내 거주자 포함, $1,500 세금 임계값을 제거하며, 2012년 발표된 위험 평가 과정을 제거합니다."
+    "content": "Streamlined procedures는 외국 금융 자산 미보고 및 미납세가 고의적이지 않음을 인증한 납세자를 위한 프로그램입니다. 수정/연체 신고 간소화와 세금·패널티 해결 조건을 제공합니다. 2012년 9월 1일 도입된 후 확대 개정되었습니다: 미국 내 거주자도 참여 가능하게 하고, 1,500달러 세금 기준선을 없애며, 기존 위험 평가 절차를 제거하였습니다."
   },
   "eligibility": {
     "title": "자격 요건",
@@ -582,16 +582,16 @@ IRS는 업무 과중으로 처리가 지연되어 납세자들이 어려움을 �
       "domestic": "Streamlined Domestic Offshore Procedures(SDOP)"
     },
     "rows2" : {
-      "foreign": "U.S. taxpayers residing outside the United States (under the 330-day rule or Substantial Presence Test)",
-      "domestic": "U.S. taxpayers residing in the United States"
+      "foreign": "미국 외 거주자 (330일 규칙 또는 Substantial Presence Test)",
+      "domestic": "미국 내 거주자"
     }
   },
   "warning": {
     "title": "주의사항",
     "audit": "자동 감사 대상 아님",
-    "auditDesc": "일반 신고서처럼 처리되나 기존 감사대상자는 불가",
+    "auditDesc": "일반 신고서처럼 처리되나 기존 감사대상자는 불가합니다.",
      "criminal": "고의적 위반 불가",           // ✅ 추가
-    "criminalDesc": "고의적 위반 의심시 IRS 형사자발공개절차 이용"  // ✅ 추가
+    "criminalDesc": "고의적 위반 의심시 IRS 형사자발공개절차를 신청해야 합니다."  // ✅ 추가
   },
   "ctaTitle": "벌금 없이 정정신고",
   "ctaDescription": "과거 6년 FBAR/FATCA 미신고자 지금이 마지막 기회!"
