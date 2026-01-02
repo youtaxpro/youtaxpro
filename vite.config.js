@@ -43,6 +43,19 @@ export default defineConfig({
       },
     }),
   ],
+
+   // 🔥 빌드 오류 해결 핵심 추가!
+  assetsInclude: ['**/*.gz', '**/*.webp', '**/*.jpg', '**/*.jpeg', '**/*.png', '**/*.svg'],
+  
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: undefined  // 청크 분할 비활성
+      }
+    },
+    assetsInlineLimit: 4096,  // 작은 이미지 인라인
+  },
+  
   base: "/", // 여기를 수정! 커스텀 도메인을 사용할 때는 그냥 "/"로 설정
   resolve: {
     alias: {
