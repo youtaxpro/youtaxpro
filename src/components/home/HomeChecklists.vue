@@ -125,6 +125,7 @@ export default {
   min-height: 100vh !important;
   padding: 4rem 2rem !important;  /* 내부 패딩만 유지 */
   overflow: hidden !important;
+
 }
 
 /* 화이트 오버레이 */
@@ -207,11 +208,6 @@ export default {
 }
 
 /* Checklist Section Specific Styles */
-.checklist-section {
-  background-color: #f8f9fa;
-  padding: 4rem 2rem;
-  width: 100%;
-}
 
 .checklists-container {
   position: relative !important;
@@ -311,6 +307,15 @@ export default {
 }
 
 /* 반응형 디자인 */
+@media (max-width: 768px) {
+  .checklist-section {
+    background-attachment: scroll !important;     /* ✅ 스크롤로 변경 */
+    background-position: center center !important; /* ✅ 중앙 고정 */
+    background-size: auto !important;        /* ✅ 세로 비율 확대 */
+    min-height: auto !important;                  /* ✅ 약간 축소 */
+  }
+}
+
 @media (max-width: 1024px) {
   .checklist-grid {
     grid-template-columns: repeat(2, 1fr);

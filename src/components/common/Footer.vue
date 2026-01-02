@@ -33,7 +33,7 @@
 
       <!-- Copyright and Bottom Links -->
       <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; width: 100%;">
-        <p style="color: rgba(255,255,255,0.6); font-size: 0.875rem;">&copy; 2024-2025 {{ $t('footer.companyName') }}</p>
+        <p style="color: rgba(255,255,255,0.6); font-size: 0.875rem;">&copy; 2024-2026 {{ $t('footer.companyName') }}</p>
         
         <div style="display: flex; gap: 1rem; margin-top: 1rem;">
             <router-link to="/#aboutus" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem;">{{ $t('nav.aboutUs') }}</router-link>

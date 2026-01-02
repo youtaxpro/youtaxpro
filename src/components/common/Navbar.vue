@@ -30,7 +30,9 @@
     <!-- Mobile Sidebar Menu -->
     <div class="sidebar-menu" :class="{ 'open': isMenuOpen }">
       <button class="sidebar-close-btn" @click="toggleMenu">
-        <span class="material-symbols-outlined">close</span>
+        <img src="@/assets/icons/webp/xmark-solid-full.svg" 
+              alt="Close menu" 
+              class="close-icon" />
       </button>
       <ul class="nav-links">
         <li><router-link to="/#aboutus" @click="toggleMenu">{{ $t('nav.aboutUs') }}</router-link></li>
@@ -47,7 +49,7 @@
       
       <!-- Copyright Info -->
       <div class="sidebar-footer">
-        <p>&copy; 2024-2025 {{ $t('footer.companyName') }}</p>
+        <p>&copy; 2024-2026 {{ $t('footer.companyName') }}</p>
         <p>{{ $t('footer.address') }}</p>
         <p>{{ $t('footer.phone') }}</p>
       </div>
@@ -60,6 +62,7 @@ import { ref, onMounted, onBeforeUnmount } from 'vue';
 import { useI18n } from 'vue-i18n';
 import BerkeleyLogo from '../../assets/Berkeley.png';
 import { setupOptimizedScroll } from '../../utils/scrollOptimizer';
+import closeIcon from '../../assets/icons/webp/xmark-solid-full.svg';
 
 export default {
   name: 'Navbar',
@@ -123,6 +126,7 @@ export default {
       isMenuOpen,
       changeLanguage,
       toggleMenu,
+      closeIcon
     };
   }
 };
@@ -319,6 +323,13 @@ nav {
   height: 32px;
 }
 
+.close-icon {
+  width: 46px;
+  height: 46px;
+  filter: brightness(0) invert(1); /* SVG 흰색 변환 */
+  display: block;
+}
+
 .sidebar-menu .nav-links {
   margin-top: 3rem;
   display: flex;
@@ -399,6 +410,9 @@ body.sidebar-open::before {
   .language-switcher {
     margin-left: auto;
     margin-right: 1rem;
+  }
+
+    .close-icon { width: 40px; height: 40px; 
   }
 }
 

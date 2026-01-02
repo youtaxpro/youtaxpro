@@ -253,7 +253,11 @@ export default {
 
 @media (max-width: 768px) {
   .team-member {
-    padding: 3rem 1rem;
+    background-attachment: scroll !important;     /* ✅ 스크롤로 변경 */
+    background-position: center center !important; /* ✅ 중앙 고정 */
+    background-size: auto !important;        /* ✅ 세로 비율 확대 */
+    min-height: auto !important;                  /* ✅ 약간 축소 */
+    background-repeat: no-repeat !important;  /* ✅ 핵심 추가! */
   }
   
  .profile-content {
