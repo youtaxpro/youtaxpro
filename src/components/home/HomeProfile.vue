@@ -102,8 +102,8 @@ export default {
     display: flex !important;
   flex-direction: column !important;
   gap: 1.5rem !important;
-  height: 850px !important;  /* ✅ 높이 증가 */
-  min-height: 850px !important;
+  min-height: auto !important;
+  height: auto !important;
 }
 
 .description, .career {
@@ -256,8 +256,14 @@ export default {
     padding: 3rem 1rem;
   }
   
+ .profile-content {
+    height: auto !important;
+    min-height: auto !important;
+  }
+  
   .description, .career {
-    padding: 2rem 1.5rem;
+    padding: 1.5rem 1.2rem !important;  /* 패딩 축소 */
+    margin-bottom: 1rem !important;     /* 여백 추가 */
   }
   
   .profile-image img {
