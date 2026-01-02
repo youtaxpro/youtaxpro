@@ -104,7 +104,6 @@ export default {
   gap: 1.5rem !important;
   height: 850px !important;  /* ✅ 높이 증가 */
   min-height: 850px !important;
-  z-index: 4 !important;  
 }
 
 .description, .career {

@@ -64,7 +64,7 @@
         <h3 class="section-h3 warning-title">{{ $t('streamlined.warning.title') }}</h3>
         <div class="warning-cards">
           <div class="warning-card">
-            <div class="warning-icon">⚠️</div>
+            <div class="warning-icon">📋</div>
             <h4>{{ $t('streamlined.warning.audit') }}</h4>
             <p>{{ $t('streamlined.warning.auditDesc') }}</p>
           </div>

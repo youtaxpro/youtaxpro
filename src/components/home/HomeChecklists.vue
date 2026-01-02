@@ -48,6 +48,7 @@ import {
   FileSearch,
   Send
 } from 'lucide-vue-next';
+import sanfranvilla from '../../assets/sanfranvilla.png';
 
 export default {
   name: 'HomeChecklists',
@@ -57,7 +58,8 @@ export default {
     FileCheck,
     Calculator,
     FileSearch,
-    Send
+    Send,
+    sanfranvilla
   },
   setup() {
     // 아이콘 매핑 함수
@@ -112,6 +114,30 @@ export default {
 @keyframes shine {
   0% { left: -100%; }
   100% { left: 100%; }
+}
+
+.checklist-section {
+  position: relative !important;
+  background-image: url('../../assets/sanfranvilla.png') !important;
+  background-size: cover !important;
+  background-position: center bottom !important;
+  background-attachment: fixed !important;
+  min-height: 100vh !important;
+  padding: 4rem 2rem !important;  /* 내부 패딩만 유지 */
+  overflow: hidden !important;
+}
+
+/* 화이트 오버레이 */
+.checklist-section::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background: 
+  linear-gradient(135deg, rgba(255,255,255,0.75) 0%, rgba(240,246,253,0.78) 100%) !important;
+  z-index: 1 !important;
 }
 
 /* Title Wrapper Styles */
@@ -188,6 +214,8 @@ export default {
 }
 
 .checklists-container {
+  position: relative !important;
+  z-index: 3 !important;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -221,11 +249,6 @@ export default {
   transition: all 0.3s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
-}
-
-.checklist-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* 숫자 배지 스타일 */

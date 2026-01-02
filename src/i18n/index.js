@@ -248,7 +248,7 @@ Given the complexities of U.S. tax law, especially for those with international 
 
 "streamlined": {
   "title": "Streamlined Procedures (Penalty Relief Program)",
-  "description": "Past FBAR/FATCA non-filers? 0% penalty for non-willful violations - Overseas residents program!",
+  "description": "Past FBAR/FATCA non-filers? 0% penalty IRS relief program for non-willful violators and overseas residents.",
   "ctaButton": "Streamlined Consultation Now",
   "purpose": {
     "title": "Streamlined Procedures",
@@ -282,7 +282,7 @@ Given the complexities of U.S. tax law, especially for those with international 
     "criminalDesc": "Suspected willful conduct? Use IRS Criminal Investigation Voluntary Disclosure Practice instead"  // ✅ 추가
   },
   "ctaTitle": "Penalty-Free Compliance",
-  "ctaDescription": "Last chance for 6-year FBAR/FATCA non-filers - act now!"
+  "ctaDescription": "FBAR/FATCA 6-year non-filing status can now be fully resolved through the IRS official program - the optimal timing is right now!"
 },
 
 
@@ -563,7 +563,7 @@ IRS는 업무 과중으로 처리가 지연되어 납세자들이 어려움을 �
 
 "streamlined": {
   "title": "Streamlined filing compliance procedures",
-  "description": "과거 FBAR/FATCA 미신고? 비고의적 위반자에 한해 벌금 0원이며 해외거주자를 위한 구제 프로그램입니다.",
+  "description": "과거 FBAR/FATCA 미신고로 고민이신가요? 비고의적 위반자에 한해 벌금 0원으로 해외 거주자를 위한 IRS 구제 프로그램입니다.",
   "ctaButton": "지금 Streamlined 문의",
   "purpose": {
     "title": "Streamlined Procedures",
@@ -575,7 +575,7 @@ IRS는 업무 과중으로 처리가 지연되어 납세자들이 어려움을 �
     "usResident": "개인 납세자(개인 유산 포함)를 대상으로 하며 미국 내·외 거주자에게 적용됩니다. 주요 기준은 비고의적 행위(과실, 실수, 선의 오해)를 인증하고, IRS 시민/형사 감사 미진행이며, 패널티를 납부하며, 유효 SSN/ITIN을 보유합니다(ITIN 신청 동시 가능)."
   },
   "comparison": {
-    "title": "Streamlined filing compliance procedures 종류",
+    "title": "Streamlined Procedures 유형",
     "headers": { "type": "유형", "penalty": "벌금", "target": "대상" },
     "rows": {
       "foreign": "Streamlined Foreign Offshore Procedures(SFOP)",
@@ -594,7 +594,7 @@ IRS는 업무 과중으로 처리가 지연되어 납세자들이 어려움을 �
     "criminalDesc": "고의적 위반 의심시 IRS 형사자발공개절차를 신청해야 합니다."  // ✅ 추가
   },
   "ctaTitle": "벌금 없이 정정신고",
-  "ctaDescription": "과거 6년 FBAR/FATCA 미신고자 지금이 마지막 기회!"
+  "ctaDescription": "FBAR/FATCA 6년 미신고 상태를 IRS 공식 프로그램으로 완전 정산할 수 있는 최적의 타이밍입니다."
 },
 
 
