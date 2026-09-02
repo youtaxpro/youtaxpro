@@ -64,8 +64,7 @@ const messages = {
           items: ['FBAR/FATCA']
         },
         service3: {
-          items: ['Expat Tax Services'],
-          arrow: 'FEIE guide'
+          items: ['Expat Tax Services']
         },
         service4: {
           items: ['Streamlined Filing Procedures (IRS Amnesty Program)']
@@ -387,8 +386,7 @@ Given the complexities of U.S. tax law, especially for those with international 
           items: ['FBAR/FATCA 신고']
         },
         service3: {
-          items: ['해외 거주 미국 시민, 영주권자 세금 서비스'],
-          arrow: 'FEIE 공제 안내'
+          items: ['해외 거주 미국 시민, 영주권자 세금 서비스']
         },
         service4: {
           items: ['간소화 절차 (IRS 면세 프로그램)']

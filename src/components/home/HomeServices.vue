@@ -13,7 +13,7 @@
                 <div v-for="i in 8" :key="i" 
              class="service-card"
              :class="{ 'service-clickable fbar-card': i === 2,
-              'service-clickable feie-card': i === 3,
+              'service-clickable': i === 3,
               'service-clickable streamlined-card': i === 4
               }"
              @click="handleServiceClick(i)">
@@ -39,18 +39,6 @@
               <div class="icon-circle">{{ i }}</div>
             </div>
             <p>{{ $t(`services.service${i}.items[0]`) }}</p>
-                        <!-- FBAR 카드에만 화살표 표시 -->
-            <div v-if="i === 2" class="service-arrow">
-              → {{ $t('fbar.ctaButton') }}
-            </div>
-            <!-- service3 카드 (FEIE 가이드) -->
-            <div v-if="i === 3" class="service-arrow">
-              → {{ $t('services.service3.arrow') }}
-            </div>
-            <!-- service4 카드 (i===4일 때) -->
-            <div v-if="i === 4" class="service-arrow">
-              → {{ $t('streamlined.ctaButton') }}
-            </div>
           </div>
         </div>
       </div>
@@ -163,11 +151,6 @@ const handleServiceClick = (index) => {
   to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes float {
-  0%, 100% { transform: translateX(-50%) translateY(0); }
-  50% { transform: translateX(-50%) translateY(-10px); }
-}
-
 @keyframes pulse {
   0% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.4); }
   70% { box-shadow: 0 0 0 10px rgba(79, 70, 229, 0); }
@@ -239,46 +222,10 @@ const handleServiceClick = (index) => {
   cursor: pointer !important;
 }
 
-/* FBAR 화살표 */
-.service-arrow {
-  position: absolute;
-  bottom: -20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #ff6b6b;
-  color: white;
-  padding: 8px 16px;
-  border-radius: 20px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  white-space: nowrap;
-  opacity: 0;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.4);
-  z-index: 10;
-}
-
-.fbar-card:hover .service-arrow,
-.feie-card:hover .service-arrow,
-.streamlined-card:hover .service-arrow {
-  opacity: 1;
-  bottom: -12px;
-  animation: float 2s ease-in-out infinite;
-}
-
 /* 클릭 피드백 */
 .service-clickable:active {
   transform: translateY(-8px) scale(0.98) !important;
 }
-
-/* 모바일 반응형 유지 */
-@media (max-width: 768px) {
-  .service-arrow {
-    font-size: 0.8rem;
-    padding: 6px 12px;
-  }
-}
-
 
 
 /* Title Wrapper Styles */
@@ -388,8 +335,6 @@ const handleServiceClick = (index) => {
 .service-card {
   background: var(--card-bg);
   border-radius: 16px;
-  /* overflow는 visible: hover 시 .service-arrow 알약이 카드 아래로 나오게.
-     이미지 라운드 처리는 .service-image가 자체적으로 담당한다. */
   overflow: visible;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06),
               0 2px 5px rgba(0, 0, 0, 0.04),
