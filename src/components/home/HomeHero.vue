@@ -82,6 +82,7 @@
 
 <script>
 import { ref } from 'vue';
+import { gaEvent } from '../../seo/analytics';
 
 export default {
   name: 'HomeHero',
@@ -116,6 +117,11 @@ export default {
         const result = await response.json();
         
         if (result.success) {
+          // GA4 전환 이벤트 (상담 문의 = 리드)
+          gaEvent('generate_lead', {
+            method: 'web3forms',
+            status_type: formData.value.statusType || 'unspecified',
+          });
           alert('Thank you! We will contact you soon.');
           resetForm();
         } else {

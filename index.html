@@ -22,6 +22,15 @@
     <!-- 기본 canonical (라우터가 페이지별로 갱신) -->
     <link rel="canonical" href="https://youtaxpro.com/" />
 
+    <!-- Google Analytics 4 (gtag.js) — SPA이므로 page_view는 라우터가 수동 전송 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MNGEZH3G30"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'G-MNGEZH3G30', { send_page_view: false });
+    </script>
+
     <!-- SEO 핵심 메타태그: Title (55자) - 키워드 앞 배치 -->
     <title>미국 세금 신고 전문 CPA | 한국 거주 미국인 | Berkeley</title>
     

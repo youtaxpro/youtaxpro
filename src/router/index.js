@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import { i18n } from '../i18n'; // i18n import 추가
 import { SITE_NAME, routeSeoByName, canonicalFor } from '../seo/routeMeta';
+import { gaPageView } from '../seo/analytics';
 import FAQ from '../pages/FAQ.vue';
 import Home from '../pages/Home.vue';
 import ContactUs from '../pages/ContactUs.vue';
@@ -77,6 +78,9 @@ router.afterEach((to) => {
   setMeta('meta[name="twitter:title"]', 'content', title);
   setMeta('meta[name="twitter:description"]', 'content', description);
   setMeta('meta[name="twitter:url"]', 'content', canonical);
+
+  // SPA 페이지뷰 (첫 로드 포함 — index.html에서 send_page_view:false로 설정)
+  gaPageView({ path: to.fullPath, title });
 });
 
 export default router;
