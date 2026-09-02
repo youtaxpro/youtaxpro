@@ -46,6 +46,19 @@ export const routeSeo = [
     },
   },
   {
+    path: '/feie',
+    name: 'FeieLanding',
+    landingKey: 'feie',
+    title: {
+      ko: '해외근로소득 공제(FEIE) 가이드 | 한국 거주 미국인 세무 | Berkeley U.S. Tax Advisors',
+      en: 'Foreign Earned Income Exclusion (FEIE) Guide | Berkeley U.S. Tax Advisors',
+    },
+    description: {
+      ko: '해외에서 일하는 미국 시민권자·영주권자의 FEIE 요건(Tax Home·거주/체류 판정), 연도별 공제 한도, Form 2555 신청법, FEIE vs 외국납부세액공제 선택까지. 캘리포니아 CPA 정리.',
+      en: 'FEIE requirements (tax home, residence/presence tests), the annual cap by year, how to claim it on Form 2555, and the FEIE-vs-Foreign Tax Credit choice for Korea-based U.S. taxpayers.',
+    },
+  },
+  {
     path: '/fbar',
     name: 'Fbar',
     title: {

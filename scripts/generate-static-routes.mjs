@@ -18,6 +18,7 @@ import {
   localizedPath,
 } from '../src/seo/routeMeta.js';
 import { i18n } from '../src/i18n/index.js';
+import { landingDoc } from '../src/data/landing/index.js';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const distDir = join(root, 'dist');
@@ -37,6 +38,23 @@ function faqPageJsonLd(locale) {
         '@type': 'Answer',
         text: String(it.answer).replace(/\s*[•‧·]\s*/g, ' ').replace(/\s+/g, ' ').trim(),
       },
+    })),
+  };
+  return `<script type="application/ld+json">${JSON.stringify(data)}</script>`;
+}
+
+// 랜딩 페이지 FAQ → FAQPage 스키마
+function landingFaqJsonLd(landingKey, locale) {
+  const doc = landingDoc(landingKey, locale);
+  if (!doc || !Array.isArray(doc.faq) || !doc.faq.length) return '';
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    inLanguage: locale,
+    mainEntity: doc.faq.map((it) => ({
+      '@type': 'Question',
+      name: it.q,
+      acceptedAnswer: { '@type': 'Answer', text: String(it.a).replace(/\s+/g, ' ').trim() },
     })),
   };
   return `<script type="application/ld+json">${JSON.stringify(data)}</script>`;
@@ -77,6 +95,10 @@ function applyMeta(html, route, locale) {
     `<meta property="og:locale" content="${locale === 'en' ? 'en_US' : 'ko_KR'}" />`,
   ];
   if (route.path === '/faq') head.push(faqPageJsonLd(locale));
+  if (route.landingKey) {
+    const s = landingFaqJsonLd(route.landingKey, locale);
+    if (s) head.push(s);
+  }
   return out.replace('</head>', `  ${head.join('\n    ')}\n  </head>`);
 }
 

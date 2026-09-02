@@ -14,10 +14,13 @@ import ContactUs from '../pages/ContactUs.vue';
 import Fbar from '../pages/Fbar.vue';
 
 // 기준 라우트(ko). en은 /en 접두어로 자동 복제된다.
+const Landing = () => import('../pages/LandingPage.vue');
+
 const baseRoutes = [
   { seg: '', name: 'Home', component: Home },
   { seg: 'faq', name: 'FAQ', component: FAQ },
   { seg: 'contactus', name: 'ContactUs', component: ContactUs },
+  { seg: 'feie', name: 'FeieLanding', component: Landing },
   { seg: 'fbar', name: 'Fbar', component: Fbar },
   { seg: 'streamlined', name: 'Streamlined', component: () => import('../pages/Streamlined.vue') },
   { seg: 'privacy', name: 'PrivacyPolicy', component: () => import('../pages/PrivacyPolicy.vue') },
