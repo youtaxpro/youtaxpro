@@ -155,8 +155,8 @@ const handleServiceClick = (index) => {
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-10px); }
 }
 
 @keyframes pulse {
@@ -383,8 +383,10 @@ const handleServiceClick = (index) => {
 .service-card {
   background: var(--card-bg);
   border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06), 
+  /* overflow는 visible: hover 시 .service-arrow 알약이 카드 아래로 나오게.
+     이미지 라운드 처리는 .service-image가 자체적으로 담당한다. */
+  overflow: visible;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06),
               0 2px 5px rgba(0, 0, 0, 0.04),
               0 1px 30px rgba(37, 99, 235, 0.05);
   transition: var(--transition);
@@ -396,9 +398,6 @@ const handleServiceClick = (index) => {
   opacity: 0;
   animation: fadeIn 0.8s ease-out forwards;
   animation-delay: calc(0.1s * var(--i, 1));
-  contain: layout style paint;
-  content-visibility:auto;
-  contain-intrinsic-size: 300px 340px;
 }
 
 .service-card:nth-child(1) { --i: 1; }
@@ -421,6 +420,7 @@ const handleServiceClick = (index) => {
   height: 220px;
   overflow: hidden;
   position: relative;
+  border-radius: 16px 16px 0 0; /* 카드 상단 라운드 (카드가 overflow:visible이므로 직접 처리) */
 }
 
 .service-overlay {
