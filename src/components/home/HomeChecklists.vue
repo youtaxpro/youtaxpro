@@ -48,7 +48,7 @@ import {
   FileSearch,
   Send
 } from 'lucide-vue-next';
-import sanfranvilla from '../../assets/sanfranvilla.png';
+import sanfranvilla from '../../assets/sanfranvilla.jpg';
 
 export default {
   name: 'HomeChecklists',
@@ -118,7 +118,7 @@ export default {
 
 .checklist-section {
   position: relative !important;
-  background-image: url('../../assets/sanfranvilla.png') !important;
+  background-image: url('../../assets/sanfranvilla.jpg') !important;
   background-size: cover !important;
   background-position: center bottom !important;
   background-attachment: fixed !important;

@@ -10,7 +10,11 @@
     <div class="aboutus-card">
       <!-- Top Image Section -->
       <div class="aboutus-image-container">
-        <img :src="taxExpertiseIcon" alt="Tax Expertise" class="aboutus-hero-image" fetchpriority="high">
+        <picture>
+          <source :srcset="taxExpertiseAvif" type="image/avif">
+          <source :srcset="taxExpertiseWebp" type="image/webp">
+          <img :src="taxExpertiseIcon" alt="Tax Expertise" class="aboutus-hero-image" fetchpriority="high" decoding="async">
+        </picture>
       </div>
       
       <!-- Content Sections -->
@@ -47,12 +51,16 @@
 
 <script>
 import taxExpertiseIcon from '../../assets/tax-expertise.jpg';
+import taxExpertiseWebp from '../../assets/optimized/tax-expertise.webp';
+import taxExpertiseAvif from '../../assets/optimized/tax-expertise.avif';
 
 export default {
   name: 'HomeAboutUs',
   setup() {
     return {
-      taxExpertiseIcon
+      taxExpertiseIcon,
+      taxExpertiseWebp,
+      taxExpertiseAvif
     };
   }
 };

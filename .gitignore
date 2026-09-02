@@ -23,3 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 .vercel
+
+# 이미지 최적화 원본 백업 (scripts/optimize-images.mjs)
+src/assets/original/

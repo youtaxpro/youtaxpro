@@ -18,15 +18,18 @@
              @click="handleServiceClick(i)">
           <div class="service-image">
             <div class="service-overlay"></div>
-            <!-- 최적화된 이미지 로딩 방식 사용 -->
+            <!-- <picture>가 브라우저 지원에 따라 avif→webp→jpg 순으로 자동 선택 -->
             <picture>
-              <source v-if="webpSupport" :srcset="getServiceImageWebP(i)" type="image/webp">
-              <source v-if="avifSupport" :srcset="getServiceImageAVIF(i)" type="image/avif">
-              <img 
+              <source :srcset="getServiceImageAVIF(i)" type="image/avif">
+              <source :srcset="getServiceImageWebP(i)" type="image/webp">
+              <img
                 :src="getServiceImage(i)"
                 :alt="'Service ' + i"
                 class="lazy-image"
+                width="400"
+                height="220"
                 loading="lazy"
+                decoding="async"
               >
             </picture>
           </div>
@@ -51,7 +54,7 @@
 </template>
 
 <script>
-import { ref, onMounted } from 'vue';
+import { onMounted } from 'vue';
 import { useRouter } from 'vue-router'; // 👈 추가!
 import service1 from '../../assets/service1.jpg';
 import service2 from '../../assets/service2.jpg';
@@ -72,25 +75,10 @@ const avifImages = import.meta.glob('../../assets/optimized/*.avif', { eager: tr
 export default {
   name: 'HomeServices',
   setup() {
-    // 브라우저 이미지 형식 지원 여부 확인
-    const webpSupport = ref(false);
-    const avifSupport = ref(false);
     const router = useRouter(); // 👈 라우터 인스턴스
 
     onMounted(() => {
-      // WebP 지원 확인
-      const webpTest = new Image();
-      webpTest.onload = () => { webpSupport.value = true; };
-      webpTest.onerror = () => { webpSupport.value = false; };
-      webpTest.src = 'data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoBAAEAAwA0JaQAA3AA/vuUAAA=';
-
-      // AVIF 지원 확인
-      const avifTest = new Image();
-      avifTest.onload = () => { avifSupport.value = true; };
-      avifTest.onerror = () => { avifSupport.value = false; };
-      avifTest.src = 'data:image/avif;base64,AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUIAAADybWV0YQAAAAAAAAAoaGRscgAAAAAAAAAAcGljdAAAAAAAAAAAAAAAAGxpYmF2aWYAAAAADnBpdG0AAAAAAAEAAAAeaWxvYwAAAABEAAABAAEAAAABAAABGgAAAB0AAAAoaWluZgAAAAAAAQAAABppbmZlAgAAAAABAABhdjAxQ29sb3IAAAAAamlwcnAAAABLaXBjbwAAABRpc3BlAAAAAAAAAAIAAAACAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQ0MAAAAABNjb2xybmNseAACAAIAAYAAAAAXaXBtYQAAAAAAAAABAAEEAQKDBAAAACVtZGF0EgAKCBgANogQEAwgMg8f8D///8WfhwB8+ErK';
-
-      // 이미지 지연 로딩 설정
+      // 스크롤 진입 시 페이드인 (.lazy-image → .loaded)
       setupLazyLoading('.lazy-image');
     });
 
@@ -136,8 +124,6 @@ const handleServiceClick = (index) => {
       getServiceImage,
       getServiceImageWebP,
       getServiceImageAVIF,
-      webpSupport,
-      avifSupport,
       handleServiceClick
     };
   }
