@@ -10,46 +10,73 @@
         <div class="form-wrapper">
           <h2 class="form-title">Tax Consultation</h2>
           <p class="form-subtitle">Our Tax Experts will contact you!</p>
-          
-          <form @submit.prevent="submitForm">
-            <!-- Web3Forms Access Key -->
-            <input type="hidden" name="access_key" value="10f32bb4-f34d-4088-af76-7ffd7a7557d0">
-            
+
+          <!-- 접수 완료 -->
+          <div v-if="status === 'success'" class="form-done" role="status" aria-live="polite">
+            <div class="form-done-check" aria-hidden="true">✓</div>
+            <p class="form-done-title">문의가 접수되었습니다</p>
+            <p class="form-done-text">1영업일 이내에 이메일 또는 전화로 연락드리겠습니다.<br>Thank you — we'll be in touch within one business day.</p>
+            <button type="button" class="submit-btn form-done-again" @click="resetForm">다른 문의하기</button>
+          </div>
+
+          <form v-else @submit.prevent="submitForm" novalidate>
+            <!-- 스팸 방지 (사람에겐 안 보임) -->
+            <input
+              type="checkbox"
+              v-model="formData.botcheck"
+              name="botcheck"
+              class="hp-field"
+              tabindex="-1"
+              autocomplete="off"
+              aria-hidden="true"
+            />
+
             <div class="form-group">
-              <input 
-                v-model="formData.fullName"
+              <label class="sr-only" for="cf-name">Full Name</label>
+              <input
+                id="cf-name"
+                v-model.trim="formData.fullName"
                 type="text"
                 name="Full Name"
                 placeholder="Full Name"
+                autocomplete="name"
                 required
                 class="form-input"
               />
             </div>
 
             <div class="form-group">
-              <input 
-                v-model="formData.email"
+              <label class="sr-only" for="cf-email">Email</label>
+              <input
+                id="cf-email"
+                v-model.trim="formData.email"
                 type="email"
                 name="Email"
                 placeholder="Email"
+                autocomplete="email"
                 required
                 class="form-input"
               />
             </div>
 
             <div class="form-group">
-              <input 
-                v-model="formData.phone"
+              <label class="sr-only" for="cf-phone">Phone number</label>
+              <input
+                id="cf-phone"
+                v-model.trim="formData.phone"
                 type="tel"
                 name="Phone"
                 placeholder="Phone number"
+                autocomplete="tel"
                 required
                 class="form-input"
               />
             </div>
 
             <div class="form-group">
-              <select 
+              <label class="sr-only" for="cf-status">Status Type</label>
+              <select
+                id="cf-status"
                 v-model="formData.statusType"
                 name="Status Type"
                 class="form-input status-select"
@@ -63,16 +90,24 @@
             </div>
 
             <div class="form-group">
-              <textarea 
-                v-model="formData.details"
+              <label class="sr-only" for="cf-message">Message</label>
+              <textarea
+                id="cf-message"
+                v-model.trim="formData.details"
                 name="Message"
-                placeholder="Kindly detail your inquiry so we can assist you appropriately 한국어문의가능"
+                placeholder="Kindly detail your inquiry so we can assist you appropriately 한국어 문의 가능"
                 class="form-input form-textarea"
                 rows="4"
               ></textarea>
             </div>
 
-            <button type="submit" class="submit-btn">SUBMIT</button>
+            <p v-if="status === 'error'" class="form-error" role="alert">
+              전송에 실패했습니다. 잠시 후 다시 시도하시거나 전화(010-5909-4868)로 문의해 주세요.
+            </p>
+
+            <button type="submit" class="submit-btn" :disabled="status === 'submitting'">
+              {{ status === 'submitting' ? 'Sending…' : 'SUBMIT' }}
+            </button>
           </form>
         </div>
       </div>
@@ -84,69 +119,76 @@
 import { ref } from 'vue';
 import { gaEvent } from '../../seo/analytics';
 
+const ACCESS_KEY = '10f32bb4-f34d-4088-af76-7ffd7a7557d0';
+const emptyForm = () => ({
+  fullName: '',
+  email: '',
+  phone: '',
+  statusType: '',
+  details: '',
+  botcheck: false,
+});
+
 export default {
   name: 'HomeHero',
   setup() {
-    // 상담 폼 데이터
-    const formData = ref({
-      fullName: '',
-      email: '',
-      phone: '',
-      statusType: '',
-      details: ''
-    });
+    const formData = ref(emptyForm());
+    // 'idle' | 'submitting' | 'success' | 'error'
+    const status = ref('idle');
 
-    // 폼 제출 처리
     const submitForm = async () => {
+      if (status.value === 'submitting') return;
+      // 허니팟: 봇이 체크하면 조용히 성공 처리 (실제 전송 안 함)
+      if (formData.value.botcheck) {
+        status.value = 'success';
+        return;
+      }
+
+      status.value = 'submitting';
       try {
         const response = await fetch('https://api.web3forms.com/submit', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
           body: JSON.stringify({
-            access_key: '10f32bb4-f34d-4088-af76-7ffd7a7557d0',
+            access_key: ACCESS_KEY,
+            subject: 'youtaxpro.com 상담 신청',
+            from_name: formData.value.fullName || 'youtaxpro.com',
+            botcheck: false,
             full_name: formData.value.fullName,
             email: formData.value.email,
             phone: formData.value.phone,
             status_type: formData.value.statusType,
-            message: formData.value.details
-          })
+            message: formData.value.details,
+          }),
         });
-
         const result = await response.json();
-        
+
         if (result.success) {
-          // GA4 전환 이벤트 (상담 문의 = 리드)
           gaEvent('generate_lead', {
             method: 'web3forms',
             status_type: formData.value.statusType || 'unspecified',
           });
-          alert('Thank you! We will contact you soon.');
-          resetForm();
+          status.value = 'success';
         } else {
-          throw new Error('Form submission failed');
+          throw new Error(result.message || 'Form submission failed');
         }
       } catch (error) {
         console.error('Error submitting form:', error);
-        alert('There was an error. Please try again.');
+        gaEvent('form_error', { form: 'consultation' });
+        status.value = 'error';
       }
     };
 
-    // 폼 초기화
     const resetForm = () => {
-      formData.value = {
-        fullName: '',
-        email: '',
-        phone: '',
-        statusType: '',
-        details: ''
-      };
+      formData.value = emptyForm();
+      status.value = 'idle';
     };
 
     return {
       formData,
-      submitForm
+      status,
+      submitForm,
+      resetForm,
     };
   }
 };
@@ -347,6 +389,85 @@ export default {
 
 .submit-btn:hover {
   background: #FDB515;
+}
+
+.submit-btn:disabled {
+  opacity: 0.7;
+  cursor: progress;
+}
+
+/* 허니팟: 화면·스크린리더 모두에서 숨김 */
+.hp-field {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+  padding: 0;
+  margin: -1px;
+}
+
+/* 시각적으로만 숨긴 라벨 (스크린리더용) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.form-error {
+  margin: 0 0 0.75rem;
+  padding: 0.6rem 0.8rem;
+  background: rgba(220, 38, 38, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 4px;
+  color: #fff;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.form-done {
+  text-align: center;
+  padding: 1.5rem 0.5rem;
+  color: #fff;
+}
+
+.form-done-check {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.form-done-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+}
+
+.form-done-text {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  margin: 0 0 1.25rem;
+  opacity: 0.95;
+}
+
+.form-done-again {
+  width: auto;
+  padding: 0.7rem 1.5rem;
 }
 
 @media screen and (max-width: 768px) {
