@@ -85,9 +85,46 @@ export const routeSeo = [
 
 export const routeSeoByName = Object.fromEntries(routeSeo.map((r) => [r.name, r]));
 
+// --- 다국어 URL 규칙 -------------------------------------------------
+// ko(기본): 루트 그대로  (/, /fbar)
+// en: /en 접두어        (/en, /en/fbar)
+export const LOCALES = ['ko', 'en'];
+
+// 로케일 접두어를 제거한 "기준 경로"(ko 기준)를 돌려준다. 예) /en/fbar → /fbar
+export function stripLocalePrefix(path) {
+  const p = (path || '/').replace(/\/+$/, '') || '/';
+  if (p === '/en') return '/';
+  if (p.startsWith('/en/')) return p.slice(3);
+  return p;
+}
+
+// 경로가 어떤 로케일인지. /en, /en/... 이면 'en', 그 외 'ko'
+export function localeOfPath(path) {
+  const p = (path || '/').replace(/\/+$/, '') || '/';
+  return p === '/en' || p.startsWith('/en/') ? 'en' : 'ko';
+}
+
+// 기준 경로 + 로케일 → 실제 경로. 예) ('/fbar','en') → /en/fbar , ('/','en') → /en
+export function localizedPath(basePath, locale) {
+  const base = stripLocalePrefix(basePath);
+  if (locale !== 'en') return base;
+  return base === '/' ? '/en' : '/en' + base;
+}
+
 // GitHub Pages는 dist/<path>/index.html 을 서빙하면서 /fbar 요청을 /fbar/ 로
 // 301 리다이렉트한다. canonical·sitemap을 실제 서빙되는 후행 슬래시 형태로 맞춘다.
-export function canonicalFor(path) {
-  if (path === '/') return SITE_URL + '/';
-  return SITE_URL + path.replace(/\/?$/, '/');
+export function canonicalFor(basePath, locale = DEFAULT_LOCALE) {
+  const p = localizedPath(basePath, locale);
+  if (p === '/') return SITE_URL + '/';
+  return SITE_URL + p.replace(/\/?$/, '/');
+}
+
+// 한 페이지의 hreflang 대체 링크 목록 (ko / en / x-default)
+export function alternatesFor(basePath) {
+  const base = stripLocalePrefix(basePath);
+  return [
+    { hreflang: 'ko', href: canonicalFor(base, 'ko') },
+    { hreflang: 'en', href: canonicalFor(base, 'en') },
+    { hreflang: 'x-default', href: canonicalFor(base, 'ko') },
+  ];
 }

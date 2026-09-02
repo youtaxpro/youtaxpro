@@ -42,12 +42,12 @@
         <p style="color: rgba(255,255,255,0.6); font-size: 0.875rem;">&copy; 2024-2026 {{ $t('footer.companyName') }}</p>
         
         <div style="display: flex; gap: 1rem; margin-top: 1rem;">
-          <router-link to="/#aboutus" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem;">{{ $t('nav.aboutUs') }}</router-link>
-          <router-link to="/#services" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem;">{{ $t('nav.services') }}</router-link>
-          <router-link to="/#checklists" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem;">{{ $t('nav.checklists') }}</router-link>
-          <router-link to="/faq" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem;">{{ $t('nav.faq') }}</router-link>
-          <router-link to="/contactus" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem;">{{ $t('nav.contactUs') }}</router-link>
-          <router-link to="/privacy" style="color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.875rem;">{{ $t('nav.privacy') }}</router-link>
+          <router-link :to="lp('/#aboutus')" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem;">{{ $t('nav.aboutUs') }}</router-link>
+          <router-link :to="lp('/#services')" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem;">{{ $t('nav.services') }}</router-link>
+          <router-link :to="lp('/#checklists')" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem;">{{ $t('nav.checklists') }}</router-link>
+          <router-link :to="lp('/faq')" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem;">{{ $t('nav.faq') }}</router-link>
+          <router-link :to="lp('/contactus')" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem;">{{ $t('nav.contactUs') }}</router-link>
+          <router-link :to="lp('/privacy')" style="color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.875rem;">{{ $t('nav.privacy') }}</router-link>
         </div>
       </div>
     </div>
@@ -55,8 +55,14 @@
 </template>
 
 <script>
+import { useLocalePath } from '../../composables/useLocalePath';
+
 export default {
-  name: 'HomeFooter'
+  name: 'HomeFooter',
+  setup() {
+    const { lp } = useLocalePath();
+    return { lp };
+  }
 };
 </script>
 

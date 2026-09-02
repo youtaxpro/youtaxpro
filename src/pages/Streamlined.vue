@@ -6,7 +6,7 @@
       <div class="hero-content">
         <h1>{{ $t('streamlined.title') }}</h1>
         <p class="hero-description">{{ $t('streamlined.description') }}</p>
-        <router-link to="/contactus" class="cta-button">
+        <router-link :to="lp('/contactus')" class="cta-button">
           {{ $t('streamlined.ctaButton') }}
         </router-link>
       </div>
@@ -82,7 +82,7 @@
       <div class="section-inner">
         <h3 class="section-h3">{{ $t('streamlined.ctaTitle') }}</h3>
         <p>{{ $t('streamlined.ctaDescription') }}</p>
-        <router-link to="/contactus" class="cta-button">
+        <router-link :to="lp('/contactus')" class="cta-button">
           {{ $t('streamlined.ctaButton') }}
         </router-link>
       </div>
@@ -94,6 +94,7 @@
 <script>
 import { ref, onMounted } from 'vue';
 import MainLayout from '../layouts/MainLayout.vue';
+import { useLocalePath } from '../composables/useLocalePath';
 
 export default {
   name: 'Streamlined',
@@ -101,6 +102,7 @@ export default {
     MainLayout
   },
   setup() {
+    const { lp } = useLocalePath();
     // FBAR 전용 ref 상태들
     const isHeroLoaded = ref(false);
     const isCardsLoaded = ref(false);
@@ -134,6 +136,7 @@ export default {
       isHeroLoaded,
       isCardsLoaded,
       scrollProgress,
+      lp,
     };
   }
 };

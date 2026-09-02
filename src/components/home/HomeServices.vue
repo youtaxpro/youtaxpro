@@ -56,6 +56,7 @@
 <script>
 import { onMounted } from 'vue';
 import { useRouter } from 'vue-router'; // 👈 추가!
+import { useLocalePath } from '../../composables/useLocalePath';
 import service1 from '../../assets/service1.jpg';
 import service2 from '../../assets/service2.jpg';
 import service3 from '../../assets/service3.jpg';
@@ -76,6 +77,7 @@ export default {
   name: 'HomeServices',
   setup() {
     const router = useRouter(); // 👈 라우터 인스턴스
+    const { lp } = useLocalePath();
 
     onMounted(() => {
       // 스크롤 진입 시 페이드인 (.lazy-image → .loaded)
@@ -114,9 +116,9 @@ export default {
 const handleServiceClick = (index) => {
     console.log('Service 클릭!', index);
   if (index === 2) {
-    router.push('/fbar');      // FBAR (기존)
+    router.push(lp('/fbar'));      // FBAR (기존)
   } else if (index === 4) {     // ✅ Streamlined 추가
-    router.push('/streamlined');
+    router.push(lp('/streamlined'));
   }
 };
 

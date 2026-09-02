@@ -41,7 +41,7 @@
       <div class="cta-content">
         <h3>{{ $t('aboutus.cta.title') }}</h3>
         <p>{{ $t('aboutus.cta.description') }}</p>
-        <router-link to="/contactus" class="cta-button">{{ $t('aboutus.cta.button') }}</router-link>
+        <router-link :to="lp('/contactus')" class="cta-button">{{ $t('aboutus.cta.button') }}</router-link>
       </div>
     </div>
     
@@ -53,11 +53,14 @@
 import taxExpertiseIcon from '../../assets/tax-expertise.jpg';
 import taxExpertiseWebp from '../../assets/optimized/tax-expertise.webp';
 import taxExpertiseAvif from '../../assets/optimized/tax-expertise.avif';
+import { useLocalePath } from '../../composables/useLocalePath';
 
 export default {
   name: 'HomeAboutUs',
   setup() {
+    const { lp } = useLocalePath();
     return {
+      lp,
       taxExpertiseIcon,
       taxExpertiseWebp,
       taxExpertiseAvif

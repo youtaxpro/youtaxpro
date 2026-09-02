@@ -1,24 +1,24 @@
 <template>
   <nav :class="{ 'nav-scrolled': isScrolled }">
     <div class="nav-container">
-      <a href="/" class="logo flex items-center gap-8">
+      <router-link :to="lp('/')" class="logo flex items-center gap-8">
         <img :src="BerkeleyLogo" alt="Berkeley" style="height: 58px;" />
-      </a>
+      </router-link>
     </div>
 
     <div class="nav-content" :class="{ 'show': isMenuOpen }">
       <ul class="nav-links" :class="{ 'active': isMenuOpen }">
-        <li><router-link to="/#aboutus">{{ $t('nav.aboutUs') }}</router-link></li>
-        <li><router-link to="/#services">{{ $t('nav.services') }}</router-link></li>
-        <li><router-link to="/#checklists">{{ $t('nav.checklists') }}</router-link></li>
-        <li><router-link to="/faq">{{ $t('nav.faq') }}</router-link></li>
-        <li><router-link to="/contactus">{{ $t('nav.contactUs') }}</router-link></li>
+        <li><router-link :to="lp('/#aboutus')">{{ $t('nav.aboutUs') }}</router-link></li>
+        <li><router-link :to="lp('/#services')">{{ $t('nav.services') }}</router-link></li>
+        <li><router-link :to="lp('/#checklists')">{{ $t('nav.checklists') }}</router-link></li>
+        <li><router-link :to="lp('/faq')">{{ $t('nav.faq') }}</router-link></li>
+        <li><router-link :to="lp('/contactus')">{{ $t('nav.contactUs') }}</router-link></li>
       </ul>
 
       <div class="language-switcher">
-        <button @click="changeLanguage('ko')" class="lang-btn" :class="{ 'active': currentLanguage === 'ko' }">KOR</button>
+        <button @click="changeLanguage('ko')" class="lang-btn" :class="{ 'active': currentLocale === 'ko' }">KOR</button>
         <span class="lang-separator">|</span>
-        <button @click="changeLanguage('en')" class="lang-btn" :class="{ 'active': currentLanguage === 'en' }">ENG</button>
+        <button @click="changeLanguage('en')" class="lang-btn" :class="{ 'active': currentLocale === 'en' }">ENG</button>
       </div>
       <button class="mobile-menu-btn" @click="toggleMenu">
         <span></span>
@@ -35,16 +35,16 @@
               class="close-icon" />
       </button>
       <ul class="nav-links">
-        <li><router-link to="/#aboutus" @click="toggleMenu">{{ $t('nav.aboutUs') }}</router-link></li>
-        <li><router-link to="/#services" @click="toggleMenu">{{ $t('nav.services') }}</router-link></li>
-        <li><router-link to="/#checklists" @click="toggleMenu">{{ $t('nav.checklists') }}</router-link></li>
-        <li><router-link to="/faq" @click="toggleMenu">{{ $t('nav.faq') }}</router-link></li>
-        <li><router-link to="/contactus" @click="toggleMenu">{{ $t('nav.contactUs') }}</router-link></li>
+        <li><router-link :to="lp('/#aboutus')" @click="toggleMenu">{{ $t('nav.aboutUs') }}</router-link></li>
+        <li><router-link :to="lp('/#services')" @click="toggleMenu">{{ $t('nav.services') }}</router-link></li>
+        <li><router-link :to="lp('/#checklists')" @click="toggleMenu">{{ $t('nav.checklists') }}</router-link></li>
+        <li><router-link :to="lp('/faq')" @click="toggleMenu">{{ $t('nav.faq') }}</router-link></li>
+        <li><router-link :to="lp('/contactus')" @click="toggleMenu">{{ $t('nav.contactUs') }}</router-link></li>
       </ul>
       <div class="language-switcher">
-        <button @click="changeLanguage('ko')" class="lang-btn" :class="{ 'active': currentLanguage === 'ko' }">KOR</button>
+        <button @click="changeLanguage('ko')" class="lang-btn" :class="{ 'active': currentLocale === 'ko' }">KOR</button>
         <span class="lang-separator">|</span>
-        <button @click="changeLanguage('en')" class="lang-btn" :class="{ 'active': currentLanguage === 'en' }">ENG</button>
+        <button @click="changeLanguage('en')" class="lang-btn" :class="{ 'active': currentLocale === 'en' }">ENG</button>
       </div>
       
       <!-- Copyright Info -->
@@ -59,18 +59,19 @@
 
 <script>
 import { ref, onMounted, onBeforeUnmount } from 'vue';
-import { useI18n } from 'vue-i18n';
+import { useRouter } from 'vue-router';
 import BerkeleyLogo from '../../assets/Berkeley.png';
 import { setupOptimizedScroll } from '../../utils/scrollOptimizer';
 import closeIcon from '../../assets/icons/webp/xmark-solid-full.svg';
+import { useLocalePath } from '../../composables/useLocalePath';
 
 export default {
   name: 'Navbar',
   emits: ['toggle-menu'],
   setup(props, { emit }) {
-    const { locale } = useI18n();
+    const router = useRouter();
+    const { currentLocale, lp, switchLocalePath } = useLocalePath();
     const isScrolled = ref(false);
-    const currentLanguage = ref(locale.value);
     const isMenuOpen = ref(false);
     const mobileNav = ref(null);
     let removeScrollListener;
@@ -93,9 +94,8 @@ export default {
     };
 
     const changeLanguage = (lang) => {
-      locale.value = lang;
-      currentLanguage.value = lang;
-      localStorage.setItem('userLanguage', lang);
+      try { localStorage.setItem('userLanguage', lang); } catch (e) { /* noop */ }
+      router.push(switchLocalePath(lang));
     };
 
     onMounted(() => {
@@ -108,10 +108,6 @@ export default {
       }, { throttleTime: 100, useRequestAnimationFrame: true });
 
       mobileNav.value = document.querySelector('nav');
-      const savedLanguage = localStorage.getItem('userLanguage');
-      if (savedLanguage) {
-        changeLanguage(savedLanguage);
-      }
     });
 
     onBeforeUnmount(() => {
@@ -122,7 +118,8 @@ export default {
     return {
       BerkeleyLogo,
       isScrolled,
-      currentLanguage,
+      currentLocale,
+      lp,
       isMenuOpen,
       changeLanguage,
       toggleMenu,

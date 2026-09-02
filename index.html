@@ -19,8 +19,11 @@
       })(window.location);
     </script>
 
-    <!-- 기본 canonical (라우터가 페이지별로 갱신) -->
+    <!-- 기본 canonical / hreflang (라우터·빌드 스크립트가 페이지별로 갱신) -->
     <link rel="canonical" href="https://youtaxpro.com/" />
+    <link rel="alternate" hreflang="ko" href="https://youtaxpro.com/" />
+    <link rel="alternate" hreflang="en" href="https://youtaxpro.com/en/" />
+    <link rel="alternate" hreflang="x-default" href="https://youtaxpro.com/" />
 
     <!-- Google Analytics 4 (gtag.js) — SPA이므로 page_view는 라우터가 수동 전송 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-MNGEZH3G30"></script>

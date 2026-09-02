@@ -1,10 +1,7 @@
 <template>
   <div id="home" class="tax-website">
     <!-- Navigation 컴포넌트 -->
-    <HomeNavigation 
-      :is-scrolled="isScrolled" 
-      @change-language="changeLanguage" 
-    />
+    <HomeNavigation :is-scrolled="isScrolled" />
 
     <!-- Hero Section 컴포넌트 -->
     <HomeHero />
@@ -28,7 +25,6 @@
 
 <script>
 import { ref, onMounted, onBeforeUnmount } from 'vue';
-import { useI18n } from 'vue-i18n';
 import HomeNavigation from '../components/home/HomeNavigation.vue';
 import HomeHero from '../components/home/HomeHero.vue';
 import HomeAboutUs from '../components/home/HomeAboutUs.vue';
@@ -49,13 +45,8 @@ export default {
     HomeFooter
   },
   setup() {
-    const { locale } = useI18n();
     const isScrolled = ref(false);
     const scrollProgress = ref(0);
-    
-    const changeLanguage = (lang) => {
-      locale.value = lang;
-    };
 
     const handleScroll = () => {
       const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -74,8 +65,7 @@ export default {
 
     return {
       isScrolled,
-      scrollProgress,
-      changeLanguage
+      scrollProgress
     };
   }
 };

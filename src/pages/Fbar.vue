@@ -11,7 +11,7 @@
       <div class="hero-content">
         <h1>{{ $t('fbar.title') }}</h1>
         <p class="hero-description">{{ $t('fbar.description') }}</p>
-        <router-link to="/contactus" class="cta-button">
+        <router-link :to="lp('/contactus')" class="cta-button">
           {{ $t('fbar.ctaButton') }}
         </router-link>
       </div>
@@ -145,7 +145,7 @@
       <div class="section-inner">
         <h3 class="section-h3">{{ $t('fbar.ctaTitle') }}</h3>
         <p>{{ $t('fbar.ctaDescription') }}</p>
-        <router-link to="/contactus" class="cta-button">
+        <router-link :to="lp('/contactus')" class="cta-button">
           {{ $t('fbar.ctaButton') }}
         </router-link>
       </div>
@@ -157,6 +157,7 @@
 <script>
 import { ref, onMounted } from 'vue';
 import MainLayout from '../layouts/MainLayout.vue';
+import { useLocalePath } from '../composables/useLocalePath';
 
 export default {
   name: 'Fbar',
@@ -164,6 +165,7 @@ export default {
     MainLayout
   },
   setup() {
+    const { lp } = useLocalePath();
     // FBAR 전용 ref 상태들
     const isHeroLoaded = ref(false);
     const isCardsLoaded = ref(false);
@@ -197,6 +199,7 @@ export default {
       isHeroLoaded,
       isCardsLoaded,
       scrollProgress,
+      lp,
     };
   }
 };
