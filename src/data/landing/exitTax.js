@@ -126,6 +126,7 @@ export default {
       { path: '/feie', label: { ko: '해외근로소득 공제(FEIE)', en: 'FEIE Guide' } },
       { path: '/streamlined', label: { ko: 'Streamlined 간소화 절차', en: 'Streamlined Procedures' } },
       { path: '/fbar', label: { ko: 'FBAR 신고 안내', en: 'FBAR Filing' } },
+      { path: '/pfic', label: { ko: 'PFIC(해외 펀드 세금)', en: 'PFIC Guide' } },
     ],
   },
 
@@ -248,6 +249,7 @@ export default {
       { path: '/feie', label: { ko: '해외근로소득 공제(FEIE)', en: 'FEIE Guide' } },
       { path: '/streamlined', label: { ko: 'Streamlined 간소화 절차', en: 'Streamlined Procedures' } },
       { path: '/fbar', label: { ko: 'FBAR 신고 안내', en: 'FBAR Filing' } },
+      { path: '/pfic', label: { ko: 'PFIC(해외 펀드 세금)', en: 'PFIC Guide' } },
     ],
   },
 };

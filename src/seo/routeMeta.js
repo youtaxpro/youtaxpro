@@ -72,6 +72,19 @@ export const routeSeo = [
     },
   },
   {
+    path: '/pfic',
+    name: 'PficLanding',
+    landingKey: 'pfic',
+    title: {
+      ko: 'PFIC(해외 펀드 세금) 가이드 | 한국 펀드·ETF 미국 신고 | Berkeley U.S. Tax Advisors',
+      en: 'PFIC (Foreign Fund Taxation) Guide | Berkeley U.S. Tax Advisors',
+    },
+    description: {
+      ko: '한국 펀드·ETF·리츠는 대부분 PFIC입니다. Form 8621 신고 의무, §1291 초과분배 과세, QEF·시가평가(MTM) 선택, 한국 상장 ETF·연금계좌 펀드의 취급까지 캘리포니아 CPA가 정리.',
+      en: 'Most Korean funds, ETFs and REITs are PFICs. Form 8621 filing, the §1291 excess-distribution regime, QEF and mark-to-market elections, and how listed Korean ETFs and pension-account funds are treated.',
+    },
+  },
+  {
     path: '/fbar',
     name: 'Fbar',
     title: {

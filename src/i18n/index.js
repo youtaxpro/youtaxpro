@@ -10,7 +10,8 @@ const messages = {
       contactUs: 'Contact Us',
       privacy: 'Privacy Policy',
       feie: 'FEIE Guide',
-      exitTax: 'Exit Tax Guide'
+      exitTax: 'Exit Tax Guide',
+      pfic: 'PFIC Guide'
     },
     hero: {
       title: 'Building Trust Through Expertise and Results',
@@ -330,7 +331,8 @@ Given the complexities of U.S. tax law, especially for those with international 
       contactUs: '문의하기',
       privacy: '개인정보처리방침',
       feie: '해외근로소득 공제(FEIE)',
-      exitTax: '국적포기세(Exit Tax)'
+      exitTax: '국적포기세(Exit Tax)',
+      pfic: 'PFIC(해외 펀드 세금)'
     },
     hero: {
       title: '미국 세금 신고 전문',

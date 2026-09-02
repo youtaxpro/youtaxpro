@@ -4,10 +4,12 @@
 
 import feie from './feie.js';
 import exitTax from './exitTax.js';
+import pfic from './pfic.js';
 
 export const landingPages = {
   feie,
   'exit-tax': exitTax,
+  pfic,
 };
 
 export function landingDoc(key, locale = 'ko') {

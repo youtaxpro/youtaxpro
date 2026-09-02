@@ -133,6 +133,7 @@ export default {
 
     related: [
       { path: '/exit-tax', label: { ko: '국적포기세(Exit Tax)', en: 'U.S. Exit Tax' } },
+      { path: '/pfic', label: { ko: 'PFIC(해외 펀드 세금)', en: 'PFIC Guide' } },
       { path: '/fbar', label: { ko: 'FBAR 신고 안내', en: 'FBAR Filing' } },
       { path: '/streamlined', label: { ko: 'Streamlined 간소화 절차', en: 'Streamlined Procedures' } },
     ],
@@ -262,6 +263,7 @@ export default {
 
     related: [
       { path: '/exit-tax', label: { ko: '국적포기세(Exit Tax)', en: 'U.S. Exit Tax' } },
+      { path: '/pfic', label: { ko: 'PFIC(해외 펀드 세금)', en: 'PFIC Guide' } },
       { path: '/fbar', label: { ko: 'FBAR 신고 안내', en: 'FBAR Filing' } },
       { path: '/streamlined', label: { ko: 'Streamlined 간소화 절차', en: 'Streamlined Procedures' } },
     ],
