@@ -7,7 +7,8 @@ const messages = {
       services: 'Services',
       checklists: 'Tax Filing Process',
       faq: 'FAQ',
-      contactUs: 'Contact Us'
+      contactUs: 'Contact Us',
+      privacy: 'Privacy Policy'
     },
     hero: {
       title: 'Building Trust Through Expertise and Results',
@@ -324,7 +325,8 @@ Given the complexities of U.S. tax law, especially for those with international 
       services: '서비스',
       checklists: '신고절차',
       faq: '자주묻는질문',
-      contactUs: '문의하기'
+      contactUs: '문의하기',
+      privacy: '개인정보처리방침'
     },
     hero: {
       title: '미국 세금 신고 전문',

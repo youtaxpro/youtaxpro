@@ -58,6 +58,18 @@ export const routeSeo = [
     },
   },
   {
+    path: '/privacy',
+    name: 'PrivacyPolicy',
+    title: {
+      ko: '개인정보처리방침 | Berkeley U.S. Tax Advisors',
+      en: 'Privacy Policy | Berkeley U.S. Tax Advisors',
+    },
+    description: {
+      ko: '주식회사 버클리유에스택스어드바이저의 개인정보 수집·이용·보관 및 위탁에 관한 안내.',
+      en: 'How Berkeley U.S. Tax Advisors collects, uses, retains, and outsources the processing of personal information.',
+    },
+  },
+  {
     path: '/streamlined',
     name: 'Streamlined',
     title: {

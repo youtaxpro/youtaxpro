@@ -13,6 +13,7 @@ const routes = [
   { path: '/contactus', name: 'ContactUs', component: ContactUs },
   { path: '/fbar', name: 'Fbar', component: Fbar },
   { path: '/streamlined', name: 'Streamlined', component: () => import('../pages/Streamlined.vue') },
+  { path: '/privacy', name: 'PrivacyPolicy', component: () => import('../pages/PrivacyPolicy.vue') },
 ];
 
 const router = createRouter({

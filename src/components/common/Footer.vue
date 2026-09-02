@@ -41,6 +41,7 @@
             <router-link to="/#checklists" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem;">{{ $t('nav.checklists') }}</router-link>
             <router-link to="/faq" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem;">{{ $t('nav.faq') }}</router-link>
             <router-link to="/contactus" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem;">{{ $t('nav.contactUs') }}</router-link>
+            <router-link to="/privacy" style="color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.875rem;">{{ $t('nav.privacy') }}</router-link>
           </div>
       </div>
     </div>
