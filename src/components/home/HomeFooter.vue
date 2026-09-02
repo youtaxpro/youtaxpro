@@ -14,10 +14,16 @@
         <!-- Column 2 - Contact -->
         <div style="flex: 1; min-width: 250px;">
           <h3 style="font-size: 1.4rem; margin-bottom: 1.5rem; color: white;">{{ $t('contact.title') }}</h3>
-          <p style="margin-bottom: 0.5rem; color: rgba(255,255,255,0.8);">{{ $t('footer.phone') }}</p>
+          <p style="margin-bottom: 0.5rem;">
+            <a href="tel:+821059094868" style="color: rgba(255,255,255,0.8); text-decoration: none;">{{ $t('footer.phone') }}</a>
+          </p>
           <p style="margin-bottom: 0.5rem; color: rgba(255,255,255,0.8);">{{ $t('footer.fax') }}</p>
-          <p style="margin-bottom: 0.5rem; color: rgba(255,255,255,0.8);">{{ $t('footer.email') }}</p>
-          <p style="margin-bottom: 0.5rem; color: rgba(255,255,255,0.8);">{{ $t('footer.blog') }}</p>
+          <p style="margin-bottom: 0.5rem;">
+            <a href="mailto:amy@youtaxpro.com" style="color: rgba(255,255,255,0.8); text-decoration: none;">{{ $t('footer.email') }}</a>
+          </p>
+          <p style="margin-bottom: 0.5rem;">
+            <a href="https://blog.naver.com/berkeleytax" target="_blank" rel="noopener" style="color: rgba(255,255,255,0.8); text-decoration: none;">{{ $t('footer.blog') }}</a>
+          </p>
         </div>
 
         <!-- Column 3 - Hours -->

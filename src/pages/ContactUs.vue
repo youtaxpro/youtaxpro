@@ -17,7 +17,7 @@
           <div class="contact-card">
             <i class="fas fa-phone"></i>
             <h4>{{ $t('contact.phone.title') }}</h4>
-            <p>{{ $t('footer.phone') }}</p>
+            <p><a href="tel:+821059094868" class="contact-link">{{ $t('footer.phone') }}</a></p>
           </div>
           
           <div class="contact-card">
@@ -29,7 +29,7 @@
           <div class="contact-card">
             <i class="fas fa-envelope"></i>
             <h4>{{ $t('contact.email.title') }}</h4>
-            <p>{{ $t('footer.email') }}</p>
+            <p><a href="mailto:amy@youtaxpro.com" class="contact-link">{{ $t('footer.email') }}</a></p>
           </div>
 
           <div class="contact-card">
@@ -155,6 +155,17 @@ h3 {
   width: 100%;
   height: 600px;
   border-radius: 8px;
+}
+
+.contact-link {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-link:hover {
+  color: #FFA41B;
+  text-decoration: underline;
 }
 
 .blog-link {

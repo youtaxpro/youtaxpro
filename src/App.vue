@@ -13,12 +13,18 @@
     <footer>
       <!-- 푸터 내용 (주소, 저작권 등) -->
     </footer>
+
+    <!-- 전 페이지 공통 상담 연락처 버튼 -->
+    <ContactFab />
   </div>
 </template>
 
 <script>
+import ContactFab from "./components/common/ContactFab.vue";
+
 export default {
   name: "App",
+  components: { ContactFab },
 };
 </script>
 
