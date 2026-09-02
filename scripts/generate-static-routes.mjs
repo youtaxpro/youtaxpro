@@ -8,10 +8,34 @@ import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { routeSeo, DEFAULT_LOCALE, canonicalFor } from '../src/seo/routeMeta.js';
+import { i18n } from '../src/i18n/index.js';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const distDir = join(root, 'dist');
 const template = readFileSync(join(distDir, 'index.html'), 'utf8');
+
+// FAQ 페이지에 FAQPage 구조화 데이터를 주입한다.
+// 내용은 src/i18n/index.js 의 faq.items(ko)를 그대로 사용하므로 중복이 없다.
+function faqPageJsonLd() {
+  const items = i18n.global.getLocaleMessage(DEFAULT_LOCALE).faq.items || [];
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: items.map((it) => ({
+      '@type': 'Question',
+      name: it.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: String(it.answer).replace(/\s*[•‧·]\s*/g, ' ').replace(/\s+/g, ' ').trim(),
+      },
+    })),
+  };
+  return `<script type="application/ld+json">${JSON.stringify(data)}</script>`;
+}
+
+function injectFaqSchema(html) {
+  return html.replace('</head>', `  ${faqPageJsonLd()}\n  </head>`);
+}
 
 // $ 등 특수문자를 안전하게 넣기 위해 문자열이 아닌 함수 치환을 사용한다.
 function replaceAttr(html, regex, value) {
@@ -38,7 +62,9 @@ function applyMeta(html, route) {
 
 let count = 0;
 for (const route of routeSeo) {
-  const html = applyMeta(template, route);
+  let html = applyMeta(template, route);
+  if (route.path === '/faq') html = injectFaqSchema(html);
+
   if (route.path === '/') {
     // 홈: dist/index.html 을 라우터 메타와 일치하도록 갱신
     writeFileSync(join(distDir, 'index.html'), html, 'utf8');
@@ -48,6 +74,6 @@ for (const route of routeSeo) {
     writeFileSync(join(outDir, 'index.html'), html, 'utf8');
   }
   count += 1;
-  console.log(`  ✓ ${route.path}`);
+  console.log(`  ✓ ${route.path}${route.path === '/faq' ? ' (+ FAQPage schema)' : ''}`);
 }
 console.log(`[generate-static-routes] ${count} routes written`);
