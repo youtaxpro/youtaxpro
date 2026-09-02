@@ -21,6 +21,7 @@ const baseRoutes = [
   { seg: 'faq', name: 'FAQ', component: FAQ },
   { seg: 'contactus', name: 'ContactUs', component: ContactUs },
   { seg: 'feie', name: 'FeieLanding', component: Landing },
+  { seg: 'exit-tax', name: 'ExitTaxLanding', component: Landing },
   { seg: 'fbar', name: 'Fbar', component: Fbar },
   { seg: 'streamlined', name: 'Streamlined', component: () => import('../pages/Streamlined.vue') },
   { seg: 'privacy', name: 'PrivacyPolicy', component: () => import('../pages/PrivacyPolicy.vue') },

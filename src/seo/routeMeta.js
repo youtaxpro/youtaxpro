@@ -59,6 +59,19 @@ export const routeSeo = [
     },
   },
   {
+    path: '/exit-tax',
+    name: 'ExitTaxLanding',
+    landingKey: 'exit-tax',
+    title: {
+      ko: '국적포기세(Exit Tax) 가이드 | 미국 시민권·영주권 포기 세금 | Berkeley U.S. Tax Advisors',
+      en: 'U.S. Exit Tax (Expatriation Tax) Guide | Berkeley U.S. Tax Advisors',
+    },
+    description: {
+      ko: '미국 시민권 포기·장기 영주권 반납 시 covered expatriate 판정 기준, 전 세계 자산 간주매각(mark-to-market) 과세, Form 8854, 한국 자산·연금 평가와 준비 순서. 캘리포니아 CPA 정리.',
+      en: 'Covered-expatriate tests, mark-to-market taxation of worldwide assets, Form 8854, and how Korean assets and pensions are valued when you give up U.S. citizenship or a long-term green card.',
+    },
+  },
+  {
     path: '/fbar',
     name: 'Fbar',
     title: {

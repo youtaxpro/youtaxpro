@@ -51,6 +51,15 @@
         <router-link :to="lp('/contactus')" class="lp-cta-btn">{{ doc.cta.button }}</router-link>
       </aside>
 
+      <nav v-if="doc.related && doc.related.length" class="lp-related" aria-label="관련 가이드">
+        <p class="lp-related-title">{{ locale === 'en' ? 'Related guides' : '관련 가이드' }}</p>
+        <ul>
+          <li v-for="(r, i) in doc.related" :key="i">
+            <router-link :to="lp(r.path)">{{ r.label[locale] || r.label.ko }}</router-link>
+          </li>
+        </ul>
+      </nav>
+
       <footer class="lp-foot">
         <p class="lp-disclaimer">{{ doc.disclaimer }}</p>
         <p class="lp-sources-title">{{ locale === 'en' ? 'Sources' : '출처' }}</p>
@@ -226,6 +235,39 @@ export default {
   padding: 0.75rem 1.75rem;
   border-radius: 6px;
   text-decoration: none;
+}
+
+.lp-related {
+  margin: 2rem 0;
+}
+
+.lp-related-title {
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.5rem;
+}
+
+.lp-related ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.lp-related a {
+  display: inline-block;
+  padding: 0.4rem 0.9rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 999px;
+  color: #0047ab;
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+
+.lp-related a:hover {
+  background: #eff6ff;
 }
 
 .lp-foot {

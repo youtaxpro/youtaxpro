@@ -3,9 +3,11 @@
 // Vue 의존성이 없어야 한다(빌드 스크립트가 FAQPage 스키마 생성에 사용).
 
 import feie from './feie.js';
+import exitTax from './exitTax.js';
 
 export const landingPages = {
   feie,
+  'exit-tax': exitTax,
 };
 
 export function landingDoc(key, locale = 'ko') {

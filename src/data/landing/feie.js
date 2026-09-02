@@ -130,6 +130,12 @@ export default {
       { label: 'IRS Publication 54 (해외 거주 미국 시민·영주권자 세금 안내)', url: 'https://www.irs.gov/forms-pubs/about-publication-54' },
       { label: 'IRS — Foreign Housing Exclusion or Deduction', url: 'https://www.irs.gov/individuals/international-taxpayers/foreign-housing-exclusion-or-deduction' },
     ],
+
+    related: [
+      { path: '/exit-tax', label: { ko: '국적포기세(Exit Tax)', en: 'U.S. Exit Tax' } },
+      { path: '/fbar', label: { ko: 'FBAR 신고 안내', en: 'FBAR Filing' } },
+      { path: '/streamlined', label: { ko: 'Streamlined 간소화 절차', en: 'Streamlined Procedures' } },
+    ],
   },
 
   en: {
@@ -252,6 +258,12 @@ export default {
       { label: 'IRS — About Form 2555', url: 'https://www.irs.gov/forms-pubs/about-form-2555' },
       { label: 'IRS Publication 54 (Tax Guide for U.S. Citizens and Residents Abroad)', url: 'https://www.irs.gov/forms-pubs/about-publication-54' },
       { label: 'IRS — Foreign Housing Exclusion or Deduction', url: 'https://www.irs.gov/individuals/international-taxpayers/foreign-housing-exclusion-or-deduction' },
+    ],
+
+    related: [
+      { path: '/exit-tax', label: { ko: '국적포기세(Exit Tax)', en: 'U.S. Exit Tax' } },
+      { path: '/fbar', label: { ko: 'FBAR 신고 안내', en: 'FBAR Filing' } },
+      { path: '/streamlined', label: { ko: 'Streamlined 간소화 절차', en: 'Streamlined Procedures' } },
     ],
   },
 };
