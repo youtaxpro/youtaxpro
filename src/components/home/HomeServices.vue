@@ -13,6 +13,7 @@
                 <div v-for="i in 8" :key="i" 
              class="service-card"
              :class="{ 'service-clickable fbar-card': i === 2,
+              'service-clickable feie-card': i === 3,
               'service-clickable streamlined-card': i === 4
               }"
              @click="handleServiceClick(i)">
@@ -41,6 +42,10 @@
                         <!-- FBAR 카드에만 화살표 표시 -->
             <div v-if="i === 2" class="service-arrow">
               → {{ $t('fbar.ctaButton') }}
+            </div>
+            <!-- service3 카드 (FEIE 가이드) -->
+            <div v-if="i === 3" class="service-arrow">
+              → {{ $t('services.service3.arrow') }}
             </div>
             <!-- service4 카드 (i===4일 때) -->
             <div v-if="i === 4" class="service-arrow">
@@ -117,6 +122,8 @@ const handleServiceClick = (index) => {
     console.log('Service 클릭!', index);
   if (index === 2) {
     router.push(lp('/fbar'));      // FBAR (기존)
+  } else if (index === 3) {     // FEIE 가이드
+    router.push(lp('/feie'));
   } else if (index === 4) {     // ✅ Streamlined 추가
     router.push(lp('/streamlined'));
   }
@@ -251,12 +258,8 @@ const handleServiceClick = (index) => {
   z-index: 10;
 }
 
-.fbar-card:hover .service-arrow {
-  opacity: 1;
-  bottom: -12px;
-  animation: float 2s ease-in-out infinite;
-}
-
+.fbar-card:hover .service-arrow,
+.feie-card:hover .service-arrow,
 .streamlined-card:hover .service-arrow {
   opacity: 1;
   bottom: -12px;
