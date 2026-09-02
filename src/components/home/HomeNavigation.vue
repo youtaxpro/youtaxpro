@@ -11,6 +11,7 @@
         <li><router-link :to="lp('/#aboutus')">{{ $t('nav.aboutUs') }}</router-link></li>
         <li><router-link :to="lp('/#services')">{{ $t('nav.services') }}</router-link></li>
         <li><router-link :to="lp('/#checklists')">{{ $t('nav.checklists') }}</router-link></li>
+        <li><router-link :to="lp('/guides')">{{ $t('nav.guides') }}</router-link></li>
         <li><router-link :to="lp('/faq')">{{ $t('nav.faq') }}</router-link></li>
         <li><router-link :to="lp('/contactus')">{{ $t('nav.contactUs') }}</router-link></li>
       </ul>
@@ -38,6 +39,7 @@
         <li><router-link :to="lp('/#aboutus')" @click="toggleMenu">{{ $t('nav.aboutUs') }}</router-link></li>
         <li><router-link :to="lp('/#services')" @click="toggleMenu">{{ $t('nav.services') }}</router-link></li>
         <li><router-link :to="lp('/#checklists')" @click="toggleMenu">{{ $t('nav.checklists') }}</router-link></li>
+        <li><router-link :to="lp('/guides')" @click="toggleMenu">{{ $t('nav.guides') }}</router-link></li>
         <li><router-link :to="lp('/faq')" @click="toggleMenu">{{ $t('nav.faq') }}</router-link></li>
         <li><router-link :to="lp('/contactus')" @click="toggleMenu">{{ $t('nav.contactUs') }}</router-link></li>
       </ul>

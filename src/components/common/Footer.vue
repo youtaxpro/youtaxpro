@@ -39,9 +39,7 @@
             <router-link :to="lp('/#aboutus')" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem;">{{ $t('nav.aboutUs') }}</router-link>
             <router-link :to="lp('/#services')" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem;">{{ $t('nav.services') }}</router-link>
             <router-link :to="lp('/#checklists')" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem;">{{ $t('nav.checklists') }}</router-link>
-            <router-link :to="lp('/feie')" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem;">{{ $t('nav.feie') }}</router-link>
-            <router-link :to="lp('/exit-tax')" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem;">{{ $t('nav.exitTax') }}</router-link>
-            <router-link :to="lp('/pfic')" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem;">{{ $t('nav.pfic') }}</router-link>
+            <router-link :to="lp('/guides')" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem;">{{ $t('nav.guides') }}</router-link>
             <router-link :to="lp('/faq')" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem;">{{ $t('nav.faq') }}</router-link>
             <router-link :to="lp('/contactus')" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem;">{{ $t('nav.contactUs') }}</router-link>
             <router-link :to="lp('/privacy')" style="color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.875rem;">{{ $t('nav.privacy') }}</router-link>

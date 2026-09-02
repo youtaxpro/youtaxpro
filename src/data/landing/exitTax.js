@@ -6,6 +6,10 @@
 export default {
   slug: 'exit-tax',
   name: 'Exit Tax',
+  summary: {
+    ko: '미국 시민권 포기·장기 영주권 반납 시 전 세계 자산을 간주매각해 과세하는 규정. Form 8854.',
+    en: 'Renouncing citizenship or a long-term green card can trigger a mark-to-market tax on worldwide assets. Form 8854.',
+  },
 
   ko: {
     h1: '국적포기세(Exit Tax) 완벽 가이드',

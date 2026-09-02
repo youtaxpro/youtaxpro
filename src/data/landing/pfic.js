@@ -6,6 +6,10 @@
 export default {
   slug: 'pfic',
   name: 'PFIC',
+  summary: {
+    ko: '한국 펀드·ETF는 대부분 PFIC. 매년 Form 8621 신고, 선택하지 않으면 불리한 §1291 과세.',
+    en: 'Most Korean funds and ETFs are PFICs — annual Form 8621, with a harsh §1291 regime absent an election.',
+  },
 
   ko: {
     h1: 'PFIC(해외 펀드 세금) 완벽 가이드',

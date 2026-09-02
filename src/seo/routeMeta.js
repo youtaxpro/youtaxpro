@@ -46,6 +46,31 @@ export const routeSeo = [
     },
   },
   {
+    path: '/guides',
+    name: 'GuidesIndex',
+    title: {
+      ko: '미국세금 가이드 | 한국 거주 미국인 세무 | Berkeley U.S. Tax Advisors',
+      en: 'U.S. Tax Guides for Americans in Korea | Berkeley U.S. Tax Advisors',
+    },
+    description: {
+      ko: 'FEIE, 국적포기세, PFIC, ITIN, FBAR·FATCA, Streamlined 등 한국 거주 미국인이 알아야 할 미국세금 주제를 캘리포니아 CPA가 쉽게 정리한 가이드 모음.',
+      en: 'Plain-language guides to FEIE, the exit tax, PFIC, ITIN, FBAR/FATCA, and the Streamlined procedures for U.S. citizens and green card holders living in Korea.',
+    },
+  },
+  {
+    path: '/itin',
+    name: 'ItinLanding',
+    landingKey: 'itin',
+    title: {
+      ko: 'ITIN(개인 납세자 식별번호) 신청 가이드 | Form W-7 | Berkeley U.S. Tax Advisors',
+      en: 'ITIN Application Guide (Form W-7) | Berkeley U.S. Tax Advisors',
+    },
+    description: {
+      ko: 'SSN을 받을 수 없는 사람의 미국 납세자 식별번호. 한국인 배우자·부양가족 ITIN, Form W-7 신청 경로(우편·CAA), 여권 인증, ITIN 만료·갱신까지 캘리포니아 CPA가 정리.',
+      en: 'The U.S. taxpayer ID for people not eligible for an SSN. Spouse and dependent ITINs, Form W-7 routes (mail / CAA), passport certification, and ITIN expiration and renewal.',
+    },
+  },
+  {
     path: '/feie',
     name: 'FeieLanding',
     landingKey: 'feie',

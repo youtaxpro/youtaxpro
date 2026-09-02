@@ -8,6 +8,10 @@
 export default {
   slug: 'feie',
   name: 'FEIE',
+  summary: {
+    ko: '해외에서 일하는 미국 시민권자·영주권자가 근로소득 일정액을 미국 과세에서 제외하는 제도. Form 2555.',
+    en: 'Exclude a capped amount of foreign earned income from U.S. tax if you work abroad. Form 2555.',
+  },
 
   ko: {
     h1: '해외근로소득 공제 (FEIE) 완벽 가이드',
