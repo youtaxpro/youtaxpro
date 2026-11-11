@@ -141,7 +141,8 @@ export default {
 
 .fq-side { display: grid; gap: 1rem; position: sticky; top: 96px; }
 .fq-box { padding: 1.5rem; border-radius: var(--radius); background: var(--navy-900); color: #fff; }
-.fq-box h3 { font-size: 1.05rem; margin-bottom: 0.5rem; }
+.fq .fq-box h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; color: #fff; }
+.fq .fq-box--light h3 { color: var(--ink); }
 .fq-box p { font-size: 0.9rem; color: rgba(255, 255, 255, 0.75); margin-bottom: 1.1rem; line-height: 1.65; }
 .fq-box .btn { width: 100%; }
 .fq-box--light { background: #fff; color: var(--ink); border: 1px solid var(--line); }
