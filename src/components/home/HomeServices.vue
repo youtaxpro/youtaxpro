@@ -1,550 +1,120 @@
 <template>
-  <section id="services" class="services-section">
-    <div class="services-container">
-      <div class="services-header">
-        <div class="title-wrapper">
-          <div class="line"></div>
-          <h3>{{ $t('services.title') }}</h3>
-          <div class="line"></div>
-        </div>
-        </div>
-      
-      <div class="service-cards">
-                <div v-for="i in 8" :key="i" 
-             class="service-card"
-             :class="{ 'service-clickable fbar-card': i === 2,
-              'service-clickable': i === 3,
-              'service-clickable streamlined-card': i === 4
-              }"
-             @click="handleServiceClick(i)">
-          <div class="service-image">
-            <div class="service-overlay"></div>
-            <!-- <picture>가 브라우저 지원에 따라 avif→webp→jpg 순으로 자동 선택 -->
-            <picture>
-              <source :srcset="getServiceImageAVIF(i)" type="image/avif">
-              <source :srcset="getServiceImageWebP(i)" type="image/webp">
-              <img
-                :src="getServiceImage(i)"
-                :alt="'Service ' + i"
-                class="lazy-image"
-                width="400"
-                height="220"
-                loading="lazy"
-                decoding="async"
-              >
-            </picture>
-          </div>
-          <div class="service-content">
-            <div class="service-icon">
-              <div class="icon-circle">{{ i }}</div>
-            </div>
-            <p>{{ $t(`services.service${i}.items[0]`) }}</p>
-          </div>
-        </div>
+  <section id="services" class="section section--tint">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Services</span>
+        <h2>{{ locale === 'en' ? 'What we handle' : '서비스 안내' }}</h2>
+        <p>
+          {{ locale === 'en'
+            ? 'From a simple annual return to multi-year catch-up filings — one firm, one point of contact.'
+            : '매년 하는 정기 신고부터 여러 해 미신고 정리까지, 한 곳에서 처리합니다.' }}
+        </p>
       </div>
+
+      <ul class="svc-grid">
+        <li v-for="(s, i) in services" :key="i">
+          <router-link :to="lp(s.to)" class="svc-card">
+            <span class="svc-icon"><component :is="s.icon" :size="24" aria-hidden="true" /></span>
+            <h3>{{ $t(`services.service${i + 1}.items[0]`) }}</h3>
+            <p>{{ s.desc[locale] || s.desc.ko }}</p>
+            <span class="svc-more">
+              {{ s.guide ? (locale === 'en' ? 'Read the guide' : '가이드 보기') : (locale === 'en' ? 'Ask about this' : '상담 문의') }}
+              <ArrowRight :size="16" aria-hidden="true" />
+            </span>
+          </router-link>
+        </li>
+      </ul>
     </div>
   </section>
 </template>
 
 <script>
-import { onMounted } from 'vue';
-import { useRouter } from 'vue-router'; // 👈 추가!
+import { useI18n } from 'vue-i18n';
+import {
+  FileText, Landmark, Plane, LifeBuoy, History, FilePenLine, UserRound, MailWarning, ArrowRight,
+} from 'lucide-vue-next';
 import { useLocalePath } from '../../composables/useLocalePath';
-import service1 from '../../assets/service1.jpg';
-import service2 from '../../assets/service2.jpg';
-import service3 from '../../assets/service3.jpg';
-import service4 from '../../assets/service4.jpg';
-import service5 from '../../assets/service5.jpg';
-import service6 from '../../assets/service6.jpg';
-import service7 from '../../assets/service7.jpg';
-import service8 from '../../assets/service8.jpg';
-// 최적화된 이미지 로더 임포트
-import { setupLazyLoading } from '../../utils/imageLoader';
 
-// 최적화된 WebP 이미지 임포트
-const webpImages = import.meta.glob('../../assets/optimized/*.webp', { eager: true });
-// 최적화된 AVIF 이미지 임포트
-const avifImages = import.meta.glob('../../assets/optimized/*.avif', { eager: true });
+// 순서는 i18n services.service1~8 과 일치해야 한다.
+const services = [
+  { icon: 'FileText', to: '/tax-calendar', guide: true, desc: { ko: 'Form 1040과 주(State) 신고서. 한국 소득·금융자산을 포함한 전 세계 소득을 정확히 반영합니다.', en: 'Form 1040 plus state returns, reflecting worldwide income including Korean income and assets.' } },
+  { icon: 'Landmark', to: '/fbar', guide: true, desc: { ko: '해외 금융계좌 합계 1만 달러 초과 시 FBAR, 기준 초과 시 Form 8938. 계좌별 최고잔액을 계산해 전자신고합니다.', en: 'FBAR above USD 10,000 in aggregate and Form 8938 above its thresholds — maximum balances computed and e-filed.' } },
+  { icon: 'Plane', to: '/feie', guide: true, desc: { ko: '해외근로소득 공제(FEIE)와 외국납부세액공제(FTC)를 비교해 이중과세를 최소화합니다.', en: 'We compare the FEIE and the Foreign Tax Credit to minimize double taxation.' } },
+  { icon: 'LifeBuoy', to: '/streamlined', guide: true, desc: { ko: '몰라서 신고하지 못한 경우를 위한 IRS 공식 구제 절차. 해외 거주자는 벌금 없이 정리할 수 있습니다.', en: 'The IRS relief route for non-willful non-filers. Taxpayers abroad can catch up with no penalty.' } },
+  { icon: 'History', to: '/streamlined', guide: true, desc: { ko: '기한이 지난 연도의 신고서를 작성하고, 가산세·이자를 줄일 수 있는 방법을 함께 검토합니다.', en: 'We prepare late returns and review options to reduce penalties and interest.' } },
+  { icon: 'FilePenLine', to: '/contactus', guide: false, desc: { ko: '누락·오류가 있는 신고서를 Form 1040-X로 바로잡습니다. 환급 청구 기한도 확인해 드립니다.', en: 'Fix omissions and errors with Form 1040-X, including refund-claim deadlines.' } },
+  { icon: 'UserRound', to: '/itin', guide: true, desc: { ko: '미국 원천소득이 있는 비거주 외국인의 Form 1040-NR 신고와 ITIN 신청을 지원합니다.', en: 'Form 1040-NR for nonresidents with U.S.-source income, plus ITIN applications.' } },
+  { icon: 'MailWarning', to: '/contactus', guide: false, desc: { ko: 'IRS 통지서(CP2000 등)의 의미와 대응 기한을 설명하고, 답변서 작성과 세무조사 대응을 돕습니다.', en: 'We explain IRS notices (CP2000 and others), draft responses and assist with examinations.' } },
+];
 
 export default {
   name: 'HomeServices',
+  components: { FileText, Landmark, Plane, LifeBuoy, History, FilePenLine, UserRound, MailWarning, ArrowRight },
   setup() {
-    const router = useRouter(); // 👈 라우터 인스턴스
+    const { locale } = useI18n();
     const { lp } = useLocalePath();
-
-    onMounted(() => {
-      // 스크롤 진입 시 페이드인 (.lazy-image → .loaded)
-      setupLazyLoading('.lazy-image');
-    });
-
-    // 기본 이미지 매핑 함수
-    const getServiceImage = (index) => {
-      // 서비스별 기본 이미지 매핑
-      const images = {
-        1: service1,
-        2: service2,
-        3: service3,
-        4: service4,
-        5: service5,
-        6: service6,
-        7: service7,
-        8: service8
-      };
-      
-      return images[index] || '/images/default-service.jpg';
-    };
-
-    // WebP 이미지 매핑 함수
-    const getServiceImageWebP = (index) => {
-      const webpPath = `../../assets/optimized/service${index}.webp`;
-      return webpImages[webpPath]?.default || getServiceImage(index);
-    };
-
-    // AVIF 이미지 매핑 함수
-    const getServiceImageAVIF = (index) => {
-      const avifPath = `../../assets/optimized/service${index}.avif`;
-      return avifImages[avifPath]?.default || getServiceImageWebP(index);
-    };
-
-const handleServiceClick = (index) => {
-    console.log('Service 클릭!', index);
-  if (index === 2) {
-    router.push(lp('/fbar'));      // FBAR (기존)
-  } else if (index === 3) {     // FEIE 가이드
-    router.push(lp('/feie'));
-  } else if (index === 4) {     // ✅ Streamlined 추가
-    router.push(lp('/streamlined'));
-  }
-};
-
-    return {
-      getServiceImage,
-      getServiceImageWebP,
-      getServiceImageAVIF,
-      handleServiceClick
-    };
-  }
+    return { services, locale, lp };
+  },
 };
 </script>
 
 <style scoped>
-:root {
-  --primary-color: #2563eb; /* 현대적인 블루 */
-  --secondary-color: #4f46e5; /* 인디고 */
-  --accent-color: #8b5cf6; /* 보라색 */
-  --highlight-color: #f59e0b; /* 골드/옐로우 계열 */
-  --text-dark: #1e293b; /* 짙은 슬레이트 */
-  --text-light: #f8fafc; /* 밝은 회색 */
-  --bg-light: #f1f5f9; /* 밝은 배경 */
-  --card-bg: rgba(255, 255, 255, 0.9);
-  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* 이미지 로딩 관련 애니메이션 */
-@keyframes lazyLoad {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.4); }
-  70% { box-shadow: 0 0 0 10px rgba(79, 70, 229, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0); }
-}
-
-@keyframes shine {
-  0% { left: -100%; }
-  100% { left: 100%; }
-}
-
-/* 🔥 FBAR 2번 카드 특화 스타일 */
-.fbar-card {
-  border: 2px solid transparent;
-  background: linear-gradient(white, white) padding-box,
-              linear-gradient(135deg, #ff6b6b, #ff8e8e) border-box;
-}
-
-.fbar-card:hover {
-  transform: translateY(-15px) !important;
-  box-shadow: 0 25px 50px rgba(255, 107, 107, 0.3),
-              0 10px 25px rgba(0, 0, 0, 0.15) !important;
-}
-
-.fbar-card .icon-circle {
-  background: linear-gradient(135deg, #ff6b6b, #ff5252) !important;
-  color: white !important;
-  animation: pulse 2s infinite !important;
-  border-color: #ffd700 !important;
-}
-
-.fbar-card .service-overlay {
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 107, 107, 0.2),
-    rgba(255, 107, 107, 0.4)
-  ) !important;
-}
-
-.streamlined-card {
-  border: 2px solid transparent;
-  background: linear-gradient(white, white) padding-box,
-              linear-gradient(135deg, #ff6b6b, #ff8e8e) border-box;
-}
-
-.streamlined-card:hover {
-  transform: translateY(-15px) !important;
-  box-shadow: 0 25px 50px rgba(255, 107, 107, 0.3),
-              0 10px 25px rgba(0, 0, 0, 0.15) !important;
-}
-
-.streamlined-card .icon-circle {
-  background: linear-gradient(135deg, #ff6b6b, #ff5252) !important;
-  color: white !important;
-  animation: pulse 2s infinite !important;
-  border-color: #ffd700 !important;
-}
-
-.streamlined-card .service-overlay {
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 107, 107, 0.2),
-    rgba(255, 107, 107, 0.4)
-  ) !important;
-}
-
-/* 클릭 가능한 카드 커서 */
-.service-clickable {
-  cursor: pointer !important;
-}
-
-/* 클릭 피드백 */
-.service-clickable:active {
-  transform: translateY(-8px) scale(0.98) !important;
-}
-
-
-/* Title Wrapper Styles */
-.title-wrapper {
-  background-image: linear-gradient(
-    
-  );
-  padding: 2.5rem;
-  border-radius: 16px;
-  box-shadow: 0 15px 30px rgba(37, 99, 235, 0.2),
-              0 5px 15px rgba(0, 0, 0, 0.08);
-  margin: 2rem auto;
-  max-width: 1200px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-  transition: var(--transition);
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-  animation: fadeIn 0.8s ease-out;
-}
-
-.title-wrapper::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.2) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  transform: skewX(-25deg) translateX(-150%);
-  z-index: 2;
-  animation: shine 6s infinite;
-}
-
-.title-wrapper h3 {
-  color: white;
-  font-size: 2.2rem;
-  font-weight: 800;
-  margin: 0;
-  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  letter-spacing: 0.5px;
-  position: relative;
-  z-index: 3;
-}
-
-.title-wrapper .line {
-  height: 3px;
-  background: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0.3),
-    rgba(255, 255, 255, 0.9),
-    rgba(255, 255, 255, 0.3)
-  );
-  flex: 1;
-  max-width: 150px;
-  border-radius: 3px;
-  position: relative;
-  z-index: 3;
-}
-
-/* Services Section */
-.services-section {
-  padding: 5rem 2rem;
-  background-color: var(--bg-light);
-  background-image: 
-    radial-gradient(circle at 10% 20%, rgba(37, 99, 235, 0.03) 0%, transparent 20%),
-    radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.03) 0%, transparent 20%),
-    radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.03) 0%, transparent 40%);
-}
-
-.services-container {
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.services-header {
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto 4rem;
-}
-
-.services-description {
-  color: var(--text-dark);
-  line-height: 1.8;
-  text-align: center;
-  font-size: 1.2rem;
-  margin-top: 2rem;
-  font-weight: 400;
-  animation: fadeIn 1s ease-out 0.3s both;
-}
-
-/* 서비스 카드 그리드 레이아웃 */
-.service-cards {
+.svc-grid {
+  list-style: none;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
+  gap: 1rem;
 }
 
-.service-card {
-  background: var(--card-bg);
-  border-radius: 16px;
-  overflow: visible;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06),
-              0 2px 5px rgba(0, 0, 0, 0.04),
-              0 1px 30px rgba(37, 99, 235, 0.05);
-  transition: var(--transition);
-  position: relative;
-  z-index: 1;
-  backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transform: translateY(30px);
-  opacity: 0;
-  animation: fadeIn 0.8s ease-out forwards;
-  animation-delay: calc(0.1s * var(--i, 1));
-}
-
-.service-card:nth-child(1) { --i: 1; }
-.service-card:nth-child(2) { --i: 2; }
-.service-card:nth-child(3) { --i: 3; }
-.service-card:nth-child(4) { --i: 4; }
-.service-card:nth-child(5) { --i: 5; }
-.service-card:nth-child(6) { --i: 6; }
-.service-card:nth-child(7) { --i: 7; }
-.service-card:nth-child(8) { --i: 8; }
-
-.service-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(37, 99, 235, 0.12),
-              0 8px 20px rgba(0, 0, 0, 0.08);
-}
-
-.service-image {
-  width: 100%;
-  height: 220px;
-  overflow: hidden;
-  position: relative;
-  border-radius: 16px 16px 0 0; /* 카드 상단 라운드 (카드가 overflow:visible이므로 직접 처리) */
-}
-
-.service-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    to bottom,
-    rgba(79, 70, 229, 0.1),
-    rgba(37, 99, 235, 0.3)
-  );
-  z-index: 2;
-  transition: var(--transition);
-}
-
-.service-card:hover .service-overlay {
-  background: linear-gradient(
-    to bottom,
-    rgba(79, 70, 229, 0.2),
-    rgba(37, 99, 235, 0.5)
-  );
-}
-
-.service-image img, .service-image picture {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease, opacity 0.3s ease;
-  filter: brightness(0.95);
-}
-
-/* 지연 로딩 이미지 효과 */
-.lazy-image {
-  opacity: 0;
-}
-
-.lazy-image.loaded {
-  opacity: 1;
-  animation: lazyLoad 0.3s ease forwards;
-}
-
-.service-card:hover .service-image img {
-  transform: scale(1.08);
-  filter: brightness(1.05);
-}
-
-.service-content {
-  padding: 1.8rem;
-  background: white;
-  text-align: center;
-  position: relative;
-  border-bottom-left-radius: 16px;
-  border-bottom-right-radius: 16px;
-  height: 120px; /* Fixed height for all cards */
+.svc-card {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  height: 100%;
+  padding: 1.5rem;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--ink);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+.svc-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--navy-100);
+  color: var(--ink);
 }
 
-.service-icon {
-  position: absolute;
-  top: -25px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 3;
-}
-
-.icon-circle {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: linear-gradient(
-    135deg, 
-    var(--secondary-color),
-    var(--primary-color)
-  );
-  display: flex;
+.svc-icon {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: #FFD700;
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: var(--navy-800);
+  color: var(--gold-500);
+  margin-bottom: 1.1rem;
+}
+
+.svc-card h3 { font-size: 1.02rem; line-height: 1.4; margin-bottom: 0.5rem; }
+.svc-card p { font-size: 0.88rem; color: var(--body); line-height: 1.65; margin-bottom: 1.1rem; }
+
+.svc-more {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.85rem;
   font-weight: 700;
-  font-size: 1.25rem;
-  box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
-  transition: var(--transition);
-  border: 3px solid #FFD700;
+  color: var(--navy-600);
 }
+.svc-card:hover .svc-more svg { transform: translateX(3px); }
+.svc-more svg { transition: transform 0.18s ease; }
 
-.service-card:hover .icon-circle {
-  transform: scale(1.1);
-  animation: pulse 2s infinite;
+@media (max-width: 1024px) {
+  .svc-grid { grid-template-columns: repeat(2, 1fr); }
 }
-
-.service-content p {
-  color: var(--text-dark);
-  font-weight: 600;
-  font-size: 1.1rem;
-  margin: 0;
-  line-height: 1.6;
-  margin-top: 1rem;
-  padding: 0 0.5rem;
-  transition: var(--transition);
-  width: 100%;
-}
-
-.service-card:hover .service-content p {
-  transform: scale(1.02);
-}
-
-/* 태블릿 화면 */
-@media screen and (max-width: 1024px) {
-  .service-cards {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-  }
-  
-  .title-wrapper {
-    padding: 2rem;
-    gap: 1.5rem;
-  }
-  
-  .title-wrapper h3 {
-    font-size: 2rem;
-  }
-}
-
-/* 모바일 화면 */
-@media screen and (max-width: 768px) {
-
-  .service-card {
-    contain-intrinsic-size: 100% 400px;
-  }  
-
-  .services-section {
-    padding: 3rem 1.5rem;
-  }
-  
-  .service-cards {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-
-  }
-  
-  .title-wrapper {
-    padding: 1.5rem;
-    gap: 1rem;
-  }
-  
-  .title-wrapper h3 {
-    font-size: 1.8rem;
-  }
-  
-  .title-wrapper .line {
-    max-width: 80px;
-  }
-  
-  .service-image {
-    height: 200px;
-  }
-  
-  .service-content {
-    padding: 1.5rem 1.2rem;
-    height: 100px; /* Adjusted height for mobile */
-  }
-  
-  .service-content p {
-    font-size: 1rem;
-  }
-  
-  .services-description {
-    font-size: 1.1rem;
-    margin-top: 1.5rem;
-  }
+@media (max-width: 560px) {
+  .svc-grid { grid-template-columns: 1fr; }
 }
 </style>

@@ -5,6 +5,7 @@
 
 export default {
   slug: 'itin',
+  updated: '2026-11-11', // 내용을 고칠 때마다 갱신 (sitemap lastmod · Article dateModified)
   name: 'ITIN',
   summary: {
     ko: '미국 사회보장번호(SSN)를 받을 수 없지만 미국 세금 신고가 필요한 사람을 위한 납세자 식별번호. Form W-7 신청.',
@@ -15,7 +16,7 @@ export default {
     h1: 'ITIN(개인 납세자 식별번호) 신청 가이드',
     lead:
       'ITIN은 미국 사회보장번호(SSN)를 받을 수 없지만 미국 세금 신고 의무가 있거나 부양가족·배우자로 신고에 포함되는 사람에게 발급되는 9자리 번호입니다. 한국인 배우자, 외국 국적 부양가족, 미국 소득·부동산이 있는 한국 거주자에게 자주 필요합니다.',
-    reviewNote: '아래 처리기간·서류 요건·재한 CAA 관련 정보는 최신 IRS 자료 기준으로 최종 확인 후 게시됩니다.',
+    reviewNote: '최종 업데이트: 2026년 11월',
 
     sections: [
       {
@@ -131,7 +132,7 @@ export default {
     h1: 'ITIN (Individual Taxpayer Identification Number): Application Guide',
     lead:
       'An ITIN is a nine-digit number for people who must file U.S. tax, or be included on a return as a dependent or spouse, but cannot get an SSN. It is often needed by Korean spouses, foreign-national dependents, and Korea residents with U.S. income or property.',
-    reviewNote: 'Processing times, document rules, and Korea CAA availability below are finalized after review against current IRS guidance.',
+    reviewNote: 'Last updated: November 2026',
 
     sections: [
       {

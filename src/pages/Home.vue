@@ -1,121 +1,64 @@
 <template>
-  <div id="home" class="tax-website">
-    <!-- Navigation 컴포넌트 -->
-    <HomeNavigation :is-scrolled="isScrolled" />
-
-    <!-- Hero Section 컴포넌트 -->
+  <div id="home" class="home">
+    <Navbar overlay />
     <HomeHero />
-
-    <!-- About Us Section 컴포넌트 -->
     <HomeAboutUs />
-      
-    <!-- 프로필 섹션 컴포넌트 -->
     <HomeProfile />
-
-    <!-- Services Section 컴포넌트 -->
     <HomeServices />
-
-    <!-- 신고절차 섹션 컴포넌트 -->
+    <HomeGuides />
     <HomeChecklists />
-
-    <!-- Footer 컴포넌트 -->
-    <HomeFooter />
+    <HomeInsights />
+    <HomeCta />
+    <Footer />
   </div>
 </template>
 
 <script>
-import { ref, onMounted, onBeforeUnmount } from 'vue';
-import HomeNavigation from '../components/home/HomeNavigation.vue';
+import Navbar from '../components/common/Navbar.vue';
+import Footer from '../components/common/Footer.vue';
 import HomeHero from '../components/home/HomeHero.vue';
 import HomeAboutUs from '../components/home/HomeAboutUs.vue';
 import HomeProfile from '../components/home/HomeProfile.vue';
 import HomeServices from '../components/home/HomeServices.vue';
+import HomeGuides from '../components/home/HomeGuides.vue';
 import HomeChecklists from '../components/home/HomeChecklists.vue';
-import HomeFooter from '../components/home/HomeFooter.vue';
+import HomeInsights from '../components/home/HomeInsights.vue';
+import HomeCta from '../components/home/HomeCta.vue';
 
 export default {
   name: 'Home',
   components: {
-    HomeNavigation,
+    Navbar,
+    Footer,
     HomeHero,
     HomeAboutUs,
     HomeProfile,
     HomeServices,
+    HomeGuides,
     HomeChecklists,
-    HomeFooter
+    HomeInsights,
+    HomeCta,
   },
-  setup() {
-    const isScrolled = ref(false);
-    const scrollProgress = ref(0);
-
-    const handleScroll = () => {
-      const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scrollPosition = window.scrollY;
-      scrollProgress.value = (scrollPosition / docHeight) * 100;
-      isScrolled.value = scrollPosition > 50;
-    };
-
-    onMounted(() => {
-      window.addEventListener('scroll', handleScroll);
-    });
-
-    onBeforeUnmount(() => {
-      window.removeEventListener('scroll', handleScroll);
-    });
-
-    return {
-      isScrolled,
-      scrollProgress
-    };
-  }
 };
 </script>
 
-<style scoped>
-.tax-website {
-  position: relative;
-  background-image: linear-gradient(to right, #0047AB, #4169E1);
-  background-clip: text;
-  -webkit-background-clip: text;
-  min-height: 100vh;
+<style>
+/* 홈 섹션 공통 */
+.home {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #f8f9fa;
+  background: var(--white);
+  text-align: left;
 }
 
-.tax-website h3 {
-  font-size: 3rem;
-  font-weight: 800;
-  color: black;
-}
+.section { padding: 96px 0; }
+.section--tint { background: var(--bg); }
 
-.tax-website h4 {
-  font-size: 2rem;
-  font-weight: 800;
-  color: black;
-}
+.section-head { max-width: 720px; margin: 0 auto 3rem; text-align: center; }
+.section-head h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--navy-900); margin-bottom: 0.75rem; }
+.section-head p { color: var(--body); font-size: 1.02rem; }
 
-.tax-website h5 {
-  color: #002676;
-  font-size: large;
-}
-
-/* Common Section Styles */
-section {
-  padding: 0;
-  width: 100%;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+@media (max-width: 768px) {
+  .section { padding: 64px 0; }
+  .section-head { margin-bottom: 2rem; }
 }
 </style>

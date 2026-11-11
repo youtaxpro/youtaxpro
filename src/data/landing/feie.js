@@ -7,6 +7,7 @@
 
 export default {
   slug: 'feie',
+  updated: '2026-11-11', // 내용을 고칠 때마다 갱신 (sitemap lastmod · Article dateModified)
   name: 'FEIE',
   summary: {
     ko: '해외에서 일하는 미국 시민권자·영주권자가 근로소득 일정액을 미국 과세에서 제외하는 제도. Form 2555.',
@@ -17,7 +18,7 @@ export default {
     h1: '해외근로소득 공제 (FEIE) 완벽 가이드',
     lead:
       '해외에서 일하는 미국 시민권자·영주권자는 근로소득의 일정 금액까지 미국 과세소득에서 제외할 수 있습니다. 한국 거주자가 놓치기 쉬운 요건과 선택 전략을 캘리포니아 CPA가 정리했습니다.',
-    reviewNote: '아래 금액·연도·서식은 최신 IRS 자료 기준으로 최종 확인 후 게시됩니다.',
+    reviewNote: '최종 업데이트: 2026년 11월 · 2027년 인플레이션 조정(Rev. Proc. 2026-35) 반영',
 
     sections: [
       {
@@ -50,13 +51,15 @@ export default {
       {
         h: '공제 한도 (연도별)',
         body: [
-          'FEIE 한도는 물가에 연동되어 매년 인상됩니다. [확인] — 아래 수치는 최종 검증 후 확정합니다.',
+          'FEIE 한도는 물가에 연동되어 매년 인상됩니다. 2027년 한도는 Rev. Proc. 2026-35(2026년 11월 발표) 기준입니다.',
           { table: {
             headers: ['과세연도', 'FEIE 한도(1인)'],
             rows: [
               ['2023', 'USD 120,000'],
               ['2024', 'USD 126,500'],
-              ['2025', 'USD 130,000 [확인]'],
+              ['2025', 'USD 130,000'],
+              ['2026 (2027년에 신고)', 'USD 132,900'],
+              ['2027 (2028년에 신고)', 'USD 137,300'],
             ],
           } },
           '부부가 모두 요건을 충족하면 각자 한도를 적용받습니다. 부분 연도(이주 첫 해 등)에는 해외 체류 일수 비율로 한도가 안분됩니다.',
@@ -147,7 +150,7 @@ export default {
     h1: 'Foreign Earned Income Exclusion (FEIE): A Practical Guide',
     lead:
       'U.S. citizens and green card holders working abroad can exclude a capped amount of earned income from U.S. taxable income. A California CPA explains the tests and the FEIE-vs-FTC choice that Korea-based taxpayers most often get wrong.',
-    reviewNote: 'Amounts, years, and form references below are finalized after review against current IRS guidance.',
+    reviewNote: 'Last updated: November 2026 · reflects the 2027 inflation adjustments (Rev. Proc. 2026-35)',
 
     sections: [
       {
@@ -180,13 +183,15 @@ export default {
       {
         h: 'Exclusion cap (by year)',
         body: [
-          'The FEIE cap is indexed for inflation and rises each year. [verify] — figures confirmed after review.',
+          'The FEIE cap is indexed for inflation and rises each year. The 2027 figure is from Rev. Proc. 2026-35 (released November 2026).',
           { table: {
             headers: ['Tax year', 'FEIE cap (per person)'],
             rows: [
               ['2023', 'USD 120,000'],
               ['2024', 'USD 126,500'],
-              ['2025', 'USD 130,000 [verify]'],
+              ['2025', 'USD 130,000'],
+              ['2026 (filed in 2027)', 'USD 132,900'],
+              ['2027 (filed in 2028)', 'USD 137,300'],
             ],
           } },
           'If both spouses qualify, each gets a separate cap. For a partial year the cap is prorated by qualifying days abroad.',

@@ -237,7 +237,7 @@ Given the complexities of U.S. tax law, especially for those with international 
     "desc": "Foreign assets threshold → Form 8938 required"
   },
   "table": {
-    "fullTitle": "IRS Form 8938 Complete Thresholds (2025)",
+    "fullTitle": "IRS Form 8938 Filing Thresholds (tax year 2026, filed in 2027)",
     "usSingle": "US Resident Single",
     "usMarried": "US Resident Married Joint", 
     "abroadSingle": "Foreign Resident Single",
@@ -306,7 +306,7 @@ Given the complexities of U.S. tax law, especially for those with international 
     "free": "Paper filing not allowed. CPA filing assistance available."
   },
       penalties: {
-         title: "2025 FBAR Penalty",
+         title: "FBAR Penalties (inflation-adjusted maximums)",
          nonWillful: "Non-Willful Violation",
           willful: "Willful Violation", 
           penaltyAmount: "Penalty Amount",
@@ -378,7 +378,7 @@ Given the complexities of U.S. tax law, especially for those with international 
 
 
     services: {
-        title: 'Our Services',
+        title: '서비스 안내',
         service1: {
           items: ['연방/주 세금 신고']
         },
@@ -389,7 +389,7 @@ Given the complexities of U.S. tax law, especially for those with international 
           items: ['해외 거주 미국 시민, 영주권자 세금 서비스']
         },
         service4: {
-          items: ['간소화 절차 (IRS 면세 프로그램)']
+          items: ['Streamlined 간소화 절차 (IRS 벌금 면제 프로그램)']
         },
         service5: {
           items: ['기한이 지난 세금 신고 지원']
@@ -554,7 +554,7 @@ IRS는 업무 과중으로 처리가 지연되어 납세자들이 어려움을 �
     "desc": "해외자산 기준 → Form 8938 필수 신고"
   },
   "table": {
-    "fullTitle": "IRS Form 8938 신고 기준 (2025)",  // ✅ 추가
+    "fullTitle": "IRS Form 8938 신고 기준 (2026 과세연도 · 2027년 신고)",  // ✅ 추가
     "usSingle": "미국 거주 싱글일 경우",                      // ✅ table 내부로 이동
     "usMarried": "미국 거주 기혼 공동신고일 경우",
     "abroadSingle": "해외 거주 싱글일 경우",
@@ -623,7 +623,7 @@ IRS는 업무 과중으로 처리가 지연되어 납세자들이 어려움을 �
         free: "직접 종이로 제출은 불가하며 세금 신고 전문 CPA가 신고를 도와드리고 있습니다."
       },
       penalties: {
-      title: "2025 FBAR 페널티",
+      title: "FBAR 미신고 페널티 (물가조정 최고액)",
     nonWillful: "비고의적 위반",
     willful: "고의적 위반",
     penaltyAmount: "벌금액",

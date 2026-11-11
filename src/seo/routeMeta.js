@@ -110,6 +110,45 @@ export const routeSeo = [
     },
   },
   {
+    path: '/tax-calendar',
+    name: 'TaxCalendarLanding',
+    landingKey: 'tax-calendar',
+    title: {
+      ko: '2027년 미국 세금신고 일정·기준 금액 | 표준공제·FEIE·증여 면제액 | Berkeley U.S. Tax Advisors',
+      en: '2027 U.S. Tax Calendar & Key Amounts for Americans in Korea | Berkeley U.S. Tax Advisors',
+    },
+    description: {
+      ko: '2027년 미국 세금신고(2026 과세연도) 마감일 — 4월 15일, 해외 거주자 6월 15일, 10월 15일. 표준공제, FEIE 132,900달러, 증여 면제액 등 2026·2027년 기준 금액을 캘리포니아 CPA가 정리.',
+      en: 'Deadlines for returns filed in 2027 (April 15, June 15 abroad, October 15) and the 2026–2027 standard deduction, FEIE, exit tax and gift exclusion amounts.',
+    },
+  },
+  {
+    path: '/gift-inheritance',
+    name: 'GiftInheritanceLanding',
+    landingKey: 'gift-inheritance',
+    title: {
+      ko: '한국에서 받은 증여·상속 미국 신고 | Form 3520 · Form 709 | Berkeley U.S. Tax Advisors',
+      en: 'Gifts & Inheritances from Korea: Form 3520 Guide | Berkeley U.S. Tax Advisors',
+    },
+    description: {
+      ko: '한국 부모님께 받은 증여·상속은 미국 세금은 없어도 연 10만 달러 초과 시 Form 3520 보고 의무. 미보고 벌금 최대 25%, 취득가액(step-up), 증여세 면제액 2026·2027년 기준 정리.',
+      en: 'Gifts and inheritances from Korean family over USD 100,000 must be reported on Form 3520. Penalties, basis rules, and 2026–2027 gift tax exclusions.',
+    },
+  },
+  {
+    path: '/korea-real-estate',
+    name: 'KoreaRealEstateLanding',
+    landingKey: 'korea-real-estate',
+    title: {
+      ko: '한국 부동산 매각과 미국 세금 | 양도소득세·주택 공제·환율 | Berkeley U.S. Tax Advisors',
+      en: 'Selling Korean Real Estate: U.S. Tax Guide | Berkeley U.S. Tax Advisors',
+    },
+    description: {
+      ko: '한국 아파트를 팔면 한국에서 1세대 1주택 비과세여도 미국에는 양도차익을 신고해야 합니다. 주택 양도 공제 25만·50만 달러, 환율 환산, 외국납부세액공제, 임대 부동산 감가상각까지.',
+      en: 'A Korean home sale is reportable in the U.S. even if Korea exempts it. Section 121 exclusion, currency translation, Foreign Tax Credit and depreciation recapture.',
+    },
+  },
+  {
     path: '/fbar',
     name: 'Fbar',
     title: {
