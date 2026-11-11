@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>오시는 길 지도</title>
+  <style>
+    html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; background: #f2f5fa; }
+    /* 지도 하단의 카카오맵 바로가기 줄을 숨기지 않고 그대로 둔다 */
+  </style>
+</head>
+<body>
+  <!--
+    카카오맵 "지도 퍼가기"(무료, API 키 불필요) — 문의하기 페이지에서 iframe 으로 불러온다.
+    로더가 document.write 를 써서 Vue 화면 안에 직접 넣을 수 없기 때문에 별도 페이지로 둔다.
+    장소: https://place.map.kakao.com/1339308227
+  -->
+  <div id="daumRoughmapContainer1794373395953" class="root_daum_roughmap root_daum_roughmap_landing"></div>
+  <script charset="UTF-8" class="daum_roughmap_loader_script" src="https://t1.kakaocdn.net/kakaomapweb/roughmap/loader/prod/roughmapLoader.js"></script>
+  <script charset="UTF-8">
+    // iframe 크기에 맞춰 지도 크기를 정한다 (하단 바로가기 줄 높이 약 32px 제외)
+    new daum.roughmap.Lander({
+      timestamp: '1794373395953',
+      key: '4tikaba7jxn',
+      mapWidth: String(window.innerWidth),
+      mapHeight: String(Math.max(window.innerHeight - 32, 200)),
+    }).render();
+  </script>
+</body>
+</html>

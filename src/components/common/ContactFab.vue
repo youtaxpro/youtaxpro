@@ -10,12 +10,10 @@
       <span class="fab-label">전화 상담</span>
     </a>
 
-    <!-- 휴대폰: 카카오톡 앱을 바로 연다 / PC: 휴대폰으로 스캔할 QR 페이지를 연다 -->
+    <!-- 휴대폰: 카카오톡 앱을 바로 연다 / PC: QR 코드 창을 띄운다 -->
     <a
       class="fab-item fab-kakao"
       :href="kakaoWebUrl"
-      target="_blank"
-      rel="noopener"
       aria-label="카카오톡으로 상담하기"
       @click="openKakao"
     >
@@ -38,38 +36,15 @@
 <script>
 import { Phone, Mail, MessageCircle } from 'lucide-vue-next';
 import { gaEvent } from '../../seo/analytics';
-import { CONTACT } from '../../data/site';
+import { kakaoWebUrl, openKakao } from '../../composables/useKakao';
 
 export default {
   name: 'ContactFab',
   components: { Phone, Mail, MessageCircle },
-  data() {
-    return { kakaoWebUrl: `https://qr.kakao.com/talk/${CONTACT.kakaoQrId}` };
+  setup() {
+    return { kakaoWebUrl, openKakao };
   },
   methods: {
-    // qr.kakao.com 은 휴대폰에서 중간 페이지를 거쳐 앱을 연다. 같은 앱 주소로 바로 이동해 그 단계를 건너뛴다.
-    openKakao(event) {
-      this.track('kakao');
-      const ua = navigator.userAgent || '';
-      const id = CONTACT.kakaoQrId;
-      const isAndroid = /Android/i.test(ua);
-      const isIOS = /iPhone|iPad|iPod/i.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-      if (!isAndroid && !isIOS) return; // PC: 기본 링크(QR 페이지)
-      event.preventDefault();
-      if (isAndroid) {
-        const store = encodeURIComponent('https://play.google.com/store/apps/details?id=com.kakao.talk');
-        window.location.href =
-          `intent://viewer?#Intent;scheme=kakaotalkqrcode%3A%2F%2F${id};` +
-          'action=android.intent.action.SEND;category=android.intent.category.BROWSABLE;' +
-          `package=com.kakao.talk;S.browser_fallback_url=${store};end;`;
-      } else {
-        window.location.href = `kakaotalkqrcode://${id}`;
-        // 앱이 없으면 페이지가 그대로 보이므로 App Store로 안내
-        setTimeout(() => {
-          if (!document.hidden) window.location.href = 'https://apps.apple.com/kr/app/id362057947';
-        }, 1500);
-      }
-    },
     track(method) {
       gaEvent('contact_click', { method });
     },

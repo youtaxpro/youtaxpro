@@ -1,5 +1,10 @@
 <template>
-  <section class="section section--tint profile">
+  <section class="section profile">
+    <picture class="profile-flag" aria-hidden="true">
+      <source :srcset="flagAvif" type="image/avif" />
+      <source :srcset="flagWebp" type="image/webp" />
+      <img :src="flagJpg" alt="" loading="lazy" decoding="async" />
+    </picture>
     <div class="container profile-grid">
       <figure class="profile-photo">
         <picture>
@@ -34,17 +39,37 @@ import { useI18n } from 'vue-i18n';
 import ceoPic from '../../assets/250220_ceo_pic.jpg';
 import ceoWebp from '../../assets/optimized/250220_ceo_pic.webp';
 import ceoAvif from '../../assets/optimized/250220_ceo_pic.avif';
+import flagJpg from '../../assets/american_flag.jpg';
+import flagWebp from '../../assets/optimized/american_flag.webp';
+import flagAvif from '../../assets/optimized/american_flag.avif';
 
 export default {
   name: 'HomeProfile',
   setup() {
     const { locale } = useI18n();
-    return { locale, ceoPic, ceoWebp, ceoAvif };
+    return { locale, ceoPic, ceoWebp, ceoAvif, flagJpg, flagWebp, flagAvif };
   },
 };
 </script>
 
 <style scoped>
+/* 미국 국기 배경 + 밝은 오버레이 */
+.profile {
+  position: relative;
+  isolation: isolate;
+  background: var(--bg);
+  overflow: hidden;
+}
+.profile-flag { position: absolute; inset: 0; z-index: -2; }
+.profile-flag img { width: 100%; height: 100%; object-fit: cover; object-position: center 70%; }
+.profile::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(90deg, rgba(247, 248, 251, 0.4) 0%, rgba(247, 248, 251, 0.8) 42%, rgba(247, 248, 251, 0.93) 100%);
+}
+
 .profile-grid {
   display: grid;
   grid-template-columns: minmax(0, 380px) minmax(0, 1fr);
