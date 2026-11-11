@@ -1,12 +1,12 @@
 // 개인정보처리방침 본문. 한국어가 법적 기준, 영어는 참고 번역.
 // 보유기간·개인정보 보호책임자 등은 회사 정책에 맞게 조정 가능.
 
-export const EFFECTIVE_DATE = '2026-09-02';
+export const EFFECTIVE_DATE = '2026-11-11';
 
 export const privacyPolicy = {
   ko: {
     title: '개인정보처리방침',
-    updated: '시행일: 2026년 9월 2일',
+    updated: '시행일: 2026년 11월 11일',
     intro:
       '주식회사 버클리유에스택스어드바이저(이하 "회사")는 「개인정보 보호법」 등 관련 법령을 준수하며, 정보주체의 개인정보를 보호하고 관련 고충을 신속하게 처리하기 위하여 다음과 같이 개인정보처리방침을 수립·공개합니다.',
     sections: [
@@ -117,7 +117,7 @@ export const privacyPolicy = {
       {
         h: '12. 개인정보처리방침의 변경',
         body: [
-          '이 개인정보처리방침은 2026년 9월 2일부터 적용됩니다. 법령·정책 또는 보안기술의 변경에 따라 내용의 추가·삭제 및 수정이 있을 경우, 변경 시행 최소 7일 전에 홈페이지를 통하여 고지합니다.',
+          '이 개인정보처리방침은 2026년 11월 11일부터 적용됩니다. 법령·정책 또는 보안기술의 변경에 따라 내용의 추가·삭제 및 수정이 있을 경우, 변경 시행 최소 7일 전에 홈페이지를 통하여 고지합니다.',
         ],
       },
     ],
@@ -125,7 +125,7 @@ export const privacyPolicy = {
 
   en: {
     title: 'Privacy Policy',
-    updated: 'Effective date: September 2, 2026',
+    updated: 'Effective date: November 11, 2026',
     intro:
       'Berkeley U.S. Tax Advisors Co., Ltd. ("the Company") complies with the Personal Information Protection Act ("PIPA") of the Republic of Korea and other applicable laws. This Privacy Policy explains how the Company collects, uses, and protects personal information. This policy is governed by the laws of the Republic of Korea; the Korean-language version prevails in the event of any discrepancy.',
     sections: [
@@ -236,7 +236,7 @@ export const privacyPolicy = {
       {
         h: '12. Changes to This Policy',
         body: [
-          'This Privacy Policy takes effect on September 2, 2026. If content is added, deleted, or amended due to changes in law, policy, or security technology, the Company will announce the change on the website at least 7 days before it takes effect.',
+          'This Privacy Policy takes effect on November 11, 2026. If content is added, deleted, or amended due to changes in law, policy, or security technology, the Company will announce the change on the website at least 7 days before it takes effect.',
         ],
       },
     ],
