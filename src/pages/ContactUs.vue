@@ -57,10 +57,8 @@
             <div class="cu-map-frame">
               <iframe
                 :title="t.mapTitle"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.7340392391656!2d127.05169491183!3d37.51419832798!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca41fd3c87ef3%3A0x834d1f6840e4aee1!2s573%20Samseong-ro%2C%20Gangnam-gu%2C%20Seoul!5e0!3m2!1sen!2skr!4v1647841234567!5m2!1sen!2skr"
+                src="/kakao-map.html"
                 loading="lazy"
-                allowfullscreen
-                referrerpolicy="no-referrer-when-downgrade"
               ></iframe>
             </div>
             <div class="cu-address">
@@ -91,10 +89,6 @@ import { CONTACT, SOCIAL } from '../data/site';
 import { kakaoWebUrl, openKakao } from '../composables/useKakao';
 import { useLocalePath } from '../composables/useLocalePath';
 
-const PLACE = '버클리유에스택스어드바이저';
-const LAT = 37.514198;
-const LNG = 127.051695;
-
 const copy = {
   ko: {
     title: '문의하기',
@@ -104,7 +98,7 @@ const copy = {
     form: '상담 신청서 작성하기',
     mapTitle: '사무실 위치 지도',
     subway: '9호선 삼성중앙역 6번 출구 앞',
-    kakaoMap: '카카오맵으로 길찾기',
+    kakaoMap: '카카오맵에서 보기',
     naverMap: '네이버 지도로 보기',
   },
   en: {
@@ -115,7 +109,7 @@ const copy = {
     form: 'Fill out the consultation form',
     mapTitle: 'Office location map',
     subway: 'In front of Exit 6, Samseong Jungang Station (Line 9)',
-    kakaoMap: 'Directions in Kakao Map',
+    kakaoMap: 'Open in Kakao Map',
     naverMap: 'View in Naver Map',
   },
 };
@@ -127,8 +121,8 @@ export default {
     const { locale } = useI18n();
     const { lp } = useLocalePath();
     const t = computed(() => copy[locale.value] || copy.ko);
-    // 길찾기 링크는 API 키 없이 쓸 수 있는 공개 URL
-    const kakaoMapUrl = `https://map.kakao.com/link/to/${encodeURIComponent(PLACE)},${LAT},${LNG}`;
+    // 지도 앱 링크는 API 키 없이 쓸 수 있는 공개 URL
+    const kakaoMapUrl = 'https://place.map.kakao.com/1339308227';
     const naverMapUrl = `https://map.naver.com/p/search/${encodeURIComponent('서울 강남구 삼성로 573')}`;
     return { t, locale, lp, CONTACT, SOCIAL, kakaoWebUrl, openKakao, kakaoMapUrl, naverMapUrl };
   },
