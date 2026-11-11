@@ -5,6 +5,7 @@
 
 export default {
   slug: 'pfic',
+  updated: '2026-11-11', // 내용을 고칠 때마다 갱신 (sitemap lastmod · Article dateModified)
   name: 'PFIC',
   summary: {
     ko: '한국 펀드·ETF는 대부분 PFIC. 매년 Form 8621 신고, 선택하지 않으면 불리한 §1291 과세.',
@@ -15,7 +16,7 @@ export default {
     h1: 'PFIC(해외 펀드 세금) 완벽 가이드',
     lead:
       '한국의 펀드·ETF·리츠 등 대부분의 집합투자기구는 미국 세법상 PFIC로 분류됩니다. PFIC 지분을 보유한 미국 납세자는 Form 8621을 매년 제출해야 하며, 별도 선택을 하지 않으면 매우 불리한 과세 방식이 적용됩니다. 캘리포니아 CPA가 규정과 대안을 정리했습니다.',
-    reviewNote: '아래 금액·기준·거래소 인정 여부는 최신 IRS 자료 기준으로 최종 확인 후 게시됩니다.',
+    reviewNote: '최종 업데이트: 2026년 11월',
 
     sections: [
       {
@@ -127,7 +128,7 @@ export default {
     h1: 'PFIC (Foreign Fund Taxation): A Practical Guide',
     lead:
       'Most Korean funds, ETFs, and REITs are PFICs for U.S. tax purposes. A U.S. taxpayer who holds PFIC shares must file Form 8621 every year, and without an election a very unfavorable regime applies. A California CPA explains the rules and the alternatives.',
-    reviewNote: 'Amounts, thresholds, and qualified-exchange treatment below are finalized after review against current IRS guidance.',
+    reviewNote: 'Last updated: November 2026',
 
     sections: [
       {

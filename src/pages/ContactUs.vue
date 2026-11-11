@@ -42,7 +42,9 @@
           <div class="contact-card">
             <i class="fas fa-blog"></i>
             <h4>{{ $t('contact.blog.title') }}</h4>
-            <p><a href="https://blog.naver.com/berkeleytax" target="_blank" class="blog-link">{{ $t('footer.blog') }}</a></p>
+            <p v-for="s in SOCIAL" :key="s.key">
+              <a :href="s.url" target="_blank" rel="noopener" class="blog-link">{{ s.label[$i18n.locale] || s.label.ko }}</a>
+            </p>
           </div>
         </div>
       </div>
@@ -64,11 +66,15 @@
 
 <script>
 import MainLayout from '../layouts/MainLayout.vue';
+import { SOCIAL } from '../data/site';
 
 export default {
   name: 'ContactUs',
   components: {
     MainLayout
+  },
+  data() {
+    return { SOCIAL };
   }
 };
 </script>

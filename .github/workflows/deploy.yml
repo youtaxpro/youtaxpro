@@ -3,6 +3,10 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: ['main']
+  # 매일 06:00 KST 재배포 — 블로그 최신 글 목록(RSS)을 홈에 반영
+  schedule:
+    - cron: '0 21 * * *'
+  workflow_dispatch:
 
 permissions:
   contents: read

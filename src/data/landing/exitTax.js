@@ -5,6 +5,7 @@
 
 export default {
   slug: 'exit-tax',
+  updated: '2026-11-11', // 내용을 고칠 때마다 갱신 (sitemap lastmod · Article dateModified)
   name: 'Exit Tax',
   summary: {
     ko: '미국 시민권 포기·장기 영주권 반납 시 전 세계 자산을 간주매각해 과세하는 규정. Form 8854.',
@@ -15,7 +16,7 @@ export default {
     h1: '국적포기세(Exit Tax) 완벽 가이드',
     lead:
       '미국 시민권을 포기하거나 장기 영주권을 반납할 때, 일정 요건에 해당하면 전 세계 자산을 포기 직전에 판 것으로 간주해 과세합니다(mark-to-market). 한국 자산·연금이 어떻게 평가되는지, 준비 순서는 무엇인지 캘리포니아 CPA가 정리했습니다.',
-    reviewNote: '아래 금액·연도·기준은 최신 IRS 자료 기준으로 최종 확인 후 게시됩니다.',
+    reviewNote: '최종 업데이트: 2026년 11월 · 2027년 인플레이션 조정(Rev. Proc. 2026-35) 반영',
 
     sections: [
       {
@@ -37,7 +38,7 @@ export default {
             headers: ['판정 기준', '내용'],
             rows: [
               ['순자산 기준', '포기일 기준 전 세계 순자산이 USD 2,000,000 이상'],
-              ['세액 기준', '직전 5년 평균 연간 미국 소득세액이 기준선을 초과 (연도별 조정, 2024년 약 USD 201,000 [확인])'],
+              ['세액 기준', '직전 5년 평균 연간 미국 소득세액이 기준선을 초과 (연도별 조정, 2025년 USD 206,000 · 2026년 USD 211,000 · 2027년 USD 218,000)'],
               ['컴플라이언스 기준', 'Form 8854에서 직전 5년간 미국 세금 신고·납부 의무를 이행했음을 확인(증명)하지 못하는 경우'],
             ],
           } },
@@ -49,7 +50,7 @@ export default {
         body: [
           { list: [
             '포기일 직전 날, 전 세계 모든 자산을 공정시장가치로 매각한 것으로 간주',
-            '간주 이익 합계에서 면제금액(연도별 조정, 2024년 USD 866,000 [확인])을 공제',
+            '간주 이익 합계에서 면제금액(연도별 조정, 2025년 USD 890,000 · 2026년 USD 910,000 · 2027년 USD 940,000)을 공제',
             '초과분에 대해 자본이득·경상소득 규정에 따라 과세',
           ] },
           '이연보상(deferred compensation), 세제혜택 계좌(IRA 등), 비양도 신탁(non-grantor trust) 지분에는 별도의 특례 규정이 적용됩니다. 항목별로 취급이 달라 개별 검토가 필요합니다.',
@@ -138,7 +139,7 @@ export default {
     h1: 'U.S. Exit Tax (Expatriation Tax): A Practical Guide',
     lead:
       'When you renounce U.S. citizenship or give up a long-term green card and meet certain tests, the IRS treats your worldwide assets as sold the day before you expatriate (mark-to-market). A California CPA explains how Korean assets and pensions are valued and the order to prepare in.',
-    reviewNote: 'Amounts, years, and thresholds below are finalized after review against current IRS guidance.',
+    reviewNote: 'Last updated: November 2026 · reflects the 2027 inflation adjustments (Rev. Proc. 2026-35)',
 
     sections: [
       {
@@ -160,7 +161,7 @@ export default {
             headers: ['Test', 'Detail'],
             rows: [
               ['Net worth', 'Worldwide net worth of USD 2,000,000 or more on the expatriation date'],
-              ['Tax liability', 'Average annual U.S. income tax over the prior 5 years exceeds the threshold (adjusted yearly; about USD 201,000 for 2024 [verify])'],
+              ['Tax liability', 'Average annual U.S. income tax over the prior 5 years exceeds the threshold (adjusted yearly; USD 206,000 for 2025, USD 211,000 for 2026, USD 218,000 for 2027)'],
               ['Compliance', 'Cannot certify 5 years of U.S. tax compliance on Form 8854'],
             ],
           } },
@@ -172,7 +173,7 @@ export default {
         body: [
           { list: [
             'All worldwide assets are treated as sold at fair market value the day before expatriation',
-            'The total deemed gain is reduced by an exclusion amount (adjusted yearly; USD 866,000 for 2024 [verify])',
+            'The total deemed gain is reduced by an exclusion amount (adjusted yearly; USD 890,000 for 2025, USD 910,000 for 2026, USD 940,000 for 2027)',
             'The excess is taxed under the capital gains / ordinary income rules',
           ] },
           'Deferred compensation, tax-deferred accounts (IRAs, etc.), and interests in non-grantor trusts follow special rules and need item-by-item review.',

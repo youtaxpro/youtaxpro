@@ -1,95 +1,181 @@
+/* 전역 디자인 토큰 — 로고(네이비 + 골드) 기준 */
 :root {
-  font-family: 'Noto Sans KR', Noto Sans, -apple-system, BlinkMacSystemFont, system-ui, Noto Sans KR;
-  line-height: 1.5;
+  --navy-950: #061735;
+  --navy-900: #0a2350;
+  --navy-800: #0b2d63;
+  --navy-600: #1e4d92;
+  --navy-100: #e6ecf6;
+  --navy-50: #f2f5fa;
+  --gold-500: #fdb515;
+  --gold-600: #d99400;
+  --gold-100: #fff4d6;
+  --ink: #0f172a;
+  --body: #475569;
+  --muted: #64748b;
+  --line: #e2e8f0;
+  --bg: #f7f8fb;
+  --white: #ffffff;
+  --radius: 14px;
+  --shadow-sm: 0 1px 2px rgba(10, 35, 80, 0.06), 0 2px 8px rgba(10, 35, 80, 0.04);
+  --shadow-md: 0 10px 30px rgba(10, 35, 80, 0.1);
+  --container: 1160px;
+  --font-sans: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
+    'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+
+  font-family: var(--font-sans);
+  line-height: 1.6;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #F5F7FA; /* 배경 색상 - 연한 회색 */
-
+  color-scheme: light;
+  color: var(--ink);
+  background-color: var(--bg);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-
-a {
-  font-weight: 500;
-  color: #2D3748; /* 텍스트 색상 - 짙은 회색 */
-  text-decoration: inherit;
-}
-a:hover {
-  color: #FFA41B; /* 링크 호버 색상 변경 - 오렌지 */
-}
-
-body {
-  margin: 0;
-  display: flex;
-  
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  padding: 1rem 2rem;
-  border: none;
-  border-radius: 30px;
-  font-size: 1.1rem;
-  font-weight: 500;
-  font-family: inherit;
-  color: white;
-  background-color: #2E5EAA; /* 버튼 색상 변경 - 아이덴티티 블루 */
-  cursor: pointer;
-  transition: transform 0.3s ease, background-color 0.3s;
-}
-button:hover {
-  background-color: #FFA41B; /* 버튼 호버 색상 변경 - 오렌지 */
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-.card {
-  padding: 2em;
-}
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-weight: 800;
 }
 
-html, body {
-  margin: 0;
-  padding: 0;
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 84px;
+}
+
+html,
+body {
   min-height: 100vh;
   width: 100%;
   overflow-x: hidden;
 }
 
-#app {
-  max-width: 100vw;
-  text-align: center;
-  overflow-x: hidden; /* 가로 스크롤 숨김 */
+body {
+  display: flex;
+  min-width: 320px;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #FFA41B; /* 라이트 모드 링크 호버 색상 변경 - 오렌지 */
-  }
-  button {
-    background-color: #2E5EAA; /* 라이트 모드 버튼 색상 변경 - 아이덴티티 블루 */
-  }
+a {
+  font-weight: 500;
+  color: var(--ink);
+  text-decoration: inherit;
+}
+a:hover {
+  color: var(--gold-600);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+p,
+li,
+td {
+  font-weight: 400;
+}
+
+strong,
+b,
+th {
+  font-weight: 700;
+}
+
+/* 기존 내부 페이지들이 쓰는 기본 버튼 스타일 */
+button {
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 30px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  font-family: inherit;
+  color: white;
+  background-color: var(--navy-800);
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s;
+}
+button:hover {
+  background-color: var(--navy-600);
+}
+:focus-visible {
+  outline: 3px solid var(--gold-500);
+  outline-offset: 2px;
+}
+
+#app {
+  width: 100%;
+  max-width: 100vw;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+/* 빌드 시 주입되는 정적 본문(크롤러·JS 로딩 전용). 앱이 마운트되면 교체된다. */
+.prerender {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 96px 20px 48px;
+  text-align: left;
+  color: var(--ink);
+}
+.prerender h1 { font-size: 1.7rem; color: var(--navy-800); margin-bottom: 0.75rem; }
+.prerender h2 { font-size: 1.15rem; color: var(--navy-800); margin: 1.5rem 0 0.5rem; }
+.prerender h3 { font-size: 1rem; margin: 1rem 0 0.25rem; }
+.prerender p, .prerender li { color: var(--body); font-size: 0.95rem; margin-bottom: 0.4rem; }
+.prerender ul { padding-left: 1.2rem; }
+.prerender a { color: var(--navy-600); text-decoration: underline; }
+
+/* 공용 유틸 */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-600);
+  margin-bottom: 0.75rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 50px;
+  padding: 0 1.5rem;
+  border-radius: 10px;
+  font-size: 0.98rem;
+  font-weight: 700;
+  line-height: 1;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+  white-space: nowrap;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn-gold { background: var(--gold-500); color: var(--navy-950); box-shadow: 0 8px 20px rgba(253, 181, 21, 0.28); }
+.btn-gold:hover { background: #ffc233; color: var(--navy-950); }
+.btn-navy { background: var(--navy-800); color: #fff; }
+.btn-navy:hover { background: var(--navy-600); color: #fff; }
+.btn-ghost { border: 1px solid rgba(255, 255, 255, 0.45); color: #fff; }
+.btn-ghost:hover { background: rgba(255, 255, 255, 0.12); color: #fff; }
+.btn-line { border: 1px solid var(--line); color: var(--navy-800); background: #fff; }
+.btn-line:hover { border-color: var(--navy-600); color: var(--navy-800); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
 }

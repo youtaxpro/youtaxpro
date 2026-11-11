@@ -6,18 +6,39 @@ import feie from './feie.js';
 import exitTax from './exitTax.js';
 import pfic from './pfic.js';
 import itin from './itin.js';
+import giftInheritance from './giftInheritance.js';
+import koreaRealEstate from './koreaRealEstate.js';
+import taxCalendar from './taxCalendar.js';
 
 export const landingPages = {
+  'tax-calendar': taxCalendar,
   feie,
   'exit-tax': exitTax,
   pfic,
   itin,
+  'gift-inheritance': giftInheritance,
+  'korea-real-estate': koreaRealEstate,
 };
+
+// 데이터 파일의 [확인]/[verify] 는 CPA 내부 검수 표시다. 화면·구조화 데이터에는 노출하지 않는다.
+const REVIEW_MARK = /\s*\[(?:확인|verify)\]/g;
+function clean(value) {
+  if (typeof value === 'string') return value.replace(REVIEW_MARK, '');
+  if (Array.isArray(value)) return value.map(clean);
+  if (value && typeof value === 'object') {
+    return Object.fromEntries(Object.entries(value).map(([k, v]) => [k, clean(v)]));
+  }
+  return value;
+}
+const cache = new Map();
 
 export function landingDoc(key, locale = 'ko') {
   const page = landingPages[key];
   if (!page) return null;
-  return page[locale] || page.ko;
+  const lang = page[locale] ? locale : 'ko';
+  const id = `${key}:${lang}`;
+  if (!cache.has(id)) cache.set(id, clean(page[lang]));
+  return cache.get(id);
 }
 
 // /guides 인덱스 페이지 목록. 랜딩 페이지 + 기존 안내 페이지(FBAR·Streamlined).
@@ -51,7 +72,7 @@ export function guidesList(locale = 'ko') {
   }));
   return [...fromLanding, ...staticGuides].map((g) => ({
     path: g.path,
-    name: g.name || null,
+    name: (g.name && typeof g.name === 'object' ? g.name[locale] || g.name.ko : g.name) || null,
     title: g.title[locale] || g.title.ko,
     summary: g.summary[locale] || g.summary.ko,
   }));

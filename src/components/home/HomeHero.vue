@@ -1,139 +1,197 @@
 <template>
-  <header class="hero-section">
-    <div class="hero-container">
-      <div class="hero-content">
-        <h1 class="hero-title">{{ $t('hero.title') }}</h1>
-        <p class="hero-subtitle">{{ $t('hero.subtitle') }}</p>
-      </div>
-      
-      <div class="consultation-form">
-        <div class="form-wrapper">
-          <h2 class="form-title">Tax Consultation</h2>
-          <p class="form-subtitle">Our Tax Experts will contact you!</p>
+  <header class="hero">
+    <picture class="hero-bg" aria-hidden="true">
+      <source :srcset="bgAvif" type="image/avif" />
+      <source :srcset="bgWebp" type="image/webp" />
+      <img :src="bgJpg" alt="" fetchpriority="high" decoding="async" />
+    </picture>
 
-          <!-- 접수 완료 -->
-          <div v-if="status === 'success'" class="form-done" role="status" aria-live="polite">
-            <div class="form-done-check" aria-hidden="true">✓</div>
-            <p class="form-done-title">문의가 접수되었습니다</p>
-            <p class="form-done-text">1영업일 이내에 이메일 또는 전화로 연락드리겠습니다.<br>Thank you — we'll be in touch within one business day.</p>
-            <button type="button" class="submit-btn form-done-again" @click="resetForm">다른 문의하기</button>
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <span class="hero-eyebrow">{{ t.eyebrow }}</span>
+        <h1>
+          {{ t.h1a }}<br />
+          <em>{{ t.h1b }}</em>
+        </h1>
+        <p class="hero-sub">{{ t.sub }}</p>
+
+        <ul class="hero-points">
+          <li v-for="p in t.points" :key="p"><Check :size="18" aria-hidden="true" />{{ p }}</li>
+        </ul>
+
+        <div class="hero-actions">
+          <a href="#consult" class="btn btn-gold">{{ t.cta }}</a>
+          <router-link :to="lp('/guides')" class="btn btn-ghost">{{ t.cta2 }}</router-link>
+        </div>
+
+        <p class="hero-season">{{ t.season }}</p>
+      </div>
+
+      <div id="consult" class="consult">
+        <h2>{{ t.formTitle }}</h2>
+        <p class="consult-sub">{{ t.formSub }}</p>
+
+        <!-- 접수 완료 -->
+        <div v-if="status === 'success'" class="form-done" role="status" aria-live="polite">
+          <div class="form-done-check" aria-hidden="true"><Check :size="28" /></div>
+          <p class="form-done-title">{{ t.doneTitle }}</p>
+          <p class="form-done-text">{{ t.doneText }}</p>
+          <button type="button" class="submit-btn" @click="resetForm">{{ t.again }}</button>
+        </div>
+
+        <form v-else @submit.prevent="submitForm" novalidate>
+          <!-- 스팸 방지 (사람에겐 안 보임) -->
+          <input
+            v-model="formData.botcheck"
+            type="checkbox"
+            name="botcheck"
+            class="hp-field"
+            tabindex="-1"
+            autocomplete="off"
+            aria-hidden="true"
+          />
+
+          <label class="sr-only" for="cf-name">{{ t.name }}</label>
+          <input id="cf-name" v-model.trim="formData.fullName" type="text" name="Full Name" :placeholder="t.name" autocomplete="name" required class="form-input" />
+
+          <div class="form-row">
+            <div>
+              <label class="sr-only" for="cf-email">{{ t.email }}</label>
+              <input id="cf-email" v-model.trim="formData.email" type="email" name="Email" :placeholder="t.email" autocomplete="email" required class="form-input" />
+            </div>
+            <div>
+              <label class="sr-only" for="cf-phone">{{ t.phone }}</label>
+              <input id="cf-phone" v-model.trim="formData.phone" type="tel" name="Phone" :placeholder="t.phone" autocomplete="tel" required class="form-input" />
+            </div>
           </div>
 
-          <form v-else @submit.prevent="submitForm" novalidate>
-            <!-- 스팸 방지 (사람에겐 안 보임) -->
-            <input
-              type="checkbox"
-              v-model="formData.botcheck"
-              name="botcheck"
-              class="hp-field"
-              tabindex="-1"
-              autocomplete="off"
-              aria-hidden="true"
-            />
+          <label class="sr-only" for="cf-status">{{ t.statusType }}</label>
+          <select id="cf-status" v-model="formData.statusType" name="Status Type" class="form-input status-select" required>
+            <option value="" disabled>{{ t.statusType }}</option>
+            <option value="US Citizen / Green Card Holder">{{ t.status1 }}</option>
+            <option value="Foreign National Individual">{{ t.status2 }}</option>
+            <option value="Expatriate Individual">{{ t.status3 }}</option>
+          </select>
 
-            <div class="form-group">
-              <label class="sr-only" for="cf-name">Full Name</label>
-              <input
-                id="cf-name"
-                v-model.trim="formData.fullName"
-                type="text"
-                name="Full Name"
-                placeholder="Full Name"
-                autocomplete="name"
-                required
-                class="form-input"
-              />
-            </div>
+          <label class="sr-only" for="cf-message">{{ t.message }}</label>
+          <textarea id="cf-message" v-model.trim="formData.details" name="Message" :placeholder="t.message" class="form-input form-textarea" rows="4"></textarea>
 
-            <div class="form-group">
-              <label class="sr-only" for="cf-email">Email</label>
-              <input
-                id="cf-email"
-                v-model.trim="formData.email"
-                type="email"
-                name="Email"
-                placeholder="Email"
-                autocomplete="email"
-                required
-                class="form-input"
-              />
-            </div>
+          <p v-if="status === 'invalid'" class="form-error" role="alert">{{ t.invalid }}</p>
+          <p v-if="status === 'error'" class="form-error" role="alert">{{ t.error }}</p>
 
-            <div class="form-group">
-              <label class="sr-only" for="cf-phone">Phone number</label>
-              <input
-                id="cf-phone"
-                v-model.trim="formData.phone"
-                type="tel"
-                name="Phone"
-                placeholder="Phone number"
-                autocomplete="tel"
-                required
-                class="form-input"
-              />
-            </div>
-
-            <div class="form-group">
-              <label class="sr-only" for="cf-status">Status Type</label>
-              <select
-                id="cf-status"
-                v-model="formData.statusType"
-                name="Status Type"
-                class="form-input status-select"
-                required
-              >
-                <option value="" disabled selected>Status Type</option>
-                <option value="US Citizen / Green Card Holder">US Citizen / Green Card Holder</option>
-                <option value="Foreign National Individual">Foreign National Individual</option>
-                <option value="Expatriate Individual">Expatriate Individual</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label class="sr-only" for="cf-message">Message</label>
-              <textarea
-                id="cf-message"
-                v-model.trim="formData.details"
-                name="Message"
-                placeholder="Kindly detail your inquiry so we can assist you appropriately 한국어 문의 가능"
-                class="form-input form-textarea"
-                rows="4"
-              ></textarea>
-            </div>
-
-            <p v-if="status === 'error'" class="form-error" role="alert">
-              전송에 실패했습니다. 잠시 후 다시 시도하시거나 전화(010-5909-4868)로 문의해 주세요.
-            </p>
-
-            <button type="submit" class="submit-btn" :disabled="status === 'submitting'">
-              {{ status === 'submitting' ? 'Sending…' : 'SUBMIT' }}
-            </button>
-          </form>
-        </div>
+          <button type="submit" class="submit-btn" :disabled="status === 'submitting'">
+            {{ status === 'submitting' ? t.sending : t.submit }}
+          </button>
+          <p class="consult-note">{{ t.note }}</p>
+        </form>
       </div>
+    </div>
+
+    <!-- 핵심 지표 -->
+    <div class="container">
+      <dl class="hero-stats">
+        <div v-for="s in t.stats" :key="s.label">
+          <dt>{{ s.value }}</dt>
+          <dd>{{ s.label }}</dd>
+        </div>
+      </dl>
     </div>
   </header>
 </template>
 
 <script>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
+import { useI18n } from 'vue-i18n';
+import { Check } from 'lucide-vue-next';
 import { gaEvent } from '../../seo/analytics';
+import { useLocalePath } from '../../composables/useLocalePath';
+import bgJpg from '../../assets/sanfran1.jpg';
+import bgWebp from '../../assets/optimized/sanfran1.webp';
+import bgAvif from '../../assets/optimized/sanfran1.avif';
 
 const ACCESS_KEY = '10f32bb4-f34d-4088-af76-7ffd7a7557d0';
-const emptyForm = () => ({
-  fullName: '',
-  email: '',
-  phone: '',
-  statusType: '',
-  details: '',
-  botcheck: false,
-});
+const emptyForm = () => ({ fullName: '', email: '', phone: '', statusType: '', details: '', botcheck: false });
+
+const copy = {
+  ko: {
+    eyebrow: '캘리포니아 CPA · 서울 강남',
+    h1a: '한국에서 하는 미국 세금 신고,',
+    h1b: '정확하고 편안하게.',
+    sub: '한국에 거주하는 미국 시민권자·영주권자를 위한 미국 세금 신고 전문. 연방·주 소득세부터 FBAR·FATCA, 미신고 정리(Streamlined)까지 캘리포니아 CPA가 직접 검토하고 신고합니다.',
+    points: ['FBAR · FATCA · PFIC 해외자산 신고', '한·미 이중과세 최소화 (FEIE · 외국납부세액공제)', '한국어·영어 상담, 전 과정 비대면 가능'],
+    cta: '무료 상담 신청',
+    cta2: '미국세금 가이드 보기',
+    season: '2026 과세연도 신고(2027년 접수) · 해외 거주자 자동 연장 기한 2027년 6월 15일',
+    formTitle: '상담 신청',
+    formSub: '1영업일 이내에 담당 CPA가 연락드립니다.',
+    name: '성함',
+    email: '이메일',
+    phone: '연락처',
+    statusType: '신분 유형 선택',
+    status1: '미국 시민권자 / 영주권자',
+    status2: '외국인 (비거주자)',
+    status3: '해외 주재원',
+    message: '문의 내용을 간단히 적어 주세요 (English is welcome)',
+    submit: '상담 신청하기',
+    sending: '전송 중…',
+    note: '입력하신 정보는 상담 목적으로만 사용됩니다.',
+    invalid: '성함, 이메일, 연락처, 신분 유형을 모두 입력해 주세요.',
+    error: '전송에 실패했습니다. 잠시 후 다시 시도하시거나 전화(010-5909-4868)로 문의해 주세요.',
+    doneTitle: '문의가 접수되었습니다',
+    doneText: '1영업일 이내에 이메일 또는 전화로 연락드리겠습니다.',
+    again: '다른 문의하기',
+    stats: [
+      { value: '10년+', label: '미국 세무 실무 경력' },
+      { value: '5,000건+', label: '개인 세금신고 처리' },
+      { value: '50개 주', label: '주(State) 세금신고 경험' },
+      { value: 'KO · EN', label: '한국어 · 영어 상담' },
+    ],
+  },
+  en: {
+    eyebrow: 'California CPA · Gangnam, Seoul',
+    h1a: 'U.S. tax filing from Korea,',
+    h1b: 'done right.',
+    sub: 'U.S. tax services for American citizens and green card holders living in Korea. From federal and state returns to FBAR, FATCA and Streamlined catch-up filings — reviewed and filed by a California CPA.',
+    points: ['FBAR · FATCA · PFIC foreign asset reporting', 'Minimize double taxation (FEIE · Foreign Tax Credit)', 'Korean & English, fully remote if you prefer'],
+    cta: 'Request a consultation',
+    cta2: 'Read the tax guides',
+    season: 'Tax year 2026 returns (filed in 2027) · Automatic abroad deadline June 15, 2027',
+    formTitle: 'Tax Consultation',
+    formSub: 'A CPA will contact you within one business day.',
+    name: 'Full name',
+    email: 'Email',
+    phone: 'Phone number',
+    statusType: 'Select status type',
+    status1: 'U.S. Citizen / Green Card Holder',
+    status2: 'Foreign National Individual',
+    status3: 'Expatriate Individual',
+    message: 'Briefly describe your inquiry (한국어 문의 가능)',
+    submit: 'Send request',
+    sending: 'Sending…',
+    note: 'Your information is used only to respond to your inquiry.',
+    invalid: 'Please fill in your name, email, phone and status type.',
+    error: 'Submission failed. Please try again shortly or call 010-5909-4868.',
+    doneTitle: 'Thank you — request received',
+    doneText: "We'll be in touch by email or phone within one business day.",
+    again: 'Send another inquiry',
+    stats: [
+      { value: '10+ yrs', label: 'U.S. tax experience' },
+      { value: '5,000+', label: 'Individual returns prepared' },
+      { value: '50 states', label: 'State return experience' },
+      { value: 'KO · EN', label: 'Bilingual service' },
+    ],
+  },
+};
 
 export default {
   name: 'HomeHero',
+  components: { Check },
   setup() {
+    const { locale } = useI18n();
+    const { lp } = useLocalePath();
+    const t = computed(() => copy[locale.value] || copy.ko);
     const formData = ref(emptyForm());
-    // 'idle' | 'submitting' | 'success' | 'error'
+    // 'idle' | 'invalid' | 'submitting' | 'success' | 'error'
     const status = ref('idle');
 
     const submitForm = async () => {
@@ -141,6 +199,11 @@ export default {
       // 허니팟: 봇이 체크하면 조용히 성공 처리 (실제 전송 안 함)
       if (formData.value.botcheck) {
         status.value = 'success';
+        return;
+      }
+      const f = formData.value;
+      if (!f.fullName || !/^\S+@\S+\.\S+$/.test(f.email) || !f.phone || !f.statusType) {
+        status.value = 'invalid';
         return;
       }
 
@@ -152,26 +215,19 @@ export default {
           body: JSON.stringify({
             access_key: ACCESS_KEY,
             subject: 'youtaxpro.com 상담 신청',
-            from_name: formData.value.fullName || 'youtaxpro.com',
+            from_name: f.fullName || 'youtaxpro.com',
             botcheck: false,
-            full_name: formData.value.fullName,
-            email: formData.value.email,
-            phone: formData.value.phone,
-            status_type: formData.value.statusType,
-            message: formData.value.details,
+            full_name: f.fullName,
+            email: f.email,
+            phone: f.phone,
+            status_type: f.statusType,
+            message: f.details,
           }),
         });
         const result = await response.json();
-
-        if (result.success) {
-          gaEvent('generate_lead', {
-            method: 'web3forms',
-            status_type: formData.value.statusType || 'unspecified',
-          });
-          status.value = 'success';
-        } else {
-          throw new Error(result.message || 'Form submission failed');
-        }
+        if (!result.success) throw new Error(result.message || 'Form submission failed');
+        gaEvent('generate_lead', { method: 'web3forms', status_type: f.statusType || 'unspecified' });
+        status.value = 'success';
       } catch (error) {
         console.error('Error submitting form:', error);
         gaEvent('form_error', { form: 'consultation' });
@@ -184,331 +240,183 @@ export default {
       status.value = 'idle';
     };
 
-    return {
-      formData,
-      status,
-      submitForm,
-      resetForm,
-    };
-  }
+    return { t, lp, formData, status, submitForm, resetForm, bgJpg, bgWebp, bgAvif };
+  },
 };
 </script>
 
 <style scoped>
-/* Hero Section */
-.hero-section {
-  width: 100%;
-  padding: 8rem 2rem;
-  background-image: url('../../assets/sanfran1.jpg');
-  background-size: cover;
-  background-position: center;
-  min-height: 900px;
-  display: flex;
-  align-items: center;
-  justify-content: left;
-  position: relative; /* 추가 */
-}
-
-.hero-section::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.2); /* 검은색 오버레이, 투명도 50% */
-  z-index: 1; /* 배경 이미지 위에 오버레이가 위치하도록 함 */
-}
-
-/* hero-section 내부 요소들이 오버레이 위에 보이도록 함 */
-.hero-section > * {
+.hero {
   position: relative;
-  z-index: 2;
-}
-
-.hero-container {
-  max-width: 1400px;
-  margin: 0 auto;
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  position: relative; /* 추가 */
+  padding: 140px 0 0;
+  color: #fff;
+  background: var(--navy-950);
+  isolation: isolate;
 }
 
-.hero-content {
-  flex: 1;
-  text-align: left;
-  color: white;
-  max-width: 50%; /* 추가 */
+.hero-bg { position: absolute; inset: 0; z-index: -2; }
+.hero-bg img { width: 100%; height: 100%; object-fit: cover; }
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(100deg, rgba(6, 23, 53, 0.94) 0%, rgba(10, 35, 80, 0.86) 45%, rgba(10, 35, 80, 0.55) 100%);
 }
 
-.hero-title {
-  font-size: 4rem;
-  margin-bottom: 1.5rem;
-  font-weight: 1000;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: 3.5rem;
+  align-items: center;
 }
 
-.hero-subtitle {
-  font-size: 2.5rem;
-  opacity: 0.9;
-}
-
-.consultation-form {
-  flex: 0 0 450px;
-  z-index: 99;
-  position: absolute; /* 추가 */
-  right: 2rem; /* 추가 */
-  top: 50%; /* 추가 */
-  transform: translateY(-50%); /* 추가 */
-}
-
-.form-wrapper {
-  background-image: linear-gradient(
-    to right, 
-    rgba(30, 77, 146, 0.8),  /* 진한 블루 (80% 투명도) */
-    rgba(46, 94, 170, 0.8),  /* 아이덴티티 블루 (80% 투명도) */
-    rgba(74, 116, 185, 0.8),  /* 중간 블루 (80% 투명도) */
-    rgba(94, 138, 208, 0.8),  /* 밝은 블루 (80% 투명도) */
-    rgba(117, 194, 246, 0.8)   /* 하늘색 (80% 투명도) */
-  );
-  padding: 2rem;
-  border-radius: 10px;
-  color: white;
-}
-
-.form-title {
-  font-size: 2.5rem;
+.hero-eyebrow {
+  display: inline-block;
+  padding: 0.35rem 0.8rem;
+  border: 1px solid rgba(253, 181, 21, 0.5);
+  border-radius: 999px;
+  color: var(--gold-500);
+  font-size: 0.8rem;
   font-weight: 700;
-  text-align: center;
-  margin-bottom: 0.5rem;
-  color: white;
+  letter-spacing: 0.06em;
+  margin-bottom: 1.25rem;
 }
 
-.form-subtitle {
-  text-align: center;
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
-  color: white;
+.hero h1 {
+  font-size: clamp(2rem, 4.4vw, 3.4rem);
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 1.25rem;
 }
+.hero h1 em { font-style: normal; color: var(--gold-500); }
 
-.form-group {
-  margin-bottom: 1rem;
+.hero-sub { font-size: 1.08rem; line-height: 1.75; color: rgba(255, 255, 255, 0.84); max-width: 560px; margin-bottom: 1.5rem; }
+
+.hero-points { list-style: none; display: grid; gap: 0.55rem; margin-bottom: 2rem; }
+.hero-points li { display: flex; align-items: center; gap: 0.6rem; font-size: 0.98rem; font-weight: 500; color: rgba(255, 255, 255, 0.92); }
+.hero-points svg { flex: none; color: var(--gold-500); }
+
+.hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.25rem; }
+.hero-season { font-size: 0.85rem; color: rgba(255, 255, 255, 0.65); }
+
+/* 상담 폼 카드 */
+.consult {
+  background: #fff;
+  color: var(--ink);
+  border-radius: 18px;
+  padding: 2rem;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+  color-scheme: light;
+  scroll-margin-top: 96px;
 }
+.consult h2 { font-size: 1.4rem; color: var(--navy-900); margin-bottom: 0.25rem; }
+.consult-sub { font-size: 0.9rem; color: var(--muted); margin-bottom: 1.25rem; }
+.consult form { display: grid; gap: 0.7rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; }
 
-/* 폼 입력 요소 스타일 수정 */
 .form-input {
   width: 100%;
-  padding: 1rem;
-  border: none;
-  border-radius: 4px;
-  font-size: 1rem;
-  background: white;
-  color: #333; /* 텍스트 색상 명시적 설정 */
-  -webkit-text-fill-color: #333; /* 웹킷 기반 브라우저용 */
-  opacity: 1; /* 투명도 설정 */
+  padding: 0.85rem 0.95rem;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  font: inherit;
+  font-size: 0.95rem;
+  background: #fff;
+  color: var(--ink);
+  -webkit-text-fill-color: var(--ink);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
+.form-input::placeholder { color: #94a3b8; -webkit-text-fill-color: #94a3b8; opacity: 1; }
+.form-input:focus { outline: none; border-color: var(--navy-600); box-shadow: 0 0 0 3px rgba(30, 77, 146, 0.15); }
+.form-input:-webkit-autofill { -webkit-text-fill-color: var(--ink); -webkit-box-shadow: 0 0 0 1000px #fff inset; }
+.form-textarea { resize: vertical; min-height: 96px; }
 
-/* 플레이스홀더 스타일 명시적 설정 */
-.form-input::placeholder {
-  color: #666;
-  opacity: 1; /* 플레이스홀더 투명도 설정 */
-}
-
-/* 포커스 상태 스타일 */
-.form-input:focus {
-  outline: 2px solid #4169E1; /* 포커스 시 테두리 추가 */
-  color: #333;
-  -webkit-text-fill-color: #333;
-  background-color: white;
-}
-
-/* 특히 Samsung Internet 브라우저를 위한 수정 */
-@supports (-webkit-touch-callout: none) {
-  .form-input {
-    color-scheme: light; /* 라이트 모드 강제 적용 */
-    color: #333 !important;
-    -webkit-text-fill-color: #333 !important;
-    background-color: white !important;
-  }
-}
-
-/* 입력 시 자동완성 스타일 */
-.form-input:-webkit-autofill,
-.form-input:-webkit-autofill:hover, 
-.form-input:-webkit-autofill:focus {
-  -webkit-text-fill-color: #333;
-  -webkit-box-shadow: 0 0 0px 1000px white inset;
-  transition: background-color 5000s ease-in-out 0s;
-}
-
-/* 드롭다운 셀렉트 박스 화살표 스타일 유지 */
 .status-select {
   appearance: none;
-  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23666%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='none' stroke='%2364748b' stroke-width='1.8' d='M1 1.5l5 5 5-5'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 1rem center;
-  background-size: 0.65rem auto;
   padding-right: 2.5rem;
-  color: #333;
-  -webkit-text-fill-color: #333;
-  background-color: white;
-}
-
-/* 폼 전체 스타일 조정 */
-.consultation-form {
-  color-scheme: light;
-}
-
-/* 텍스트 영역 스타일 */
-.form-textarea {
-  color: #333;
-  -webkit-text-fill-color: #333;
-  background-color: white;
-  resize: vertical;
-  min-height: 100px;
-}
-
-.form-input::placeholder {
-  color: #666;
 }
 
 .submit-btn {
   width: 100%;
-  padding: 1rem;
-  background: linear-gradient(to right, #e3780e, #FFb87e, #ffeb8c);
-  color: white;
-  border: none;
-  border-radius: 4px;
-  font-size: 1.1rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.submit-btn:hover {
-  background: #FDB515;
-}
-
-.submit-btn:disabled {
-  opacity: 0.7;
-  cursor: progress;
-}
-
-/* 허니팟: 화면·스크린리더 모두에서 숨김 */
-.hp-field {
-  position: absolute !important;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  white-space: nowrap;
-  border: 0;
+  height: 52px;
   padding: 0;
-  margin: -1px;
+  border-radius: 10px;
+  background: var(--navy-800);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
 }
-
-/* 시각적으로만 숨긴 라벨 (스크린리더용) */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  white-space: nowrap;
-  border: 0;
-}
+.submit-btn:hover { background: var(--navy-600); }
+.submit-btn:disabled { opacity: 0.7; cursor: progress; }
+.consult-note { font-size: 0.78rem; color: var(--muted); text-align: center; }
 
 .form-error {
-  margin: 0 0 0.75rem;
   padding: 0.6rem 0.8rem;
-  background: rgba(220, 38, 38, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  border-radius: 4px;
-  color: #fff;
-  font-size: 0.9rem;
-  line-height: 1.5;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  color: #b91c1c;
+  font-size: 0.86rem;
 }
 
-.form-done {
-  text-align: center;
-  padding: 1.5rem 0.5rem;
-  color: #fff;
-}
-
+.form-done { text-align: center; padding: 1.5rem 0 0.5rem; }
 .form-done-check {
   width: 56px;
   height: 56px;
   margin: 0 auto 1rem;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--gold-100);
+  color: var(--gold-600);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.8rem;
-  font-weight: 700;
+}
+.form-done-title { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.4rem; }
+.form-done-text { font-size: 0.92rem; color: var(--body); margin-bottom: 1.25rem; }
+
+/* 핵심 지표 */
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 4.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+}
+.hero-stats > div { padding: 1.75rem 1rem 2rem; text-align: center; }
+.hero-stats > div + div { border-left: 1px solid rgba(255, 255, 255, 0.12); }
+.hero-stats dt { font-size: clamp(1.4rem, 2.6vw, 2rem); font-weight: 800; color: var(--gold-500); }
+.hero-stats dd { font-size: 0.88rem; color: rgba(255, 255, 255, 0.72); }
+
+.hp-field,
+.sr-only {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
 }
 
-.form-done-title {
-  font-size: 1.25rem;
-  font-weight: 700;
-  margin: 0 0 0.5rem;
+@media (max-width: 960px) {
+  .hero { padding-top: 112px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .consult { max-width: 560px; }
 }
 
-.form-done-text {
-  font-size: 0.92rem;
-  line-height: 1.6;
-  margin: 0 0 1.25rem;
-  opacity: 0.95;
-}
-
-.form-done-again {
-  width: auto;
-  padding: 0.7rem 1.5rem;
-}
-
-@media screen and (max-width: 768px) {
-  .hero-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .hero-content {
-    max-width: 100%;
-    text-align: center;
-    margin-bottom: 2rem;
-    display: none;
-  }
-
-  .consultation-form {
-    position: relative;
-    right: auto;
-    top: auto;
-    transform: none;
-    width: 100%;
-    max-width: 450px;
-    margin: 2rem auto 0;
-  }
-
-  .hero-title {
-    font-size: 3.5rem;
-  }
-
-  .hero-subtitle {
-    font-size: 2.5rem;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .hero-title {
-    font-size: 2rem;
-  }
-
-  .hero-subtitle {
-    font-size: 1rem;
-  }
+@media (max-width: 560px) {
+  .consult { padding: 1.5rem; }
+  .form-row { grid-template-columns: 1fr; }
+  .hero-stats { grid-template-columns: 1fr 1fr; margin-top: 3rem; }
+  .hero-stats > div + div { border-left: 0; }
+  .hero-stats > div:nth-child(even) { border-left: 1px solid rgba(255, 255, 255, 0.12); }
+  .hero-stats > div:nth-child(n + 3) { border-top: 1px solid rgba(255, 255, 255, 0.12); }
+  .hero-actions .btn { flex: 1 1 100%; }
 }
 </style>

@@ -37,27 +37,27 @@
 /* 타이틀 스타일 */
 .tax-website h3 {
   font-size: 3rem;
-  font-weight: 800;
+  font-weight: 700;
   color: black;
 }
 
 .tax-website h4 {
   font-size: 2rem;
-  font-weight: 800;
+  font-weight: 700;
   color: black;
 }
 
 .tax-website h5 {
-  color: #2E5EAA; /* 색상 변경 - 아이덴티티 블루 */
+  color: #0b2d63;
   font-size: large;
 }
 
 /* 타이틀 래퍼 스타일 */
 .title-wrapper {
-  background: linear-gradient(135deg, #2E5EAA 0%, #75C2F6 80%); /* 배경 그라데이션 변경 - 아이덴티티 블루에서 하늘색으로 */
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 10px 25px rgba(46, 94, 170, 0.15); /* 그림자 색상 변경 */
+  background: linear-gradient(135deg, #0a2350 0%, #1e4d92 100%);
+  padding: 1.75rem 2rem;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(10, 35, 80, 0.12);
   margin: 2rem auto;
   max-width: 1200px;
   display: flex;
@@ -70,14 +70,14 @@
 .title-wrapper h3 {
   color: white;
   font-size: 2.0rem;
-  font-weight: 800;
+  font-weight: 700;
   margin: 0;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .title-wrapper .line {
   height: 3px;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: #fdb515;
   flex: 1;
   max-width: 150px;
 }

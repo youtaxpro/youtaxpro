@@ -1,60 +1,52 @@
 <template>
-  <nav :class="{ 'nav-scrolled': isScrolled }">
-    <div class="nav-container">
-      <router-link :to="lp('/')" class="logo flex items-center gap-8">
-        <img :src="BerkeleyLogo" alt="Berkeley" style="height: 58px;" />
+  <nav class="nav" :class="{ 'nav--overlay': overlay && !isScrolled && !isMenuOpen }" aria-label="Primary">
+    <div class="nav-inner">
+      <router-link :to="lp('/')" class="brand" aria-label="Berkeley U.S. Tax Advisors">
+        <img src="/berk.png" alt="" width="44" height="44" />
+        <span class="brand-text">
+          <strong>Berkeley</strong>
+          <small>U.S. Tax Advisors</small>
+        </span>
       </router-link>
-    </div>
 
-    <div class="nav-content" :class="{ 'show': isMenuOpen }">
-      <ul class="nav-links" :class="{ 'active': isMenuOpen }">
-        <li><router-link :to="lp('/#aboutus')">{{ $t('nav.aboutUs') }}</router-link></li>
-        <li><router-link :to="lp('/#services')">{{ $t('nav.services') }}</router-link></li>
-        <li><router-link :to="lp('/#checklists')">{{ $t('nav.checklists') }}</router-link></li>
-        <li><router-link :to="lp('/guides')">{{ $t('nav.guides') }}</router-link></li>
-        <li><router-link :to="lp('/faq')">{{ $t('nav.faq') }}</router-link></li>
-        <li><router-link :to="lp('/contactus')">{{ $t('nav.contactUs') }}</router-link></li>
-      </ul>
-
-      <div class="language-switcher">
-        <button @click="changeLanguage('ko')" class="lang-btn" :class="{ 'active': currentLocale === 'ko' }">KOR</button>
-        <span class="lang-separator">|</span>
-        <button @click="changeLanguage('en')" class="lang-btn" :class="{ 'active': currentLocale === 'en' }">ENG</button>
-      </div>
-      <button class="mobile-menu-btn" @click="toggleMenu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </div>
-    
-    <!-- Mobile Sidebar Menu -->
-    <div class="sidebar-menu" :class="{ 'open': isMenuOpen }">
-      <button class="sidebar-close-btn" @click="toggleMenu">
-        <img src="@/assets/icons/webp/xmark-solid-full.svg" 
-              alt="Close menu" 
-              class="close-icon" />
-      </button>
       <ul class="nav-links">
-        <li><router-link :to="lp('/#aboutus')" @click="toggleMenu">{{ $t('nav.aboutUs') }}</router-link></li>
-        <li><router-link :to="lp('/#services')" @click="toggleMenu">{{ $t('nav.services') }}</router-link></li>
-        <li><router-link :to="lp('/#checklists')" @click="toggleMenu">{{ $t('nav.checklists') }}</router-link></li>
-        <li><router-link :to="lp('/guides')" @click="toggleMenu">{{ $t('nav.guides') }}</router-link></li>
-        <li><router-link :to="lp('/faq')" @click="toggleMenu">{{ $t('nav.faq') }}</router-link></li>
-        <li><router-link :to="lp('/contactus')" @click="toggleMenu">{{ $t('nav.contactUs') }}</router-link></li>
+        <li v-for="item in items" :key="item.to">
+          <router-link :to="lp(item.to)">{{ $t(item.label) }}</router-link>
+        </li>
       </ul>
-      <div class="language-switcher">
-        <button @click="changeLanguage('ko')" class="lang-btn" :class="{ 'active': currentLocale === 'ko' }">KOR</button>
-        <span class="lang-separator">|</span>
-        <button @click="changeLanguage('en')" class="lang-btn" :class="{ 'active': currentLocale === 'en' }">ENG</button>
+
+      <div class="nav-actions">
+        <div class="lang" role="group" aria-label="Language">
+          <button type="button" :class="{ active: currentLocale === 'ko' }" @click="changeLanguage('ko')">KO</button>
+          <button type="button" :class="{ active: currentLocale === 'en' }" @click="changeLanguage('en')">EN</button>
+        </div>
+        <router-link :to="lp('/contactus')" class="btn btn-gold nav-cta">
+          {{ currentLocale === 'en' ? 'Free consultation' : '상담 신청' }}
+        </router-link>
+        <button
+          type="button"
+          class="menu-btn"
+          :aria-expanded="isMenuOpen"
+          aria-controls="mobile-menu"
+          :aria-label="isMenuOpen ? 'Close menu' : 'Open menu'"
+          @click="toggleMenu"
+        >
+          <component :is="isMenuOpen ? 'X' : 'Menu'" :size="26" aria-hidden="true" />
+        </button>
       </div>
-      
-      <!-- Copyright Info -->
-      <div class="sidebar-footer">
-        <p>&copy; 2024-2026 {{ $t('footer.companyName') }}</p>
-        <p>{{ $t('footer.address') }}</p>
-        <p>{{ $t('footer.phone') }}</p>
-      </div>
+    </div>
+
+    <!-- 모바일 메뉴 -->
+    <div id="mobile-menu" class="mobile-menu" :class="{ open: isMenuOpen }">
+      <ul>
+        <li v-for="item in items" :key="item.to">
+          <router-link :to="lp(item.to)" @click="closeMenu">{{ $t(item.label) }}</router-link>
+        </li>
+      </ul>
+      <router-link :to="lp('/contactus')" class="btn btn-gold" @click="closeMenu">
+        {{ currentLocale === 'en' ? 'Free consultation' : '상담 신청' }}
+      </router-link>
+      <a :href="CONTACT.phoneHref" class="mobile-phone">{{ CONTACT.phoneDisplay }}</a>
     </div>
   </nav>
 </template>
@@ -62,395 +54,197 @@
 <script>
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 import { useRouter } from 'vue-router';
-import BerkeleyLogo from '../../assets/Berkeley.png';
-import { setupOptimizedScroll } from '../../utils/scrollOptimizer';
-import closeIcon from '../../assets/icons/webp/xmark-solid-full.svg';
+import { Menu, X } from 'lucide-vue-next';
 import { useLocalePath } from '../../composables/useLocalePath';
+import { CONTACT } from '../../data/site';
+
+const items = [
+  { to: '/#aboutus', label: 'nav.aboutUs' },
+  { to: '/#services', label: 'nav.services' },
+  { to: '/guides', label: 'nav.guides' },
+  { to: '/#checklists', label: 'nav.checklists' },
+  { to: '/faq', label: 'nav.faq' },
+  { to: '/contactus', label: 'nav.contactUs' },
+];
 
 export default {
   name: 'Navbar',
+  components: { Menu, X },
+  props: {
+    // 홈 히어로 위에서는 투명하게 겹쳐 보이도록
+    overlay: { type: Boolean, default: false },
+  },
   emits: ['toggle-menu'],
   setup(props, { emit }) {
     const router = useRouter();
     const { currentLocale, lp, switchLocalePath } = useLocalePath();
     const isScrolled = ref(false);
     const isMenuOpen = ref(false);
-    const mobileNav = ref(null);
-    let removeScrollListener;
 
-    const toggleMenu = () => {
-      isMenuOpen.value = !isMenuOpen.value;
-      emit('toggle-menu', isMenuOpen.value);
-      
-      // Add class to prevent body scrolling when sidebar is open
-      if (isMenuOpen.value) {
-        document.body.classList.add('sidebar-open');
-      } else {
-        document.body.classList.remove('sidebar-open');
-      }
-      
-      if (mobileNav.value) {
-        const menuBtn = mobileNav.value.querySelector('.mobile-menu-btn');
-        menuBtn?.classList.toggle('active');
-      }
+    const onScroll = () => {
+      isScrolled.value = window.scrollY > 24;
     };
+
+    const setMenu = (open) => {
+      isMenuOpen.value = open;
+      emit('toggle-menu', open);
+    };
+    const toggleMenu = () => setMenu(!isMenuOpen.value);
+    const closeMenu = () => setMenu(false);
 
     const changeLanguage = (lang) => {
       try { localStorage.setItem('userLanguage', lang); } catch (e) { /* noop */ }
+      closeMenu();
       router.push(switchLocalePath(lang));
     };
 
     onMounted(() => {
-      // 최적화된 스크롤 이벤트 리스너 설정
-      removeScrollListener = setupOptimizedScroll((scrollY) => {
-        isScrolled.value = scrollY > 50;
-        if (isMenuOpen.value) {
-          toggleMenu();
-        }
-      }, { throttleTime: 100, useRequestAnimationFrame: true });
-
-      mobileNav.value = document.querySelector('nav');
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
     });
+    onBeforeUnmount(() => window.removeEventListener('scroll', onScroll));
 
-    onBeforeUnmount(() => {
-      // 컴포넌트 언마운트 시 최적화된 스크롤 이벤트 리스너 제거
-      if (removeScrollListener) removeScrollListener();
-    });
-
-    return {
-      BerkeleyLogo,
-      isScrolled,
-      currentLocale,
-      lp,
-      isMenuOpen,
-      changeLanguage,
-      toggleMenu,
-      closeIcon
-    };
-  }
+    return { items, CONTACT, isScrolled, isMenuOpen, currentLocale, lp, toggleMenu, closeMenu, changeLanguage };
+  },
 };
 </script>
 
 <style scoped>
-/* Navigation */
-nav {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 100vw;
-  padding: 1rem 3rem;
-  background: transparent;
+.nav {
   position: fixed;
   top: 0;
   left: 0;
+  width: 100%;
   z-index: 1000;
-  transition: all 0.5s ease;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: saturate(160%) blur(10px);
+  border-bottom: 1px solid var(--line);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
 }
 
-.nav-scrolled {
-  background-image: linear-gradient(
-    to right, 
-    rgba(30, 77, 146, 0.8),  /* 진한 블루 (80% 투명도) */
-    rgba(46, 94, 170, 0.8),  /* 아이덴티티 블루 (80% 투명도) */
-    rgba(74, 116, 185, 0.8),  /* 중간 블루 (80% 투명도) */
-    rgba(94, 138, 208, 0.8),  /* 밝은 블루 (80% 투명도) */
-    rgba(117, 194, 246, 0.8)   /* 하늘색 (80% 투명도) */
-  );
-  box-shadow: 0 2px 5px rgba(46, 94, 170, 0.2);
-}
-
-.nav-container {
+.nav-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  height: 72px;
+  padding: 0 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1.5rem;
 }
 
-.logo {
+.brand {
   display: flex;
   align-items: center;
-  height: 100%;
+  gap: 0.65rem;
+  color: var(--navy-800);
+  text-align: left;
 }
-
-.logo img {
-  height: 50px;
-  margin: auto 0;
-}
-
-.nav-content {
-  display: flex;
-  align-items: center;
-  color: white;
-}
+.brand img { width: 44px; height: 44px; background: #fff; border-radius: 50%; }
+.brand-text { display: flex; flex-direction: column; line-height: 1.1; }
+.brand-text strong { font-size: 1.12rem; font-weight: 800; letter-spacing: -0.01em; }
+.brand-text small { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.75; }
 
 .nav-links {
   display: flex;
-  gap: 2.5rem;
-  margin: 0;
-  padding: 0;
+  gap: 1.9rem;
   list-style: none;
 }
-
 .nav-links a {
-  color: white;
-  text-decoration: none;
-  transition: opacity 0.3s ease;
+  position: relative;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ink);
+  padding: 0.4rem 0;
 }
-
-.nav-links a:hover {
-  opacity: 0.8;
-}
-
-/* Language Switcher */
-.language-switcher {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-left: 2rem;
-}
-
-.lang-btn {
-  background: none;
-  border: none;
-  color: white;
-  cursor: pointer;
-  padding: 0.3rem 0.6rem;
-  font-size: 0.9rem;
-  transition: all 0.3s ease;
-}
-
-.lang-btn:hover, .lang-btn.active {
-  background-image: linear-gradient(to right, #FFA41B, #FFB443, #FFC56A, #FFD892);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-}
-
-.lang-btn.active {
-  font-weight: bold;
-  background-size: 200% auto;
-}
-
-.lang-separator {
-  color: white;
-  opacity: 0.5;
-}
-
-/* Mobile Menu Button */
-.mobile-menu-btn {
-  display: none;
-  flex-direction: column;
-  justify-content: space-around;
-  height: 24px;
-  width: 30px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  z-index: 1001;
-}
-
-.mobile-menu-btn span {
-  width: 100%;
-  height: 3px;
-  background: white;
-  border-radius: 3px;
-  transition: all 0.3s linear;
-  display: block;
-}
-
-/* Mobile Menu Active States */
-.mobile-menu-btn.active span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-
-.mobile-menu-btn.active span:nth-child(2) {
-  opacity: 0;
-}
-
-.mobile-menu-btn.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(7px, -7px);
-}
-
-/* Router Link Active State */
-.nav-links a.active,
-.router-link-active {
-  color: #FFA41B; /* 오렌지색으로 변경 */
-  font-weight: bold;
-}
-
-/* Mobile Sidebar */
-.sidebar-menu {
-  position: fixed;
-  top: 0;
-  right: -100%;
-  width: 80%;
-  max-width: 300px;
-  height: 100vh;
-  background-image: linear-gradient(
-    to right, 
-    rgba(30, 77, 146, 0.95),
-    rgba(46, 94, 170, 0.95),
-    rgba(117, 194, 246, 0.95)
-  );
-  box-shadow: -5px 0 15px rgba(46, 94, 170, 0.2);
-  z-index: 2000;
-  transition: right 0.3s ease-in-out;
-  padding: 2rem 1rem;
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto;
-}
-
-.sidebar-menu.open {
-  right: 0;
-}
-
-.sidebar-close-btn {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 1.5rem;
+.nav-links a::after {
+  content: '';
   position: absolute;
-  right: 1.1rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-}
-
-.close-icon {
-  width: 46px;
-  height: 46px;
-  filter: brightness(0) invert(1); /* SVG 흰색 변환 */
-  display: block;
-}
-
-.sidebar-menu .nav-links {
-  margin-top: 3rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  width: 100%;
-  padding: 0;
-}
-
-.sidebar-menu .nav-links li {
-  width: 100%;
-}
-
-.sidebar-menu .nav-links a {
-  display: block;
-  width: 100%;
-  padding: 0.75rem 0;
-  color: white;
-  font-size: 1.1rem;
-  transition: all 0.3s ease;
-}
-
-.sidebar-menu .nav-links a:hover,
-.sidebar-menu .nav-links a.router-link-active {
-  color: #FFA41B; /* 오렌지색으로 변경 */
-}
-
-.sidebar-menu .language-switcher {
-  margin-top: 2rem;
-  justify-content: center;
-  margin-left: 0;
-}
-
-/* Add a background overlay when sidebar is open */
-body.sidebar-open::before {
-  content: "";
-  position: fixed;
-  top: 0;
   left: 0;
+  bottom: -2px;
   width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(3px);
-  z-index: 1999;
+  height: 2px;
+  background: var(--gold-500);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s ease;
 }
+.nav-links a:hover { color: var(--navy-800); }
+.nav-links a:hover::after { transform: scaleX(1); }
 
-/* Responsive Design */
-@media screen and (max-width: 768px) {
-  nav {
-    padding: 0.5rem 0;
-    width: 100%;
-    min-height: 70px; /* Ensure consistent height */
-  }
+.nav-actions { display: flex; align-items: center; gap: 0.9rem; }
 
-  .nav-content .nav-links {
-    display: none;
-  }
-
-  .logo {
-    display: flex;
-    align-items: center;
-    min-height: 60px; /* Maintain height even with smaller logo */
-  }
-  
-  .logo img {
-    height: 40px;
-    transform: scale(0.7);
-  }
-
-  .mobile-menu-btn {
-    display: flex;
-  }
-
-  .nav-content {
-    justify-content: flex-end;
-  }
-
-  .language-switcher {
-    margin-left: auto;
-    margin-right: 1rem;
-  }
-
-    .close-icon { width: 40px; height: 40px; 
-  }
-}
-
-/* For accessibility - hide scrollbar when sidebar is open */
-body.sidebar-open {
+.lang {
+  display: flex;
+  border: 1px solid var(--line);
+  border-radius: 8px;
   overflow: hidden;
 }
-
-/* Sidebar Footer */
-.sidebar-footer {
-  margin-top: auto;
-  width: 100%;
-  text-align: center;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  margin-top: 2rem;
-  padding-top: 1.5rem;
-  position: relative;
-  bottom: 0;
+.lang button {
+  padding: 0.35rem 0.6rem;
+  border-radius: 0;
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 700;
 }
+.lang button.active { background: var(--navy-800); color: #fff; }
 
-.sidebar-footer p {
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 0.85rem;
-  margin-bottom: 0.5rem;
+.nav-cta { height: 42px; padding: 0 1.1rem; font-size: 0.9rem; box-shadow: none; }
+
+.menu-btn {
+  display: none;
+  padding: 0.35rem;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--navy-800);
+  line-height: 0;
 }
+.menu-btn:hover { background: var(--navy-50); }
 
-.sidebar-footer p:first-child {
+/* 홈 히어로 위: 투명 + 흰 글자 */
+.nav--overlay {
+  background: transparent;
+  backdrop-filter: none;
+  border-bottom-color: transparent;
+}
+.nav--overlay .brand,
+.nav--overlay .nav-links a,
+.nav--overlay .menu-btn { color: #fff; }
+.nav--overlay .lang { border-color: rgba(255, 255, 255, 0.35); }
+.nav--overlay .lang button { color: rgba(255, 255, 255, 0.8); }
+.nav--overlay .lang button.active { background: #fff; color: var(--navy-800); }
+.nav--overlay .menu-btn:hover { background: rgba(255, 255, 255, 0.12); }
+
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0.5rem 24px 1.5rem;
+  background: #fff;
+  border-top: 1px solid var(--line);
+  text-align: left;
+}
+.mobile-menu ul { list-style: none; }
+.mobile-menu li a {
+  display: block;
+  padding: 0.9rem 0;
+  font-size: 1.02rem;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.9);
+  border-bottom: 1px solid var(--line);
+}
+.mobile-phone { text-align: center; font-weight: 700; color: var(--navy-800); }
+
+@media (max-width: 1024px) {
+  .nav-links { display: none; }
+  .menu-btn { display: inline-flex; }
+  .mobile-menu.open { display: flex; }
 }
 
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+@media (max-width: 560px) {
+  .nav-inner { height: 64px; padding: 0 16px; gap: 0.75rem; }
+  .nav-cta { display: none; }
+  .brand img { width: 38px; height: 38px; }
+  .brand-text strong { font-size: 1rem; }
 }
 </style>
