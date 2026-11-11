@@ -21,7 +21,7 @@
           <button type="button" :class="{ active: currentLocale === 'en' }" @click="changeLanguage('en')">EN</button>
         </div>
         <router-link :to="lp('/contactus')" class="btn btn-gold nav-cta">
-          {{ currentLocale === 'en' ? 'Free consultation' : '상담 신청' }}
+          {{ currentLocale === 'en' ? 'Contact us' : '상담 신청' }}
         </router-link>
         <button
           type="button"
@@ -44,7 +44,7 @@
         </li>
       </ul>
       <router-link :to="lp('/contactus')" class="btn btn-gold" @click="closeMenu">
-        {{ currentLocale === 'en' ? 'Free consultation' : '상담 신청' }}
+        {{ currentLocale === 'en' ? 'Contact us' : '상담 신청' }}
       </router-link>
       <a :href="CONTACT.phoneHref" class="mobile-phone">{{ CONTACT.phoneDisplay }}</a>
     </div>
