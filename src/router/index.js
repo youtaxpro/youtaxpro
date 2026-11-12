@@ -29,6 +29,13 @@ const baseRoutes = [
   { seg: 'korea-real-estate', name: 'KoreaRealEstateLanding', component: Landing },
   { seg: 'fbar', name: 'Fbar', component: Landing },
   { seg: 'streamlined', name: 'Streamlined', component: Landing },
+  { seg: 'tax-return', name: 'TaxReturn', component: Landing },
+  { seg: 'fatca', name: 'Fatca', component: Landing },
+  { seg: 'amended-return', name: 'AmendedReturn', component: Landing },
+  { seg: 'irs-notice', name: 'IrsNotice', component: Landing },
+  { seg: 'nonresident', name: 'Nonresident', component: Landing },
+  { seg: 'services', name: 'Services', component: () => import('../pages/Services.vue') },
+  { seg: 'about', name: 'About', component: () => import('../pages/About.vue') },
   { seg: 'privacy', name: 'PrivacyPolicy', component: () => import('../pages/PrivacyPolicy.vue') },
 ];
 

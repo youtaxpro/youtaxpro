@@ -59,8 +59,8 @@ import { useLocalePath } from '../../composables/useLocalePath';
 import { CONTACT } from '../../data/site';
 
 const items = [
-  { to: '/#aboutus', label: 'nav.aboutUs' },
-  { to: '/#services', label: 'nav.services' },
+  { to: '/about', label: 'nav.aboutUs' },
+  { to: '/services', label: 'nav.services' },
   { to: '/guides', label: 'nav.guides' },
   { to: '/#checklists', label: 'nav.checklists' },
   { to: '/faq', label: 'nav.faq' },

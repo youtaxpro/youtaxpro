@@ -24,6 +24,12 @@
           </router-link>
         </li>
       </ul>
+
+      <p class="svc-all">
+        <router-link :to="lp('/services')" class="btn btn-line">
+          {{ locale === 'en' ? 'All services' : '서비스 전체 보기' }}
+        </router-link>
+      </p>
     </div>
   </section>
 </template>
@@ -37,14 +43,14 @@ import { useLocalePath } from '../../composables/useLocalePath';
 
 // 순서는 i18n services.service1~8 과 일치해야 한다.
 const services = [
-  { icon: 'FileText', to: '/tax-calendar', guide: true, desc: { ko: 'Form 1040과 주(State) 신고서. 한국 소득·금융자산을 포함한 전 세계 소득을 정확히 반영합니다.', en: 'Form 1040 plus state returns, reflecting worldwide income including Korean income and assets.' } },
+  { icon: 'FileText', to: '/tax-return', guide: true, desc: { ko: 'Form 1040과 주(State) 신고서. 한국 소득·금융자산을 포함한 전 세계 소득을 정확히 반영합니다.', en: 'Form 1040 plus state returns, reflecting worldwide income including Korean income and assets.' } },
   { icon: 'Landmark', to: '/fbar', guide: true, desc: { ko: '해외 금융계좌 합계 1만 달러 초과 시 FBAR, 기준 초과 시 Form 8938. 계좌별 최고잔액을 계산해 전자신고합니다.', en: 'FBAR above USD 10,000 in aggregate and Form 8938 above its thresholds — maximum balances computed and e-filed.' } },
   { icon: 'Plane', to: '/feie', guide: true, desc: { ko: '해외근로소득 공제(FEIE)와 외국납부세액공제(FTC)를 비교해 이중과세를 최소화합니다.', en: 'We compare the FEIE and the Foreign Tax Credit to minimize double taxation.' } },
   { icon: 'LifeBuoy', to: '/streamlined', guide: true, desc: { ko: '몰라서 신고하지 못한 경우를 위한 IRS 공식 구제 절차. 해외 거주자는 벌금 없이 정리할 수 있습니다.', en: 'The IRS relief route for non-willful non-filers. Taxpayers abroad can catch up with no penalty.' } },
   { icon: 'History', to: '/streamlined', guide: true, desc: { ko: '기한이 지난 연도의 신고서를 작성하고, 가산세·이자를 줄일 수 있는 방법을 함께 검토합니다.', en: 'We prepare late returns and review options to reduce penalties and interest.' } },
-  { icon: 'FilePenLine', to: '/contactus', guide: false, desc: { ko: '누락·오류가 있는 신고서를 Form 1040-X로 바로잡습니다. 환급 청구 기한도 확인해 드립니다.', en: 'Fix omissions and errors with Form 1040-X, including refund-claim deadlines.' } },
-  { icon: 'UserRound', to: '/itin', guide: true, desc: { ko: '미국 원천소득이 있는 비거주 외국인의 Form 1040-NR 신고와 ITIN 신청을 지원합니다.', en: 'Form 1040-NR for nonresidents with U.S.-source income, plus ITIN applications.' } },
-  { icon: 'MailWarning', to: '/contactus', guide: false, desc: { ko: 'IRS 통지서(CP2000 등)의 의미와 대응 기한을 설명하고, 답변서 작성과 세무조사 대응을 돕습니다.', en: 'We explain IRS notices (CP2000 and others), draft responses and assist with examinations.' } },
+  { icon: 'FilePenLine', to: '/amended-return', guide: true, desc: { ko: '누락·오류가 있는 신고서를 Form 1040-X로 바로잡습니다. 환급 청구 기한도 확인해 드립니다.', en: 'Fix omissions and errors with Form 1040-X, including refund-claim deadlines.' } },
+  { icon: 'UserRound', to: '/nonresident', guide: true, desc: { ko: '미국 원천소득이 있는 비거주 외국인의 Form 1040-NR 신고와 ITIN 신청을 지원합니다.', en: 'Form 1040-NR for nonresidents with U.S.-source income, plus ITIN applications.' } },
+  { icon: 'MailWarning', to: '/irs-notice', guide: true, desc: { ko: 'IRS 통지서(CP2000 등)의 의미와 대응 기한을 설명하고, 답변서 작성과 세무조사 대응을 돕습니다.', en: 'We explain IRS notices (CP2000 and others), draft responses and assist with examinations.' } },
 ];
 
 export default {
@@ -59,6 +65,11 @@ export default {
 </script>
 
 <style scoped>
+.svc-all {
+  margin-top: 1.75rem;
+  text-align: center;
+}
+
 .svc-grid {
   list-style: none;
   display: grid;

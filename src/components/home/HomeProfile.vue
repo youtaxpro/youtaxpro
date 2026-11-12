@@ -29,6 +29,11 @@
         <ul class="career">
           <li v-for="n in 3" :key="n">{{ $t(`profile.sections.career.list[${n - 1}]`) }}</li>
         </ul>
+        <p class="profile-more">
+          <router-link :to="lp('/about')" class="btn btn-line">
+            {{ locale === 'en' ? 'Full profile' : '프로필 자세히 보기' }}
+          </router-link>
+        </p>
       </div>
     </div>
   </section>
@@ -36,6 +41,7 @@
 
 <script>
 import { useI18n } from 'vue-i18n';
+import { useLocalePath } from '../../composables/useLocalePath';
 import ceoPic from '../../assets/250220_ceo_pic.jpg';
 import ceoWebp from '../../assets/optimized/250220_ceo_pic.webp';
 import ceoAvif from '../../assets/optimized/250220_ceo_pic.avif';
@@ -47,12 +53,17 @@ export default {
   name: 'HomeProfile',
   setup() {
     const { locale } = useI18n();
-    return { locale, ceoPic, ceoWebp, ceoAvif, flagJpg, flagWebp, flagAvif };
+    const { lp } = useLocalePath();
+    return { locale, lp, ceoPic, ceoWebp, ceoAvif, flagJpg, flagWebp, flagAvif };
   },
 };
 </script>
 
 <style scoped>
+.profile-more {
+  margin-top: 1.5rem;
+}
+
 /* 미국 국기 배경 + 밝은 오버레이 */
 .profile {
   position: relative;

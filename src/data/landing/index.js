@@ -11,6 +11,11 @@ import koreaRealEstate from './koreaRealEstate.js';
 import taxCalendar from './taxCalendar.js';
 import fbar from './fbar.js';
 import streamlined from './streamlined.js';
+import taxReturn from './taxReturn.js';
+import fatca from './fatca.js';
+import amendedReturn from './amendedReturn.js';
+import irsNotice from './irsNotice.js';
+import nonresident from './nonresident.js';
 
 export const landingPages = {
   'tax-calendar': taxCalendar,
@@ -22,7 +27,15 @@ export const landingPages = {
   'korea-real-estate': koreaRealEstate,
   fbar,
   streamlined,
+  'tax-return': taxReturn,
+  fatca,
+  'amended-return': amendedReturn,
+  'irs-notice': irsNotice,
+  nonresident,
 };
+
+// 서비스 성격의 페이지 — /services 에서 안내하고 가이드 목록(/guides·푸터)에는 넣지 않는다.
+const SERVICE_KEYS = new Set(['tax-return', 'amended-return', 'irs-notice', 'nonresident']);
 
 // 데이터 파일의 [확인]/[verify] 는 CPA 내부 검수 표시다. 화면·구조화 데이터에는 노출하지 않는다.
 const REVIEW_MARK = /\s*\[(?:확인|verify)\]/g;
@@ -47,7 +60,7 @@ export function landingDoc(key, locale = 'ko') {
 
 // /guides 인덱스 페이지 목록.
 export function guidesList(locale = 'ko') {
-  const fromLanding = Object.entries(landingPages).map(([key, page]) => ({
+  const fromLanding = Object.entries(landingPages).filter(([key]) => !SERVICE_KEYS.has(key)).map(([key, page]) => ({
     path: '/' + (page.slug || key),
     title: { ko: page.ko.h1, en: page.en.h1 },
     name: page.name,
