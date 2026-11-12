@@ -151,13 +151,14 @@ export const routeSeo = [
   {
     path: '/fbar',
     name: 'Fbar',
+    landingKey: 'fbar',
     title: {
-      ko: 'FBAR(해외금융계좌 신고) 한국 전문 | 캘리포니아 CPA | Berkeley U.S. Tax Advisors',
-      en: 'FBAR Filing for Americans in Korea | California CPA | Berkeley U.S. Tax Advisors',
+      ko: 'FBAR(해외금융계좌 신고) · FATCA 가이드 | 한국 계좌 신고 | Berkeley U.S. Tax Advisors',
+      en: 'FBAR & FATCA Guide for Americans in Korea | Berkeley U.S. Tax Advisors',
     },
     description: {
-      ko: '해외 계좌 합계가 연중 한 번이라도 미화 1만 달러를 넘으면 FBAR(FinCEN Form 114) 신고가 의무입니다. 한국 계좌 정확 계산과 빠른 e-filing으로 벌금 위험을 방지합니다.',
-      en: 'FBAR (FinCEN Form 114) is mandatory if your foreign accounts exceed USD 10,000 at any point in the year. Accurate calculation of Korean accounts and fast e-filing.',
+      ko: '해외 계좌 합계가 연중 한 번이라도 미화 1만 달러를 넘으면 FBAR(FinCEN Form 114) 신고 의무. 대상 한국 계좌, 최고 잔액·환율 계산, 기한, 벌금, FATCA(Form 8938)와의 차이를 캘리포니아 CPA가 정리.',
+      en: 'FBAR (FinCEN Form 114) is required if your foreign accounts exceed USD 10,000 at any point in the year. Which Korean accounts count, maximum value and exchange rate, deadlines, penalties, and how Form 8938 differs.',
     },
   },
   {
@@ -175,13 +176,14 @@ export const routeSeo = [
   {
     path: '/streamlined',
     name: 'Streamlined',
+    landingKey: 'streamlined',
     title: {
-      ko: 'Streamlined 간소화 절차(IRS 벌금 면제 프로그램) 전문 | 캘리포니아 CPA',
-      en: 'Streamlined Filing Procedures (IRS Amnesty Program) | California CPA',
+      ko: 'Streamlined 간소화 절차 가이드 | FBAR·해외소득 미신고 구제 | Berkeley U.S. Tax Advisors',
+      en: 'Streamlined Filing Compliance Procedures Guide | Berkeley U.S. Tax Advisors',
     },
     description: {
-      ko: '과거 FBAR·FATCA 미신고자를 위한 IRS 공식 구제 프로그램. 비고의적 위반·해외 거주자는 벌금 0%로 6년치 미신고를 정리할 수 있습니다.',
-      en: 'The official IRS relief program for past FBAR/FATCA non-filers. Non-willful violators and overseas residents can resolve years of non-filing with a 0% penalty.',
+      ko: '해외 계좌·소득을 몰라서 신고하지 못한 납세자를 위한 IRS 공식 절차. 해외 거주자(SFOP)는 벌금 없이 3년치 신고서와 6년치 FBAR로 정리. 자격 요건, Form 14653, 미국 거주자용 5% 벌금까지 캘리포니아 CPA 정리.',
+      en: 'The official IRS route for non-willful non-filers. Taxpayers abroad (SFOP) catch up with 3 years of returns and 6 years of FBARs and no penalty. Eligibility, Form 14653, and the 5% penalty for U.S. residents.',
     },
   },
 ];

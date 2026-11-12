@@ -11,7 +11,6 @@ import { gaPageView } from '../seo/analytics';
 import FAQ from '../pages/FAQ.vue';
 import Home from '../pages/Home.vue';
 import ContactUs from '../pages/ContactUs.vue';
-import Fbar from '../pages/Fbar.vue';
 
 // 기준 라우트(ko). en은 /en 접두어로 자동 복제된다.
 const Landing = () => import('../pages/LandingPage.vue');
@@ -28,8 +27,8 @@ const baseRoutes = [
   { seg: 'tax-calendar', name: 'TaxCalendarLanding', component: Landing },
   { seg: 'gift-inheritance', name: 'GiftInheritanceLanding', component: Landing },
   { seg: 'korea-real-estate', name: 'KoreaRealEstateLanding', component: Landing },
-  { seg: 'fbar', name: 'Fbar', component: Fbar },
-  { seg: 'streamlined', name: 'Streamlined', component: () => import('../pages/Streamlined.vue') },
+  { seg: 'fbar', name: 'Fbar', component: Landing },
+  { seg: 'streamlined', name: 'Streamlined', component: Landing },
   { seg: 'privacy', name: 'PrivacyPolicy', component: () => import('../pages/PrivacyPolicy.vue') },
 ];
 
