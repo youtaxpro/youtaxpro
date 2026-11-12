@@ -13,11 +13,11 @@ export const routeSeo = [
     path: '/',
     name: 'Home',
     title: {
-      ko: '미국 세금 신고 전문 CPA | 한국 거주 미국인 | Berkeley U.S. Tax Advisors',
+      ko: '미국 세금 신고 전문 CPA | 버클리유에스택스',
       en: 'U.S. Tax Filing for Americans in Korea | Berkeley U.S. Tax Advisors',
     },
     description: {
-      ko: '한국 거주 미국 시민권자·영주권자 미국세금 신고 전문. 캘리포니아 CPA가 FBAR·FATCA·PFIC·Exit Tax·해외주식 신고와 이중과세를 정확하게 처리합니다. 상담전화 010-5909-4868',
+      ko: '한국 거주 미국 시민권자·영주권자 미국세금 신고 전문. 캘리포니아 CPA가 FBAR·FATCA·해외자산 신고를 정확하게 처리합니다.',
       en: 'U.S. tax filing for American citizens and green card holders living in Korea. A California CPA handles FBAR, FATCA, PFIC, Exit Tax and double-taxation issues.',
     },
   },
@@ -25,11 +25,11 @@ export const routeSeo = [
     path: '/faq',
     name: 'FAQ',
     title: {
-      ko: '미국세금 자주 묻는 질문(FAQ) | 한국 거주 미국인 세무 | Berkeley U.S. Tax Advisors',
+      ko: '미국세금 자주 묻는 질문(FAQ) | 버클리유에스택스',
       en: 'U.S. Tax FAQ for Americans in Korea | Berkeley U.S. Tax Advisors',
     },
     description: {
-      ko: '미국 납세자 정의, 필요 서류, FBAR·FATCA, 이중과세 방지, IRS 처리 확인 등 한국 거주 미국인이 가장 많이 묻는 미국세금 질문과 답변.',
+      ko: '미국 납세자 정의, 필요 서류, FBAR·FATCA, 이중과세 방지 등 한국 거주 미국인이 많이 묻는 미국세금 질문과 답변.',
       en: 'Answers to the most common U.S. tax questions for Americans in Korea: who must file, required documents, FBAR/FATCA, double taxation and IRS processing.',
     },
   },
@@ -37,11 +37,11 @@ export const routeSeo = [
     path: '/contactus',
     name: 'ContactUs',
     title: {
-      ko: '상담 문의 · 오시는 길 | 강남 미국세금 전문 | Berkeley U.S. Tax Advisors',
+      ko: '상담 문의·오시는 길 | 강남 미국세금 | 버클리유에스택스',
       en: 'Contact & Location | U.S. Tax Advisors in Gangnam, Seoul',
     },
     description: {
-      ko: '서울 강남 삼성로 사무실 위치, 전화·이메일·영업시간 안내. 한국에서 미국세금 상담을 받아보세요.',
+      ko: '서울 강남 삼성로 사무실 위치와 전화·이메일·영업시간 안내. 한국에서 미국세금 상담을 받아보세요.',
       en: 'Office location in Samseong-ro, Gangnam, Seoul, with phone, email and business hours. Book a U.S. tax consultation in Korea.',
     },
   },
@@ -49,11 +49,11 @@ export const routeSeo = [
     path: '/guides',
     name: 'GuidesIndex',
     title: {
-      ko: '미국세금 가이드 | 한국 거주 미국인 세무 | Berkeley U.S. Tax Advisors',
+      ko: '미국세금 가이드 모음 | 버클리유에스택스',
       en: 'U.S. Tax Guides for Americans in Korea | Berkeley U.S. Tax Advisors',
     },
     description: {
-      ko: 'FEIE, 국적포기세, PFIC, ITIN, FBAR·FATCA, Streamlined 등 한국 거주 미국인이 알아야 할 미국세금 주제를 캘리포니아 CPA가 쉽게 정리한 가이드 모음.',
+      ko: 'FEIE, 국적포기세, PFIC, ITIN, FBAR, Streamlined 등 한국 거주 미국인을 위한 미국세금 가이드 모음.',
       en: 'Plain-language guides to FEIE, the exit tax, PFIC, ITIN, FBAR/FATCA, and the Streamlined procedures for U.S. citizens and green card holders living in Korea.',
     },
   },
@@ -62,11 +62,11 @@ export const routeSeo = [
     name: 'ItinLanding',
     landingKey: 'itin',
     title: {
-      ko: 'ITIN(개인 납세자 식별번호) 신청 가이드 | Form W-7 | Berkeley U.S. Tax Advisors',
+      ko: 'ITIN 신청 가이드 (Form W-7) | 버클리유에스택스',
       en: 'ITIN Application Guide (Form W-7) | Berkeley U.S. Tax Advisors',
     },
     description: {
-      ko: 'SSN을 받을 수 없는 사람의 미국 납세자 식별번호. 한국인 배우자·부양가족 ITIN, Form W-7 신청 경로(우편·CAA), 여권 인증, ITIN 만료·갱신까지 캘리포니아 CPA가 정리.',
+      ko: 'SSN이 없는 배우자·부양가족의 ITIN 신청. Form W-7 제출 경로, 여권 인증, 만료·갱신까지 캘리포니아 CPA가 정리.',
       en: 'The U.S. taxpayer ID for people not eligible for an SSN. Spouse and dependent ITINs, Form W-7 routes (mail / CAA), passport certification, and ITIN expiration and renewal.',
     },
   },
@@ -75,11 +75,11 @@ export const routeSeo = [
     name: 'FeieLanding',
     landingKey: 'feie',
     title: {
-      ko: '해외근로소득 공제(FEIE) 가이드 | 한국 거주 미국인 세무 | Berkeley U.S. Tax Advisors',
+      ko: '해외근로소득 공제(FEIE) 가이드 | 버클리유에스택스',
       en: 'Foreign Earned Income Exclusion (FEIE) Guide | Berkeley U.S. Tax Advisors',
     },
     description: {
-      ko: '해외에서 일하는 미국 시민권자·영주권자의 FEIE 요건(Tax Home·거주/체류 판정), 연도별 공제 한도, Form 2555 신청법, FEIE vs 외국납부세액공제 선택까지. 캘리포니아 CPA 정리.',
+      ko: '해외 거주 미국 시민권자·영주권자의 FEIE 요건, 연도별 한도, Form 2555 신청법, 외국납부세액공제와의 선택 기준.',
       en: 'FEIE requirements (tax home, residence/presence tests), the annual cap by year, how to claim it on Form 2555, and the FEIE-vs-Foreign Tax Credit choice for Korea-based U.S. taxpayers.',
     },
   },
@@ -88,11 +88,11 @@ export const routeSeo = [
     name: 'ExitTaxLanding',
     landingKey: 'exit-tax',
     title: {
-      ko: '국적포기세(Exit Tax) 가이드 | 미국 시민권·영주권 포기 세금 | Berkeley U.S. Tax Advisors',
+      ko: '국적포기세(Exit Tax) 가이드 | 버클리유에스택스',
       en: 'U.S. Exit Tax (Expatriation Tax) Guide | Berkeley U.S. Tax Advisors',
     },
     description: {
-      ko: '미국 시민권 포기·장기 영주권 반납 시 covered expatriate 판정 기준, 전 세계 자산 간주매각(mark-to-market) 과세, Form 8854, 한국 자산·연금 평가와 준비 순서. 캘리포니아 CPA 정리.',
+      ko: '미국 시민권 포기·영주권 반납 시 covered expatriate 판정, 간주매각 과세, Form 8854, 한국 자산 평가 정리.',
       en: 'Covered-expatriate tests, mark-to-market taxation of worldwide assets, Form 8854, and how Korean assets and pensions are valued when you give up U.S. citizenship or a long-term green card.',
     },
   },
@@ -101,11 +101,11 @@ export const routeSeo = [
     name: 'PficLanding',
     landingKey: 'pfic',
     title: {
-      ko: 'PFIC(해외 펀드 세금) 가이드 | 한국 펀드·ETF 미국 신고 | Berkeley U.S. Tax Advisors',
+      ko: 'PFIC 가이드 | 한국 펀드·ETF 미국 세금 | 버클리유에스택스',
       en: 'PFIC (Foreign Fund Taxation) Guide | Berkeley U.S. Tax Advisors',
     },
     description: {
-      ko: '한국 펀드·ETF·리츠는 대부분 PFIC입니다. Form 8621 신고 의무, §1291 초과분배 과세, QEF·시가평가(MTM) 선택, 한국 상장 ETF·연금계좌 펀드의 취급까지 캘리포니아 CPA가 정리.',
+      ko: '한국 펀드·ETF·리츠는 대부분 PFIC입니다. Form 8621 신고, 초과분배 과세, QEF·시가평가 선택을 CPA가 정리.',
       en: 'Most Korean funds, ETFs and REITs are PFICs. Form 8621 filing, the §1291 excess-distribution regime, QEF and mark-to-market elections, and how listed Korean ETFs and pension-account funds are treated.',
     },
   },
@@ -114,11 +114,11 @@ export const routeSeo = [
     name: 'TaxCalendarLanding',
     landingKey: 'tax-calendar',
     title: {
-      ko: '2027년 미국 세금신고 일정·기준 금액 | 표준공제·FEIE·증여 면제액 | Berkeley U.S. Tax Advisors',
+      ko: '2027년 미국 세금신고 일정·기준 금액 | 버클리유에스택스',
       en: '2027 U.S. Tax Calendar & Key Amounts for Americans in Korea | Berkeley U.S. Tax Advisors',
     },
     description: {
-      ko: '2027년 미국 세금신고(2026 과세연도) 마감일 — 4월 15일, 해외 거주자 6월 15일, 10월 15일. 표준공제, FEIE 132,900달러, 증여 면제액 등 2026·2027년 기준 금액을 캘리포니아 CPA가 정리.',
+      ko: '2027년 미국 세금신고 마감일(4월 15일, 해외 거주자 6월 15일, 10월 15일)과 표준공제·FEIE·증여 면제액 정리.',
       en: 'Deadlines for returns filed in 2027 (April 15, June 15 abroad, October 15) and the 2026–2027 standard deduction, FEIE, exit tax and gift exclusion amounts.',
     },
   },
@@ -127,11 +127,11 @@ export const routeSeo = [
     name: 'GiftInheritanceLanding',
     landingKey: 'gift-inheritance',
     title: {
-      ko: '한국에서 받은 증여·상속 미국 신고 | Form 3520 · Form 709 | Berkeley U.S. Tax Advisors',
+      ko: '한국 증여·상속 미국 신고 (Form 3520) | 버클리유에스택스',
       en: 'Gifts & Inheritances from Korea: Form 3520 Guide | Berkeley U.S. Tax Advisors',
     },
     description: {
-      ko: '한국 부모님께 받은 증여·상속은 미국 세금은 없어도 연 10만 달러 초과 시 Form 3520 보고 의무. 미보고 벌금 최대 25%, 취득가액(step-up), 증여세 면제액 2026·2027년 기준 정리.',
+      ko: '한국 부모님께 받은 증여·상속은 연 10만 달러 초과 시 Form 3520 보고 의무. 미보고 벌금, 취득가액, 면제액 정리.',
       en: 'Gifts and inheritances from Korean family over USD 100,000 must be reported on Form 3520. Penalties, basis rules, and 2026–2027 gift tax exclusions.',
     },
   },
@@ -140,11 +140,11 @@ export const routeSeo = [
     name: 'KoreaRealEstateLanding',
     landingKey: 'korea-real-estate',
     title: {
-      ko: '한국 부동산 매각과 미국 세금 | 양도소득세·주택 공제·환율 | Berkeley U.S. Tax Advisors',
+      ko: '한국 부동산 매각과 미국 세금 | 버클리유에스택스',
       en: 'Selling Korean Real Estate: U.S. Tax Guide | Berkeley U.S. Tax Advisors',
     },
     description: {
-      ko: '한국 아파트를 팔면 한국에서 1세대 1주택 비과세여도 미국에는 양도차익을 신고해야 합니다. 주택 양도 공제 25만·50만 달러, 환율 환산, 외국납부세액공제, 임대 부동산 감가상각까지.',
+      ko: '한국에서 비과세인 아파트 매각도 미국에는 양도차익 신고 대상. 주택 양도 공제, 환율 환산, 외국납부세액공제 정리.',
       en: 'A Korean home sale is reportable in the U.S. even if Korea exempts it. Section 121 exclusion, currency translation, Foreign Tax Credit and depreciation recapture.',
     },
   },
@@ -153,11 +153,11 @@ export const routeSeo = [
     name: 'Fbar',
     landingKey: 'fbar',
     title: {
-      ko: 'FBAR(해외금융계좌 신고) · FATCA 가이드 | 한국 계좌 신고 | Berkeley U.S. Tax Advisors',
+      ko: 'FBAR·FATCA 신고 가이드 | 버클리유에스택스',
       en: 'FBAR & FATCA Guide for Americans in Korea | Berkeley U.S. Tax Advisors',
     },
     description: {
-      ko: '해외 계좌 합계가 연중 한 번이라도 미화 1만 달러를 넘으면 FBAR(FinCEN Form 114) 신고 의무. 대상 한국 계좌, 최고 잔액·환율 계산, 기한, 벌금, FATCA(Form 8938)와의 차이를 캘리포니아 CPA가 정리.',
+      ko: '해외 계좌 합계가 연중 1만 달러를 넘으면 FBAR 신고 의무. 대상 한국 계좌, 환율 계산, 기한, 벌금, Form 8938 차이.',
       en: 'FBAR (FinCEN Form 114) is required if your foreign accounts exceed USD 10,000 at any point in the year. Which Korean accounts count, maximum value and exchange rate, deadlines, penalties, and how Form 8938 differs.',
     },
   },
@@ -165,7 +165,7 @@ export const routeSeo = [
     path: '/privacy',
     name: 'PrivacyPolicy',
     title: {
-      ko: '개인정보처리방침 | Berkeley U.S. Tax Advisors',
+      ko: '개인정보처리방침 | 버클리유에스택스',
       en: 'Privacy Policy | Berkeley U.S. Tax Advisors',
     },
     description: {
@@ -178,11 +178,11 @@ export const routeSeo = [
     name: 'Streamlined',
     landingKey: 'streamlined',
     title: {
-      ko: 'Streamlined 간소화 절차 가이드 | FBAR·해외소득 미신고 구제 | Berkeley U.S. Tax Advisors',
+      ko: 'Streamlined 간소화 절차 가이드 | 버클리유에스택스',
       en: 'Streamlined Filing Compliance Procedures Guide | Berkeley U.S. Tax Advisors',
     },
     description: {
-      ko: '해외 계좌·소득을 몰라서 신고하지 못한 납세자를 위한 IRS 공식 절차. 해외 거주자(SFOP)는 벌금 없이 3년치 신고서와 6년치 FBAR로 정리. 자격 요건, Form 14653, 미국 거주자용 5% 벌금까지 캘리포니아 CPA 정리.',
+      ko: '해외 계좌·소득 미신고자를 위한 IRS 공식 절차. 해외 거주자는 벌금 없이 3년치 신고서와 6년치 FBAR로 정리할 수 있습니다.',
       en: 'The official IRS route for non-willful non-filers. Taxpayers abroad (SFOP) catch up with 3 years of returns and 6 years of FBARs and no penalty. Eligibility, Form 14653, and the 5% penalty for U.S. residents.',
     },
   },
