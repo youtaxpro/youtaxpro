@@ -20,6 +20,8 @@ import {
 import { i18n } from '../src/i18n/index.js';
 import { landingDoc, landingPages, guidesList } from '../src/data/landing/index.js';
 import { CONTACT, SOCIAL } from '../src/data/site.js';
+import { serviceGroups, serviceSteps, servicesCopy } from '../src/data/services.js';
+import { about } from '../src/data/about.js';
 
 const SITE = 'https://youtaxpro.com';
 let blogPosts = [];
@@ -86,7 +88,8 @@ function landingArticleJsonLd(route, locale) {
       '@type': 'Person',
       name: locale === 'en' ? 'Ahreum Im, CPA' : '임아름',
       jobTitle: locale === 'en' ? 'Certified Public Accountant (California)' : '미국공인회계사 (캘리포니아주)',
-      url: `${SITE}/#aboutus`,
+      '@id': `${SITE}/about/#person`,
+      url: canonicalFor('/about', locale),
     },
     publisher: { '@id': `${SITE}/#business` },
   };
@@ -100,6 +103,58 @@ function landingArticleJsonLd(route, locale) {
     ],
   };
   return [article, crumbs].map((d) => `<script type="application/ld+json">${JSON.stringify(d)}</script>`).join('\n    ');
+}
+
+// CPA 프로필 페이지: ProfilePage + Person 스키마 (가이드 Article 의 author 와 같은 @id)
+function aboutJsonLd(locale) {
+  const en = locale === 'en';
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'ProfilePage',
+    inLanguage: locale,
+    mainEntity: {
+      '@type': 'Person',
+      '@id': `${SITE}/about/#person`,
+      name: en ? 'Ahreum Im' : '임아름',
+      alternateName: en ? '임아름' : 'Ahreum Im',
+      honorificSuffix: 'CPA',
+      jobTitle: en ? 'Certified Public Accountant (California)' : '미국공인회계사 (캘리포니아주)',
+      url: canonicalFor('/about', locale),
+      image: `${SITE}/preview-image.jpg`,
+      worksFor: { '@id': `${SITE}/#business` },
+      alumniOf: { '@type': 'CollegeOrUniversity', name: 'University of California, Berkeley' },
+      memberOf: [
+        { '@type': 'Organization', name: 'American Institute of Certified Public Accountants (AICPA)' },
+        { '@type': 'Organization', name: 'California Society of CPAs (CalCPA)' },
+      ],
+      hasCredential: {
+        '@type': 'EducationalOccupationalCredential',
+        credentialCategory: 'license',
+        name: 'Certified Public Accountant (California)',
+      },
+      knowsAbout: ['U.S. individual income tax', 'FBAR', 'FATCA Form 8938', 'Streamlined Filing Compliance Procedures', 'Foreign Earned Income Exclusion', 'PFIC', 'U.S. expatriation tax'],
+      knowsLanguage: ['ko', 'en'],
+      sameAs: SOCIAL.map((s) => s.url),
+    },
+  };
+  return `<script type="application/ld+json">${JSON.stringify(data)}</script>`;
+}
+
+// 서비스 안내 페이지: 서비스 목록(ItemList) 스키마
+function servicesJsonLd(locale) {
+  const items = serviceGroups.flatMap((g) => g.items);
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: servicesCopy.h1[locale],
+    itemListElement: items.map((it, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: it.title[locale],
+      url: canonicalFor(it.to, locale),
+    })),
+  };
+  return `<script type="application/ld+json">${JSON.stringify(data)}</script>`;
 }
 
 function webSiteJsonLd(locale) {
@@ -171,6 +226,35 @@ function bodyHtml(route, locale) {
         `<ul>${blogPosts.slice(0, 6).map((p) => `<li><a href="${esc(p.link)}">${esc(p.title)}</a></li>`).join('')}</ul>`,
       );
     }
+  } else if (route.path === '/services') {
+    parts.push(`<h1>${esc(servicesCopy.h1[locale])}</h1>`, `<p>${esc(servicesCopy.lead[locale])}</p>`);
+    for (const g of serviceGroups) {
+      parts.push(
+        `<h2>${esc(g.title[locale])}</h2>`,
+        `<ul>${g.items.map((it) => `<li><a href="${href(it.to, locale)}">${esc(it.title[locale])}</a> — ${esc(it.desc[locale])}</li>`).join('')}</ul>`,
+      );
+    }
+    parts.push(
+      `<h2>${esc(servicesCopy.stepsTitle[locale])}</h2>`,
+      `<ol>${serviceSteps.map((st) => `<li><strong>${esc(st.title[locale])}</strong> — ${esc(st.text[locale])}</li>`).join('')}</ol>`,
+      `<p>${esc(servicesCopy.feeNote[locale])}</p>`,
+    );
+  } else if (route.path === '/about') {
+    const a = about[locale];
+    parts.push(
+      `<h1>${esc(a.h1)}</h1>`,
+      `<p><strong>${esc(a.name)} (${esc(a.nameAlt)})</strong> — ${esc(a.title)}</p>`,
+      `<p>${esc(a.lead)}</p>`,
+      `<h2>${esc(a.factsTitle)}</h2>`,
+      `<ul>${a.facts.map((f) => `<li><strong>${esc(f[0])}</strong>: ${esc(f[1])}</li>`).join('')}</ul>`,
+    );
+    for (const sec of a.sections) {
+      parts.push(`<h2>${esc(sec.h)}</h2>`, ...(sec.body || []).map((p) => `<p>${esc(p)}</p>`));
+      if (sec.list) parts.push(`<ul>${sec.list.map((li) => `<li>${esc(li)}</li>`).join('')}</ul>`);
+    }
+    parts.push(
+      `<p><a href="${href('/services', locale)}">${esc(a.servicesLink)}</a> · <a href="${href('/guides', locale)}">${esc(a.guidesLink)}</a></p>`,
+    );
   } else if (route.path === '/faq') {
     parts.push(`<h1>${esc(msg.faq.title)}</h1>`);
     for (const it of msg.faq.items) parts.push(`<h2>${esc(it.question)}</h2>`, `<p>${esc(String(it.answer).trim())}</p>`);
@@ -182,7 +266,7 @@ function bodyHtml(route, locale) {
   parts.push(
     `<h2>${en ? 'Contact' : '상담 문의'}</h2>`,
     `<p>${esc(msg.footer.companyName)} · ${esc(msg.footer.address)} · <a href="${CONTACT.phoneHref}">${CONTACT.phoneDisplay}</a> · <a href="mailto:${CONTACT.email}">${CONTACT.email}</a></p>`,
-    `<p><a href="${href('/', locale)}">${en ? 'Home' : '홈'}</a> · <a href="${href('/guides', locale)}">${en ? 'Guides' : '가이드'}</a> · <a href="${href('/faq', locale)}">FAQ</a> · <a href="${href('/contactus', locale)}">${en ? 'Contact' : '문의하기'}</a> · ${SOCIAL.map((s) => `<a href="${s.url}">${esc(s.label[locale])}</a>`).join(' · ')}</p>`,
+    `<p><a href="${href('/', locale)}">${en ? 'Home' : '홈'}</a> · <a href="${href('/about', locale)}">${en ? 'About the CPA' : 'CPA 프로필'}</a> · <a href="${href('/services', locale)}">${en ? 'Services' : '서비스 안내'}</a> · <a href="${href('/guides', locale)}">${en ? 'Guides' : '가이드'}</a> · <a href="${href('/faq', locale)}">FAQ</a> · <a href="${href('/contactus', locale)}">${en ? 'Contact' : '문의하기'}</a> · ${SOCIAL.map((s) => `<a href="${s.url}">${esc(s.label[locale])}</a>`).join(' · ')}</p>`,
   );
   return `<div class="prerender">${parts.join('')}</div>`;
 }
@@ -228,6 +312,8 @@ function applyMeta(html, route, locale) {
     const a = landingArticleJsonLd(route, locale);
     if (a) head.push(a);
   }
+  if (route.path === '/about') head.push(aboutJsonLd(locale));
+  if (route.path === '/services') head.push(servicesJsonLd(locale));
   if (route.path === '/') head.push(webSiteJsonLd(locale));
   out = out.replace('<div id="app"></div>', () => `<div id="app">${bodyHtml(route, locale)}</div>`);
   return out.replace('</head>', () => `  ${head.join('\n    ')}\n  </head>`);
@@ -273,4 +359,38 @@ writeFileSync(
   'utf8'
 );
 
-console.log(`[generate-static-routes] ${count} pages + sitemap.xml written`);
+// --- llms.txt (AI 검색엔진·에이전트용 사이트 요약) ---
+// https://llmstxt.org 형식. 페이지 목록은 routeSeo 에서 만들어 항상 사이트와 일치시킨다.
+const llmsLine = (r, locale) =>
+  `- [${(r.title[locale] || r.title.ko).split(' | ')[0]}](${canonicalFor(r.path, locale)}): ${r.description[locale] || r.description.ko}`;
+const byPath = Object.fromEntries(routeSeo.map((r) => [r.path, r]));
+const servicePaths = ['/services', '/tax-return', '/fatca', '/amended-return', '/irs-notice', '/nonresident'];
+const companyPaths = ['/about', '/faq', '/contactus'];
+const guidePaths = routeSeo
+  .map((r) => r.path)
+  .filter((p) => p !== '/' && p !== '/privacy' && !servicePaths.includes(p) && !companyPaths.includes(p));
+const section = (title, paths, locale) => `## ${title}\n\n${paths.map((p) => llmsLine(byPath[p], locale)).join('\n')}\n`;
+const llms = `# Berkeley U.S. Tax Advisors (버클리유에스택스어드바이저)
+
+> U.S. tax filing for American citizens and green card holders living in Korea, handled by a California CPA in Gangnam, Seoul. 한국 거주 미국 시민권자·영주권자를 위한 미국 세금 신고 전문 사무소입니다.
+
+- CPA: Ahreum Im (임아름), Certified Public Accountant (California); AICPA and CalCPA member; 10+ years in U.S. individual tax; 5,000+ individual returns prepared
+- Office: ${i18n.global.getLocaleMessage('en').footer.address}
+- Phone: +82-10-5909-4868 · Email: ${CONTACT.email}
+- Languages: Korean, English
+- Fees are quoted after a consultation, before work begins. They are not published on the site.
+- Content is general information, not tax advice. Each guide lists its IRS or FinCEN sources.
+
+${section('Services (Korean)', servicePaths, 'ko')}
+${section('Tax guides (Korean)', guidePaths, 'ko')}
+${section('About and contact (Korean)', companyPaths, 'ko')}
+${section('Services (English)', servicePaths, 'en')}
+${section('Tax guides (English)', guidePaths, 'en')}
+${section('About and contact (English)', companyPaths, 'en')}
+## Optional
+
+${SOCIAL.map((s) => `- [${s.label.en}](${s.url}): ${s.desc.en}`).join('\n')}
+`;
+writeFileSync(join(distDir, 'llms.txt'), llms, 'utf8');
+
+console.log(`[generate-static-routes] ${count} pages + sitemap.xml + llms.txt written`);

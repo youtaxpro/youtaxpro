@@ -162,6 +162,95 @@ export const routeSeo = [
     },
   },
   {
+    path: '/services',
+    name: 'Services',
+    title: {
+      ko: '미국세금 서비스 안내 | 버클리유에스택스',
+      en: 'U.S. Tax Services for Americans in Korea | Berkeley U.S. Tax Advisors',
+    },
+    description: {
+      ko: '소득세 신고, FBAR·FATCA, Streamlined, 수정 신고, IRS 통지서 대응까지 캘리포니아 CPA가 제공하는 미국세금 서비스.',
+      en: 'Income tax returns, FBAR and FATCA, Streamlined procedures, amended returns and IRS notices: U.S. tax services from a California CPA in Seoul.',
+    },
+  },
+  {
+    path: '/about',
+    name: 'About',
+    title: {
+      ko: '임아름 CPA 프로필 | 버클리유에스택스',
+      en: 'Ahreum Im, CPA (California) | Berkeley U.S. Tax Advisors',
+    },
+    description: {
+      ko: '캘리포니아주 미국공인회계사 임아름. UC Berkeley 졸업, H&R Block 10년, 개인 세무 신고 5,000건 이상의 미국 세무 경력.',
+      en: 'Ahreum Im, California CPA. UC Berkeley graduate, ten years at H&R Block, more than 5,000 individual U.S. returns prepared.',
+    },
+  },
+  {
+    path: '/tax-return',
+    name: 'TaxReturn',
+    landingKey: 'tax-return',
+    title: {
+      ko: '미국 소득세 신고 대행 (Form 1040) | 버클리유에스택스',
+      en: 'U.S. Income Tax Return Preparation (Form 1040) | Berkeley U.S. Tax Advisors',
+    },
+    description: {
+      ko: '한국 거주 미국 시민권자·영주권자의 Form 1040 신고 대행. 한국 소득 반영, 이중과세 방지, 해외자산 보고까지 CPA가 처리.',
+      en: 'Form 1040 preparation for U.S. citizens and green card holders in Korea: Korean income, double-tax relief and foreign asset reporting.',
+    },
+  },
+  {
+    path: '/fatca',
+    name: 'Fatca',
+    landingKey: 'fatca',
+    title: {
+      ko: 'FATCA 신고 가이드 (Form 8938) | 버클리유에스택스',
+      en: 'FATCA Reporting Guide (Form 8938) | Berkeley U.S. Tax Advisors',
+    },
+    description: {
+      ko: '해외 금융자산이 기준을 넘으면 Form 8938 제출 의무. 한국 거주자 기준 금액, 대상 자산, 벌금, FBAR와의 차이를 정리.',
+      en: 'Form 8938 is required when foreign financial assets exceed the threshold. Thresholds for Korea residents, covered assets, penalties, and how it differs from the FBAR.',
+    },
+  },
+  {
+    path: '/amended-return',
+    name: 'AmendedReturn',
+    landingKey: 'amended-return',
+    title: {
+      ko: '미국 세금 수정 신고 (Form 1040-X) | 버클리유에스택스',
+      en: 'Amending a U.S. Tax Return (Form 1040-X) | Berkeley U.S. Tax Advisors',
+    },
+    description: {
+      ko: '제출한 미국 세금신고서의 누락·오류를 Form 1040-X로 정정. 환급 청구 기한 3년, 해외 소득 누락 시 주의점 정리.',
+      en: 'Correct a filed U.S. return with Form 1040-X. The three-year refund deadline and what to watch when foreign income was left out.',
+    },
+  },
+  {
+    path: '/irs-notice',
+    name: 'IrsNotice',
+    landingKey: 'irs-notice',
+    title: {
+      ko: 'IRS 통지서·세무조사 대응 | 버클리유에스택스',
+      en: 'IRS Notices and Examinations | Berkeley U.S. Tax Advisors',
+    },
+    description: {
+      ko: 'CP2000 등 IRS 통지서의 의미와 대응 기한, 세무조사 종류, 벌금 감면 요청 방법. 캘리포니아 CPA가 대리 대응합니다.',
+      en: 'What IRS notices such as the CP2000 mean, response deadlines, types of examination and penalty relief, with representation by a California CPA.',
+    },
+  },
+  {
+    path: '/nonresident',
+    name: 'Nonresident',
+    landingKey: 'nonresident',
+    title: {
+      ko: '비거주 외국인 미국 세금 신고 (1040-NR) | 버클리유에스택스',
+      en: 'Nonresident Alien Tax Returns (Form 1040-NR) | Berkeley U.S. Tax Advisors',
+    },
+    description: {
+      ko: '미국 부동산 임대·매각 등 미국 원천소득이 있는 한국 거주자의 Form 1040-NR 신고. FIRPTA 15% 환급과 ITIN 안내.',
+      en: 'Form 1040-NR for Korea residents with U.S.-source income such as U.S. rental property or a sale, including FIRPTA refunds and ITINs.',
+    },
+  },
+  {
     path: '/privacy',
     name: 'PrivacyPolicy',
     title: {

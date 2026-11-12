@@ -29,8 +29,8 @@
       <nav class="footer-col" :aria-label="locale === 'en' ? 'Company' : '회사'">
         <h3>{{ locale === 'en' ? 'Company' : '회사' }}</h3>
         <ul>
-          <li><router-link :to="lp('/#aboutus')">{{ $t('nav.aboutUs') }}</router-link></li>
-          <li><router-link :to="lp('/#services')">{{ $t('nav.services') }}</router-link></li>
+          <li><router-link :to="lp('/about')">{{ $t('nav.aboutUs') }}</router-link></li>
+          <li><router-link :to="lp('/services')">{{ $t('nav.services') }}</router-link></li>
           <li><router-link :to="lp('/#checklists')">{{ $t('nav.checklists') }}</router-link></li>
           <li><router-link :to="lp('/faq')">{{ $t('nav.faq') }}</router-link></li>
           <li><router-link :to="lp('/contactus')">{{ $t('nav.contactUs') }}</router-link></li>
