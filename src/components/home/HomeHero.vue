@@ -76,7 +76,16 @@
           <label class="sr-only" for="cf-message">{{ t.message }}</label>
           <textarea id="cf-message" v-model.trim="formData.details" name="Message" :placeholder="t.message" class="form-input form-textarea" rows="4"></textarea>
 
+          <label class="consent">
+            <input v-model="formData.consent" type="checkbox" name="Privacy Consent" required />
+            <span>
+              {{ t.consent }}
+              <router-link :to="lp('/privacy')" target="_blank">{{ t.consentView }}</router-link>
+            </span>
+          </label>
+
           <p v-if="status === 'invalid'" class="form-error" role="alert">{{ t.invalid }}</p>
+          <p v-if="status === 'noconsent'" class="form-error" role="alert">{{ t.noconsent }}</p>
           <p v-if="status === 'error'" class="form-error" role="alert">{{ t.error }}</p>
 
           <button type="submit" class="submit-btn" :disabled="status === 'submitting'">
@@ -110,7 +119,7 @@ import bgWebp from '../../assets/optimized/sanfran1.webp';
 import bgAvif from '../../assets/optimized/sanfran1.avif';
 
 const ACCESS_KEY = '10f32bb4-f34d-4088-af76-7ffd7a7557d0';
-const emptyForm = () => ({ fullName: '', email: '', phone: '', statusType: '', details: '', botcheck: false });
+const emptyForm = () => ({ fullName: '', email: '', phone: '', statusType: '', details: '', consent: false, botcheck: false });
 
 const copy = {
   ko: {
@@ -136,6 +145,9 @@ const copy = {
     sending: '전송 중…',
     note: '입력하신 정보는 상담 목적으로만 사용됩니다.',
     invalid: '성함, 이메일, 연락처, 신분 유형을 모두 입력해 주세요.',
+    consent: '개인정보 수집·이용에 동의합니다.',
+    consentView: '내용 보기',
+    noconsent: '개인정보 수집·이용에 동의해 주세요.',
     error: '전송에 실패했습니다. 잠시 후 다시 시도하시거나 전화(010-5909-4868)로 문의해 주세요.',
     doneTitle: '문의가 접수되었습니다',
     doneText: '1영업일 이내에 이메일 또는 전화로 연락드리겠습니다.',
@@ -170,6 +182,9 @@ const copy = {
     sending: 'Sending…',
     note: 'Your information is used only to respond to your inquiry.',
     invalid: 'Please fill in your name, email, phone and status type.',
+    consent: 'I agree to the collection and use of my personal information.',
+    consentView: 'View policy',
+    noconsent: 'Please agree to the privacy terms before submitting.',
     error: 'Submission failed. Please try again shortly or call 010-5909-4868.',
     doneTitle: 'Thank you — request received',
     doneText: "We'll be in touch by email or phone within one business day.",
@@ -191,7 +206,7 @@ export default {
     const { lp } = useLocalePath();
     const t = computed(() => copy[locale.value] || copy.ko);
     const formData = ref(emptyForm());
-    // 'idle' | 'invalid' | 'submitting' | 'success' | 'error'
+    // 'idle' | 'invalid' | 'noconsent' | 'submitting' | 'success' | 'error'
     const status = ref('idle');
 
     const submitForm = async () => {
@@ -204,6 +219,10 @@ export default {
       const f = formData.value;
       if (!f.fullName || !/^\S+@\S+\.\S+$/.test(f.email) || !f.phone || !f.statusType) {
         status.value = 'invalid';
+        return;
+      }
+      if (!f.consent) {
+        status.value = 'noconsent';
         return;
       }
 
@@ -354,6 +373,25 @@ export default {
 .submit-btn:hover { background: var(--navy-600); }
 .submit-btn:disabled { opacity: 0.7; cursor: progress; }
 .consult-note { font-size: 0.78rem; color: var(--muted); text-align: center; }
+
+.consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.84rem;
+  color: var(--body);
+  cursor: pointer;
+  text-align: left;
+}
+.consent input {
+  flex: none;
+  width: 17px;
+  height: 17px;
+  margin-top: 2px;
+  accent-color: var(--navy-800);
+  cursor: pointer;
+}
+.consent a { color: var(--navy-600); font-weight: 600; text-decoration: underline; }
 
 .form-error {
   padding: 0.6rem 0.8rem;

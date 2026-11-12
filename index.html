@@ -9,6 +9,9 @@
     <meta name="theme-color" content="#0b2d63" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- JS가 실행되는 브라우저에서는 검색엔진용 정적 본문(.prerender)을 숨겨 깜빡임을 막는다 -->
+    <script>document.documentElement.classList.add('js');</script>
+
     <!-- GitHub Pages SPA: 404.html이 인코딩한 경로를 원래 URL로 복원 -->
     <script type="text/javascript">
       (function (l) {

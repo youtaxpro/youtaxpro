@@ -118,7 +118,10 @@ button:hover {
   overflow-x: hidden;
 }
 
-/* 빌드 시 주입되는 정적 본문(크롤러·JS 로딩 전용). 앱이 마운트되면 교체된다. */
+/* 빌드 시 주입되는 정적 본문(크롤러·JS 꺼짐 전용). JS가 켜진 브라우저에서는 숨기고(아래 .js 규칙), 앱이 마운트되면 교체된다. */
+.js .prerender {
+  display: none;
+}
 .prerender {
   max-width: 820px;
   margin: 0 auto;
