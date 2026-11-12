@@ -11,8 +11,8 @@
         </div>
         <p class="footer-tagline">
           {{ locale === 'en'
-            ? 'U.S. tax filing for American citizens and green card holders living in Korea — handled by a California CPA in Gangnam, Seoul.'
-            : '한국에 거주하는 미국 시민권자·영주권자를 위한 미국 세금 신고. 서울 강남에서 캘리포니아 CPA가 직접 처리합니다.' }}
+            ? 'U.S. tax filing for American citizens and green card holders in Korea and around the world — handled by a California CPA in Gangnam, Seoul.'
+            : '한국을 비롯해 해외에 거주하는 미국 시민권자·영주권자를 위한 미국 세금 신고. 서울 강남에서 캘리포니아 CPA가 직접 처리합니다.' }}
         </p>
         <SocialLinks />
       </div>

@@ -6,8 +6,8 @@
         <h2>{{ locale === 'en' ? 'Latest columns' : '최신 미국세금 칼럼' }}</h2>
         <p>
           {{ locale === 'en'
-            ? 'New Korean-language columns are posted on our blogs almost every day.'
-            : '블로그에 거의 매일 새 칼럼이 올라옵니다. 궁금한 주제를 먼저 읽어 보세요.' }}
+            ? 'Real-world U.S. tax topics, explained in Korean on our blogs.'
+            : '실무에서 자주 나오는 미국세금 주제를 블로그에 쉽게 풀어 둡니다. 궁금한 주제를 먼저 읽어 보세요.' }}
         </p>
       </div>
 

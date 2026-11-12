@@ -18,8 +18,8 @@ export const SOCIAL = [
     url: 'https://berkeleytax.tistory.com/',
     label: { ko: '티스토리 블로그', en: 'Tistory Blog' },
     desc: {
-      ko: '매일 올라오는 미국세금 칼럼. 부동산·연금·법인·IRS 통지 등 주제별 심화 글.',
-      en: 'Daily Korean-language columns on U.S. tax: real estate, pensions, entities, IRS notices.',
+      ko: '부동산·연금·법인·IRS 통지 등 주제별 미국세금 심화 칼럼.',
+      en: 'In-depth Korean-language columns on U.S. tax: real estate, pensions, entities, IRS notices.',
     },
     handle: 'berkeleytax.tistory.com',
   },

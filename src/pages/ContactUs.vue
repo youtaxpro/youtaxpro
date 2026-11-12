@@ -21,7 +21,7 @@
               <span class="cu-text"><small>{{ $t('contact.phone.title') }}</small><strong>{{ CONTACT.phoneDisplay }}</strong></span>
             </a>
             <a :href="kakaoWebUrl" class="cu-card" @click="openKakao">
-              <span class="cu-icon cu-icon--kakao"><MessageCircle :size="22" aria-hidden="true" /></span>
+              <span class="cu-icon"><MessageCircle :size="22" aria-hidden="true" /></span>
               <span class="cu-text"><small>{{ t.kakao }}</small><strong>ID berkeleytax</strong></span>
             </a>
             <a :href="`mailto:${CONTACT.email}`" class="cu-card">
@@ -169,7 +169,6 @@ a.cu-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); col
   background: var(--navy-800);
   color: var(--gold-500);
 }
-.cu-icon--kakao { background: #fee500; color: #191600; }
 
 .cu-text { display: flex; flex-direction: column; min-width: 0; }
 .cu-text small { font-size: 0.78rem; color: var(--muted); font-weight: 600; }
@@ -194,7 +193,7 @@ a.cu-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); col
 .cu-address strong { display: block; color: var(--ink); font-size: 0.98rem; }
 .cu-address p { font-size: 0.88rem; color: var(--body); }
 .cu-map-links { display: flex; flex-wrap: wrap; gap: 0.6rem; padding: 0.75rem 1.25rem 1.25rem; }
-.cu-map-links .btn { height: 42px; font-size: 0.88rem; }
+.cu-map-links .btn { flex: 1 1 0; height: 42px; font-size: 0.88rem; }
 
 @media (max-width: 960px) {
   .cu-grid { grid-template-columns: 1fr; }
