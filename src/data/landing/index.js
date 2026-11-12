@@ -9,6 +9,8 @@ import itin from './itin.js';
 import giftInheritance from './giftInheritance.js';
 import koreaRealEstate from './koreaRealEstate.js';
 import taxCalendar from './taxCalendar.js';
+import fbar from './fbar.js';
+import streamlined from './streamlined.js';
 
 export const landingPages = {
   'tax-calendar': taxCalendar,
@@ -18,6 +20,8 @@ export const landingPages = {
   itin,
   'gift-inheritance': giftInheritance,
   'korea-real-estate': koreaRealEstate,
+  fbar,
+  streamlined,
 };
 
 // 데이터 파일의 [확인]/[verify] 는 CPA 내부 검수 표시다. 화면·구조화 데이터에는 노출하지 않는다.
@@ -41,26 +45,7 @@ export function landingDoc(key, locale = 'ko') {
   return cache.get(id);
 }
 
-// /guides 인덱스 페이지 목록. 랜딩 페이지 + 기존 안내 페이지(FBAR·Streamlined).
-const staticGuides = [
-  {
-    path: '/fbar',
-    title: { ko: 'FBAR · FATCA 신고', en: 'FBAR & FATCA Reporting' },
-    summary: {
-      ko: '해외 계좌 합계가 연중 미화 1만 달러를 넘으면 FBAR(FinCEN 114) 신고 의무. FATCA(Form 8938)는 별도.',
-      en: 'FBAR (FinCEN 114) is required if foreign accounts exceed USD 10,000 at any point in the year. FATCA (Form 8938) is separate.',
-    },
-  },
-  {
-    path: '/streamlined',
-    title: { ko: 'Streamlined 간소화 절차', en: 'Streamlined Filing Procedures' },
-    summary: {
-      ko: '과거 FBAR·FATCA 미신고자를 위한 IRS 공식 구제 프로그램. 비고의적 위반·해외 거주자는 벌금 0%.',
-      en: 'The IRS relief program for past FBAR/FATCA non-filers. Non-willful violators abroad face a 0% penalty.',
-    },
-  },
-];
-
+// /guides 인덱스 페이지 목록.
 export function guidesList(locale = 'ko') {
   const fromLanding = Object.entries(landingPages).map(([key, page]) => ({
     path: '/' + (page.slug || key),
@@ -70,7 +55,7 @@ export function guidesList(locale = 'ko') {
       ? { ko: page.summary.ko, en: page.summary.en }
       : { ko: page.ko.lead, en: page.en.lead },
   }));
-  return [...fromLanding, ...staticGuides].map((g) => ({
+  return fromLanding.map((g) => ({
     path: g.path,
     name: (g.name && typeof g.name === 'object' ? g.name[locale] || g.name.ko : g.name) || null,
     title: g.title[locale] || g.title.ko,
