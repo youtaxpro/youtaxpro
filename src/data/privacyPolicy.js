@@ -1,5 +1,10 @@
 // 개인정보처리방침 본문. 한국어가 법적 기준, 영어는 참고 번역.
 // 보유기간·개인정보 보호책임자 등은 회사 정책에 맞게 조정 가능.
+//
+// ⚠️ 처리 방침(수집 항목·목적·보유기간 등)을 실제로 바꿀 때는:
+//   1) EFFECTIVE_DATE 와 "N. 개인정보처리방침의 변경" 안내문의 날짜를 새 시행일로 갱신하고
+//   2) 그 절의 "개정 이력" 표 맨 위에 (새 시행일, 바뀐 내용 한 줄)을 추가한다 — 기존 행은 지우지 않고 쌓는다.
+// 오탈자 수정처럼 처리 방침 자체가 바뀌지 않는 손질은 시행일을 올리지 않는다.
 
 export const EFFECTIVE_DATE = '2026-11-11';
 
@@ -118,6 +123,14 @@ export const privacyPolicy = {
         h: '12. 개인정보처리방침의 변경',
         body: [
           '이 개인정보처리방침은 2026년 11월 11일부터 적용됩니다. 법령·정책 또는 보안기술의 변경에 따라 내용의 추가·삭제 및 수정이 있을 경우, 변경 시행 최소 7일 전에 홈페이지를 통하여 고지합니다.',
+          '개정 이력은 아래와 같습니다.',
+          { table: {
+            headers: ['시행일자', '개정 내용'],
+            rows: [
+              ['2026. 11. 11.', '문구 정비(실질적인 처리 방침 변경 없음)'],
+              ['2026. 9. 2.', '개인정보처리방침 최초 제정'],
+            ],
+          } },
         ],
       },
     ],
@@ -237,6 +250,14 @@ export const privacyPolicy = {
         h: '12. Changes to This Policy',
         body: [
           'This Privacy Policy takes effect on November 11, 2026. If content is added, deleted, or amended due to changes in law, policy, or security technology, the Company will announce the change on the website at least 7 days before it takes effect.',
+          'Revision history:',
+          { table: {
+            headers: ['Effective date', 'What changed'],
+            rows: [
+              ['November 11, 2026', 'Wording cleanup (no change to how personal information is handled)'],
+              ['September 2, 2026', 'Initial publication'],
+            ],
+          } },
         ],
       },
     ],

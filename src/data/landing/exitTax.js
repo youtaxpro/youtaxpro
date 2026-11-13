@@ -132,6 +132,7 @@ export default {
       { path: '/streamlined', label: { ko: 'Streamlined 간소화 절차', en: 'Streamlined Procedures' } },
       { path: '/fbar', label: { ko: 'FBAR 신고 안내', en: 'FBAR Filing' } },
       { path: '/pfic', label: { ko: 'PFIC(해외 펀드 세금)', en: 'PFIC Guide' } },
+      { path: '/nonresident', label: { ko: '비거주 외국인 신고', en: 'Nonresident Return' } },
     ],
   },
 
@@ -255,6 +256,7 @@ export default {
       { path: '/streamlined', label: { ko: 'Streamlined 간소화 절차', en: 'Streamlined Procedures' } },
       { path: '/fbar', label: { ko: 'FBAR 신고 안내', en: 'FBAR Filing' } },
       { path: '/pfic', label: { ko: 'PFIC(해외 펀드 세금)', en: 'PFIC Guide' } },
+      { path: '/nonresident', label: { ko: '비거주 외국인 신고', en: 'Nonresident Return' } },
     ],
   },
 };

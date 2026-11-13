@@ -119,6 +119,7 @@ export default {
 
     related: [
       { path: '/fbar', label: { ko: 'FBAR·FATCA 신고 안내', en: 'FBAR / FATCA' } },
+      { path: '/fatca', label: { ko: 'FATCA 신고 가이드(Form 8938)', en: 'FATCA (Form 8938)' } },
       { path: '/feie', label: { ko: '해외근로소득 공제(FEIE)', en: 'FEIE Guide' } },
       { path: '/streamlined', label: { ko: 'Streamlined 간소화 절차', en: 'Streamlined Procedures' } },
     ],
@@ -230,6 +231,7 @@ export default {
 
     related: [
       { path: '/fbar', label: { ko: 'FBAR·FATCA 신고 안내', en: 'FBAR / FATCA' } },
+      { path: '/fatca', label: { ko: 'FATCA 신고 가이드(Form 8938)', en: 'FATCA (Form 8938)' } },
       { path: '/feie', label: { ko: '해외근로소득 공제(FEIE)', en: 'FEIE Guide' } },
       { path: '/streamlined', label: { ko: 'Streamlined 간소화 절차', en: 'Streamlined Procedures' } },
     ],
