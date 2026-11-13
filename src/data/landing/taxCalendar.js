@@ -8,6 +8,7 @@ const related = [
   { path: '/fbar', label: { ko: 'FBAR · FATCA 신고', en: 'FBAR & FATCA' } },
   { path: '/streamlined', label: { ko: 'Streamlined 간소화 절차', en: 'Streamlined Procedures' } },
   { path: '/gift-inheritance', label: { ko: '증여·상속과 Form 3520', en: 'Gifts & Inheritances (Form 3520)' } },
+  { path: '/tax-return', label: { ko: '미국 소득세 신고 대행', en: 'Income Tax Return' } },
 ];
 
 const sources = (ko) => [

@@ -83,7 +83,7 @@ function landingArticleJsonLd(route, locale) {
     inLanguage: locale,
     mainEntityOfPage: url,
     image: `${SITE}/preview-image.jpg`,
-    ...(page.updated ? { dateModified: page.updated } : {}),
+    ...(page.updated ? { dateModified: `${page.updated}T00:00:00+09:00` } : {}),
     author: {
       '@type': 'Person',
       name: locale === 'en' ? 'Ahreum Im, CPA' : '임아름',

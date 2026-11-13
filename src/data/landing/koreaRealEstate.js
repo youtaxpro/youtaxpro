@@ -6,6 +6,7 @@ const related = [
   { path: '/feie', label: { ko: '해외근로소득 공제(FEIE)', en: 'FEIE Guide' } },
   { path: '/fbar', label: { ko: 'FBAR · FATCA 신고', en: 'FBAR & FATCA' } },
   { path: '/tax-calendar', label: { ko: '2027년 신고 일정·기준 금액', en: '2027 Tax Calendar' } },
+  { path: '/tax-return', label: { ko: '미국 소득세 신고 대행', en: 'Income Tax Return' } },
 ];
 
 const sources = (ko) => [

@@ -7,6 +7,7 @@ const related = [
   { path: '/fbar', label: { ko: 'FBAR · FATCA 신고', en: 'FBAR & FATCA' } },
   { path: '/streamlined', label: { ko: 'Streamlined 간소화 절차', en: 'Streamlined Procedures' } },
   { path: '/exit-tax', label: { ko: '국적포기세(Exit Tax)', en: 'U.S. Exit Tax' } },
+  { path: '/irs-notice', label: { ko: 'IRS 통지서·세무조사 대응', en: 'IRS Notices' } },
 ];
 
 const sources = (ko) => [

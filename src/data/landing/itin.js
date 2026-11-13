@@ -125,6 +125,7 @@ export default {
       { path: '/feie', label: { ko: '해외근로소득 공제(FEIE)', en: 'FEIE Guide' } },
       { path: '/fbar', label: { ko: 'FBAR·FATCA 신고 안내', en: 'FBAR / FATCA' } },
       { path: '/streamlined', label: { ko: 'Streamlined 간소화 절차', en: 'Streamlined Procedures' } },
+      { path: '/nonresident', label: { ko: '비거주 외국인 신고', en: 'Nonresident Return' } },
     ],
   },
 
@@ -241,6 +242,7 @@ export default {
       { path: '/feie', label: { ko: '해외근로소득 공제(FEIE)', en: 'FEIE Guide' } },
       { path: '/fbar', label: { ko: 'FBAR·FATCA 신고 안내', en: 'FBAR / FATCA' } },
       { path: '/streamlined', label: { ko: 'Streamlined 간소화 절차', en: 'Streamlined Procedures' } },
+      { path: '/nonresident', label: { ko: '비거주 외국인 신고', en: 'Nonresident Return' } },
     ],
   },
 };

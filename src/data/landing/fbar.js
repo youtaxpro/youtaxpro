@@ -186,6 +186,7 @@ export default {
     ],
 
     related: [
+      { path: '/fatca', label: { ko: 'FATCA 신고 가이드(Form 8938)', en: 'FATCA (Form 8938)' } },
       { path: '/streamlined', label: { ko: 'Streamlined 간소화 절차', en: 'Streamlined Procedures' } },
       { path: '/pfic', label: { ko: 'PFIC(해외 펀드 세금)', en: 'PFIC Guide' } },
       { path: '/tax-calendar', label: { ko: '미국 세금신고 일정', en: 'U.S. Tax Calendar' } },
@@ -366,6 +367,7 @@ export default {
     ],
 
     related: [
+      { path: '/fatca', label: { ko: 'FATCA 신고 가이드(Form 8938)', en: 'FATCA (Form 8938)' } },
       { path: '/streamlined', label: { ko: 'Streamlined 간소화 절차', en: 'Streamlined Procedures' } },
       { path: '/pfic', label: { ko: 'PFIC(해외 펀드 세금)', en: 'PFIC Guide' } },
       { path: '/tax-calendar', label: { ko: '미국 세금신고 일정', en: 'U.S. Tax Calendar' } },

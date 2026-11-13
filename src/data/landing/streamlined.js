@@ -177,6 +177,7 @@ export default {
       { path: '/fbar', label: { ko: 'FBAR·FATCA 신고 안내', en: 'FBAR / FATCA' } },
       { path: '/itin', label: { ko: 'ITIN 신청 가이드', en: 'ITIN Guide' } },
       { path: '/pfic', label: { ko: 'PFIC(해외 펀드 세금)', en: 'PFIC Guide' } },
+      { path: '/amended-return', label: { ko: '수정 신고(Form 1040-X)', en: 'Amended Return' } },
     ],
   },
 
@@ -345,6 +346,7 @@ export default {
       { path: '/fbar', label: { ko: 'FBAR·FATCA 신고 안내', en: 'FBAR / FATCA' } },
       { path: '/itin', label: { ko: 'ITIN 신청 가이드', en: 'ITIN Guide' } },
       { path: '/pfic', label: { ko: 'PFIC(해외 펀드 세금)', en: 'PFIC Guide' } },
+      { path: '/amended-return', label: { ko: '수정 신고(Form 1040-X)', en: 'Amended Return' } },
     ],
   },
 };

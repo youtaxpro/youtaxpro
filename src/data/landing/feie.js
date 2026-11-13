@@ -143,6 +143,7 @@ export default {
       { path: '/pfic', label: { ko: 'PFIC(해외 펀드 세금)', en: 'PFIC Guide' } },
       { path: '/fbar', label: { ko: 'FBAR 신고 안내', en: 'FBAR Filing' } },
       { path: '/streamlined', label: { ko: 'Streamlined 간소화 절차', en: 'Streamlined Procedures' } },
+      { path: '/tax-return', label: { ko: '미국 소득세 신고 대행', en: 'Income Tax Return' } },
     ],
   },
 
@@ -275,6 +276,7 @@ export default {
       { path: '/pfic', label: { ko: 'PFIC(해외 펀드 세금)', en: 'PFIC Guide' } },
       { path: '/fbar', label: { ko: 'FBAR 신고 안내', en: 'FBAR Filing' } },
       { path: '/streamlined', label: { ko: 'Streamlined 간소화 절차', en: 'Streamlined Procedures' } },
+      { path: '/tax-return', label: { ko: '미국 소득세 신고 대행', en: 'Income Tax Return' } },
     ],
   },
 };
