@@ -167,7 +167,7 @@ export const serviceSteps = [
 ];
 
 export const servicesCopy = {
-  h1: { ko: '미국세금 서비스 안내', en: 'U.S. Tax Services' },
+  h1: { ko: '미국세무 서비스 안내', en: 'U.S. Tax Services' },
   lead: {
     ko: '한국에 거주하는 미국 시민권자·영주권자와 미국 원천소득이 있는 분들을 위한 서비스입니다. 매년 하는 정기 신고부터 여러 해 미신고 정리까지 캘리포니아 CPA가 직접 처리합니다.',
     en: 'Services for U.S. citizens and green card holders living in Korea, and for others with U.S.-source income. From the annual return to multi-year catch-up filings, handled directly by a California CPA.',

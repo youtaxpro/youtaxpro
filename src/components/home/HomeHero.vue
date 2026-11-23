@@ -123,10 +123,10 @@ const emptyForm = () => ({ fullName: '', email: '', phone: '', statusType: '', d
 
 const copy = {
   ko: {
-    eyebrow: '캘리포니아 CPA · 서울 강남',
-    h1a: '한국에서 하는 미국 세금 신고,',
+    eyebrow: '미국세무 전문 캘리포니아 CPA · 서울 강남',
+    h1a: '한국에서 받는 미국세무·세금신고,',
     h1b: '정확하고 편안하게.',
-    sub: '한국에 거주하는 미국 시민권자·영주권자를 위한 미국 세금 신고 전문. 연방·주 소득세부터 FBAR·FATCA, 미신고 정리(Streamlined)까지 캘리포니아 CPA가 직접 검토하고 신고합니다.',
+    sub: '한국에 거주하는 미국 시민권자·영주권자를 위한 미국세무 전문 서비스. 연방·주 소득세 신고부터 FBAR·FATCA, 미신고 정리(Streamlined)까지 캘리포니아 CPA가 직접 검토하고 신고합니다.',
     points: ['FBAR · FATCA · PFIC 해외자산 신고', '한·미 이중과세 최소화 (FEIE · 외국납부세액공제)', '한국어·영어 상담, 전 과정 비대면 가능'],
     cta: '상담 신청하기',
     cta2: '미국세금 가이드 보기',
