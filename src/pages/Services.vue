@@ -1,5 +1,12 @@
 <template>
   <MainLayout>
+    <div class="sv-page">
+    <!-- 그랜드캐니언(호스슈 벤드) 배경 + 밝은 오버레이 -->
+    <picture class="sv-bg" aria-hidden="true">
+      <source :srcset="canyonAvif" type="image/avif" />
+      <source :srcset="canyonWebp" type="image/webp" />
+      <img :src="canyonJpg" alt="" decoding="async" />
+    </picture>
     <div class="sv">
       <header class="sv-header">
         <h1>{{ t(copy.h1) }}</h1>
@@ -39,6 +46,7 @@
         <router-link :to="lp('/contactus')" class="sv-cta-btn">{{ t(copy.ctaButton) }}</router-link>
       </aside>
     </div>
+    </div>
   </MainLayout>
 </template>
 
@@ -47,6 +55,9 @@ import { useI18n } from 'vue-i18n';
 import MainLayout from '../layouts/MainLayout.vue';
 import { useLocalePath } from '../composables/useLocalePath';
 import { serviceGroups, serviceSteps, servicesCopy } from '../data/services';
+import canyonJpg from '../assets/grand_canyon.jpg';
+import canyonWebp from '../assets/optimized/grand_canyon.webp';
+import canyonAvif from '../assets/optimized/grand_canyon.avif';
 
 export default {
   name: 'Services',
@@ -55,15 +66,37 @@ export default {
     const { locale } = useI18n();
     const { lp } = useLocalePath();
     const t = (v) => v[locale.value] || v.ko;
-    return { groups: serviceGroups, steps: serviceSteps, copy: servicesCopy, t, lp };
+    return { groups: serviceGroups, steps: serviceSteps, copy: servicesCopy, t, lp, canyonJpg, canyonWebp, canyonAvif };
   },
 };
 </script>
 
 <style scoped>
+.sv-page {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  clip-path: inset(0); /* 화면에 고정된 배경 사진을 이 영역 안에서만 보이게 */
+  width: 100%;
+  align-self: stretch;
+  padding: 120px 0 4rem;
+  background: #f7f8fb;
+}
+/* 페이지가 세로로 길어서, 사진은 화면에 고정해 스크롤해도 전체 구도가 보이게 */
+.sv-bg { position: fixed; inset: 0; z-index: -2; }
+.sv-bg img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+/* 사진 색이 진해서 글이 잘 읽히도록 오버레이를 조금 더 진하게 */
+.sv-page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(247, 248, 251, 0.72) 0%, rgba(247, 248, 251, 0.82) 50%, rgba(247, 248, 251, 0.74) 100%);
+}
+
 .sv {
   max-width: 980px;
-  margin: 120px auto 4rem;
+  margin: 0 auto;
   padding: 0 1.25rem;
   text-align: left;
 }
@@ -230,8 +263,8 @@ export default {
 }
 
 @media (max-width: 600px) {
-  .sv {
-    margin-top: 90px;
+  .sv-page {
+    padding-top: 90px;
   }
 
   .sv-header h1 {
