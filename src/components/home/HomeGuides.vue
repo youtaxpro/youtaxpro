@@ -1,6 +1,6 @@
 <template>
   <section id="guides" class="section guides">
-    <!-- 뉴욕 스카이라인 배경: 제목 영역에만 깔고 아래로 흐려지게 -->
+    <!-- 뉴욕 스카이라인 배경: 섹션 전체 -->
     <div class="guides-bg" aria-hidden="true">
       <picture>
         <source :srcset="skylineAvif" type="image/avif" />
@@ -59,29 +59,17 @@ export default {
 </script>
 
 <style scoped>
-.guides { position: relative; isolation: isolate; }
-.guides-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 560px;
-  z-index: -1;
-  overflow: hidden;
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 50%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 0%, #000 50%, transparent 100%);
-}
-.guides-bg img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 62%; }
-/* 남색으로 덮어 흰 글씨가 잘 읽히게 */
-.guides-bg::after {
+/* 뉴욕 스카이라인 배경 + 밝은 오버레이 (전문가 소개 섹션의 국기 배경과 같은 방식) */
+.guides { position: relative; isolation: isolate; background: var(--bg); overflow: hidden; }
+.guides-bg { position: absolute; inset: 0; z-index: -2; }
+.guides-bg img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 22% center; } /* 자유의 여신상이 잘리지 않게 왼쪽 기준 */
+.guides::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(10, 35, 80, 0.82) 0%, rgba(10, 35, 80, 0.62) 100%);
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(247, 248, 251, 0.5) 0%, rgba(247, 248, 251, 0.72) 45%, rgba(247, 248, 251, 0.86) 100%);
 }
-.guides .section-head h2 { color: #fff; }
-.guides .section-head p { color: rgba(255, 255, 255, 0.8); }
-.guides .eyebrow { color: var(--gold-500); }
 
 .guide-grid {
   list-style: none;
@@ -132,7 +120,6 @@ export default {
 }
 @media (max-width: 560px) {
   .guide-grid { grid-template-columns: 1fr; }
-  .guides-bg { height: 480px; }
-  .guides-bg img { object-position: 12% 62%; } /* 좁은 화면에서도 자유의 여신상이 보이게 */
+  .guides-bg img { object-position: 12% center; } /* 좁은 화면에서도 자유의 여신상이 보이게 */
 }
 </style>
