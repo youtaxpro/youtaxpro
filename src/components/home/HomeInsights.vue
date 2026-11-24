@@ -58,7 +58,10 @@ export default {
   setup() {
     const { locale } = useI18n();
     const posts = (blog.posts || []).slice(0, 6);
-    const formatDate = (iso) => (iso ? iso.slice(0, 10).replace(/-/g, '.') : '');
+    // 날짜는 한국 시간 기준(UTC+9)으로 표시 — 새벽에 올린 글이 전날로 보이지 않게
+    const formatDate = (iso) => (iso
+      ? new Date(new Date(iso).getTime() + 9 * 3600e3).toISOString().slice(0, 10).replace(/-/g, '.')
+      : '');
     const track = (target) => gaEvent('blog_click', { target });
     return { locale, posts, SOCIAL, formatDate, track };
   },
@@ -70,7 +73,7 @@ export default {
   display: grid;
   grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
   gap: 2rem;
-  align-items: start;
+  align-items: stretch; /* 오른쪽 채널 카드 높이를 왼쪽 칼럼 목록에 맞춤 */
 }
 
 .post-list {
@@ -87,8 +90,10 @@ export default {
 .post-meta em { font-style: normal; font-weight: 700; color: var(--navy-600); }
 .post strong { font-size: 0.98rem; font-weight: 600; line-height: 1.5; }
 
-.channels { list-style: none; display: grid; gap: 1rem; }
+.channels { list-style: none; display: grid; gap: 1rem; grid-auto-rows: 1fr; }
+.channels li { display: flex; }
 .channel {
+  flex: 1;
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -125,5 +130,6 @@ export default {
 
 @media (max-width: 860px) {
   .insights-grid { grid-template-columns: 1fr; }
+  .channels { grid-auto-rows: auto; }
 }
 </style>
