@@ -211,7 +211,7 @@ function bodyHtml(route, locale) {
     parts.push(`<h2>${en ? 'Related guides' : '관련 가이드'}</h2>`, guideLinksHtml(locale));
   } else if (route.path === '/') {
     parts.push(
-      `<h1>${en ? 'U.S. tax filing for Americans living in Korea' : '한국 거주 미국 시민권자·영주권자를 위한 미국 세금 신고'}</h1>`,
+      `<h1>${en ? 'U.S. tax filing for Americans living in Korea' : '한국 거주 미국 시민권자·영주권자를 위한 미국세무·미국세금 신고'}</h1>`,
       `<p>${esc(route.description[locale])}</p>`,
       `<h2>${en ? 'Services' : '서비스 안내'}</h2>`,
       `<ul>${Array.from({ length: 8 }, (_, i) => `<li>${esc(msg.services[`service${i + 1}`].items[0])}</li>`).join('')}</ul>`,

@@ -123,10 +123,11 @@ const emptyForm = () => ({ fullName: '', email: '', phone: '', statusType: '', d
 
 const copy = {
   ko: {
-    eyebrow: '캘리포니아 CPA · 서울 강남',
-    h1a: '한국에서 하는 미국 세금 신고,',
+    eyebrow: '미국세무 · 캘리포니아 CPA · 서울 강남',
+    // ⁠(보이지 않는 연결 문자): 가운뎃점에서 줄이 끊기지 않게
+    h1a: '한국에서 하는 미국세무⁠·⁠미국세금 신고,',
     h1b: '정확하고 편안하게.',
-    sub: '한국에 거주하는 미국 시민권자·영주권자를 위한 미국 세금 신고 전문. 연방·주 소득세부터 FBAR·FATCA, 미신고 정리(Streamlined)까지 캘리포니아 CPA가 직접 검토하고 신고합니다.',
+    sub: '한국에 거주하는 미국 시민권자·영주권자를 위한 미국세무·미국세금 신고 전문. 연방·주 소득세부터 FBAR·FATCA, 미신고 정리(Streamlined)까지 캘리포니아 CPA가 직접 검토하고 신고합니다.',
     points: ['FBAR · FATCA · PFIC 해외자산 신고', '한·미 이중과세 최소화 (FEIE · 외국납부세액공제)', '한국어·영어 상담, 전 과정 비대면 가능'],
     cta: '상담 신청하기',
     cta2: '미국세금 가이드 보기',
@@ -308,6 +309,7 @@ export default {
   font-weight: 800;
   line-height: 1.2;
   margin-bottom: 1.25rem;
+  word-break: keep-all; /* "미국세무·" 뒤에서 끊기지 않고 어절 단위로 줄바꿈 */
 }
 .hero h1 em { font-style: normal; color: var(--gold-500); }
 

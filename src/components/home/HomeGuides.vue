@@ -1,5 +1,13 @@
 <template>
-  <section id="guides" class="section">
+  <section id="guides" class="section guides">
+    <!-- 뉴욕 스카이라인 배경: 제목 영역에만 깔고 아래로 흐려지게 -->
+    <div class="guides-bg" aria-hidden="true">
+      <picture>
+        <source :srcset="skylineAvif" type="image/avif" />
+        <source :srcset="skylineWebp" type="image/webp" />
+        <img :src="skylineJpg" alt="" loading="lazy" decoding="async" />
+      </picture>
+    </div>
     <div class="container">
       <div class="section-head">
         <span class="eyebrow">Guides</span>
@@ -35,6 +43,9 @@ import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { guidesList } from '../../data/landing';
 import { useLocalePath } from '../../composables/useLocalePath';
+import skylineJpg from '../../assets/tax-expertise.jpg';
+import skylineWebp from '../../assets/optimized/tax-expertise.webp';
+import skylineAvif from '../../assets/optimized/tax-expertise.avif';
 
 export default {
   name: 'HomeGuides',
@@ -42,12 +53,36 @@ export default {
     const { locale } = useI18n();
     const { lp } = useLocalePath();
     const guides = computed(() => guidesList(locale.value));
-    return { guides, locale, lp };
+    return { guides, locale, lp, skylineJpg, skylineWebp, skylineAvif };
   },
 };
 </script>
 
 <style scoped>
+.guides { position: relative; isolation: isolate; }
+.guides-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 560px;
+  z-index: -1;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 50%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 50%, transparent 100%);
+}
+.guides-bg img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 62%; }
+/* 남색으로 덮어 흰 글씨가 잘 읽히게 */
+.guides-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10, 35, 80, 0.82) 0%, rgba(10, 35, 80, 0.62) 100%);
+}
+.guides .section-head h2 { color: #fff; }
+.guides .section-head p { color: rgba(255, 255, 255, 0.8); }
+.guides .eyebrow { color: var(--gold-500); }
+
 .guide-grid {
   list-style: none;
   display: grid;
@@ -97,5 +132,7 @@ export default {
 }
 @media (max-width: 560px) {
   .guide-grid { grid-template-columns: 1fr; }
+  .guides-bg { height: 480px; }
+  .guides-bg img { object-position: 12% 62%; } /* 좁은 화면에서도 자유의 여신상이 보이게 */
 }
 </style>

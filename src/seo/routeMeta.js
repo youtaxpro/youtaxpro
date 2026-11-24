@@ -13,11 +13,11 @@ export const routeSeo = [
     path: '/',
     name: 'Home',
     title: {
-      ko: '미국 세금 신고 전문 CPA | 버클리유에스택스',
+      ko: '미국세무·미국세금 신고 전문 CPA | 버클리유에스택스',
       en: 'U.S. Tax Filing for Americans in Korea | Berkeley U.S. Tax Advisors',
     },
     description: {
-      ko: '한국 거주 미국 시민권자·영주권자 미국세금 신고 전문. 캘리포니아 CPA가 FBAR·FATCA·해외자산 신고를 정확하게 처리합니다.',
+      ko: '한국 거주 미국 시민권자·영주권자 미국세무·미국세금 신고 전문. 캘리포니아 CPA가 FBAR·FATCA·해외자산 신고를 처리합니다.',
       en: 'U.S. tax filing for American citizens and green card holders living in Korea. A California CPA handles FBAR, FATCA, PFIC, Exit Tax and double-taxation issues.',
     },
   },
@@ -165,11 +165,11 @@ export const routeSeo = [
     path: '/services',
     name: 'Services',
     title: {
-      ko: '미국세금 서비스 안내 | 버클리유에스택스',
+      ko: '미국세무·미국세금 서비스 안내 | 버클리유에스택스',
       en: 'U.S. Tax Services for Americans in Korea | Berkeley U.S. Tax Advisors',
     },
     description: {
-      ko: '소득세 신고, FBAR·FATCA, Streamlined, 수정 신고, IRS 통지서 대응까지 캘리포니아 CPA가 제공하는 미국세금 서비스.',
+      ko: '소득세 신고, FBAR·FATCA, Streamlined, 수정 신고, IRS 통지서 대응까지 캘리포니아 CPA의 미국세무·미국세금 서비스.',
       en: 'Income tax returns, FBAR and FATCA, Streamlined procedures, amended returns and IRS notices: U.S. tax services from a California CPA in Seoul.',
     },
   },
