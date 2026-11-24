@@ -1,5 +1,12 @@
 <template>
   <MainLayout>
+    <div class="gx-page">
+    <!-- 맨해튼 스카이라인 배경 + 밝은 오버레이 -->
+    <picture class="gx-bg" aria-hidden="true">
+      <source :srcset="skylineAvif" type="image/avif" />
+      <source :srcset="skylineWebp" type="image/webp" />
+      <img :src="skylineJpg" alt="" decoding="async" />
+    </picture>
     <div class="gx">
       <header class="gx-header">
         <h1>{{ locale === 'en' ? 'U.S. Tax Guides' : '미국세금 가이드' }}</h1>
@@ -21,6 +28,7 @@
         </li>
       </ul>
     </div>
+    </div>
   </MainLayout>
 </template>
 
@@ -30,6 +38,9 @@ import { useI18n } from 'vue-i18n';
 import MainLayout from '../layouts/MainLayout.vue';
 import { guidesList } from '../data/landing';
 import { useLocalePath } from '../composables/useLocalePath';
+import skylineJpg from '../assets/nyc_skyline.jpg';
+import skylineWebp from '../assets/optimized/nyc_skyline.webp';
+import skylineAvif from '../assets/optimized/nyc_skyline.avif';
 
 export default {
   name: 'GuidesIndex',
@@ -38,15 +49,35 @@ export default {
     const { locale } = useI18n();
     const { lp } = useLocalePath();
     const guides = computed(() => guidesList(locale.value));
-    return { guides, locale, lp };
+    return { guides, locale, lp, skylineJpg, skylineWebp, skylineAvif };
   },
 };
 </script>
 
 <style scoped>
+.gx-page {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  width: 100%;
+  align-self: stretch;
+  padding: 120px 0 4rem;
+  background: #f7f8fb;
+}
+.gx-bg { position: absolute; inset: 0; z-index: -2; }
+/* 하늘이 위쪽, 스카이라인이 페이지 아래쪽에 오도록 */
+.gx-bg img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 30% bottom; }
+.gx-page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(247, 248, 251, 0.62) 0%, rgba(247, 248, 251, 0.74) 55%, rgba(247, 248, 251, 0.6) 100%);
+}
+
 .gx {
   max-width: 900px;
-  margin: 120px auto 4rem;
+  margin: 0 auto;
   padding: 0 1.25rem;
 }
 
@@ -126,8 +157,8 @@ export default {
 }
 
 @media (max-width: 600px) {
-  .gx {
-    margin-top: 90px;
+  .gx-page {
+    padding-top: 90px;
   }
 }
 </style>
