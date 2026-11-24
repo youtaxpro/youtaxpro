@@ -80,18 +80,18 @@ export default {
   width: 100%;
   align-self: stretch;
   padding: 120px 0 4rem;
-  background: #f7f8fb;
+  background: #061735;
 }
 /* 페이지가 세로로 길어서, 사진은 화면에 고정해 스크롤해도 전체 구도가 보이게 */
 .sv-bg { position: fixed; inset: 0; z-index: -2; }
-.sv-bg img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
-/* 사진 색이 진해서 글이 잘 읽히도록 오버레이를 조금 더 진하게 */
+.sv-bg img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 48%; }
+/* 어두운 남색 오버레이: 사진 위의 제목·설명은 흰 글씨로 */
 .sv-page::before {
   content: '';
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(180deg, rgba(247, 248, 251, 0.72) 0%, rgba(247, 248, 251, 0.82) 50%, rgba(247, 248, 251, 0.74) 100%);
+  background: linear-gradient(180deg, rgba(6, 23, 53, 0.72) 0%, rgba(6, 23, 53, 0.6) 50%, rgba(6, 23, 53, 0.72) 100%);
 }
 
 .sv {
@@ -108,14 +108,14 @@ export default {
 
 .sv-header h1 {
   font-size: 1.9rem;
-  color: #002676;
+  color: #fff;
   margin-bottom: 0.7rem;
 }
 
 .sv-lead {
   max-width: 680px;
   margin: 0 auto;
-  color: #475569;
+  color: rgba(255, 255, 255, 0.85);
   font-size: 0.98rem;
   line-height: 1.7;
 }
@@ -126,9 +126,9 @@ export default {
 
 .sv-group > h2 {
   font-size: 1.2rem;
-  color: #0b2d63;
+  color: #fff;
   padding-bottom: 0.5rem;
-  border-bottom: 2px solid #e2e8f0;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.25);
   margin: 0 0 1rem;
 }
 
@@ -236,6 +236,7 @@ export default {
 
 .sv-cta {
   background: #0b2d63;
+  border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 14px;
   padding: 2rem 1.5rem;
   text-align: center;
