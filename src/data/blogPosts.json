@@ -2,6 +2,12 @@
   "source": "https://berkeleytax.tistory.com/rss",
   "posts": [
     {
+      "title": "해외 가상자산 거래소도 FBAR 신고 대상일까요",
+      "link": "https://berkeleytax.tistory.com/134",
+      "date": "2026-11-25T12:19:30.000Z",
+      "category": "해외계좌·FBAR·FATCA"
+    },
+    {
       "title": "미국 부동산 살 때, 내 이름으로 살까요 LLC로 살까요",
       "link": "https://berkeleytax.tistory.com/133",
       "date": "2026-11-23T03:41:33.000Z",
@@ -54,12 +60,6 @@
       "link": "https://berkeleytax.tistory.com/125",
       "date": "2026-11-08T06:52:40.000Z",
       "category": "사업·법인"
-    },
-    {
-      "title": "해외계좌 보유자, 어떤 패턴에서 세무조사 대상이 될까",
-      "link": "https://berkeleytax.tistory.com/124",
-      "date": "2026-11-07T02:05:44.000Z",
-      "category": "IRS 통지·세무조사"
     }
   ]
 }
