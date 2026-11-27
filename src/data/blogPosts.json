@@ -2,6 +2,12 @@
   "source": "https://berkeleytax.tistory.com/rss",
   "posts": [
     {
+      "title": "외국신탁에서 돈을 받았다면, 세금은 어떻게 계산하나요",
+      "link": "https://berkeleytax.tistory.com/135",
+      "date": "2026-11-27T01:56:43.000Z",
+      "category": "증여·상속·신탁"
+    },
+    {
       "title": "해외 가상자산 거래소도 FBAR 신고 대상일까요",
       "link": "https://berkeleytax.tistory.com/134",
       "date": "2026-11-25T12:19:30.000Z",
@@ -54,12 +60,6 @@
       "link": "https://berkeleytax.tistory.com/126",
       "date": "2026-11-09T13:10:11.000Z",
       "category": "연금·가족·생활"
-    },
-    {
-      "title": "한국 법인세가 높으면 NCTI를 면제받을 수 있다고요? High-Tax Exception",
-      "link": "https://berkeleytax.tistory.com/125",
-      "date": "2026-11-08T06:52:40.000Z",
-      "category": "사업·법인"
     }
   ]
 }
